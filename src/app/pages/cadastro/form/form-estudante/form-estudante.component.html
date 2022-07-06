@@ -1,0 +1,84 @@
+<form [formGroup]="formCadastro" #formDir="ngForm">
+    <div class="form-group">
+        <i>
+            * Campos de preenchimento obrigatório
+        </i>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Nome Completo <em>*</em> </label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nome Completo" formControlName="nomeCompleto">
+        <!--
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        -->    
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">CPF <em>*</em> </label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="XXX.XXX.XXX-XX" formControlName="cpf">
+        <!--
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        -->    
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Email <em>*</em> </label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@email.com" formControlName="email">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Telefone <em>*</em> </label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="(XX) 9XXXX-XXXX" formControlName="telefone">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Cep <em>*</em> </label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="XXXXX-XXX" formControlName="cep">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Complemento <em>*</em> </label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Complemento ou Ponto de Referência." formControlName="complemento">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Logradouro <em>*</em> </label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Rua, Avenida, Travessa, etc." formControlName="logradouro">
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="exampleFormControlInput1">Estado/UF <em>*</em> </label>
+            <input type="text" class="form-control" placeholder="Estado" formControlName="estado">
+        </div>
+        <div class="col">
+            <label for="exampleFormControlInput1">Cidade <em>*</em> </label>
+            <input type="text" class="form-control" placeholder="Cidade" formControlName="cidade">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="exampleFormControlInput1">Número <em>*</em> </label>
+            <input type="text" class="form-control" placeholder="Número" formControlName="numero">
+        </div>
+        <div class="col">
+            <label for="exampleFormControlInput1">Bairro <em>*</em> </label>
+            <input type="text" class="form-control" placeholder="Bairro" formControlName="bairro">
+        </div>
+      </div>
+    <div class="form-group">
+        <label for="inputPassword5">Senha <em>*</em> </label>
+        <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Digite a sua senha" formControlName="email">
+    </div>
+    <div class="form-group">
+        <label for="inputPassword5">Confirmar Senha <em>*</em> </label>
+        <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Confirme a sua senha" [disabled]="">
+    </div>
+    <div class="form-group">
+        <input class="form-check-input" type="checkbox" id="inlineFormCheck" formControlName="termo">
+        <label class="form-check-label" for="inlineFormCheck">
+            Declaro que li e concordo com os <a href="/">Termos de uso e privacidade</a>.
+        </label>
+    </div>
+    <div class="buttonForm">
+        <!--
+            <button type="submit" class="btn btn-primary mb-2" [disabled]="this.formCadastro.controls['nomeCompleto'].invalid">Limpar</button>
+        -->
+        <button type="submit" class="btn btn-primary mb-2 cadastrar" [disabled]="this.formCadastro.invalid" (click)="mostrarValores()">Cadastrar</button>   
+        <button type="submit" class="btn btn-primary mb-2 limpar">Limpar</button> 
+    </div>
+ </form>
+
+ 

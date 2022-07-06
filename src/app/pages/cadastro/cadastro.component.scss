@@ -1,0 +1,28 @@
+section{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+    margin-top: 20px;
+    img{
+        width: 40%;
+    }
+
+    .ng-select.custom {
+        border:0px;
+        min-height: 0px;
+        border-radius: 0;
+    }
+    .ng-select.custom .ng-select-container  {            
+        min-height: 0px;
+        border-radius: 0;
+    }
+
+    .selectButton{
+        margin-top: 15px;
+    }
+
+}
+
+
+

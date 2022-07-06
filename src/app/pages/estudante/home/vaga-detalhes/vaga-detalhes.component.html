@@ -1,0 +1,24 @@
+<section>
+
+<div class=" botaoFechar col-12">
+    <button mat-button (click)="fecharModal()">X</button>
+</div>
+<h2>Detalhes da Vaga - {{data.nomeVaga}}</h2>
+
+    <span>Status vaga: {{data.status}}</span>
+
+<div class="contentGrid">
+    <span>Entidade Responsável: {{data.nomeEntidade}}</span>
+    <span>Descrição: {{data.descricao}}</span>
+</div>
+
+<div>
+    <button>
+        Confirmar
+    </button>
+    <button (click)="fecharModal()">
+        Cancelar
+    </button>
+</div>
+
+</section>

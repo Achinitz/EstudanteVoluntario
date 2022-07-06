@@ -1,0 +1,31 @@
+<section>
+    <img src="../../../assets/imagens/cadastroImagem.jpg" class="card-img-top" alt="...">
+
+    <div class="form-group selectButton">
+        <select class="custom-select" [(ngModel)]="selectedCar" placeholder="Selecione um perfil">
+            <option *ngFor="let car of cars" [ngValue]="car.id">
+                <p>{{ car.name }}</p>
+            </option>
+        </select>
+      </div>
+
+    <!--
+    <ng-select [items]="cars"
+        id="ngSelect"
+        bindLabel="name"
+        bindValue="id"
+        placeholder="Selecione um perfil"
+        [(ngModel)]="selectedCar">
+    </ng-select>     
+    -->
+
+     <section *ngIf="selectedCar == 1">
+        <app-form-entidade></app-form-entidade>
+     </section>
+   
+     <section *ngIf="selectedCar == 2">
+        <app-form-estudante></app-form-estudante>
+     </section>
+
+
+</section>

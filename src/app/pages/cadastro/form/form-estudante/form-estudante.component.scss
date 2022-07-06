@@ -1,0 +1,17 @@
+.buttonForm{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    .cadastrar{
+        margin-right: 1rem;
+        background-color: #008000;
+    }
+    .limpar{
+        background-color: #ffca2c;
+        color: #000000;
+    }
+}
+
+em{
+    color: red;
+}

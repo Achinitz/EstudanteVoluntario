@@ -1,0 +1,46 @@
+section{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    section{
+
+        h2{
+            margin-top: 1rem;
+        }
+
+        img{
+            
+            margin: 5rem;
+        }
+
+        .imgDiv{
+            margin: auto;
+        }
+
+        .terceiraDiv{
+            display: grid;
+
+            a:first-child{
+                margin-bottom: 0.5rem;
+            }
+
+            .buttonSubmit{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 1rem;
+
+                button{
+                    width: 75%;
+                    background-color: #008000;
+                    &:hover{
+                        opacity: 0.5;
+                    }
+                }
+            }
+        }
+
+    }
+}
