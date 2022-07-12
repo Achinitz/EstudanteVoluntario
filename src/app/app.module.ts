@@ -24,6 +24,8 @@ import { CarouselComponent } from './shared/components/carousel/carousel.compone
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { CardComponent } from './shared/components/card/card.component';
+import { EntidadesComponent } from './shared/components/header/entidades/entidades.component';
+import { SobreNosComponent } from './shared/components/header/sobre-nos/sobre-nos.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +39,13 @@ import { CardComponent } from './shared/components/card/card.component';
     HeaderComponent,
     HomeComponent,
     LoginComponent,
+    EntidadesComponent,
+    SobreNosComponent,
+    
   ],
-  exports: [NgSelectModule],
+  exports: [
+    NgSelectModule,
+  ],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -1,0 +1,29 @@
+<!--
+<div class=" botaoFechar col-12">
+    <button mat-button (click)="fecharModal()">X</button>
+</div>
+-->
+<section>
+<h2 mat-dialog-title>Detalhes da Vaga - {{data.nomeVaga}}</h2>
+
+<mat-dialog-content>
+    <div class="contentGrid">
+        <span>
+            Deseja realmente cancelar a sua inscrição para essa vaga? 
+            O período de inscrição foi encerrado e não será possível se candidatar para essa mesma vaga.
+        </span>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <div class="buttons">
+        <button>
+            Confirmar
+        </button>
+        <button (click)="fecharModal()">
+            Cancelar
+        </button>
+    </div>
+</mat-dialog-actions>
+
+</section>

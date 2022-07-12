@@ -1,0 +1,73 @@
+section{
+    display: flex;
+    margin-top: 1rem;
+
+    //Primeira section onde está a sidebar
+    section{
+        .navSideBar{
+            margin-top: 1rem;
+            width: 18%;
+
+            h2{
+                text-align: center;
+            }
+
+        }
+    }
+
+    //Segunda section onde fica o conteúdo
+    section{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        h1{
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        div{
+            text-align: end;
+            margin-top: 2rem;
+            button{
+                background: red;
+                border: none;
+                color: #fff;
+                width: 10%;
+                border-radius: 0.5rem;
+
+                &:hover{
+                    opacity: 0.7;
+                }
+
+            }
+        }
+
+        .buttonsActions{
+            display: flex;
+            flex-direction: row-reverse;
+            
+            button{
+                border-radius: 1rem;
+                border: none;
+                color: #5a97a1;
+            }
+
+        }
+
+        .contentPage{
+            padding: 1.5rem;
+            background-color: antiquewhite;
+            border-radius: 0.5rem;
+            width: 100%;
+            margin-bottom: 1.5rem;
+          }
+          
+          .content{
+            margin-right: auto;
+          }
+
+        }
+
+}

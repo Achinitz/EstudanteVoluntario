@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
+import { CancelarModalComponent } from './cancelar-modal/cancelar-modal.component';
 import { VagaDetalhesComponent } from './vaga-detalhes/vaga-detalhes.component';
 
 @Component({
@@ -8,6 +12,7 @@ import { VagaDetalhesComponent } from './vaga-detalhes/vaga-detalhes.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
 
   nomeEstudante: any = "Teste";
   //vagasCadastradas: any = null;
@@ -29,13 +34,19 @@ export class HomeComponent implements OnInit {
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Jardineiro',
       status: 'Andamento'
+    },
+    {
+      nomeEntidade: 'Erasto',
+      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      descricao: 'Jardineiro',
+      status: 'aberto'
     }
   ];
 
   vagasDisponiveis: any = [
     {
       id: 1,
-      nomeEntidade: 'APAE',
+      nomeEntidade: 'APAE 1',
       nomeVaga: 'Contador de História',      
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
@@ -43,7 +54,7 @@ export class HomeComponent implements OnInit {
     },
     {
       id: 2,
-      nomeEntidade: 'APAE',
+      nomeEntidade: 'APAE 2',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
@@ -51,7 +62,7 @@ export class HomeComponent implements OnInit {
     },
     {
       id: 3,
-      nomeEntidade: 'APAE',
+      nomeEntidade: 'APAE 3',
       nomeVaga: 'Contador de História',      
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
@@ -59,7 +70,7 @@ export class HomeComponent implements OnInit {
     },
     {
       id: 4,
-      nomeEntidade: 'APAE',
+      nomeEntidade: 'APAE 4',
       nomeVaga: 'Contador de História',      
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
@@ -67,7 +78,7 @@ export class HomeComponent implements OnInit {
     },
     {
       id: 5,
-      nomeEntidade: 'APAE',
+      nomeEntidade: 'APAE 5',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
@@ -75,7 +86,55 @@ export class HomeComponent implements OnInit {
     },
     {
       id: 6,
-      nomeEntidade: 'APAE',
+      nomeEntidade: 'APAE 6',
+      nomeVaga: 'Contador de História',      
+      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      descricao: 'Vaga para pessoas de bom coração',
+      status: 'Aberto'
+    },
+    {
+      id: 7,
+      nomeEntidade: 'APAE 7',
+      nomeVaga: 'Contador de História',      
+      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      descricao: 'Vaga para pessoas de bom coração',
+      status: 'Aberto'
+    },
+    {
+      id: 8,
+      nomeEntidade: 'APAE 8',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      descricao: 'Vaga para pessoas de bom coração',
+      status: 'Aberto'
+    },
+    {
+      id: 3,
+      nomeEntidade: 'APAE 9',
+      nomeVaga: 'Contador de História',      
+      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      descricao: 'Vaga para pessoas de bom coração',
+      status: 'Aberto'
+    },
+    {
+      id: 9,
+      nomeEntidade: 'APAE 10',
+      nomeVaga: 'Contador de História',      
+      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      descricao: 'Vaga para pessoas de bom coração',
+      status: 'Aberto'
+    },
+    {
+      id: 5,
+      nomeEntidade: 'APAE 11',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      descricao: 'Vaga para pessoas de bom coração',
+      status: 'Aberto'
+    },
+    {
+      id: 6,
+      nomeEntidade: 'APAE 12',
       nomeVaga: 'Contador de História',      
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
@@ -83,18 +142,50 @@ export class HomeComponent implements OnInit {
     },
   ];
 
+  //Variaveis para a paginação
+  paginaAtual = 1;
+  tamanhoPagina: number = this.vagasDisponiveis.length;
+  itemsPerPage = 6;
+  public vagas: any = this.vagasDisponiveis.slice(0,6);
+
+  vagasDisponiveisMostra: any;
+
   public animal: string = 'Cavalo';
   public name: string = 'Top';
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private dataService: DataService,private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  exibirDetalhes(value: any): void {
+  public mudancaPagina(pageNum: number): void {
+    this.tamanhoPagina = this.itemsPerPage*(pageNum - 1);
+    this.vagas = this.vagasDisponiveis.slice(this.tamanhoPagina, this.tamanhoPagina + 6)
+  }
 
+  //Vai exibir os detalhes da vaga antes de ele efetivar a inscrição
+  exibirDetalhes(value: any): void {
     const dialogRef = this.dialog.open(VagaDetalhesComponent, {
       width: 'auto',
+      data: this.vagasDisponiveis[value],
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //this.animal = result;
+    });
+  }
+
+    //Vai exibir uma modal para cadastro com as validações dos dados
+    cadastrar(value: any): void {
+      this.dataService.data = this.vagasDisponiveis[value];
+      this.router.navigate(['/Estudante/DetalheVaga']);
+    }
+
+  //Quando o usuário clicar no botão para cancelar a inscrição
+  cancelarInscricao(value:any){
+    const dialogRef = this.dialog.open(CancelarModalComponent, {
+      width: '50%',
       data: this.vagasDisponiveis[value],
     });
 

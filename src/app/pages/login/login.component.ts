@@ -19,10 +19,8 @@ export class LoginComponent implements OnInit {
   login(){
     console.log("Entrou no login");
     if(this.formLogin.value.cpfoucnpj.length === 11 || this.formLogin.value.cpfoucnpj.length === 14 || this.formLogin.value.cpfoucnpj == 123){
-      console.log("Isso é um CPF");
-      this.router.navigate(['/Estudante'])
+      this.router.navigate(['/Estudante']);
     }else if(this.formLogin.value.cpfoucnpj.length === 14 || this.formLogin.value.cpfoucnpj.length === 18 || this.formLogin.value.cpfoucnpj == 1234){
-      console.log("Isso é um CNPJ");
       this.router.navigate(['/Entidade'])
     }
   }
