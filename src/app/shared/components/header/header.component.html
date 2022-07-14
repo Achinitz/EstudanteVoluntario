@@ -1,37 +1,60 @@
 <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-        <div id="logo">
-            <a class="navbar-brand" href="#">Logo</a>
-        </div>
+  <div class="container-fluid">
+    <div id="logo">
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="links">
-            <a class="navbar-link" href="#">
-                <span>Home</span>
-            </a>
-            <a class="navbar-link" href="#">
-                <span>Entidades</span>
-            </a>
-            <a class="navbar-link" href="#">
-                <span>Vagas</span>
-            </a>
-            <a class="navbar-link" href="#">
-                <span>Como funciona</span>
-            </a>
-            <a class="navbar-link" href="#">
-                <span>Sobre nós</span>
-            </a>
-        </div>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <div class="navbar-nav links me-auto mx-auto">
+        <a class="navbar-link" href="#">
+          <span>Home</span>
+        </a>
+        <a class="navbar-link" href="#">
+          <span>Entidades</span>
+        </a>
+        <a class="navbar-link" href="#">
+          <span>Vagas</span>
+        </a>
+        <a class="navbar-link" href="#">
+          <span>Como funciona</span>
+        </a>
+        <a class="navbar-link" href="#">
+          <span>Sobre nós</span>
+        </a>
+      </div>
 
-        <div class="buttons entrar">
-            <button class="btn btn-outline-secondary" type="button" routerLink="/login">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                   <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                </svg>
-                <span>
-                    Entrar
-                </span>
-            </button>
-            <!--
+      <div class="buttons entrar">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          routerLink="/login"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-person-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+            />
+          </svg>
+          <span> Entrar </span>
+        </button>
+        <!--
             <button class="btn" type="submit">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
                     <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -42,6 +65,7 @@
                 </span>
             </button>
             -->
-        </div>
       </div>
-  </nav>
+    </div>
+  </div>
+</nav>
