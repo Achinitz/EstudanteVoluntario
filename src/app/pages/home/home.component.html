@@ -1,89 +1,111 @@
-<div>
-    <h1>
-        Estudante Voluntário
-    </h1>
+<!--Titulo com a logo-->
+<div class="titulo">
+  <img [src]="LogoPath" class="logo d-none d-lg-block" />
 </div>
+<!--Carrossel-->
 <app-carousel></app-carousel>
-<!-- <hr> -->
-<section>
-    <div class="col-md-8 col-sm-8 col-8">
-        <div class="historia">
-            <h2>Nossa história</h2>
-            <span>
-                Esse projeto surgiu, a partir de uma ídeia de um projeto de conclusão de curso dos alunos da Universidade Federal do Paraná. Alinhando as experiências
-                com trabalhos voluntários e a possibilidade de utilizar essa experiência como horas formativas dentro do curso de Analise e Desenvolvimento 
-                <span class="" *ngIf="lermais">(...)</span>
-                <span class="contentReadMore" *ngIf="!lermais"> 
-                    de Sistemas, esses alunos do SEPT (Setor de Educação Profissional e Tecnológica) junto com os professores orientadores Sandramara Scandelari Kusano de Paula Soares e 
-                    Mario de Paula Soares Filho, surgiu o site Estudante Voluntário, realizado com uma parceria entre o site e as entidades responsáveis por disponibilizar vagas de voluntariado.
-                </span>
-            </span>
-        </div>
-        <div class="d-flex justify-content-center buttonOpen">
-            <button class="btn btn-primary btnReadMore" (click)="lerMais()">
-                <span class="" *ngIf="lermais">Continuar...</span>
-                <span class="" *ngIf="!lermais">Retornar...</span>
-            </button>
-        </div>
+
+<!--div conteudo-->
+<div>
+  <!--Historia-->
+  <section class="row">
+    <div class="historia col-md-8 col-sm-12 col-lg-8">
+      <div class="historiatext">
+        <h2>Nossa história</h2>
+        <span>
+          Esse projeto surgiu, a partir de uma ídeia de um projeto de conclusão
+          de curso dos alunos da Universidade Federal do Paraná. Alinhando as
+          experiências com trabalhos voluntários e a possibilidade de utilizar
+          essa experiência como horas formativas dentro do curso de Analise e
+          Desenvolvimento
+          <span class="" *ngIf="lermais">(...)</span>
+          <span class="contentReadMore" *ngIf="!lermais">
+            de Sistemas, esses alunos do SEPT (Setor de Educação Profissional e
+            Tecnológica) junto com os professores orientadores Sandramara
+            Scandelari Kusano de Paula Soares e Mario de Paula Soares Filho,
+            surgiu o site Estudante Voluntário, realizado com uma parceria entre
+            o site e as entidades responsáveis por disponibilizar vagas de
+            voluntariado.
+          </span>
+        </span>
+      </div>
+      <div class="d-flex justify-content-center buttonOpen">
+        <button class="btn btn-primary btnReadMore" (click)="lerMais()">
+          <span class="" *ngIf="lermais">Continuar...</span>
+          <span class="" *ngIf="!lermais">Retornar...</span>
+        </button>
+      </div>
     </div>
     <div class="btnCadastrarDiv col-md-4 col-sm-4">
-        <button class="btnCadastrar" routerLink="/cadastro">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
-            </svg>
-            <span>
-                <h4 style="display:inline;">
-                    Venha fazer parte desse time!
-                </h4>
-            </span>
-        </button>
+      <button class="btnCadastrar" routerLink="/cadastro">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-person-plus-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
+          />
+        </svg>
+        <span>
+          <h4 style="display: inline">Venha fazer parte desse time!</h4>
+        </span>
+      </button>
     </div>
-</section>
-<hr>
-<div>
-    <section>
-        <div>
-            <h2 class="subTitulo">
-                Qual nosso é o nosso objetivo?
-            </h2>
-        </div>
-    </section>
+  </section>
+  <hr />
+
+  <!--Objetivos-->
+  <section>
+    <div class="row content">
+      <h2 class="subTitulo">Qual nosso é o nosso objetivo?</h2>
+    </div>
 
     <div class="containerCard objetivoCards">
-        <div class="card" style="width: 18rem;" *ngFor="let beneficio of listBeneficios">
-            <div class="imgCard">
-                <img src="{{beneficio.img}}" class="card-img-top" alt="...">
-            </div>
-            <div class="card-body">
-                <h4 class="card-title">{{beneficio.title}}</h4>
-                <p class="card-text">{{beneficio.content}}</p>
-            </div>
+      <div
+        class="card"
+        style="width: 18rem"
+        *ngFor="let beneficio of listBeneficios"
+      >
+        <div class="imgCard">
+          <img src="{{ beneficio.img }}" class="card-img-top" alt="..." />
         </div>
+        <div class="card-body">
+          <h4 class="card-title">{{ beneficio.title }}</h4>
+          <p class="card-text">{{ beneficio.content }}</p>
+        </div>
+      </div>
     </div>
-</div>
-<hr>
-<div>
-    <section>
-        <div>
-            <h2 class="subTitulo">
-                Verifique algumas das nossas oportunidades!
-            </h2>
-        </div>
-    </section>
+  </section>
+  <hr />
+  <!--Oportunidades-->
+  <section>
+    <div class="row content">
+      <h2 class="subTitulo">Verifique algumas das nossas oportunidades!</h2>
+    </div>
 
     <div class="containerCard">
-        <div class="card " style="width: 18rem;" *ngFor="let beneficio of vagasParaAmostra">
-            <div class="imgCard">
-                <img src="{{beneficio.img}}" class="card-img-top" alt="...">
-            </div>
-            <div class="card-body ">
-                <h5 class="card-title">{{beneficio.title}}</h5>
-                <p class="card-text">{{beneficio.content}}</p>
-            </div>
-                <button href="#" class="btn">
-                    Candidatar-se
-                </button>
+      <div
+        class="card"
+        style="width: 18rem"
+        *ngFor="let beneficio of vagasParaAmostra"
+      >
+        <div class="imgCard">
+          <img src="{{ beneficio.img }}" class="card-img-top" alt="..." />
         </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ beneficio.title }}</h5>
+          <p class="card-text">{{ beneficio.content }}</p>
+        </div>
+        <button href="#" class="btn">Candidatar-se</button>
+      </div>
     </div>
+  </section>
 </div>

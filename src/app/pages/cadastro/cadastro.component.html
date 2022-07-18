@@ -1,15 +1,23 @@
 <section>
-    <img src="../../../assets/imagens/cadastroImagem.jpg" class="card-img-top" alt="...">
+  <img
+    src="../../../assets/imagens/cadastroImagem.jpg"
+    class="card-img-top"
+    alt="..."
+  />
+  <h2>Cadastro</h2>
+  <div class="form-group selectButton">
+    <select
+      class="custom-select"
+      [(ngModel)]="selectedItem"
+      placeholder="Selecione um perfil"
+    >
+      <option *ngFor="let item of items" [ngValue]="item.id">
+        <p>{{ item.name }}</p>
+      </option>
+    </select>
+  </div>
 
-    <div class="form-group selectButton">
-        <select class="custom-select" [(ngModel)]="selectedCar" placeholder="Selecione um perfil">
-            <option *ngFor="let car of cars" [ngValue]="car.id">
-                <p>{{ car.name }}</p>
-            </option>
-        </select>
-      </div>
-
-    <!--
+  <!--
     <ng-select [items]="cars"
         id="ngSelect"
         bindLabel="name"
@@ -19,13 +27,11 @@
     </ng-select>     
     -->
 
-     <section *ngIf="selectedCar == 1">
-        <app-form-entidade></app-form-entidade>
-     </section>
-   
-     <section *ngIf="selectedCar == 2">
-        <app-form-estudante></app-form-estudante>
-     </section>
+  <section *ngIf="selectedItem == 1">
+    <app-form-entidade></app-form-entidade>
+  </section>
 
-
+  <section *ngIf="selectedItem == 2">
+    <app-form-estudante></app-form-estudante>
+  </section>
 </section>

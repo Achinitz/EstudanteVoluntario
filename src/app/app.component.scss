@@ -2,8 +2,20 @@
   background: #f3f3f3;
   display: flex;
   flex-direction: column;
-  max-width: 1000px;
+  max-width: 100%;
   padding: 0;
+  margin: 0;
+
   //Azul segundo o significado das cores lembra compaixão
   //https://madeinweb.com.br/psicologia-das-cores-influencia-aplicativo/
+}
+
+.conteudo {
+  background-color: #fff;
+  min-height: 60vh;
+  height: auto !important;
+  max-width: 1000px;
+  width: -webkit-fill-available;
+  align-self: center;
+  align-items: center;
 }

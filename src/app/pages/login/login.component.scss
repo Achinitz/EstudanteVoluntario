@@ -1,45 +1,48 @@
-section{
+section {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1em;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  h2 {
+    margin-top: 1rem;
+    color: #5a97a1;
+    font-weight: bold;
+  }
 
-    section{
+  .conteudo {
+    padding: auto;
+  }
 
-        h2{
-            margin-top: 1rem;
-        }
+  .formgroup {
+    padding: 0.5em;
+  }
 
-        img{            
-            margin: 3rem;
-        }
+  .imgDiv {
+    align-self: center;
+  }
 
-        .imgDiv{
-            margin: auto;
-        }
+  .terceiraDiv {
+    display: grid;
+    padding: 0.5em;
 
-        .terceiraDiv{
-            display: grid;
-
-            a:first-child{
-                margin-bottom: 0.5rem;
-            }
-
-            .buttonSubmit{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-top: 1rem;
-
-                button{
-                    width: 75%;
-                    background-color: #008000;
-                    &:hover{
-                        opacity: 0.5;
-                    }
-                }
-            }
-        }
-
+    a:first-child {
+      margin-bottom: 0.5rem;
     }
+
+    .buttonSubmit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+
+      button {
+        width: 75%;
+        background-color: #1265a2;
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
 }

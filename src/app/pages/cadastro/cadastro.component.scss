@@ -1,28 +1,31 @@
-section{
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-    margin-top: 20px;
-    img{
-        width: 40%;
-    }
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 
-    .ng-select.custom {
-        border:0px;
-        min-height: 0px;
-        border-radius: 0;
-    }
-    .ng-select.custom .ng-select-container  {            
-        min-height: 0px;
-        border-radius: 0;
-    }
+  img {
+    width: 40%;
+  }
 
-    .selectButton{
-        margin-top: 15px;
-    }
+  h2 {
+    margin-top: 1rem;
+    color: #5a97a1;
+    font-weight: bold;
+  }
 
+  .ng-select.custom {
+    border: 0px;
+    min-height: 0px;
+    border-radius: 0;
+  }
+  .ng-select.custom .ng-select-container {
+    min-height: 0px;
+    border-radius: 0;
+  }
+
+  .selectButton {
+    margin-top: 15px;
+  }
 }
-
-
-
