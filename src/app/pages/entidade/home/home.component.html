@@ -1,1 +1,91 @@
-<p>home works! entidade</p>
+<section>
+
+    <section class="col-2 navSideBar">
+        <app-sidebar></app-sidebar>
+    </section>
+    <section class="col-10">
+        <h1> Bem vindo! </h1>
+
+        <span class="contentPage">
+            Verifique se você concorda ou se identifica com os detalhes da vaga antes de realizar a inscrição.
+        </span>
+        
+        <div class="dashboard col-12 d-flex justify-content-center">
+            <div class="">Aberto: </div>
+            <div class="">Processos em Analise: </div>
+            <div class="">Fechado</div>
+        </div>
+
+        <h2>
+            Vagas Disponíveis
+        </h2>
+
+        <div *ngIf="!vagasDisponiveis">
+            <span>
+                No momento não existe vagas cadastradas!
+            </span>
+        </div>
+
+        <section class="contentDetails">
+            <div class="card" *ngFor="let vaga of vagasDisponiveis; let i = index">
+                <!-- Alterar as cores do botão dependendo do status -->
+                  <p [ngClass]="vaga.status === 'aberto' ? 'bg-success' : 'bg-warning'" class="card-text statusPosition" >
+                      {{vaga.status}}
+                  </p>
+                    <div class="imgCard">
+                        <img src="{{vaga.img}}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{vaga.nomeEntidade}}</h4>
+                        <p class="card-text">{{vaga.descricao}}</p>
+                    </div>
+                <div class="buttonsVagasCadastradas">
+                    <button >
+                        Detalhes Vaga
+                    </button>
+                    <button *ngIf="vaga.status === 'aberto'">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!--********************************************************-->
+
+        <h2>
+            Vagas em Analise
+        </h2>
+
+        <div *ngIf="!vagasDisponiveis">
+            <span>
+                No momento não existe vagas cadastradas!
+            </span>
+        </div>
+
+        <section class="contentDetails">
+            <div class="card" *ngFor="let vaga of vagasDisponiveis; let i = index">
+                <!-- Alterar as cores do botão dependendo do status -->
+                  <p [ngClass]="vaga.status === 'aberto' ? 'bg-success' : 'bg-warning'" class="card-text statusPosition" >
+                      {{vaga.status}}
+                  </p>
+                    <div class="imgCard">
+                        <img src="{{vaga.img}}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{vaga.nomeEntidade}}</h4>
+                        <p class="card-text">{{vaga.descricao}}</p>
+                    </div>
+                <div class="buttonsVagasCadastradas">
+                    <button >
+                        Detalhes Vaga
+                    </button>
+                    <button *ngIf="vaga.status === 'aberto'">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+</section>

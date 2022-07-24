@@ -1,0 +1,156 @@
+section{
+    display: flex;
+    margin-top: 1rem;
+
+    //Primeira section onde está a sidebar
+    section{
+        .navSideBar{
+            margin-top: 1rem;
+            width: 18%;
+
+            h2{
+                text-align: center;
+            }
+
+        }
+    }
+
+    .card{
+        width: 15rem;
+        margin-right: 10px;
+        margin-top: 10px;
+
+        button{
+            border: none;
+            background-color: #008000;
+            color: #ffffff;
+            border-radius: 1rem;
+            padding: 0.5rem;
+
+            &:hover{
+                opacity: 0.5;
+            }
+        }
+
+        div:nth-of-type(2){
+            h4{
+                text-align: center;
+            }
+
+            p:nth-of-type(2){
+                text-align: center;
+                border-radius: 1rem;
+            }
+            div{
+                display: flex;
+                justify-content: space-between;
+            button{
+                border: none;
+                background-color: #008000;
+                color: #ffffff;
+                border-radius: 1rem;
+                padding: 0.5rem;
+
+                &:hover{
+                    opacity: 0.5;
+                }
+
+                &:nth-of-type(2){
+                    background-color: #f5f04a !important;
+                    color: #000000 !important;
+                }
+            }
+        }
+        }
+    }
+
+    .dashboard{
+
+        div{
+            padding: 1.5rem;
+            margin-right: 2rem;
+            background-color: aqua;
+            width: 50%;
+        }
+
+        div:first-child{
+
+        }
+
+        div:nth-of-type(2){
+            
+        }
+
+        div:nth-of-type(3){
+            
+        }
+
+    }
+
+    //Segunda section onde fica o conteúdo
+    section{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-left: 1rem;
+
+        h1{
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        h2{
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .contentPage{
+            padding: 1.5rem;
+            background-color: antiquewhite;
+            border-radius: 0.5rem;
+            width: 100%;
+            margin-bottom: 1.5rem;
+          }
+          
+          .content{
+            margin-right: auto;
+          }
+
+          .contentDetails{
+            display: flex;
+            flex-direction: initial;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .imgDetails{
+                text-align: center;
+            }
+
+            .btn{
+                margin-top: 2rem;
+                width: 25%;
+                color: #fff;
+                border-radius: 1rem;
+
+                &:first-child{
+                    background: green;
+                    margin-right: 1rem;
+                }
+
+                &:nth-of-type(2){
+                    background: red;
+                }
+
+                &:hover{
+                    opacity: 0.7;
+                }
+
+            }
+
+          }
+    
+    }
+
+}
