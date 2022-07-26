@@ -1,10 +1,10 @@
 <section>
-    <section class="navSideBar">
+    <div class="navSideBar">
         <app-sidebar-estudante></app-sidebar-estudante>
-    </section>
+    </div>
 
-    <section class="contentHomeEstudante">
-        <h1>Bem Vindo, {{nomeEstudante}}</h1>
+    <div class="contentHomeEstudante">
+        <h1>Olá {{nomeEstudante}} !</h1>
 
         <section class="ultimasInscricoes">
             <span class="contentPage" *ngIf="vagasCadastradas">
@@ -82,6 +82,6 @@
                 (pageChange)="mudancaPagina(paginaAtual)">
             </ngb-pagination>
         </section>
-    </section>
+    </div>
 
 </section>

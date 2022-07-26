@@ -15,6 +15,29 @@ section{
         }
     }
 
+    .dashboard{
+
+        div{
+            padding: 1.5rem;
+            margin-right: 2rem;
+            background-color: aqua;
+            width: 50%;
+        }
+
+        div:first-child{
+
+        }
+
+        div:nth-of-type(2){
+            
+        }
+
+        div:nth-of-type(3){
+            
+        }
+
+    }
+
     //Segunda section onde fica o conteúdo
     section{
         display: flex;

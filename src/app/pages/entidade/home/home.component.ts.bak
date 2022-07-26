@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  public usuarios: any = [];
+  
 
+<<<<<<< HEAD
+  constructor(private usuarioService: UsuarioService) {
+   // this.atualizarLista();
+=======
   constructor() { }
 
   
@@ -63,6 +70,17 @@ export class HomeComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+>>>>>>> 23233cbf11b1ad763eb8e63d487f89d3d03f588a
   }
 
+atualizarLista(){
+  this.usuarioService.todas()
+  .subscribe(usuarios => {
+    this.usuarios = usuarios;
+    console.log("deu certo");
+    console.log(this.usuarios);
+  },()=> console.log("não foi"));
+}
+
+  ngOnInit(): void {}
 }
