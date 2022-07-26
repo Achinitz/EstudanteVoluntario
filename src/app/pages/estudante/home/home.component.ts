@@ -29,12 +29,7 @@ export class HomeComponent implements OnInit {
       descricao: 'Auxiliar de Cozinha',
       status: 'Andamento'
     },
-    {
-      nomeEntidade: 'Erasto',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
-      descricao: 'Jardineiro',
-      status: 'Andamento'
-    },
+    
     {
       nomeEntidade: 'Erasto',
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
