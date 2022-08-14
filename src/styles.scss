@@ -8,3 +8,24 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.contentPage{
+    padding: 1.5rem;
+    background-color: antiquewhite;
+    border-radius: 0.5rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+.page{
+    display: flex;
+    margin: 1rem;
+}
+
+.navSideBar{
+    margin-right: 1rem;   
+}
+
+em{
+    color: red;
+}

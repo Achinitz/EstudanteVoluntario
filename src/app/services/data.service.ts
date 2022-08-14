@@ -6,4 +6,5 @@ export class DataService {
     filter: any;
     refs: any;
     data: any;
+    show: any;
 }

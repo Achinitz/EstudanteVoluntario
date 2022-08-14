@@ -1,7 +1,20 @@
+.contentInscritos{
+    border: solid 1px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    display: flex;
+}
+
+.imagemUsuario{
+    img{
+    width: 80%;
+    }
+}
+
 section{
     display: flex;
     margin-top: 1rem;
-
     //Primeira section onde está a sidebar
     section{
         .navSideBar{

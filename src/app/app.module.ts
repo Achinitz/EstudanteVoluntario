@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -26,6 +27,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { CardComponent } from './shared/components/card/card.component';
 import { EntidadesComponent } from './shared/components/header/entidades/entidades.component';
 import { SobreNosComponent } from './shared/components/header/sobre-nos/sobre-nos.component';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { SobreNosComponent } from './shared/components/header/sobre-nos/sobre-no
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    MatDatepickerModule,
     MatDialogModule,
     MatPaginatorModule,
     MatTabsModule,
@@ -59,7 +62,9 @@ import { SobreNosComponent } from './shared/components/header/sobre-nos/sobre-no
     NgSelectModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

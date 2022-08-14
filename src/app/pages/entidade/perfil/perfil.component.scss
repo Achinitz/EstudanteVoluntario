@@ -2,6 +2,37 @@ section{
     display: flex;
     margin-top: 1rem;
 
+    .contentDetails-form{
+        div{
+            width: 100%;
+        }
+    }
+
+    .contentDetails-photo{
+        img{
+            width: 10rem;
+        }
+
+        button{
+            border: none;
+            padding: 0;
+            margin-top: -3rem;
+            margin-left: 8rem;
+            background: none;
+            opacity: 0.5;
+
+            &:hover{
+                opacity: 0.9;
+            }
+
+            img{
+                width: 2rem;
+                margin-top: 1rem;
+            }
+        }
+
+    }
+
     //Primeira section onde está a sidebar
     section{
         .navSideBar{

@@ -148,8 +148,6 @@ export class HomeComponent implements OnInit {
   itemsPerPage = 6;
   public vagas: any = this.vagasDisponiveis.slice(0,6);
 
-  vagasDisponiveisMostra: any;
-
   public animal: string = 'Cavalo';
   public name: string = 'Top';
 
