@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
-import Swal from 'sweetalert2';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  public usuarios: any = [];
+  
 
-  constructor(private dataService: DataService) { }
+<<<<<<< HEAD
+  constructor(private usuarioService: UsuarioService) {
+   // this.atualizarLista();
+=======
+  constructor() { }
+
+  
 
   vagasDisponiveis: any = [
     {
@@ -55,7 +62,6 @@ export class HomeComponent implements OnInit {
     {
       id: 6,
       nomeEntidade: 'APAE 6',
-      quantidadeCandidatos: 6,
       nomeVaga: 'Contador de História',      
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
@@ -63,53 +69,18 @@ export class HomeComponent implements OnInit {
     },
   ];
 
-  finalizarPorUrgencia(){
-    Swal.fire({
-      title: 'Deseja realmente finalizar esse processo seletivo?',
-      text: "O processo seletivo será fechado antes do prazo previsto. Impedindo que outros estudantes possam realizar o cadastro!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Confirmar',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Finalizado!',
-          text: 'Processo seletivo Finalizado!!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500
-        })
-      }
-    })
-  }
-
-  cancelarProcessoSeletivo(){
-    Swal.fire({
-      title: 'Deseja realmente cancelar esse processo seletivo?',
-      text: "Ao confirmar, esse processo seletivo será cancelado e excluido permanentemente!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Confirmar',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Cancelado!',
-          text: 'Processo seletivo Cancelado!!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500
-        })
-      }
-    })
-  }
-
   ngOnInit(): void {
+>>>>>>> 23233cbf11b1ad763eb8e63d487f89d3d03f588a
   }
 
+atualizarLista(){
+  this.usuarioService.todas()
+  .subscribe(usuarios => {
+    this.usuarios = usuarios;
+    console.log("deu certo");
+    console.log(this.usuarios);
+  },()=> console.log("não foi"));
+}
+
+  ngOnInit(): void {}
 }
