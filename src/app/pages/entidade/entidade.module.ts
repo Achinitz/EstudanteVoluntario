@@ -17,6 +17,9 @@ import { CadastrarVagaComponent } from './home/cadastrar-vaga/cadastrar-vaga.com
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CertificadoComponent } from './certificado/certificado.component';
+import { AvaliarEstudanteComponent } from './avaliar-estudante/avaliar-estudante.component';
+import { ModalVisualizarComponent } from './avaliar-estudante/modal-visualizar/modal-visualizar.component';
+import { ModalAdicionarAvaliacaoComponent } from './avaliar-estudante/modal-adicionar-avaliacao/modal-adicionar-avaliacao.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { CertificadoComponent } from './certificado/certificado.component';
     DetalheAlunoComponent,
     CadastrarVagaComponent,
     GerarRelatorioComponent,
-    CertificadoComponent
+    CertificadoComponent,
+    AvaliarEstudanteComponent,
+    ModalVisualizarComponent,
+    ModalAdicionarAvaliacaoComponent
   ],
   imports: [
     CommonModule,
