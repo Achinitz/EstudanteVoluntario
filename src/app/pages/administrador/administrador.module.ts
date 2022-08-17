@@ -1,24 +1,17 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-//import {MatToolbar} from '@angular/material/toolbar';
 
 import { AdministradorRoutingModule } from './administrador-routing.module';
-import { AdministradorComponent } from './administrador.component';
+import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
-  declarations: [AdministradorComponent],
-  imports: [
-    MatSidenavModule,
-    MatButtonModule,
-    MatIconModule,
-  //  MatToolbar,
-    CommonModule,
-    AdministradorRoutingModule,
+  declarations: [
+    HomeComponent
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  exports: [],
+  imports: [
+    CommonModule,
+    AdministradorRoutingModule
+  ]
 })
-export class AdministradorModule {}
+export class AdministradorModule { }
