@@ -4,10 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+//import {MatToolbar} from '@angular/material/toolbar';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -43,28 +47,27 @@ import { DataService } from './services/data.service';
     LoginComponent,
     EntidadesComponent,
     SobreNosComponent,
-    
   ],
-  exports: [
-    NgSelectModule,
-  ],
+  exports: [NgSelectModule],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    MatButtonModule,
     MatDatepickerModule,
     MatDialogModule,
+    MatIconModule,
     MatPaginatorModule,
+    MatSidenavModule,
     MatTabsModule,
+  //  MatToolbar,
     NgbModule,
     NgSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [
-    DataService
-  ],
-  bootstrap: [AppComponent]
+  providers: [DataService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

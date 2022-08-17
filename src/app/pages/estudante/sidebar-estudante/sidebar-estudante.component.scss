@@ -1,10 +1,9 @@
-section{
+nav{
 
     height: 30rem;
-
     background-color:#b6cfd3;
     padding: 0.5rem;
-    border-radius: 0.5rem;
+  //  border-radius: 0.5rem;
 
     div{
         display: grid;
@@ -26,3 +25,8 @@ section{
 
     }
 }
+
+.contentHomeEstudante{
+    flex-direction: column;
+}
+

@@ -29,7 +29,7 @@
     "bootstrap-icons": "^1.8.3",
     "rxjs": "~6.6.0",
     "sass": "^1.53.0",
-    "sweetalert2": "^11.4.24",
+    "sweetalert2": "^11.4.26",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
   },
