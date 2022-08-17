@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AvaliarEstudanteComponent } from './avaliar-estudante/avaliar-estudante.component';
 import { CertificadoComponent } from './certificado/certificado.component';
 import { GerarRelatorioComponent } from './gerar-relatorio/gerar-relatorio.component';
 import { CadastrarVagaComponent } from './home/cadastrar-vaga/cadastrar-vaga.component';
@@ -27,6 +28,9 @@ const routes: Routes = [
   { 
     path:"gerar-certificado",component: CertificadoComponent
   },
+  { 
+    path:"avaliar-estudante",component: AvaliarEstudanteComponent
+  },  
 ];
 
 @NgModule({
