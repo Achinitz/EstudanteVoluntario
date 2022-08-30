@@ -6,19 +6,50 @@ import { MatIconModule } from '@angular/material/icon';
 //import {MatToolbar} from '@angular/material/toolbar';
 
 import { AdministradorRoutingModule } from './administrador-routing.module';
-import { AdministradorComponent } from './administrador.component';
+import { SidebarAdministradorComponent } from './sidebar-administrador/sidebar-administrador.component';
+import { HomeComponent } from './home/home.component';
+import { MeuPerfilAdministradorComponent } from './meu-perfil-administrador/meu-perfil-administrador.component';
+import { ValidarVagasAdministradorComponent } from './validar-vagas-administrador/validar-vagas-administrador.component';
+import { ValidarEstudantesAdministradorComponent } from './validar-estudantes-administrador/validar-estudantes-administrador.component';
+import { ValidarEntidadesAdministradorComponent } from './validar-entidades-administrador/validar-entidades-administrador.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DetalheVagaAdministradorComponent } from './validar-vagas-administrador/detalhe-vaga-administrador/detalhe-vaga-administrador.component';
+import { ValidarEstudanteModalComponent } from './validar-estudantes-administrador/validar-estudante-modal/validar-estudante-modal.component';
+import { ValidarEntidadeModalComponent } from './validar-entidades-administrador/validar-entidade-modal/validar-entidade-modal.component';
+import { CadastrarInstituicaoComponent } from './cadastrar-instituicao/cadastrar-instituicao.component';
+import { CadastrarCursoComponent } from './cadastrar-curso/cadastrar-curso.component';
 
 @NgModule({
-  declarations: [AdministradorComponent],
+  declarations: [
+    HomeComponent,
+    SidebarAdministradorComponent,
+    MeuPerfilAdministradorComponent,
+    ValidarVagasAdministradorComponent,
+    ValidarEstudantesAdministradorComponent,
+    ValidarEntidadesAdministradorComponent,
+    DetalheVagaAdministradorComponent,
+    ValidarEstudanteModalComponent,
+    ValidarEntidadeModalComponent,
+    CadastrarInstituicaoComponent,
+    CadastrarCursoComponent,
+  ],
   imports: [
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
-  //  MatToolbar,
     CommonModule,
     AdministradorRoutingModule,
+    CommonModule,
+    FormsModule,
+    MatTabsModule,
+    MatDatepickerModule,
+    MatPaginatorModule,
+    NgbModule,
+    ReactiveFormsModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  exports: [],
 })
 export class AdministradorModule {}

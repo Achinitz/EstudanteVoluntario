@@ -63,9 +63,9 @@ import { DataService } from './services/data.service';
     MatSidenavModule,
     MatTabsModule,
   //  MatToolbar,
-    NgbModule,
+    NgbModule,    
     NgSelectModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule 
   ],
   providers: [DataService],
   bootstrap: [AppComponent],

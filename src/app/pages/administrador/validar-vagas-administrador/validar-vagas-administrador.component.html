@@ -1,0 +1,65 @@
+<section class="d-flex py-2">
+
+    <section class="col-2 navSideBar px-2 pb-2">
+        <sidebar-administrador></sidebar-administrador>
+    </section>
+
+    <section class="col-10 px-2 pb-2 content">
+
+        <h1 class="float-center">
+            Validar vagas
+        </h1>
+
+        <div class="">
+            
+            <section class="row vagasDisponiveis">          
+                <div *ngIf="!vagasDisponiveis">
+                  <span> No momento não existe vagas cadastradas! </span>
+                </div>
+                <section>
+                  <div class="containerCard vagasDisponiveis">
+                    <div class="card" *ngFor="let vagaDisponivel of vagas; let i = index">
+                      <p class="card-text statusPosition bg-success">
+                        {{ vagaDisponivel.status }}
+                      </p>
+                      <div class="imgCard">
+                        <img
+                          src="{{ vagaDisponivel.img }}"
+                          class="card-img-top"
+                          alt="..."
+                        />
+                      </div>
+                      <div class="card-body">
+                        <h4 class="card-title">{{ vagaDisponivel.nomeEntidade }}</h4>
+                        <p class="card-text">{{ vagaDisponivel.descricao }}</p>
+                        <div class="d-flex justify-content-center">
+                          <button (click)="exibirDetalhes()">Detalhes</button>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end card-footer">
+                        <div class="card-footer-">
+                            Publicada em <span></span>
+                        </div>
+                        <div class="d-flex">
+                            Inscritos <div>{{vagaDisponivel.inscritos}}</div>
+                        </div>                        
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <ngb-pagination
+                  class="pagination pull-right"
+                  [rotate]="true"
+                  [maxSize]="3"
+                  [directionLinks]="false"
+                  [collectionSize]="this.vagasDisponiveis.length"
+                  [pageSize]="itemsPerPage"
+                  [boundaryLinks]="true"
+                  [(page)]="paginaAtual"
+                  (pageChange)="mudancaPagina(paginaAtual)"
+                >
+                </ngb-pagination>
+              </section>
+        </div>
+    </section>
+</section>

@@ -2,6 +2,14 @@ section{
     display: flex;
     margin-top: 1rem;
 
+    .content-dashboard{
+
+        div{
+            padding: 1rem;
+            border: 1px solid;
+        }
+    }
+
     //Primeira section onde está a sidebar
     section{
         .navSideBar{

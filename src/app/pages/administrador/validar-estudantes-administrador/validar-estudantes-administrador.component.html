@@ -1,0 +1,67 @@
+<section class="d-flex py-2">
+
+    <section class="col-2 navSideBar px-2 pb-2">
+        <sidebar-administrador></sidebar-administrador>
+    </section>
+
+    <section class="col-10 px-2 pb-2 content">
+
+        <h1 class="float-center">
+            Validar Estudantes
+        </h1>
+
+        <div class="input-group col-8">
+          <input 
+          type="search" 
+          class="form-control rounded" 
+          placeholder="Search" 
+          aria-label="Search" 
+          aria-describedby="search-addon"
+          name="search"
+          [(ngModel)]="filter"
+          (ngModelChange)="search()"
+          />
+          <button type="button" class="btn btn-outline-primary">search</button>
+        </div>
+
+        <div class="">
+            
+            <section class="row vagasDisponiveis">          
+                <div *ngIf="!estudantes">
+                  <span> No momento não existe vagas cadastradas! </span>
+                </div>
+                <section>
+                  <div class="containerCard vagasDisponiveis">
+                    <div class="card" *ngFor="let estudante of filterEstudante; let i = index">
+                      <div class="imgCard">
+                        <img
+                          src="{{estudante.img}}"
+                          class="card-img-top"
+                          alt="..."
+                        />
+                      </div>
+                      <div class="card-body">
+                        <h4 class="card-title">{{ estudante.nome }}</h4>
+                        <div class="d-flex justify-content-center">
+                          <button (click)="exibirDetalhes()">Validar Estudante</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <ngb-pagination
+                  class="pagination pull-right"
+                  [rotate]="true"
+                  [maxSize]="3"
+                  [directionLinks]="false"
+                  [collectionSize]="this.estudantes.length"
+                  [pageSize]="itemsPerPage"
+                  [boundaryLinks]="true"
+                  [(page)]="paginaAtual"
+                  (pageChange)="mudancaPagina(paginaAtual)"
+                >
+                </ngb-pagination>
+              </section>
+        </div>
+    </section>
+</section>

@@ -1,0 +1,28 @@
+section{
+
+    height: 30rem;
+
+    background-color:#b6cfd3;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+
+    div{
+        display: grid;
+        text-align: center;
+
+        a{
+            margin-bottom: 0.3rem;
+            text-decoration: none;
+            span{
+                font-family: Arial, Helvetica, sans-serif;
+                color: #000000;
+                font-size: medium;                           
+                &:hover{
+                    opacity: 0.5;
+                }
+            }
+
+        }
+
+    }
+}
