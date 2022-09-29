@@ -10,8 +10,43 @@
             Cadastrar Instituição
         </h1>
 
-        <div class="d-flex">
-            Teste
+        <div class="col-12">
+            <div class="input-group col-6">
+                <input 
+                type="search" 
+                class="form-control rounded" 
+                placeholder="Search" 
+                aria-label="Search" 
+                aria-describedby="search-addon"
+                name="search"
+                />
+                <button type="button" class="btn btn-outline-primary">search</button>
+            </div>
+
+            <div>
+                <button routerLink="/Administrador/adicionar-instituicao" type="button" class="btn btn-outline-primary">Adicionar</button>
+            </div>
+
+              <div class="row mt-2 mb-2">
+                <div class="col-3">CNPJ</div>
+                <div class="col-5">Nome</div>
+                <div class="col-2">Estado</div>
+                <div class="col-2">Ações</div>
+              </div>
+
+              <div *ngFor="let instituicao of instituicoes; index as i;">
+                <div class="row">
+                    <div class="col-3">{{instituicao.cnpj}}</div>
+                    <div class="col-5">{{instituicao.nome}}</div>
+                    <div class="col-2">{{instituicao.cidade}}</div>
+                    <div class="col-2">
+                        <div class="col-4"></div>
+                        <div class="col-4"></div>
+                        <div class="col-4"></div>
+                    </div>
+                </div>
+              </div>
+
         </div>
 
     </section>

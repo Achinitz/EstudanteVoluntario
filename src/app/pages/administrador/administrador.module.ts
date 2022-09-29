@@ -22,6 +22,7 @@ import { ValidarEstudanteModalComponent } from './validar-estudantes-administrad
 import { ValidarEntidadeModalComponent } from './validar-entidades-administrador/validar-entidade-modal/validar-entidade-modal.component';
 import { CadastrarInstituicaoComponent } from './cadastrar-instituicao/cadastrar-instituicao.component';
 import { CadastrarCursoComponent } from './cadastrar-curso/cadastrar-curso.component';
+import { AdicionarInstituicaoComponent } from './cadastrar-instituicao/adicionar-instituicao/adicionar-instituicao.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CadastrarCursoComponent } from './cadastrar-curso/cadastrar-curso.compo
     ValidarEntidadeModalComponent,
     CadastrarInstituicaoComponent,
     CadastrarCursoComponent,
+    AdicionarInstituicaoComponent,
   ],
   imports: [
     MatSidenavModule,
