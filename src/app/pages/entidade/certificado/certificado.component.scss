@@ -1,0 +1,19 @@
+.pagination ::ng-deep {
+    margin-left: 40%;
+    margin-top: 1rem;
+    .page-item {
+      &.active {
+        .page-link {
+          background-color: #fff;
+          color: #439024;
+        }
+      }
+  
+      .page-link {
+        background-color: #fff;
+        color: #7d7d7d;
+        border-color: #ebebec;
+        font-size: 14px;
+      }
+    }
+  }

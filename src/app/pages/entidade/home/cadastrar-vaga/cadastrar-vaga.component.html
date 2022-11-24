@@ -1,0 +1,252 @@
+<section class="page">
+
+    <section class="col-2 navSideBar">
+        <app-sidebar></app-sidebar>
+    </section>
+
+    <section class="col-10">
+        <section>
+            
+            <div>
+                Cadastrar Vaga
+            </div>
+
+            <span>
+                <i class="py-2">
+                    <em>*</em>Campos de preenchimento obrigatório.
+                </i>
+            </span>
+
+            <div class="py-2">
+                                          
+                <div class="form-group ">
+                    <label for="exampleInputEmail1">
+                        Titulo da Vaga <em>*</em>
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control col-6"
+                      id="tituloVaga"
+                      placeholder="Titulo da Vaga"
+                      formControlName="tituloVaga"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">
+                        Descrição <em>*</em> 
+                    </label>
+                    <textarea 
+                    class="form-control" 
+                    id="descricao" 
+                    rows="3"
+                    formControlName="descricao"
+                    ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">
+                        Requisitos <em>*</em> 
+                    </label>
+                    <textarea 
+                        class="form-control" 
+                        id="exampleFormControlTextarea1" 
+                        rows="3"
+                        formControlName="requisitos"
+                    ></textarea>
+                </div>
+                <div class="form-check">
+                    <input 
+                        type="checkbox" 
+                        class="form-check-input" 
+                        id="possuiAuxilio"
+                        formControlName="possuiAuxilio"
+                    >
+                    <label class="form-check-label" for="exampleCheck1">Possui auxilio?</label>
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <label for="exampleInputEmail1">
+                            Data inicio Trabalho <em>*</em>
+                        </label>
+                        <input 
+                            class="form-control" 
+                            placeholder="yyyy-mm-dd" 
+                            type="date"
+                            id="dataInicioTrabalho"
+                            formControlName="dataInicioTrabalho"
+                        >
+                    </div>
+                    <div class="col">
+                        <label for="exampleInputEmail1">
+                            Data fim Trabalho <em>*</em>
+                        </label>
+                        <input 
+                            class="form-control" 
+                            placeholder="yyyy-mm-dd" 
+                            type="date"
+                            id="dataTerminoTrabalho"
+                            formControlName="dataTerminoTrabalho"
+                        >
+                    </div>
+                </div>
+
+                <div class="col">
+                    <label for="exampleInputEmail1">
+                        Quantidade de vagas <em>*</em>
+                    </label>
+                    <input 
+                        class="form-control" 
+                        placeholder="Quantidade" 
+                        type="number"
+                        id="quantidadeVagas"
+                        formControlName="quantidadeVagas"
+                    >
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="exampleInputEmail1">
+                            Horário de Inicio <em>*</em>
+                        </label>
+                        <input 
+                            class="form-control" 
+                            placeholder="yyyy-mm-dd" 
+                            type="date"
+                            id="horarioInicioExpediente"
+                            formControlName="horarioInicioExpediente"
+                        >
+                    </div>
+                    <div class="col">
+                        <label for="exampleInputEmail1">
+                            Horário de Encerramento <em>*</em>
+                        </label>
+                        <input 
+                            class="form-control" 
+                            placeholder="yyyy-mm-dd" 
+                            type="date"
+                            id="horarioEncerramentoExpediente"
+                            formControlName="horarioEncerramentoExpediente"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-check">
+                    <input 
+                        type="checkbox" 
+                        class="form-check-input" 
+                        id="utilizarEnderecoEntidade"
+                        formControlName="utilizarEnderecoEntidade"
+                    >
+                    <label class="form-check-label" for="exampleCheck1">Desejo usar o endereço cadastrado da Entidade?</label>
+                </div>
+
+                <div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Cep <em>*</em> </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="cep"
+                          placeholder="XXXXX-XXX"
+                          formControlName="cep"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">Logradouro <em>*</em> </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="logradouro"
+                          placeholder="Rua, Avenida, Travessa, etc."
+                          formControlName="logradouro"
+                        />
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <label for="exampleFormControlInput1">Número <em>*</em> </label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="numero"
+                            placeholder="Número"
+                            formControlName="numero"
+                          />
+                        </div>
+                        <div class="col">
+                          <label for="exampleFormControlInput1">Bairro <em>*</em> </label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="bairro"
+                            placeholder="Bairro"
+                            formControlName="bairro"
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">Complemento <em>*</em> </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="complemento"
+                          placeholder="Complemento ou Ponto de Referência."
+                          formControlName="complemento"
+                        />
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <label for="exampleFormControlInput1">Estado/UF <em>*</em> </label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Número"
+                            id="estado"
+                            formControlName="estado"
+                          />
+                        </div>
+                        <div class="col">
+                          <label for="exampleFormControlInput1">Cidade <em>*</em> </label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Bairro"
+                            id="cidade"
+                            formControlName="cidade"
+                          />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-check">
+                    <input 
+                        type="checkbox" 
+                        class="form-check-input" 
+                        id="exampleCheck1"
+                        formControlName="termosCondicao"
+                    >
+                    <label class="form-check-label" for="exampleCheck1">Declaro que a vaga cadastrada está de acordo com os termos e condições do site!</label>
+                </div>
+
+                <span>
+                    ATENÇÃO: A vaga passará por avaliação antes de ser habilitada para publicação
+                </span>
+
+                <div class="buttonForm">
+                    <button
+                      type="submit"
+                      class="btn mb-2 cadastrar"
+                      
+                    >
+                      Cadastrar
+                    </button>
+                    <button type="submit" class="btn mb-2 limpar">Limpar</button>
+                  </div>
+
+
+            </div>
+
+        </section>
+    </section>
+    
+</section>

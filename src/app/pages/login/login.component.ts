@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/Estudante']);
     }else if(this.formLogin.value.cpfoucnpj.length === 14 || this.formLogin.value.cpfoucnpj.length === 18 || this.formLogin.value.cpfoucnpj == 1234){
       this.router.navigate(['/Entidade'])
+    }else if(this.formLogin.value.cpfoucnpj.length === 14 || this.formLogin.value.cpfoucnpj.length === 18 || this.formLogin.value.cpfoucnpj == 12345){
+      this.router.navigate(['/Administrador'])
     }
   }
 

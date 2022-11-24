@@ -1,0 +1,49 @@
+
+  <div id="modal" role="dialog" config="{backdrop: 'static'}">
+    <div class="modal-header px-4 d-flex justify-content-end">
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss(null)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body px-4">
+    <section class="">
+        <div class="d-flex">
+            <div class="content-img">
+                <img src="../../../../../../assets/imagens/NoUser.jpg">
+            </div>
+
+            <span>Nome da entidade</span>
+        </div>
+        <div class="content-details my-3">
+            <div class="d-flex flex-column">
+                <div class="form-group ">
+                    <b>CNPJ:</b>
+                    22 anos
+                </div>
+                <div class="form-group ">
+                    <b>Universidade:</b>
+                    22 anos
+                </div>
+                <div>
+                    <b>Endereço:</b>
+                    Content
+                </div>
+                <div>
+                    <b>Area de Atuação:</b>
+                    Content
+                </div>
+            </div>
+        </div>
+</section>
+</div>
+<div class="modal-footer">
+    <div>
+        <button (click)="reprovar()">
+            Reprovar
+        </button>
+        <button (click)="aprovar()"> 
+            Aprovar
+        </button>
+    </div>
+</div>
+</div>

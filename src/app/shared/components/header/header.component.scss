@@ -1,40 +1,44 @@
-.logo{
-    a{
-
-    }
+.logohome {
+  margin-top: 0.5em;
 }
 
-.navbar{
-    margin-left: -15px;
-    margin-right: -15px;
-    background: #5a97a1 !important;
+.navbar {
+  background: #1265a2 !important;
+  min-height: 60px;
+  width: 100%;
+  align-self: center;
 }
 
-.links{
-    a{
-        text-decoration: none;
-        margin-left: 15px;
-        &:hover{
-            opacity: 0.4;
-        }
-        span{
-            font-family: Arial, Helvetica, sans-serif;
-            color: #000000;
-            font-size: medium;    
-        }
-    }
+.links {
+  a {
+    text-decoration: none;
+    padding: 0.5em;
 
+    &:hover {
+      opacity: 0.4;
+    }
+    span {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ffffff;
+      font-size: medium;
+    }
+  }
 }
 
-.buttons{
-    button{
-        border: 1px;
-        border-width: 1px;
-        background-color: #008000;
-        color: #ffffff;
-    }
+.buttons {
+  button {
+    border: 1px;
+    border-width: 1px;
+    background-color: #008acd;
+    margin: 5px;
+    color: #ffffff;
+  }
 
-    button:hover{
-        opacity: 0.5;
-    }
+  button:hover {
+    opacity: 0.5;
+  }
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }

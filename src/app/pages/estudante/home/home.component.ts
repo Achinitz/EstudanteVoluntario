@@ -29,12 +29,7 @@ export class HomeComponent implements OnInit {
       descricao: 'Auxiliar de Cozinha',
       status: 'Andamento'
     },
-    {
-      nomeEntidade: 'Erasto',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
-      descricao: 'Jardineiro',
-      status: 'Andamento'
-    },
+    
     {
       nomeEntidade: 'Erasto',
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
@@ -147,8 +142,6 @@ export class HomeComponent implements OnInit {
   tamanhoPagina: number = this.vagasDisponiveis.length;
   itemsPerPage = 6;
   public vagas: any = this.vagasDisponiveis.slice(0,6);
-
-  vagasDisponiveisMostra: any;
 
   public animal: string = 'Cavalo';
   public name: string = 'Top';

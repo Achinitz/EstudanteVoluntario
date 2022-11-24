@@ -1,0 +1,84 @@
+section{
+    display: flex;
+    margin-top: 1rem;
+
+    .content-dashboard{
+
+        div{
+            padding: 1rem;
+            border: 1px solid;
+        }
+    }
+
+    //Primeira section onde está a sidebar
+    section{
+        .navSideBar{
+            margin-top: 1rem;
+            width: 18%;
+
+            h2{
+                text-align: center;
+            }
+
+        }
+    }
+
+    //Segunda section onde fica o conteúdo
+    section{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        h1{
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contentPage{
+            padding: 1.5rem;
+            background-color: antiquewhite;
+            border-radius: 0.5rem;
+            width: 100%;
+            margin-bottom: 1.5rem;
+          }
+          
+          .content{
+            margin-right: auto;
+          }
+
+          .contentDetails{
+            display: flex;
+            flex-direction: row-reverse;
+            margin-right: auto;
+
+            .imgDetails{
+                text-align: center;
+            }
+
+            .btn{
+                margin-top: 2rem;
+                width: 25%;
+                color: #fff;
+                border-radius: 1rem;
+
+                &:first-child{
+                    background: green;
+                    margin-right: 1rem;
+                }
+
+                &:nth-of-type(2){
+                    background: red;
+                }
+
+                &:hover{
+                    opacity: 0.7;
+                }
+
+            }
+
+          }
+    
+    }
+
+}

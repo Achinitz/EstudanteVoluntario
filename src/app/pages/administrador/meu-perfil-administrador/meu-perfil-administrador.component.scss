@@ -1,0 +1,62 @@
+
+.cadastrar{
+    background-color: red;
+}
+
+.salvar{
+    background-color: green;
+}
+
+section{    
+    display: flex;
+    margin-top: 1rem;
+}
+
+h1{
+    text-align: center;
+}
+
+.content{
+    margin-left: auto;
+    margin-right: auto; 
+    div{
+        form{
+            div{
+                margin-top: 0.6rem;
+            }
+        }
+    }
+
+    #imgUser{
+        width: 11rem;
+        height: 9rem;
+        border-radius: 50%;
+    }
+
+    .inputFile{
+        display: grid;
+    }
+
+    .buttonForm{
+        .btn{
+            width: 25%;
+            color: #fff;
+            border-radius: 1rem;
+            border: none;
+            
+            &:first-child{
+                background: green;
+                margin-right: 1rem;
+            }
+        
+            &:nth-of-type(2){
+                background: red;
+            }
+        
+            &:hover{
+                opacity: 0.7;
+            }
+        }
+    }
+
+}

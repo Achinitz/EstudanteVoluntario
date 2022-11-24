@@ -1,6 +1,10 @@
+.cadastro {
+    margin-top: 0.5em;
+  }
+
 .buttonForm{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     .cadastrar{
         margin-right: 1rem;
@@ -35,3 +39,4 @@
 em{
     color: red;
 }
+
