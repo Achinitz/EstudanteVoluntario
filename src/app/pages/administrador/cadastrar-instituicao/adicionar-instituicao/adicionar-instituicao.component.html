@@ -4,14 +4,168 @@
     <sidebar-administrador></sidebar-administrador>
     </section>
 
-    <section class="col-10 px-2 pb-2 d-flex flex-column align-items-center">
+    <section class="content-meu-perfil col-10 px-2 pb-2">
 
         <h1 class="float-center">
             Adicionar Instituição
         </h1>
 
         <div class="d-flex">
-            Teste
+            <div class="cadastro">
+                <form [formGroup]="formCadastro">
+
+              
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nome da Instituição <em>*</em></label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="razaoSocial"
+                      placeholder="Nome da Instituição"
+                      formControlName="razaoSocial"
+                    />
+                    <!--
+                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      -->
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">CNPJ <em>*</em> </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cnpj"
+                      placeholder="XX.XXX.XXX/XXXX-XX"
+                      formControlName="cnpj"
+                    />
+                    <!--
+                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      -->
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Email <em>*</em> </label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      placeholder="name@email.com"
+                      formControlName="email"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Telefone <em>*</em> </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="Telefone"
+                      placeholder="(XX) 9XXXX-XXXX"
+                      formControlName="telefone"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Telefone Auxiliar<em>*</em> </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="Telefone"
+                      placeholder="(XX) 9XXXX-XXXX"
+                      formControlName="telefone"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Cep <em>*</em> </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cep"
+                      placeholder="XXXXX-XXX"
+                      formControlName="cep"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Logradouro <em>*</em> </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="logradouro"
+                      placeholder="Rua, Avenida, Travessa, etc."
+                      formControlName="logradouro"
+                    />
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <label for="exampleFormControlInput1">Número <em>*</em> </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="numero"
+                        placeholder="Número"
+                        formControlName="numero"
+                      />
+                    </div>
+                    <div class="col">
+                      <label for="exampleFormControlInput1">Bairro <em>*</em> </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="bairro"
+                        placeholder="Bairro"
+                        formControlName="bairro"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Complemento <em>*</em> </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="complemento"
+                      placeholder="Complemento ou Ponto de Referência."
+                      formControlName="complemento"
+                    />
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <label for="exampleFormControlInput1">Estado/UF <em>*</em> </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Número"
+                        id="estado"
+                        formControlName="estado"
+                      />
+                    </div>
+                    <div class="col">
+                      <label for="exampleFormControlInput1">Cidade <em>*</em> </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Bairro"
+                        id="cidade"
+                        formControlName="cidade"
+                      />
+                    </div>
+                    <!-- <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                        <div class="invalid-feedback">Example invalid custom file feedback</div>
+                    </div> -->
+                  </div>                  
+                  <div class="buttonForm">
+                    <!--
+                          <button type="submit" class="btn btn-primary mb-2" [disabled]="this.formCadastro.controls['nomeCompleto'].invalid">Limpar</button>
+                      -->
+                    <button
+                      type="submit"
+                      class="btn mb-2 cadastrar"
+                      [disabled]="this.formCadastro.invalid"
+                    >
+                      Cadastrar
+                    </button>
+                    <button type="submit" class="btn mb-2 limpar">Limpar</button>
+                  </div>
+                </form>
+              </div>
+              
         </div>
 
     </section>

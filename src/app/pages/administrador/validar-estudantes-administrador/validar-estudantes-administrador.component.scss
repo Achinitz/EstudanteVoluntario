@@ -1,3 +1,24 @@
+.content-meu-perfil{
+    padding: 8px 16px 0px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #b6cfd3;
+    border-radius: 0.5rem;
+}
+
+.content-card-beneficios-title{
+    margin-right: 0.5rem;
+}
+
+.content-card-beneficios-property{
+    background: #e1c882;
+    padding: 0px 5px;
+    margin-right: 0.5rem;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
 .pagination ::ng-deep {
     margin-left: auto;
     .page-item {
@@ -17,6 +38,53 @@
     }
   }
 
+.first-icon{
+    width: 25px;
+    margin-top: 5px;
+    background: white;
+    cursor: pointer;
+}
+
+.content-card-icons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-card-tarefas,.content-card-beneficios{
+    display: flex;
+    flex-direction: row;
+    justify-content: left !important;
+    flex-wrap: wrap;
+}
+
+.content-card-vaga{
+    line-height: 1.5rem;
+    padding: 5px;
+}
+
+.imgCard{
+    width: 25%;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.card-content{
+    display: flex;
+    flex-direction: row;
+}
+
+.card-content-filtro{
+    margin-top: 1rem;
+    display: flex;
+    //justify-content: center;
+    align-items: center;
+    background-color: #e7e7e7;
+    border-radius: 0.25rem;
+    font-weight: 500;
+}
+
 .vagasDisponiveis{
     display: grid;
     flex-wrap: wrap;
@@ -27,10 +95,11 @@
     display: flex;
 }
 
-  .card{
-    width: 15rem;
-    margin-right: 10px;
+.card{
+    width: 100%;
+    //margin-right: 10px;
     margin-top: 10px;
+    background-color: #e7e7e7 !important;
 
     button{
         border: none;
@@ -46,7 +115,7 @@
 
     div:nth-of-type(2){
         h4{
-            text-align: initial;
+            text-align: center;
         }
 
         p:nth-of-type(2){

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 
@@ -11,30 +12,35 @@ import Swal from 'sweetalert2';
 })
 export class DetalheVagaAdministradorComponent implements OnInit {
 
-  vaga: any = {
-    tituloVaga: 'Contador de Historia',
-    dataPublicacao: '28/08/2021',
-    horarioInicio: 'Analise de Sistemas',
-    horarioEncerramento: 'Analise de Sistemas',
-    numeroVagas: 22,
-    descricao: 'Uma vaga Legal',
-    status: '15/05/2022',
-    auxilio: 'Sim',
-    obseracao: 'Possuir a unha cortada',
-    tipoCandidatura: 'Nao sei',
-  }
+  validacao: any;
+  validacoes: any = [
+    {id: 1, nome: 'Aprovar'},
+    {id: 2, nome: 'Reprovar'},
+  ]
 
-  constructor(private dataService:DataService,public activeModal: NgbActiveModal) { 
+  vaga: any;
 
+  constructor(private data:DataService,private modalService: NgbModal, 
+    public dialog: MatDialog, private router: Router) { 
+    this.vaga = this.data.data;
   }
 
   aprovar(){
     Swal.fire({
       icon: 'success',
-      title: 'Vaga aprovada com sucesso!!',
+      title: 'Vaga avaliada com sucesso!!',
       showConfirmButton: false,
       timer: 1500,
     })
+  }
+
+  retornar(){
+    this.router.navigate(['/Administrador/validar-vagas']);
+    // this.modalService.open(DetalheVagaAdministradorComponent, { windowClass: 'width:90%; heigth: 50%;', backdrop: 'static', keyboard: false, centered: true });
+  }
+
+  exibirDetalhes(){
+    this.modalService.open(DetalheVagaAdministradorComponent, { windowClass: 'width:90%; heigth: 50%;', backdrop: 'static', keyboard: false, centered: true });
   }
 
   reprovar(){

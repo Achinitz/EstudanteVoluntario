@@ -9,57 +9,57 @@ export class CadastrarInstituicaoComponent implements OnInit {
 
   instituicoes: any = [
     {
-      cnpj: 1234567891011,
+      cnpj: 75054940000162,
       nome: 'Fundação',
       cidade: 'Curitiba'
     },
     {
-      cnpj: 1234567891012,
+      cnpj: 75054940000162,
       nome: 'UFPR',
       cidade: 'Curitiba'
     },
     {
-      cnpj: 1234567891013,
+      cnpj: 75054940000162,
       nome: 'Aurora',
       cidade: 'Curitiba'
     },
     {
-      cnpj: 1234567891014,
+      cnpj: 75054940000162,
       nome: 'Sadia',
       cidade: 'Curitiba'
     },
     {
-      cnpj: 1234567891015,
+      cnpj: 75054940000162,
       nome: 'Paula Fernandes',
       cidade: 'Curitiba'
     },
     {
-      cnpj: 1234567891016,
+      cnpj: 75054940000162,
       nome: 'Sandy',
       cidade: 'Curitiba'
     },
     {
-      cnpj: 1234567891017,
+      cnpj: 75054940000162,
       nome: 'Junior',
       cidade: 'Curitiba'
     },
     {
-      cnpj: 1234567891018,
+      cnpj: 75054940000162,
       nome: 'Avril',
       cidade: 'Curitiba'
     },
     {
-      cnpj: 1234567891019,
+      cnpj: 75054940000162,
       nome: 'Jhon',
       cidade: 'Curitiba'
     },
     {
-      cnpj: 1234567891010,
+      cnpj: 75054940000162,
       nome: 'Alcione',
       cidade: 'Curitiba'
     },
     {
-      cnpj: 1234567891011,
+      cnpj: 75054940000162,
       nome: 'Betina',
       cidade: 'Curitiba'
     },

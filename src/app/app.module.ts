@@ -11,6 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 //import {MatToolbar} from '@angular/material/toolbar';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -32,6 +33,13 @@ import { CardComponent } from './shared/components/card/card.component';
 import { EntidadesComponent } from './shared/components/header/entidades/entidades.component';
 import { SobreNosComponent } from './shared/components/header/sobre-nos/sobre-nos.component';
 import { DataService } from './services/data.service';
+import { ToastrModule } from 'ngx-toastr';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { CpfCnpjPipe } from './shared/pipe/cpfcnpj.pipe';
+import { CpfPipe } from './shared/pipe/cpf.pipe';
+import { CnpjPipe } from './shared/pipe/cnpj.pipe';
+import { PhonePipe } from './shared/pipe/phone.pipe';
 
 @NgModule({
   declarations: [
@@ -47,8 +55,16 @@ import { DataService } from './services/data.service';
     LoginComponent,
     EntidadesComponent,
     SobreNosComponent,
+    
   ],
-  exports: [NgSelectModule],
+  exports: [
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    NgSelectModule,
+    ToastrModule,
+  
+  ],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -56,7 +72,9 @@ import { DataService } from './services/data.service';
     FormsModule,
     HttpClientModule,
     MatButtonModule,
+    MatFormFieldModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatDialogModule,
     MatIconModule,
     MatPaginatorModule,
@@ -65,9 +83,13 @@ import { DataService } from './services/data.service';
   //  MatToolbar,
     NgbModule,    
     NgSelectModule,
-    ReactiveFormsModule 
+    NgxMaskModule.forRoot(),
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
-  providers: [DataService],
+  providers: [
+    DataService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

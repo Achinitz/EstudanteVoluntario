@@ -23,6 +23,11 @@ import { ValidarEntidadeModalComponent } from './validar-entidades-administrador
 import { CadastrarInstituicaoComponent } from './cadastrar-instituicao/cadastrar-instituicao.component';
 import { CadastrarCursoComponent } from './cadastrar-curso/cadastrar-curso.component';
 import { AdicionarInstituicaoComponent } from './cadastrar-instituicao/adicionar-instituicao/adicionar-instituicao.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { ToastrModule } from 'ngx-toastr';
+import { CnpjPipe } from 'src/app/shared/pipe/cnpj.pipe';
+import { PhonePipe } from 'src/app/shared/pipe/phone.pipe';
 
 @NgModule({
   declarations: [
@@ -38,6 +43,8 @@ import { AdicionarInstituicaoComponent } from './cadastrar-instituicao/adicionar
     CadastrarInstituicaoComponent,
     CadastrarCursoComponent,
     AdicionarInstituicaoComponent,
+    CnpjPipe,
+    PhonePipe
   ],
   imports: [
     MatSidenavModule,
@@ -48,10 +55,16 @@ import { AdicionarInstituicaoComponent } from './cadastrar-instituicao/adicionar
     CommonModule,
     FormsModule,
     MatTabsModule,
-    MatDatepickerModule,
     MatPaginatorModule,
     NgbModule,
+    NgSelectModule,
+    NgxMaskModule.forRoot(),
     ReactiveFormsModule,
-  ],
+    ToastrModule.forRoot(),
+    
+  ],providers: [
+    CnpjPipe,
+    PhonePipe
+  ]
 })
 export class AdministradorModule {}

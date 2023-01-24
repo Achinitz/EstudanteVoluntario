@@ -13,11 +13,7 @@ export class ConsultaCepService {
   }
 
   getDataCep(cep?:any){
-    this.http.get(this.url).subscribe(
-      (res:any) => {
-        console.log(res);
-      }
-    );
+    return this.http.get(`https://viacep.com.br/ws/${cep}/json/`);
   }
 
 }

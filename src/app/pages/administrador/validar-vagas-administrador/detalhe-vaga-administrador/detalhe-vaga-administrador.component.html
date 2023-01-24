@@ -1,69 +1,89 @@
+<section class="d-flex py-2">
 
-  <div id="modal" role="dialog" config="{backdrop: 'static'}">
-    <div class="modal-header px-4 d-flex justify-content-end">
-        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss(null)">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body px-4">
-    <section class="">
-        <div class="d-flex">
-            <div class="content-img">
-                <img src="../../../../../../assets/imagens/NoUser.jpg">
-            </div>
+    <section class="navSideBar px-2 pb-2" style="margin:0; padding: 0;">
+        <sidebar-administrador></sidebar-administrador>
+    </section>
 
-            <span>Nome da Empresa</span>
+    <section class="mr-2 content-meu-perfil" *ngIf="vaga">
+
+          <h1>
+              Detalhes da Vaga
+          </h1>
+
+        <div class="mx-2 d-flex">
+        
+            <section class="col-8 content-detalhes-vaga">   
+                                
+                <div class="col-12">
+                  <label>Nome: </label>
+                  <span>{{vaga.nomeFantasia}}</span>
+                </div>
+                <div class="col-12">
+                  <label>Razão Social: </label>
+                  <span>{{vaga.razaoSocial}}</span>
+                </div>
+                <div class="col-12">
+                    <label>CNPJ: </label>
+                    <span>{{vaga.cnpj | cnpj}}</span>
+                  </div>    
+                <div class="col-12">
+                    <label>Missao da empresa: </label>
+                    <span>{{vaga.missao}}</span>
+                </div>
+                <div class="col-12">
+                    <label>E-mail: </label>
+                    <span>{{vaga.email}}</span>
+                </div>
+                <div class="col-12">
+                    <label>Telefone: </label>
+                    <span>{{vaga.telefone | phone}}</span>
+                </div>
+                <div class="col-12">
+                    <label>Descrição da Vaga: </label>
+                    <span>{{vaga.descricao}}</span>
+                </div>
+                <div class="col-12">
+                    <label>Endereço: </label>
+                    <span>{{vaga.rua}},{{vaga.numero}}, {{vaga.bairro}} - {{vaga.cep}}, {{vaga.cidade}}-{{vaga.estado}}</span>
+                </div>
+                <div class="col-12">
+                    <label>Obrigações: </label>
+                    <ul>
+                        <li *ngFor="let obrigacao of vaga.obrigacoes;">
+                            {{obrigacao.nome}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12">
+                    <label for="exampleFormControlInput1">Resolução do Chamado <em class="text-danger">*</em> </label>
+                    <!-- <input type="text" class="form-control" placeholder="Estado" formControlName="estado"> -->
+                    <ng-select [items]="validacoes"
+                        id="ngSelect"
+                        bindLabel="nome"
+                        bindValue="id"
+                        placeholder="Selecione"
+                        (closeOnSelect)="true"
+                        [(ngModel)]="validacao">
+                    </ng-select> 
+                </div>
+                <div class="col-12 form-group">
+                    <label for="exampleFormControlTextarea1">Informe o motivo da reprovação</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <div class="col-12 mb-1 mt-1">
+                    <button class="btn btn-primary btn-aprovar" (click)="aprovar()">
+                        Finalizar avaliação
+                    </button>
+                    <button class="btn btn-primary btn-reprovar" (click)="retornar()">
+                        Voltar
+                    </button>
+                </div>
+              </section>
+              <section class="col-4">
+                <div class="col-12">
+                    <img src="../../../../../assets/imagens/ideia.jpg" />
+                </div>
+              </section>
         </div>
-        <div class="content-details my-3">
-            <div class="d-flex flex-column">
-                <div class="form-group">
-                    <b>Data de Publicação:</b>
-                    Content
-                </div>
-                <div class="form-group ">
-                    <b>Horário de inicio Expediente:</b>
-                    22 anos
-                </div>
-                <div class="form-group">
-                    <b>Horário de encerramento Expediente:</b>
-                    Content
-                </div>
-                <div>
-                    <b>Número de Vagas:</b>
-                    Content
-                </div>
-                <div>
-                    <b>Status:</b>
-                    Content
-                </div>
-                <div>
-                    <b>Descrição:</b>
-                    Content
-                </div>
-                <div>
-                    <b>Auxilio:</b>
-                    Content
-                </div>
-                <div>
-                    <b>Observação:</b>
-                    Content
-                </div>
-                <div>
-                    <b>Tipo de Candidatura:</b>
-                    Content
-                </div>
-            </div>
-        </div>
+    </section>
 </section>
-</div>
-<div class="modal-footer">
-    <div>
-        <button (click)="reprovar()">
-            Reprovar
-        </button>
-        <button (click)="aprovar()"> 
-            Aprovar
-        </button>
-    </div>
-</div>
-</div>

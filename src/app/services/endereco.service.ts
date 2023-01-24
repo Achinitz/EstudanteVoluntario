@@ -12,14 +12,15 @@ export class EnderecoService {
   }
 
   getEstados(){
-  this.http.get(this.url).subscribe(
-    (res: any) => {
-
-    },
-    error => {
-      
-    }
-  )
+    return this.http.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome`);
   }
+
+  getCidades(idUF:any){
+    return this.http.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${idUF}/municipios`);
+  }
+
+  // getBairros(idMunicipio: any){
+  //   return this.http.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${idUF}/municipios`);
+  // }
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DataService } from 'src/app/services/data.service';
 import { DetalheVagaAdministradorComponent } from './detalhe-vaga-administrador/detalhe-vaga-administrador.component';
 
 @Component({
@@ -10,14 +12,35 @@ import { DetalheVagaAdministradorComponent } from './detalhe-vaga-administrador/
 })
 export class ValidarVagasAdministradorComponent implements OnInit {
 
+  listaOrdenacao: any = [
+    {id: 1, nome: 'Mais antigos'},
+    {id: 2, nome: 'Mais recentes'}
+  ]
+
   vagasDisponiveis: any = [
     {
       id: 1,
       nomeEntidade: 'APAE 1',
-      nomeVaga: 'Contador de História',      
+      nomeVaga: 'Voluntário Contador de Histórias',      
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto',
+      cidade: 'Curitiba',
+      estado: 'PR',
+      numero: 41,
+      rua: 'Rua Amador Bueno',
+      bairro: 'Cajuru',
+      cep: '82960-020',
+      obrigacoes: [
+        {id: 1, nome: 'Escrever Conteúdos'},
+        {id: 2, nome: 'Ser Empático e Acolhedor'},
+        {id: 3, nome: 'Ser Articulado'},
+        {id: 4, nome: 'Incorporar Personagens'},
+      ],
+      beneficios: [
+        {id: 1, nome: 'Refeição no Local'},
+        {id: 2, nome: 'Vale transporte'}
+      ],
       inscritos: 5
     },
     {
@@ -124,17 +147,24 @@ export class ValidarVagasAdministradorComponent implements OnInit {
   paginaAtual = 1;
   tamanhoPagina: number = this.vagasDisponiveis.length;
   itemsPerPage = 6;
+  tipoOrdenacao: any;
   public vagas: any = this.vagasDisponiveis.slice(0,6);
 
-  constructor(private modalService: NgbModal, public dialog: MatDialog) { }
+  constructor(private modalService: NgbModal, public dialog: MatDialog,
+    private router: Router, private data: DataService) { }
 
   public mudancaPagina(pageNum: number): void {
     this.tamanhoPagina = this.itemsPerPage*(pageNum - 1);
     this.vagas = this.vagasDisponiveis.slice(this.tamanhoPagina, this.tamanhoPagina + 6)
   }
 
-  exibirDetalhes(){
-    this.modalService.open(DetalheVagaAdministradorComponent, { windowClass: 'width:90%; heigth: 50%;', backdrop: 'static', keyboard: false, centered: true });
+  redirecionarDetalhes(value: any){
+    this.data.data = value;
+    this.router.navigate(['/Administrador/detalhe-vaga']);
+  }
+
+  ordenarLista(){
+    console.log('Lista Ordenada')
   }
 
   ngOnInit(): void {

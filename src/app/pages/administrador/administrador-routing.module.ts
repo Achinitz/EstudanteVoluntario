@@ -5,8 +5,10 @@ import { AdicionarInstituicaoComponent } from './cadastrar-instituicao/adicionar
 import { CadastrarInstituicaoComponent } from './cadastrar-instituicao/cadastrar-instituicao.component';
 import { HomeComponent } from './home/home.component';
 import { MeuPerfilAdministradorComponent } from './meu-perfil-administrador/meu-perfil-administrador.component';
+import { ValidarEntidadeModalComponent } from './validar-entidades-administrador/validar-entidade-modal/validar-entidade-modal.component';
 import { ValidarEntidadesAdministradorComponent } from './validar-entidades-administrador/validar-entidades-administrador.component';
 import { ValidarEstudantesAdministradorComponent } from './validar-estudantes-administrador/validar-estudantes-administrador.component';
+import { DetalheVagaAdministradorComponent } from './validar-vagas-administrador/detalhe-vaga-administrador/detalhe-vaga-administrador.component';
 import { ValidarVagasAdministradorComponent } from './validar-vagas-administrador/validar-vagas-administrador.component';
 
 const routes: Routes = [
@@ -33,6 +35,12 @@ const routes: Routes = [
   },
   {
     path: "adicionar-instituicao", component: AdicionarInstituicaoComponent
+  },
+  {
+    path: "detalhe-vaga", component: DetalheVagaAdministradorComponent
+  },
+  {
+    path: "validar-entidade", component: ValidarEntidadeModalComponent
   }
 ];
 

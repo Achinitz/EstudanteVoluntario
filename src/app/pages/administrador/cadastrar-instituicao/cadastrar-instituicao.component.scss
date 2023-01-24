@@ -1,0 +1,29 @@
+.titulo-grid{
+    background-color: #6e6e6e;
+    color: white;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.content-grid{
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px 2px 5px 2px;
+    margin-bottom: 5px;
+    margin-right: 0px;
+    margin-left: 0px;
+
+    &:hover{
+        background-color: #cfcece;
+    }
+}
+
+.content-grid-button-action{
+    button{
+        border: none;
+        border-radius: 5px;
+    }
+}

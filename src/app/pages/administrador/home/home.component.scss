@@ -1,20 +1,65 @@
+.content-meu-perfil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #b6cfd3;
+    border-radius: 0.5rem;
+    margin-bottom: 7px;
+}
+
+svg{
+    width: 40px;
+    padding-right: 10px;
+}
+
+.quantidade-chamados{
+    border-radius: 50%;
+    //border: 1px solid;
+    padding-top: 6px;
+    border-radius: 20%;
+    padding-bottom: 6px;
+    padding-right: 9px;
+    padding-left: 9px;
+    background: green;
+    opacity: 0.6;
+    color: white;
+    font-weight: 600;
+}
+
+.title-index{
+    font-weight: 400;
+}
+
+.content-main-dashboard, .content-dashboard{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.content-main-dashboard{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    div{
+        width: 100%;
+        margin-top: 2rem;
+    }
+}
+
+.content-dashboard{
+    justify-content: space-between;
+    div{
+        padding: 1rem;
+    }
+}
+
 section{
     display: flex;
     margin-top: 1rem;
-
-    .content-dashboard{
-
-        div{
-            padding: 1rem;
-            border: 1px solid;
-        }
-    }
-
     //Primeira section onde está a sidebar
     section{
         .navSideBar{
             margin-top: 1rem;
-            width: 18%;
+            width: 20%;
 
             h2{
                 text-align: center;
@@ -31,8 +76,11 @@ section{
         align-items: center;
 
         h1{
+            margin-left: 2rem;
+            width: 100%;
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-top: 8px;
+            font-weight: 500;
         }
 
         .contentPage{

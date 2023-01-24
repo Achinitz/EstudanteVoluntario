@@ -1,73 +1,109 @@
 <section class="d-flex py-2">
 
-    <section class="col-2 navSideBar px-2 pb-2">
-        <sidebar-administrador></sidebar-administrador>
-    </section>
+  <section class="px-2 pb-2">
+      <sidebar-administrador></sidebar-administrador>
+  </section>
 
-    <section class="col-10 px-2 pb-2 content">
+  <section class="mr-2 content-meu-perfil">
 
-        <h1 class="float-center">
-            Validar Estudantes
-        </h1>
+      <h1>
+          Validar Entidades Cadastradas
+      </h1>
 
-        <div class="input-group col-8">
-          <input 
-          type="search" 
-          class="form-control rounded" 
-          placeholder="Search" 
-          aria-label="Search" 
-          aria-describedby="search-addon"
-          name="search"
-          [(ngModel)]="filter"
-          (ngModelChange)="search()"
-          />
-          <button type="button" class="btn btn-outline-primary">search</button>
-        </div>
+      <!-- <div class="input-group col-8">
+        <input 
+        type="search" 
+        class="form-control rounded" 
+        placeholder="Search" 
+        aria-label="Search" 
+        aria-describedby="search-addon"
+        name="search"
+        [(ngModel)]="filter"
+        (ngModelChange)="search()"
+        />
+        <button type="button" class="btn btn-outline-primary">search</button>
+      </div> -->
 
-        <div class="">
-            
-            <section class="row vagasDisponiveis">          
-                <div *ngIf="!estudantes">
-                  <span> No momento não existe vagas cadastradas! </span>
+      <div class="">
+          
+        <section class="row vagasDisponiveis">          
+          <div *ngIf="!entidadesDisponiveis">
+            <span> No momento não existe vagas cadastradas! </span>
+          </div>
+          <section>
+            <div class="containerCard vagasDisponiveis">
+                <span>
+                  Lembre-se de dar maior prioridade para as entidades que estão a mais tempo em espera!
+                </span>
+                <div class="col-12 card-content-filtro">
+                  <div class="col-9 p-1">
+                    1180 vagas pendentes para validação
+                  </div>
+                  <div class="col-3 p-1">
+                    <ng-select [items]="listaOrdenacao"
+                    id="ngSelect"
+                    bindLabel="nome"
+                    bindValue="id"
+                    placeholder="Selecione"
+                    (ngModelChange)="ordenarLista()"
+                    (closeOnSelect)="true"
+                    [(ngModel)]="tipoOrdenacao">
+                </ng-select> 
+                  </div>
                 </div>
-                <section>
-                  <div class="containerCard vagasDisponiveis">
-                    <div class="card " *ngFor="let estudante of filterEstudante; let i = index">
-                      <div class="imgCard">
-                        <img
-                          src="{{estudante.img}}"
-                          class="card-img-top"
-                          alt="..."
-                        />
-                      </div>
-                      <div class="card-body">
-                        <div>
-                          <h4 class="card-title">
-                            {{ estudante.nome }}
-                          </h4>
-                        </div>
-                        <div>
-                          <button class="float-right" (click)="exibirDetalhes()">
-                            Validar Estudante
-                          </button>
-                        </div>
-                      </div>
+
+               <div class="card" *ngFor="let entidade of entidadesDisponiveis; let i = index">
+                <div class="card-content col-12">
+                  <div class="imgCard col-3">
+                    <img
+                      src="{{ entidade.img }}"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="content-card-vaga col-8">
+                    <div>
+                      <strong>{{entidade.nomeFantasia}}</strong>
+                    </div>
+                    <div>
+                      <strong>{{entidade.razaoSocial}}</strong>
+                    </div>
+                    <div>{{entidade.descricaoPessoal}}</div>
+                    <div class="content-card-beneficios">
+                      <!-- <span class="content-card-beneficios-title">Competências: </span> -->
+                      <span class="content-card-beneficios-property" *ngFor='let valor of entidade.valores'>
+                        {{valor.descricao}}
+                      </span>
                     </div>
                   </div>
-                </section>
-                <ngb-pagination
-                  class="pagination pull-right"
-                  [rotate]="true"
-                  [maxSize]="3"
-                  [directionLinks]="false"
-                  [collectionSize]="this.estudantes.length"
-                  [pageSize]="itemsPerPage"
-                  [boundaryLinks]="true"
-                  [(page)]="paginaAtual"
-                  (pageChange)="mudancaPagina(paginaAtual)"
-                >
-                </ngb-pagination>
-              </section>
-        </div>
-    </section>
+                  <div class="col-1 content-card-icons">
+                    <div class="first-icon" (click)="redirecionarDetalhes(entidade)">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                        </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+
+      <div class="row">
+        <ngb-pagination
+          class="pagination pull-right"
+          [rotate]="true"
+          [maxSize]="3"
+          [directionLinks]="false"
+          [collectionSize]="this.entidadesDisponiveis.length"
+          [pageSize]="itemsPerPage"
+          [boundaryLinks]="true"
+          [(page)]="paginaAtual"
+          (pageChange)="mudancaPagina(paginaAtual)"
+        >
+        </ngb-pagination>
+      </div>
+
+  </section>
 </section>
