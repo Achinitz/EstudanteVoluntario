@@ -1,0 +1,15 @@
+.principal {
+  display: flex;
+  flex-direction: row;
+  padding: 2em;
+  margin: 0;
+}
+
+.navSideBar {
+  float: left;
+}
+
+.conteudo {
+  align-items: center;
+  display: flex;
+}

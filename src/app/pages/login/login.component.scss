@@ -3,6 +3,8 @@ section {
   align-items: center;
   justify-content: space-evenly;
   padding: 1em;
+  flex-grow:1
+  //min-height: 80vh;
 
   h2 {
     margin-top: 1rem;
@@ -14,7 +16,7 @@ section {
     padding: auto;
   }
 
-  .formgroup {
+  .form-group {
     padding: 0.5em;
   }
 

@@ -1,3 +1,13 @@
+.container {
+  max-width: 1000px;
+}
+
+.conteudo {
+  padding: 1em;
+  align-items: center;
+  margin: 0.5em;
+}
+
 .titulo {
   justify-content: center;
   display: flex;
@@ -9,11 +19,6 @@
 }
 
 .conteudo {
-  padding: 1em;
-  align-items: center;
-}
-
-section {
   padding: 1em;
   align-items: center;
 }
@@ -36,7 +41,7 @@ section {
 }
 
 .btnReadMore {
-  margin: 0.5em;
+  margin: 0.8em;
   background-color: #1265a2;
   border: none;
   &:hover {
@@ -136,4 +141,10 @@ section {
       color: #000000;
     }
   }
+}
+
+.footercontainer {
+  background: #b6cfd3;
+  padding: 1em;
+  max-width: 1000px;
 }

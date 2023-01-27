@@ -1,20 +1,8 @@
-<nav>
-      <div>
-      <ul class="list-unstyled components mb-5">
-        <li>
-      <a routerLink="/Estudante">
-        <span>Pagina Inicial</span>
-      </a></li>
-      <li>
-      <a routerLink="/Estudante/Perfil">
-        <span>Meu Perfil</span>
-      </a></li>
-      <li>
-      <a routerLink="/Estudante/Certificado">
-        <span>Certificados</span>
-      </a></li>
-      </ul>
-    </div>
+<mat-nav-list role="navigation">
 
-    
-  </nav> 
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/Estudante">Início</a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/Estudante/Perfil">Meu Perfil</a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/Estudante/Certificado">Minhas Inscrições</a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/Estudante/Certificado">Certificados</a>
+      
+</mat-nav-list>

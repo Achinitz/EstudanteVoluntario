@@ -1,42 +1,50 @@
 .cadastro {
-    margin-top: 0.5em;
+  margin-top: 0.5em;
+}
+
+.form-group {
+  padding: 0.5em;
+}
+
+.duplo {
+  padding: 0.5em;
+}
+
+.buttonForm {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1em;
+  .cadastrar {
+    margin-right: 1rem;
+    background-color: #008000;
+  }
+  .limpar {
+    background-color: #ffca2c;
+    color: #000000;
+  }
+}
+
+.btn {
+  margin-top: 2rem;
+  width: 25%;
+  color: #fff;
+  border-radius: 1rem;
+
+  &:first-child {
+    background: green;
+    margin-right: 1rem;
   }
 
-.buttonForm{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    .cadastrar{
-        margin-right: 1rem;
-        background-color: #008000;
-    }
-    .limpar{
-        background-color: #ffca2c;
-        color: #000000;
-    }
+  &:nth-of-type(2) {
+    background: red;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
-.btn{
-    margin-top: 2rem;
-    width: 25%;
-    color: #fff;
-    border-radius: 1rem;
-
-    &:first-child{
-        background: green;
-        margin-right: 1rem;
-    }
-
-    &:nth-of-type(2){
-        background: red;
-    }
-
-    &:hover{
-        opacity: 0.7;
-    }
+em {
+  color: red;
 }
-
-em{
-    color: red;
-}
-

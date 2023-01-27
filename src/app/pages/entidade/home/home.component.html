@@ -1,95 +1,100 @@
-<section>
-
-    <section class="col-2 navSideBar">
-        <app-sidebar></app-sidebar>
+<section class="content">
+    <div class="topo">
+      <h1>Olá Entidade!</h1>
+      <p>
+        <ngb-alert #alert type="warning">
+          Verifique se você concorda ou se identifica com os detalhes da vaga
+          antes de realizar a inscrição.
+        </ngb-alert>
+      </p>
+    </div>
+  
+    <section>
+      <div class="dashboard col-12 d-flex justify-content-center">
+        <div class="">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-clipboard-data"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"
+            />
+            <path
+              d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
+            />
+            <path
+              d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
+            />
+          </svg>
+          Aberto:
+        </div>
+        <div class="">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-eye"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"
+            />
+            <path
+              d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
+            />
+          </svg>
+          Processos em Analise:
+        </div>
+        <div class="">Fechado</div>
+      </div>
     </section>
-    <section class="col-10">
-        <h1> Bem vindo! </h1>
-
-        <span class="contentPage">
-            Verifique se você concorda ou se identifica com os detalhes da vaga antes de realizar a inscrição.
-        </span>
-        
-        <div class="dashboard col-12 d-flex justify-content-center">
-            <div class="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-data" viewBox="0 0 16 16">
-                    <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
-                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                </svg>
-                Aberto: 
-            </div>
-            <div class="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                  </svg>
-                Processos em Analise: 
-            </div>
-            <div class="">Fechado</div>
+  
+    <h2>Vagas Publicadas - Abertas</h2>
+  
+    <div *ngIf="!vagasDisponiveis">
+      <span> No momento não existe vagas cadastradas! </span>
+    </div>
+  
+    <section class="contentDetails">
+      <div class="card" *ngFor="let vaga of vagasDisponiveis; let i = index">
+        <div class="imgCard">
+          <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
         </div>
-
-        <h2>
-            Vagas Públicadas - Abertas
-        </h2>
-
-        <div *ngIf="!vagasDisponiveis">
-            <span>
-                No momento não existe vagas cadastradas!
-            </span>
+        <div class="card-body">
+          <h4 class="card-title">{{ vaga.nomeEntidade }}</h4>
+          <p class="card-text">{{ vaga.descricao }}</p>
         </div>
-
-        <section class="contentDetails">
-            <div class="card" *ngFor="let vaga of vagasDisponiveis; let i = index">
-
-                    <div class="imgCard">
-                        <img src="{{vaga.img}}" class="card-img-top" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">{{vaga.nomeEntidade}}</h4>
-                        <p class="card-text">{{vaga.descricao}}</p>
-                    </div>
-                    <div class="buttonsVagasCadastradas">
-                        <button (click)="finalizarPorUrgencia()">
-                            Finalizar
-                        </button>
-                        <button (click)="cancelarProcessoSeletivo()">
-                            Cancelar
-                        </button>
-                    </div>
-            </div>
-        </section>
-
-        <!--********************************************************-->
-
-        <h2>
-            Vagas em Analise
-        </h2>
-
-        <div *ngIf="!vagasDisponiveis">
-            <span>
-                No momento não existe vagas cadastradas!
-            </span>
+        <div class="buttonsVagasCadastradas">
+          <button (click)="finalizarPorUrgencia()">Finalizar</button>
+          <button (click)="cancelarProcessoSeletivo()">Cancelar</button>
         </div>
-
-        <section class="contentDetails">
-            <div class="card" *ngFor="let vaga of vagasDisponiveis; let i = index">
-                <!-- Alterar as cores do botão dependendo do status -->
-                    <div class="imgCard">
-                        <img src="{{vaga.img}}" class="card-img-top" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">{{vaga.nomeEntidade}}</h4>
-                        <p class="card-text">{{vaga.descricao}}</p>
-                    </div>
-                <div class="buttonsVagasCadastradas" routerLink="/Entidade/DetalheVaga">
-                    <button>
-                        Detalhes Vaga
-                    </button>
-                </div>
-            </div>
-        </section>
-
+      </div>
     </section>
-
-</section>
+  
+    <h2>Vagas em Análise</h2>
+  
+    <div *ngIf="!vagasDisponiveis">
+      <span> No momento não existe vagas cadastradas! </span>
+    </div>
+  
+    <section class="contentDetails">
+      <div class="card" *ngFor="let vaga of vagasDisponiveis; let i = index">
+        <div class="imgCard">
+          <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">{{ vaga.nomeEntidade }}</h4>
+          <p class="card-text">{{ vaga.descricao }}</p>
+        </div>
+        <div class="buttonsVagasCadastradas" routerLink="/Entidade/DetalheVaga">
+          <button>Detalhes Vaga</button>
+        </div>
+      </div>
+    </section>
+  </section>
+  

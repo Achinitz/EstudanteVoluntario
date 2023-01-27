@@ -1,53 +1,68 @@
-section{    
-    display: flex;
-    margin-top: 1rem;
+.topo {
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        text-align: center;
+    }
 }
 
-h1{
-    text-align: center;
+.formCadastro{
+    align-items: center;
+    padding-top: 1em;
 }
 
-.content{
+.content {
     margin-left: auto;
-    margin-right: auto; 
-    div{
-        form{
-            div{
-                margin-top: 0.6rem;
-            }
-        }
+    margin-right: auto;
+
+    .userImg{
+        flex-direction: column;
+        align-items: center;
     }
 
-    #imgUser{
+    #imgUser {
         width: 11rem;
         height: 9rem;
         border-radius: 50%;
     }
 
-    .inputFile{
+
+    .inputFile {
         display: grid;
+        padding-top:  1em;
+        padding-bottom: 1em;
     }
 
-    .buttonForm{
-        .btn{
+    .buttonForm {
+        .btn {
             width: 25%;
             color: #fff;
             border-radius: 1rem;
             border: none;
-            
-            &:first-child{
+
+            &:first-child {
                 background: green;
                 margin-right: 1rem;
             }
-        
-            &:nth-of-type(2){
+
+            &:nth-of-type(2) {
                 background: red;
             }
-        
-            &:hover{
+
+            &:hover {
                 opacity: 0.7;
             }
         }
     }
 
 }
+
+.form-group {
+    padding-bottom: 1em;
+  }
+  
+  .duplo {
+    padding-bottom: 1em;
+  }
+ 

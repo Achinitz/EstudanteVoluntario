@@ -11,8 +11,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
-//import {MatToolbar} from '@angular/material/toolbar';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { MatListModule } from '@angular/material/list';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -80,6 +80,7 @@ import { PhonePipe } from './shared/pipe/phone.pipe';
     MatPaginatorModule,
     MatSidenavModule,
     MatTabsModule,
+    MatListModule,
   //  MatToolbar,
     NgbModule,    
     NgSelectModule,

@@ -1,99 +1,342 @@
-<section>
-    <div class="navSideBar">
-        <app-sidebar-estudante></app-sidebar-estudante>
-    </div>
- 
-    <div class="content">
-        <div>
+<section class="content">
+  <div class="topo">
+    <h1>Meu Perfil</h1>
+  </div>
 
-            <h1>Editar Dados Cadastrais</h1>
+  <section>
+    <mat-tab-group mat-align-tabs="start">
+      <mat-tab label="Perfil">
+        <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">
+          <div class="row userImg">
+            <img
+              id="imgUser"
+              src="../../../../assets/imagens/cadastroImagem.jpg"
+              class="float-center"
+              alt="..."
+            />
+          </div>
+          <div class="form-group inputFile">
+            <label for="imgPerfil">Imagem de Perfil </label>
+            <input type="file" class="form-control-file" id="inputFile" />
+          </div>
 
-            <form [formGroup]="formCadastro" #formDir="ngForm">
-                <div class="row userImg">
-                    <img id="imgUser" src="../../../../assets/imagens/cadastroImagem.jpg" class="float-left" alt="...">
-                </div>
-                <div class="form-group inputFile">
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Nome Completo <em class="text-danger">*</em> </label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nome Completo" formControlName="nomeCompleto">
-                    <!--
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    -->    
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">CPF <em class="text-danger">*</em> </label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="XXX.XXX.XXX-XX" formControlName="cpf">
-                    <!--
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    -->    
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Email <em class="text-danger">*</em> </label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@email.com" formControlName="email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Telefone <em class="text-danger">*</em> </label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="(XX) 9XXXX-XXXX" formControlName="telefone">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Cep <em class="text-danger">*</em> </label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="XXXXX-XXX" formControlName="cep">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Complemento <em class="text-danger">*</em> </label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Complemento ou Ponto de Referência." formControlName="complemento">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Logradouro <em class="text-danger">*</em> </label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Rua, Avenida, Travessa, etc." formControlName="logradouro">
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label for="exampleFormControlInput1">Estado/UF <em class="text-danger">*</em> </label>
-                        <input type="text" class="form-control" placeholder="Estado" formControlName="estado">
-                    </div>
-                    <div class="col">
-                        <label for="exampleFormControlInput1">Cidade <em class="text-danger">*</em> </label>
-                        <input type="text" class="form-control" placeholder="Cidade" formControlName="cidade">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label for="exampleFormControlInput1">Número <em class="text-danger">*</em> </label>
-                        <input type="text" class="form-control" placeholder="Número" formControlName="numero">
-                    </div>
-                    <div class="col">
-                        <label for="exampleFormControlInput1">Bairro <em class="text-danger">*</em> </label>
-                        <input type="text" class="form-control" placeholder="Bairro" formControlName="bairro">
-                    </div>
-                  </div>
-                <div class="form-group">
-                    <label for="inputPassword5">Senha <em class="text-danger">*</em> </label>
-                    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Digite a sua senha" formControlName="email">
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword5">Confirmar Senha <em class="text-danger">*</em> </label>
-                    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Confirme a sua senha" [disabled]="">
-                </div>
-                <div class="form-group">
-                    <input class="form-check-input" type="checkbox" id="inlineFormCheck" formControlName="termo">
-                    <label class="form-check-label" for="inlineFormCheck">
-                        Declaro que li e concordo com os <a href="/">Termos de uso e privacidade</a>.
-                    </label>
-                </div>
-                <div class="buttonForm">
-                    <!--
-                        <button type="submit" class="btn btn-primary mb-2" [disabled]="this.formCadastro.controls['nomeCompleto'].invalid">Limpar</button>
-                    -->
-                    <button type="submit" class="btn btn-primary mb-2 cadastrar" [disabled]="this.formCadastro.invalid" (click)="mostrarValores()">Cadastrar</button>   
-                    <button type="submit" class="btn btn-primary mb-2 limpar">Limpar</button> 
-                </div>
-             </form>
-            
-             
-        </div>
-    </div>
+          <div class="form-group">
+            <label for="areasInteresse">Áreas de Interesse </label>
+            <textarea
+              class="form-control"
+              id="areasInteresse"
+              rows="3"
+            ></textarea>
+          </div>
 
+          <div class="form-group">
+            <label for="experiencias">Experiências Anteriores </label>
+            <textarea
+              class="form-control"
+              id="experiencias"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="ies">Instituição de Ensino <em>*</em> </label>
+            <select class="form-control" id="ies">
+              <option value="ufpr">Universidade Federal do Paraná</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="grau">Grau Acadêmico: <em>*</em> </label>
+            <select class="form-control col-6" id="grau">
+              <option *ngFor="let grau of graus" value="{{ grau.id }}">
+                {{ grau.nome }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="curso">Instituição de Ensino <em>*</em> </label>
+            <select class="form-control" id="curso">
+              <option value="curso">Opções de cursos</option>
+            </select>
+          </div>
+
+          <div class="row duplo">
+            <div class="col">
+              <label for="anoInicio">Ano de Início <em>*</em> </label>
+              <input
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                type="date"
+                id="anoInicio"
+              />
+            </div>
+            <div class="col">
+              <label for="anoConclusao"
+                >Previsão de conclusão <em>*</em>
+              </label>
+              <input
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                type="date"
+                id="anoConclusao"
+              />
+            </div>
+
+            <div class="form-group inputFile">
+              <label for="comprovanteMatricula"
+                >Comprovante de Matrícula <em>*</em>
+              </label>
+              <input
+                type="file"
+                class="form-control-file"
+                id="comprovanteMatricula"
+              />
+            </div>
+          </div>
+
+          <div class="buttonForm">
+            <button
+              type="submit"
+              class="btn btn-success mb-2 cadastrar"
+              [disabled]="this.formCadastro.invalid"
+              (click)="mostrarValores()"
+            >
+              Salvar
+            </button>
+            <button type="submit" class="btn btn-warning mb-2 limpar">
+              Limpar
+            </button>
+          </div>
+
+        </form>
+      </mat-tab>
+      <mat-tab label="Dados Pessoais">
+        <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">
+          <label>
+            <i> * Campos de preenchimento obrigatório </i>
+          </label>
+          <div class="form-group">
+            <label for="nomeCompleto">Nome Completo</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nomeCompleto"
+              placeholder="Nome Completo"
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <label for="nomeSocial">Nome Social</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nomeSocial"
+              placeholder="Nome Social"
+            />
+          </div>
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="usarNomeSocial"
+            />
+            <label class="form-check-label" for="usarNomeSocial"
+              >Desejo usar meu nome social</label
+            >
+          </div>
+          <div class="form-group">
+            <label for="cpf">CPF</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cpf"
+              placeholder="XXX.XXX.XXX-XX"
+              disabled
+            />
+          </div>
+          <div class="row duplo">
+            <div class="col">
+              <label for="genero">Identificação de Gênero <em>*</em> </label>
+              <input
+                type="text"
+                class="form-control"
+                id="genero"
+                placeholder="genero"
+              />
+            </div>
+            <div class="col">
+              <label for="dataNascimento">Data de Nascimento <em>*</em> </label>
+              <input
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                type="date"
+                id="dataNascimento"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email <em>*</em> </label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="name@email.com"
+            />
+          </div>
+          <div class="form-group">
+            <label for="telefone">Telefone <em>*</em> </label>
+            <input
+              type="text"
+              class="form-control"
+              id="telefone"
+              placeholder="(XX) 9XXXX-XXXX"
+            />
+          </div>
+          <div class="form-group">
+            <label for="cep">Cep <em>*</em> </label>
+            <input
+              type="text"
+              class="form-control"
+              id="cep"
+              placeholder="XXXXX-XXX"
+            />
+          </div>
+          <div class="form-group">
+            <label for="complemento">Complemento <em>*</em> </label>
+            <input
+              type="text"
+              class="form-control"
+              id="complemento"
+              placeholder="Complemento ou Ponto de Referência."
+            />
+          </div>
+          <div class="form-group">
+            <label for="logradouro">Logradouro <em>*</em> </label>
+            <input
+              type="text"
+              class="form-control"
+              id="logradouro"
+              placeholder="Rua, Avenida, Travessa, etc."
+            />
+          </div>
+          <div class="row duplo">
+            <div class="col">
+              <label for="estado">Estado/UF <em>*</em> </label>
+              <input
+                type="text"
+                class="form-control"
+                id="estado"
+                placeholder="Estado"
+              />
+            </div>
+            <div class="col">
+              <label for="cidade">Cidade <em>*</em> </label>
+              <input
+                type="text"
+                class="form-control"
+                id="cidade"
+                placeholder="Cidade"
+              />
+            </div>
+          </div>
+          <div class="row duplo">
+            <div class="col">
+              <label for="numero">Número <em>*</em> </label>
+              <input
+                type="text"
+                class="form-control"
+                id="numero"
+                placeholder="Número"
+              />
+            </div>
+            <div class="col">
+              <label for="bairro">Bairro <em>*</em> </label>
+              <input type="text" class="form-control" placeholder="Bairro" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Senha <em>*</em> </label>
+            <input
+              type="password"
+              id="inputPassword5"
+              class="form-control"
+              aria-describedby="passwordHelpBlock"
+              placeholder="Digite a sua senha"
+            />
+          </div>
+          <div class="form-group">
+            <label for="confirmpassword">Confirmar Senha <em>*</em> </label>
+            <input
+              type="password"
+              id="confirmpassword"
+              class="form-control"
+              placeholder="Confirme a sua senha"
+              [disabled]=""
+            />
+          </div>
+          <div class="form-group">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="inlineFormCheck"
+            />
+            <label class="form-check-label" for="inlineFormCheck">
+              Declaro que li e concordo com os
+              <a href="/">Termos de uso e privacidade</a>.
+            </label>
+          </div>
+
+          <div class="buttonForm">
+            <button
+              type="submit"
+              class="btn btn-success mb-2 cadastrar"
+              [disabled]="this.formCadastro.invalid"
+              (click)="mostrarValores()"
+            >
+              Salvar
+            </button>
+            <button type="submit" class="btn btn-warning mb-2 limpar">
+              Limpar
+            </button>
+          </div>
+
+        </form>
+      </mat-tab>
+      <mat-tab label="Segurança">
+        <form class="formCadastro">
+          <div class="form-group">
+            <label for="inputPassword5">Senha <em>*</em> </label>
+            <input
+              type="password"
+              id="senha"
+              class="form-control"
+              placeholder="Digite a sua senha"
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputPassword5">Confirmar Senha <em>*</em> </label>
+            <input
+              type="password"
+              id="senha"
+              class="form-control"
+              placeholder="Confirme a sua senha"
+            />
+          </div>
+         
+          <div class="buttonForm">
+            <button
+              type="submit"
+              class="btn btn-success mb-2 cadastrar"
+              [disabled]="this.formCadastro.invalid"
+              (click)="mostrarValores()"
+            >
+              Salvar
+            </button>            
+          </div>
+
+        </form>
+      </mat-tab>
+    </mat-tab-group>
+  </section>
 </section>

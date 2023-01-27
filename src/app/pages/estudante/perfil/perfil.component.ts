@@ -4,12 +4,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.scss']
+  styleUrls: ['./perfil.component.scss'],
 })
 export class PerfilComponent implements OnInit {
-
   public formCadastro = new FormGroup({
-    cpf: new FormControl(null,[Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$')]),
+    cpf: new FormControl(null, [
+      Validators.required,
+      Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$'),
+    ]),
     nomeCompleto: new FormControl(null, Validators.required),
     email: new FormControl(null, Validators.required),
     telefone: new FormControl(null, Validators.required),
@@ -23,14 +25,17 @@ export class PerfilComponent implements OnInit {
     senha: new FormControl(null, Validators.required),
     termo: new FormControl(null, Validators.required),
   });
+
+  mostrarValores() {
+    console.log('Formulário enviado');
+  }
+  graus: any = [
+    { id: 1, nome: 'Bacharelado' },
+    { id: 2, nome: 'Licenciatura' },
+    { id: 3, nome: 'Tecnologia' },
+  ];
   
-  mostrarValores(){
-    console.log("Formulário enviado");
-  }
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
