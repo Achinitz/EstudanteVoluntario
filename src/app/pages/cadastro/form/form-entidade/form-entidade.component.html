@@ -5,20 +5,17 @@
     </label>
 
     <div class="form-group">
-      <label for="exampleInputEmail1">Razão Social <em>*</em></label>
+      <label for="razaoSocial">Razão Social <em>*</em></label>
       <input
         type="text"
         class="form-control"
-        id="razaoSocial"  
+        id="razaoSocial"
         placeholder="Razão Social"
         formControlName="razaoSocial"
       />
-      <!--
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        -->
     </div>
     <div class="form-group">
-      <label for="exampleInputEmail1">Nome Fantasia <em>*</em> </label>
+      <label for="nomeFantasia">Nome Fantasia <em>*</em> </label>
       <input
         type="text"
         class="form-control"
@@ -26,12 +23,9 @@
         placeholder="Nome Fantasia"
         formControlName="nomeFantasia"
       />
-      <!--
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        -->
     </div>
     <div class="form-group">
-      <label for="exampleInputEmail1">CNPJ <em>*</em> </label>
+      <label for="cnpj">CNPJ <em>*</em> </label>
       <input
         type="text"
         class="form-control"
@@ -39,12 +33,9 @@
         placeholder="XX.XXX.XXX/XXXX-XX"
         formControlName="cnpj"
       />
-      <!--
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        -->
     </div>
     <div class="form-group">
-      <label for="exampleInputEmail1"
+      <label for="nomeResponsavelCadastro"
         >Nome do(a) Responsável pelo cadastro <em>*</em>
       </label>
       <input
@@ -54,12 +45,9 @@
         placeholder="Nome Completo"
         formControlName="nomeResponsavelCadastro"
       />
-      <!--
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        -->
     </div>
     <div class="form-group">
-      <label for="exampleFormControlInput1">Email <em>*</em> </label>
+      <label for="email">E-mail <em>*</em> </label>
       <input
         type="email"
         class="form-control"
@@ -69,7 +57,7 @@
       />
     </div>
     <div class="form-group">
-      <label for="exampleFormControlInput1">Telefone <em>*</em> </label>
+      <label for="telefone">Telefone <em>*</em> </label>
       <input
         type="text"
         class="form-control"
@@ -79,7 +67,7 @@
       />
     </div>
     <div class="form-group">
-      <label for="exampleFormControlInput1">Cep <em>*</em> </label>
+      <label for="cep">CEP <em>*</em> </label>
       <input
         type="text"
         class="form-control"
@@ -89,7 +77,7 @@
       />
     </div>
     <div class="form-group">
-      <label for="exampleFormControlInput1">Logradouro <em>*</em> </label>
+      <label for="logradouro">Logradouro <em>*</em> </label>
       <input
         type="text"
         class="form-control"
@@ -100,7 +88,7 @@
     </div>
     <div class="row duplo">
       <div class="col">
-        <label for="exampleFormControlInput1">Número <em>*</em> </label>
+        <label for="numero">Número <em>*</em> </label>
         <input
           type="text"
           class="form-control"
@@ -110,7 +98,7 @@
         />
       </div>
       <div class="col">
-        <label for="exampleFormControlInput1">Bairro <em>*</em> </label>
+        <label for="bairro">Bairro <em>*</em> </label>
         <input
           type="text"
           class="form-control"
@@ -121,7 +109,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="exampleFormControlInput1">Complemento <em>*</em> </label>
+      <label for="complemento">Complemento <em>*</em> </label>
       <input
         type="text"
         class="form-control"
@@ -132,7 +120,7 @@
     </div>
     <div class="row duplo">
       <div class="col">
-        <label for="exampleFormControlInput1">Estado/UF <em>*</em> </label>
+        <label for="estado">Estado/UF <em>*</em> </label>
         <input
           type="text"
           class="form-control"
@@ -142,7 +130,7 @@
         />
       </div>
       <div class="col">
-        <label for="exampleFormControlInput1">Cidade <em>*</em> </label>
+        <label for="cidade">Cidade <em>*</em> </label>
         <input
           type="text"
           class="form-control"
@@ -153,7 +141,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="inputPassword5">Senha <em>*</em> </label>
+      <label for="senha">Senha <em>*</em> </label>
       <input
         type="password"
         id="senha"
@@ -164,7 +152,7 @@
       />
     </div>
     <div class="form-group">
-      <label for="inputPassword5">Confirmar Senha <em>*</em> </label>
+      <label for="senha">Confirmar Senha <em>*</em> </label>
       <input
         type="password"
         id="senha"
@@ -188,17 +176,14 @@
       </label>
     </div>
     <div class="buttonForm">
-      <!--
-            <button type="submit" class="btn btn-primary mb-2" [disabled]="this.formCadastro.controls['nomeCompleto'].invalid">Limpar</button>
-        -->
       <button
         type="submit"
-        class="btn mb-2 cadastrar"
+        class="btn mb-2 btn-success"
         [disabled]="this.formCadastro.invalid"
       >
         Cadastrar
       </button>
-      <button type="submit" class="btn mb-2 limpar">Limpar</button>
+      <button type="submit" class="btn mb-2 btn-warning">Limpar</button>
     </div>
   </form>
 </div>
