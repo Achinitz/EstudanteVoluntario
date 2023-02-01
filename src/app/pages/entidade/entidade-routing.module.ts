@@ -8,6 +8,7 @@ import { CadastrarVagaComponent } from './home/cadastrar-vaga/cadastrar-vaga.com
 import { DetalheVagaEntidadeComponent } from './home/detalhe-vaga-entidade/detalhe-vaga-entidade.component';
 import { HomeComponent } from './home/home.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { VagasComponent } from './vagas/vagas.component';
 
 const routes: Routes = [
   {
@@ -19,11 +20,15 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'Perfil',
+        path: 'perfil',
         component: PerfilComponent,
       },
       {
-        path: 'DetalheVaga',
+        path: 'vagas',
+        component: VagasComponent,
+      },
+      {
+        path: 'detalhe-vaga',
         component: DetalheVagaEntidadeComponent,
       },
       {

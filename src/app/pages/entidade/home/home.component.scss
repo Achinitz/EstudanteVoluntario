@@ -1,123 +1,98 @@
 .topo {
-    flex-direction: column;
-    align-items: center;
+  flex-direction: column;
+  align-items: center;
 
-    h1 {
-        text-align: center;
-    }
+  h1 {
+    text-align: center;
+    font-weight: 500;
+  }
 }
 
 h2 {
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    margin-top: 1rem;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+svg {
+  width: 40px;
+  padding-right: 10px;
+}
+
+.quantidade-chamados {
+  border-radius: 50%;
+  padding-top: 6px;
+  border-radius: 20%;
+  padding-bottom: 6px;
+  padding-right: 9px;
+  padding-left: 9px;
+  background: green;
+  opacity: 0.6;
+  color: white;
+  font-weight: 600;
 }
 
 .dashboard {
-    div {
-        padding: 1.5rem;
-        margin-right: 2rem;
-        background-color: aqua;
-        width: 50%;
-    }
+  background-color: #c5e0e4;
+  border-radius: 1em;
+  div {
+    padding: 1.5rem;
+  }
+  span {
+    font-size: medium;
+  }
 }
 
 .card {
-    width: 15rem;
-    margin-right: 10px;
-    margin-top: 10px;
+  width: 15rem;
+  margin-right: 10px;
+  margin-top: 10px;
 
-    button {
-        border: none;
-        background-color: #008000;
-        color: #ffffff;
-        border-radius: 1rem;
-        padding: 0.5rem;
-
-        &:hover {
-            opacity: 0.5;
-        }
+  div:nth-of-type(2) {
+    h4 {
+      text-align: center;
     }
 
-    div:nth-of-type(2) {
-        h4 {
-            text-align: center;
-        }
-
-        p:nth-of-type(2) {
-            text-align: center;
-            border-radius: 1rem;
-        }
-
-        div {
-            display: flex;
-            justify-content: space-between;
-
-            button {
-                border: none;
-                background-color: #008000;
-                color: #ffffff;
-                border-radius: 1rem;
-                padding: 0.5rem;
-
-                &:hover {
-                    opacity: 0.5;
-                }
-
-                &:nth-of-type(2) {
-                    background-color: #f5f04a !important;
-                    color: #000000 !important;
-                }
-            }
-        }
-    }
-}
-
-.contentDetails {
-    display: flex;
-    flex-direction: initial;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    .imgDetails {
-        text-align: center;
+    p:nth-of-type(2) {
+      text-align: center;
+      border-radius: 1rem;
     }
 
     div {
-        .buttonsVagasCadastradas {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 1rem;
-
-            button:first-child {
-                margin-right: 0.5rem;
-            }
-
-            button:nth-of-type(2) {
-                background: red;
-            }
-        }
+      display: flex;
+      justify-content: space-between;
     }
+  }
+}
 
-    .btn {
-        margin-top: 2rem;
-        width: 25%;
-        color: #fff;
-        border-radius: 1rem;
+.contentDetails {
+  display: flex;
+  flex-direction: initial;
+  flex-wrap: wrap;
+  justify-content: center;
 
-        &:first-child {
-            background: green;
-            margin-right: 1rem;
-        }
+  .imgDetails {
+    text-align: center;
+  }
 
-        &:nth-of-type(2) {
-            background: red;
-        }
+  div {
+    .buttonsVagasCadastradas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1rem;
 
-        &:hover {
-            opacity: 0.7;
-        }
+      button:first-child {
+        margin-right: 0.5rem;
+      }
     }
+  }
+}
+
+.maisvagas {
+  float: right;
+  padding: 1.5em;
+  text-decoration: none;
+  font-weight: medium;
 }

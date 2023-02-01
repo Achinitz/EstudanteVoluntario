@@ -26,6 +26,7 @@ import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { VagasComponent } from './vagas/vagas.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MatButtonModule } from '@angular/material/button';
     ModalVisualizarComponent,
     ModalAdicionarAvaliacaoComponent,
     EntidadeComponent,
+    VagasComponent,
   ],
   imports: [
     CommonModule,

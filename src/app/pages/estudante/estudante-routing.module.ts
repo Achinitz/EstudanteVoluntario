@@ -18,19 +18,19 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'Perfil',
+        path: 'perfil',
         component: PerfilComponent,
       },
       {
-        path: 'Vagas',
+        path: 'vagas',
         component: VagaDetalhesComponent,
       },
       {
-        path: 'DetalheVaga',
+        path: 'detalhe-vaga',
         component: DetalheVagaComponent,
       },
       {
-        path: 'Certificado',
+        path: 'certificados',
         component: CertificadoComponent,
       },
     ],

@@ -4,11 +4,15 @@
 
   h1 {
     text-align: center;
+    font-weight: 500;
   }
 }
 
 h2 {
+  padding: 0;
+  margin: 0;
   text-align: center;
+  margin-top: 1rem;
 }
 
 .contentDetails {
@@ -18,30 +22,15 @@ h2 {
   justify-content: center;
 }
 
-.contentHomeEstudante {
-  display: inline;
-  justify-content: center;
-  width: 81%;
-}
-
-.contentPage {
-  padding: 1.5rem;
-  background-color: antiquewhite;
-  border-radius: 0.5rem;
-}
-
 .ultimasInscricoes {
   display: grid;
   margin-bottom: 2rem;
-
-  span {
-    margin-bottom: 1rem;
-  }
 }
 
 .vagasDisponiveis {
-  display: grid;
+  display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 1rem;
 }
 
@@ -50,34 +39,18 @@ h2 {
 }
 
 .buttonsVagasCadastradas {
-  text-align: center;
-  padding: 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
 
-  button {
-    &:first-child {
-      margin-right: 0.4rem;
-    }
-
-    &:nth-of-type(2) {
-      background-color: #ba0a0a !important;
-      color: #ffffff !important;
-    }
-
-    &:hover {
-      opacity: 0.7;
-    }
+  button:first-child {
+    margin-right: 0.5rem;
   }
 }
 
 .vagasCadastradas {
   flex-wrap: wrap;
-  opacity: 0.7;
-
-  .imgCard {
-    img {
-      max-width: 85%;
-    }
-  }
 }
 
 .statusPosition {
@@ -93,18 +66,6 @@ h2 {
   margin-right: 10px;
   margin-top: 10px;
 
-  button {
-    border: none;
-    background-color: #008000;
-    color: #ffffff;
-    border-radius: 1rem;
-    padding: 0.5rem;
-
-    &:hover {
-      opacity: 0.5;
-    }
-  }
-
   div:nth-of-type(2) {
     h4 {
       text-align: center;
@@ -118,29 +79,12 @@ h2 {
     div {
       display: flex;
       justify-content: space-between;
-
-      button {
-        border: none;
-        background-color: #008000;
-        color: #ffffff;
-        border-radius: 1rem;
-        padding: 0.5rem;
-
-        &:hover {
-          opacity: 0.5;
-        }
-
-        &:nth-of-type(2) {
-          background-color: #f5f04a !important;
-          color: #000000 !important;
-        }
-      }
     }
   }
 }
 
 .pagination ::ng-deep {
-  margin-left: auto;
+  align-self: center;
 
   .page-item {
     &.active {

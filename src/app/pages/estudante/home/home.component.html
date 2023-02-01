@@ -10,7 +10,7 @@
   </div>
 
   <section class="contentDetails">
-    <div class="col contentHomeEstudante">
+   
       <section class="row ultimasInscricoes">
         <h2>Últimas Inscrições</h2>
 
@@ -26,8 +26,8 @@
           >
             <!-- Alterar as cores do botão dependendo do status -->
             <p
-              [ngClass]="vaga.status === 'aberto' ? 'bg-success' : 'bg-warning'"
-              class="card-text statusPosition"
+              [ngClass]="vaga.status === 'Aberto' ? 'bg-success text-white' : 'bg-warning'"
+              class="statusPosition"
             >
               {{ vaga.status }}
             </p>
@@ -39,9 +39,10 @@
               <p class="card-text">{{ vaga.descricao }}</p>
             </div>
             <div class="buttonsVagasCadastradas">
-              <button (click)="exibirDetalhes(i)">Detalhes Vaga</button>
+              <button class="btn btn-primary" (click)="exibirDetalhes(i)">Detalhes</button>
               <button
-                *ngIf="vaga.status === 'aberto'"
+                *ngIf="vaga.status === 'Aberto'"
+                class="btn btn-danger"
                 (click)="cancelarInscricao(i)"
               >
                 Cancelar
@@ -62,10 +63,7 @@
             <div
               class="card"
               *ngFor="let vagaDisponivel of vagas; let i = index"
-            >
-              <p class="card-text statusPosition bg-success">
-                {{ vagaDisponivel.status }}
-              </p>
+            >              
               <div class="imgCard">
                 <img
                   src="{{ vagaDisponivel.img }}"
@@ -77,8 +75,8 @@
                 <h4 class="card-title">{{ vagaDisponivel.nomeEntidade }}</h4>
                 <p class="card-text">{{ vagaDisponivel.descricao }}</p>
                 <div>
-                  <button (click)="cadastrar(i)">Cadastrar-se</button>
-                  <button (click)="exibirDetalhes(i)">Detalhes Vaga</button>
+                  <button class="btn btn-success" (click)="cadastrar(i)">Cadastrar-se</button>
+                  <button class="btn btn-primary" (click)="exibirDetalhes(i)">Detalhes</button>
                 </div>
               </div>
             </div>
@@ -97,6 +95,6 @@
         >
         </ngb-pagination>
       </section>
-    </div>
+   
   </section>
 </section>

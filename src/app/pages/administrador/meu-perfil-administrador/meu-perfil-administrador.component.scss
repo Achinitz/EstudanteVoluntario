@@ -1,98 +1,44 @@
-.content-meu-perfil{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #b6cfd3;
-    border-radius: 0.5rem;
-}
+.topo {
+  flex-direction: column;
+  align-items: center;
 
-// .ng-select::ng-deep{
-//     .ng-select-container{
-//         .ng-value-container{
-//             .ng-placeholder{
-//                 background: white;
-//                 padding: 9px;
-//                 width: 100%;
-//                 border-radius: 5px;
-//             }
-//         }
-//     }
-// }
-
-.link-cep{
-    text-decoration: none;
-}
-
-.btn-primary{
-    margin-right: 10px;
-}
-
-.contentDetails-photo{
-}
-
-.img-user{
-    width: 30%;
-}
-
-.cadastrar{
-    background-color: red;
-}
-
-.salvar{
-    background-color: green;
-}
-
-section{    
-    display: flex;
-}
-
-h1{
+  h1 {
     text-align: center;
-    margin-top: 8px;
-    font-weight: 500;
+  }
 }
 
-.content{
-    margin-left: auto;
-    margin-right: auto; 
-    div{
-        form{
-            div{
-                margin-top: 0.6rem;
-            }
-        }
-    }
+.link-cep {
+  text-decoration: none;
+}
 
-    #imgUser{
-        width: 11rem;
-        height: 9rem;
-        border-radius: 50%;
-    }
+.img-user {
+  width: 30%;
+}
 
-    .inputFile{
-        display: grid;
-    }
+#imgUser {
+  width: 11rem;
+  height: 9rem;
+  border-radius: 50%;
+}
 
-    .buttonForm{
-        .btn{
-            width: 25%;
-            color: #fff;
-            border-radius: 1rem;
-            border: none;
-            
-            &:first-child{
-                background: green;
-                margin-right: 1rem;
-            }
-        
-            &:nth-of-type(2){
-                background: red;
-            }
-        
-            &:hover{
-                opacity: 0.7;
-            }
-        }
-    }
+.inputFile {
+  display: grid;
+}
 
+.buttonForm {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1em;
+  padding: 0;
+}
+
+.btn {
+  margin: 1rem;
+  width: 25%;
+  border-radius: 1rem;
+}
+
+em {
+  color: red;
 }

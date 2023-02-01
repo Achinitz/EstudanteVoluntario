@@ -1,4 +1,13 @@
-.content-meu-perfil{
+.topo {
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        text-align: center;
+    }
+}
+
+.content-meu-perfil {
     padding: 8px 16px 0px 16px;
     display: flex;
     flex-direction: column;
@@ -7,11 +16,11 @@
     border-radius: 0.5rem;
 }
 
-.content-card-beneficios-title{
+.content-card-beneficios-title {
     margin-right: 0.5rem;
 }
 
-.content-card-beneficios-property{
+.content-card-beneficios-property {
     background: #e1c882;
     padding: 0px 5px;
     margin-right: 0.5rem;
@@ -21,61 +30,63 @@
 
 .pagination ::ng-deep {
     margin-left: auto;
-    .page-item {
-      &.active {
-        .page-link {
-          background-color: #fff;
-          color: #439024;
-        }
-      }
-  
-      .page-link {
-        background-color: #fff;
-        color: #7d7d7d;
-        border-color: #ebebec;
-        font-size: 14px;
-      }
-    }
-  }
 
-.first-icon{
+    .page-item {
+        &.active {
+            .page-link {
+                background-color: #fff;
+                color: #439024;
+            }
+        }
+
+        .page-link {
+            background-color: #fff;
+            color: #7d7d7d;
+            border-color: #ebebec;
+            font-size: 14px;
+        }
+    }
+}
+
+.first-icon {
     width: 25px;
     margin-top: 5px;
     background: white;
     cursor: pointer;
 }
 
-.content-card-icons{
+.content-card-icons {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
-.content-card-tarefas,.content-card-beneficios{
+.content-card-tarefas,
+.content-card-beneficios {
     display: flex;
     flex-direction: row;
     justify-content: left !important;
     flex-wrap: wrap;
 }
 
-.content-card-vaga{
+.content-card-vaga {
     line-height: 1.5rem;
     padding: 5px;
 }
 
-.imgCard{
+.imgCard {
     width: 25%;
     padding: 5px;
     border-radius: 10px;
 }
 
-.card-content{
+.card-content {
     display: flex;
     flex-direction: row;
 }
 
-.card-content-filtro{
+.card-content-filtro {
     margin-top: 1rem;
     display: flex;
     //justify-content: center;
@@ -85,66 +96,68 @@
     font-weight: 500;
 }
 
-.vagasDisponiveis{
+.vagasDisponiveis {
     display: grid;
     flex-wrap: wrap;
     margin-bottom: 1rem;
 }
 
-.containerCard{
+.containerCard {
     display: flex;
 }
 
-.card{
+.card {
     width: 100%;
     //margin-right: 10px;
     margin-top: 10px;
     background-color: #e7e7e7 !important;
 
-    button{
+    button {
         border: none;
         background-color: #008000;
         color: #ffffff;
         border-radius: 1rem;
         padding: 0.5rem;
 
-        &:hover{
+        &:hover {
             opacity: 0.5;
         }
     }
 
-    div:nth-of-type(2){
-        h4{
+    div:nth-of-type(2) {
+        h4 {
             text-align: center;
         }
 
-        p:nth-of-type(2){
+        p:nth-of-type(2) {
             text-align: center;
             border-radius: 1rem;
         }
-        div{
+
+        div {
             display: flex;
             justify-content: space-between;
-        button{
-            border: none;
-            background-color: #008000;
-            color: #ffffff;
-            border-radius: 1rem;
-            padding: 0.5rem;
 
-            &:hover{
-                opacity: 0.5;
-            }
+            button {
+                border: none;
+                background-color: #008000;
+                color: #ffffff;
+                border-radius: 1rem;
+                padding: 0.5rem;
 
-            &:nth-of-type(2){
-                background-color: #f5f04a !important;
-                color: #000000 !important;
+                &:hover {
+                    opacity: 0.5;
+                }
+
+                &:nth-of-type(2) {
+                    background-color: #f5f04a !important;
+                    color: #000000 !important;
+                }
             }
         }
-    }
     }
 }
 
-.card-footer{
+.card-footer {
     padding: 0 0.5rem 0 0.5rem;
 }
