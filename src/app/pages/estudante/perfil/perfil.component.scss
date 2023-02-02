@@ -1,12 +1,13 @@
 .topo {
   flex-direction: column;
   align-items: center;
-
+  
   h1 {
     text-align: center;
+    font-weight: 500;
   }
 }
-.inicio{
+.inicio {
   padding-bottom: 1em;
 }
 
@@ -43,10 +44,10 @@
     margin-bottom: 1em;
     padding: 0;
   }
-  
+
   .btn {
     margin: 1rem;
-    width: 25%;  
+    width: 25%;
     border-radius: 1rem;
   }
 }
@@ -56,5 +57,5 @@
 }
 
 .duplo {
-  padding-bottom: 1em; 
+  padding-bottom: 1em;
 }

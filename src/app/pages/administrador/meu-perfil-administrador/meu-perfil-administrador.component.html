@@ -15,7 +15,7 @@
       <div class="row mx-2 mb-2">
         <div class="row col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2">
           <div class="form-group col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <label for="nome">Nome <em>*</em> </label>
+            <label for="nome">Nome Completo <em>*</em> </label>
             <input
               type="text"
               class="form-control"
@@ -24,7 +24,7 @@
               formControlName="nome"
             />
             <small
-              id="nomeHelp"
+              id="help"
               class="form-text text-danger ng-star-inserted"
               *ngIf="
                 formCadastro.controls.nome.touched &&
@@ -33,28 +33,6 @@
               [@fadeInOut]
             >
               O campo Nome é obrigatório!
-            </small>
-          </div>
-
-          <div class="form-group col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <label for="sobrenome">Sobrenome <em>*</em> </label>
-            <input
-              type="text"
-              class="form-control"
-              id="sobrenome"
-              placeholder="Sobrenome"
-              formControlName="sobrenome"
-            />
-            <small
-              id="sobrenomeHelp"
-              class="form-text text-danger ng-star-inserted"
-              *ngIf="
-                formCadastro.controls.sobrenome.touched &&
-                formCadastro.controls.sobrenome.invalid
-              "
-              [@fadeInOut]
-            >
-              O campo Sobrenome é obrigatório!
             </small>
           </div>
         </div>
@@ -96,7 +74,7 @@
               (focusout)="isValidCPF(formCadastro.controls.cpf.value)"
             />
             <small
-              id="cpfHelp"
+              id="help"
               class="form-text text-danger ng-star-inserted"
               *ngIf="
                 formCadastro.controls.cpf.touched &&
@@ -114,7 +92,7 @@
           <div
             class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
           >
-            <label for="exampleFormControlInput1">E-mail <em>*</em> </label>
+            <label for="email">E-mail <em>*</em> </label>
             <input
               type="email"
               class="form-control"
@@ -123,7 +101,7 @@
               formControlName="email"
             />
             <small
-              id="emailHelp"
+              id="help"
               class="form-text text-danger ng-star-inserted"
               *ngIf="
                 formCadastro.controls.email.touched &&
@@ -131,7 +109,7 @@
               "
               [@fadeInOut]
             >
-              O campo Email é obrigatório!
+              O campo E-mail é obrigatório!
             </small>
           </div>
         </div>
@@ -147,7 +125,7 @@
               formControlName="identificacaoGenero"
             />
             <small
-              id="generoHelp"
+              id="help"
               class="form-text text-danger ng-star-inserted"
               *ngIf="
                 formCadastro.controls.identificacaoGenero.touched &&
@@ -164,7 +142,7 @@
                             formControlName="dataNascimento"> -->
             <input class="form-control" type="date" />
             <small
-              id="dataNascimentoHelp"
+              id="help"
               class="form-text text-danger ng-star-inserted"
               *ngIf="
                 formCadastro.controls.dataNascimento.touched &&
@@ -187,7 +165,7 @@
               type="text"
               (keyup)="validaCep()"
               class="form-control"
-              id="exampleFormControlInput1"
+              id="cep"
               placeholder="XXXXX-XXX"
               formControlName="cep"
               mask="00000-000"
@@ -202,7 +180,7 @@
               </a>
             </label>
             <small
-              id="emailHelp"
+              id="help"
               class="form-text text-danger ng-star-inserted"
               *ngIf="
                 formCadastro.controls.cep.touched &&
@@ -235,7 +213,7 @@
                             <option ng-repeat="x in estados" ng-value="x">{{x.model}}</option>
                           </select> -->
             <small
-              id="ufHelp"
+              id="help"
               class="form-text text-danger ng-star-inserted"
               *ngIf=""
               [@fadeInOut]
@@ -258,7 +236,7 @@
             >
             </ng-select>
             <small
-              id="cidadeHelp"
+              id="help"
               class="form-text text-danger ng-star-inserted"
               *ngIf=""
               [@fadeInOut]
@@ -281,7 +259,7 @@
             formControlName="logradouro"
           />
           <small
-            id="logradouroHelp"
+            id="help"
             class="form-text text-danger ng-star-inserted"
             *ngIf="formCadastro.controls.logradouro.touched"
             [@fadeInOut]
@@ -300,7 +278,7 @@
               formControlName="complemento"
             />
             <small
-              id="complementoHelp"
+              id="help"
               class="form-text text-danger ng-star-inserted"
               *ngIf="formCadastro.controls.complemento.touched"
               [@fadeInOut]
@@ -328,7 +306,7 @@
                     >
                     </ng-select>  -->
             <small
-              id="bairroHelp"
+              id="help"
               class="form-text text-danger ng-star-inserted"
               *ngIf="formCadastro.controls.bairro.touched"
               [@fadeInOut]
@@ -350,7 +328,7 @@
                 formControlName="numero"
               />
               <small
-                id="numeroHelp"
+                id="help"
                 class="form-text text-danger ng-star-inserted"
                 *ngIf="formCadastro.controls.numero.touched"
                 [@fadeInOut]
@@ -368,7 +346,7 @@
                 id="exampleFormControlInput1"
                 placeholder="(XX) XXXX-XXXX"
                 formControlName="telefone"
-                mask="(00) 0000-0000"
+                mask="(00) 00000-0000"
               />
             </div>
             <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -384,7 +362,7 @@
                 mask="(00) 00000-0000"
               />
               <small
-                id="telefoneHelp"
+                id="help"
                 class="form-text text-danger ng-star-inserted"
                 *ngIf="formCadastro.controls.telefone.touched"
                 [@fadeInOut]
@@ -408,7 +386,7 @@
               formControlName="senha"
             />
             <small
-              id="senhaHelp"
+              id="help"
               class="form-text text-danger ng-star-inserted"
               *ngIf="
                 formCadastro.controls.senha.touched &&
@@ -433,7 +411,7 @@
               (focusout)="validarSenha()"
             />
             <small
-              id="senhaHelp"
+              id="help"
               class="form-text text-danger ng-star-inserted"
               *ngIf="
                 formCadastro.controls.confirmarSenha.touched &&
