@@ -1,65 +1,59 @@
 <section class="content">
-    <div class="topo">
-      <h1>Detalhes da Vaga</h1>
+  <div class="topo">
+    <h1>Detalhes da Vaga</h1>
+  </div>
+
+  <section>
+    <div class="descricao">
+      <p>Descrição:</p>
+      <p>Requisitos:</p>
+      <p>Auxílio:</p>
+      <p>Local:</p>
+      <p>Data:</p>
+      <p>Horário de Início:</p>
+      <p>Horário de Encerramento:</p>
+      <p>Número de Vagas:</p>
+      <p>Inscritos:</p>
     </div>
-    
-    <section class="col-10">
-      <mat-tab-group mat-align-tabs="start">
-        <mat-tab label="Detalhes da Vaga">
-          <div class="d-grid">
-            <span> Descrição: </span>
-            <span> Requisitos: </span>
-            <span> Auxílio: </span>
-            <span> Local: </span>
-            <span> Data: </span>
-            <span> Horário de Início: </span>
-            <span> Horário de Encerramento: </span>
-            <span> Número de Vagas: </span>
-            <span> Inscritos: </span>
+
+    <h2>Inscritos</h2>
+    <div *ngIf="!mostraDetalhesCandidato">
+      <div *ngFor="let estudante of estudantesSelecionados; index as Index">
+        <div class="contentInscritos col-12">
+          <div class="col-3 imagemUsuario">
+            <img *ngIf="estudante.img" src="{{ estudante.img }}" />
+            <img
+              *ngIf="!estudante.img"
+              src="../../../../../assets/svg/avatar.svg"
+            />
           </div>
-        </mat-tab>
-        <mat-tab label="Inscritos">
-          <div *ngIf="!mostraDetalhesCandidato">
-            <div *ngFor="let estudante of estudantesSelecionados; index as Index">
-              <div class="contentInscritos col-12">
-                <div class="col-3 imagemUsuario">
-                  <img *ngIf="estudante.img" src="{{ estudante.img }}" />
-                  <img
-                    *ngIf="!estudante.img"
-                    src="../../../../../assets/svg/avatar.svg"
-                  />
-                </div>
-                <div class="col-7">
-                  <div>
-                    {{ estudante.nome }}
-                  </div>
-                  <div>
-                    <b>Curso</b>
-                    {{ estudante.curso }}
-                  </div>
-                  <div>
-                    <b>Idade</b>
-                    {{ estudante.idade }}
-                  </div>
-                  <div>
-                    <b>Data da Inscrição</b>
-                    {{ estudante.dataInscricao }}
-                  </div>
-                </div>
-                <div class="col-2 d-flex flex-column">
-                  <button (click)="detalheCandidato(Index)">Analisar</button>
-                  <span> Status Vaga </span>
-                </div>
-              </div>
+          <div class="col-7">
+            <div>
+              {{ estudante.nome }}
+            </div>
+            <div>
+              <b>Curso</b>
+              {{ estudante.curso }}
+            </div>
+            <div>
+              <b>Idade</b>
+              {{ estudante.idade }}
+            </div>
+            <div>
+              <b>Data da Inscrição</b>
+              {{ estudante.dataInscricao }}
             </div>
           </div>
-  
-          <div *ngIf="mostraDetalhesCandidato">
-            <app-detalhes-inscritos></app-detalhes-inscritos>
+          <div class="col-2 d-flex flex-column">
+            <button (click)="detalheCandidato(Index)">Analisar</button>
+            <span> Status Vaga </span>
           </div>
-        </mat-tab>
-        <!-- <mat-tab label="Lista de Presença">Content 3</mat-tab> -->
-      </mat-tab-group>
-    </section>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="mostraDetalhesCandidato">
+      <app-detalhes-inscritos></app-detalhes-inscritos>
+    </div>
   </section>
-  
+</section>

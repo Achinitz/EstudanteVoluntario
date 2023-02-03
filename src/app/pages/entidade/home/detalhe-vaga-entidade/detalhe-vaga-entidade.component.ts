@@ -14,10 +14,26 @@ export class DetalheVagaEntidadeComponent implements OnInit {
 
   mostraDetalhesCandidato = this.dataService.show;
 
+  vaga: {
+    id: 1;
+    nomeVaga: "Contador de História";
+    img: "../../assets/imagens/mulherGrandeCoracao.jpg";
+    descricao: "Vaga para pessoas de bom coração";
+    requisitos: "Sem requisitos";
+    auxilio: "Não";
+    local: "Endereço completo";
+    data: "30/03/2023";
+    horarioInicio: "12:00";
+    horarioFim: "18:00";
+    vagas: 2;
+    inscritos: 4;
+    status: "Aberto";
+  };
+  
   estudantesSelecionados: any = [
     {
       nome: 'Jeronimo',
-      img: '../../../../../assets/imagens/ideia.jpg"',
+      img: null,
       cpf: '123',
       curso: 'Analise de Sistemas',
       idade: 22,
@@ -26,7 +42,7 @@ export class DetalheVagaEntidadeComponent implements OnInit {
     },
     {
       nome: 'Alienigena',
-      img: '../../../../../assets/imagens/ideia.jpg"',
+      img: null,
       cpf: '1234',
       curso: 'Analise de Sistemas',
       idade: 22,
