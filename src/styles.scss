@@ -28,6 +28,13 @@ h1{
     margin-bottom: 1.5rem;
   }
 
+  .topo{
+    h1{
+      text-align: initial !important;
+      width: 500;
+    }
+  }
+
 .ng-select .ng-select-container{
     z-index: 1 !important;
 }

@@ -1,11 +1,6 @@
 .topo {
   flex-direction: column;
   align-items: center;
-
-  h1 {
-    text-align: center;
-    font-weight: 500;
-  }
 }
 
 h2 {
@@ -67,10 +62,9 @@ svg {
 }
 
 .contentDetails {
-  display: flex;
-  flex-direction: initial;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  column-gap: 3rem;
 
   .imgDetails {
     text-align: center;

@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <section class="contentDetails">
+  <section class="col-12 contentDetails">
    
       <section class="row ultimasInscricoes">
         <h2>Últimas Inscrições</h2>
@@ -19,7 +19,8 @@
             Você ainda não tem inscrições em vagas!
           </ngb-alert>
         </div>
-        <div class="containerCard vagasCadastradas">
+        <div class="content__card">
+          
           <div
             class="card"
             *ngFor="let vaga of vagasCadastradas; let i = index"
@@ -49,6 +50,7 @@
               </button>
             </div>
           </div>
+
         </div>
       </section>
 
