@@ -2,9 +2,8 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  padding: 1em;
-  flex-grow:1
-  //min-height: 80vh;
+  margin-right: 0;
+  padding-right: 0;
 
   h2 {
     margin-top: 1rem;
@@ -24,6 +23,10 @@ section {
     align-self: center;
   }
 
+  .content__imgDiv{
+    padding: 0px 30px;    
+  }
+
   .terceiraDiv {
     display: grid;
     padding: 0.5em;
@@ -41,8 +44,9 @@ section {
       button {
         width: 75%;
         background-color: #1265a2;
+        border: none;
         &:hover {
-          opacity: 0.5;
+          opacity: 0.9;
         }
       }
     }

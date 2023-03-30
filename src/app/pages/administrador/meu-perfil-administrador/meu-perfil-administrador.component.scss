@@ -36,8 +36,9 @@
 
 .btn {
   margin: 1rem;
-  width: 25%;
-  border-radius: 1rem;
+  &:hover {
+    opacity: 0.9;
+  } 
 }
 
 em {

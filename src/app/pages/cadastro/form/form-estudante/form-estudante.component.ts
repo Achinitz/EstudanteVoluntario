@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   animations: genericAnimations,
 })
 export class FormEstudanteComponent implements OnInit {
+  submitted = false;
   estado: any;
   cidade: any;
   bairro: any;
@@ -23,22 +24,22 @@ export class FormEstudanteComponent implements OnInit {
   public formCadastro = new FormGroup({
     cpf: new FormControl(null, [
       Validators.required,
-      Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$'),
+      Validators.pattern('[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}'),
     ]),
     nomeCompleto: new FormControl(null, Validators.required),
     nomeSocial: new FormControl(null),
     confirmaNomeSocial: new FormControl(false),
     identificacaoGenero: new FormControl(null, Validators.required),
     dataNascimento: new FormControl(null, Validators.required),
-    email: new FormControl(null, Validators.required),
+    email: new FormControl(null, [Validators.required, Validators.email]),
     telefone: new FormControl(null, Validators.required),
     cep: new FormControl(null, Validators.required),
     logradouro: new FormControl(null, Validators.required),
     numero: new FormControl(null, Validators.required),
     bairro: new FormControl(null, Validators.required),
-    complemento: new FormControl(null, Validators.required),
     estado: new FormControl(null, Validators.required),
-    Cidade: new FormControl(null, Validators.required),
+    cidade: new FormControl(null, Validators.required),
+    complemento: new FormControl(null, Validators.required),
     senha: new FormControl(null, Validators.required),
     confirmarSenha: new FormControl(null, Validators.required),
     termo: new FormControl(null, Validators.required),
@@ -59,9 +60,9 @@ export class FormEstudanteComponent implements OnInit {
   inicializaFormulario() {
     this.enderecoService.getEstados().subscribe((data: any) => {
       this.estados = data;
-      console.log('Inicio estados');
-      console.log(data);
-      console.log('Fim estados');
+      //  console.log('Inicio estados');
+      // console.log(data);
+      //  console.log('Fim estados');
     });
   }
 
@@ -77,13 +78,13 @@ export class FormEstudanteComponent implements OnInit {
   }
 
   onAddBairro() {
-    console.log('Inicio cidade selecionado');
-    console.log(this.formCadastro.get('cidade')?.value);
-    console.log('Fim cidade selecionado');
+    //console.log('Inicio cidade selecionado');
+    //console.log(this.formCadastro.get('cidade')?.value);
+    //console.log('Fim cidade selecionado');
   }
 
   validaCep() {
-    console.log(this.formCadastro.get('cep')?.value.length);
+    //console.log(this.formCadastro.get('cep')?.value.length);
     if (this.formCadastro.get('cep')?.value.length === 8) {
       let cep = this.formCadastro.get('cep')?.value;
       this.consultaCepService.getDataCep(cep.replace('-', '')).subscribe(
@@ -113,7 +114,7 @@ export class FormEstudanteComponent implements OnInit {
           console.log('Ocorreu um erro');
         }
       );
-      console.log('saiu na api');
+      console.log('CEP ok');
     }
   }
 
@@ -169,11 +170,21 @@ export class FormEstudanteComponent implements OnInit {
       !this.formCadastro.get('senha')?.invalid &&
       !this.formCadastro.get('confirmarSenha')?.invalid
     ) {
-      console.log('senha igual');
+      //console.log('senha igual');
     } else {
       this.toast.error('As senhas não são iguais!');
     }
   }
 
   ngOnInit(): void {}
+
+  onSubmit() {
+    this.submitted = true;
+    if (this.formCadastro.valid) {
+      alert(
+        'Form Submitted succesfully!!!\n Check the values in browser console.'
+      );
+      console.table(this.formCadastro.value);
+    }
+  }
 }

@@ -10,17 +10,19 @@
   padding: 0.5em;
 }
 
+.form-check-label{
+  margin-left: 0.2rem;
+}
+
 .buttonForm {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 1em;  
+  margin-bottom: 1rem;
 }
 
 .btn {
   margin: 1rem;
-  width: 25%;  
-  border-radius: 1rem;
+  &:hover {
+    opacity: 0.9;
+  } 
 }
 
 em {

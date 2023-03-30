@@ -4,318 +4,156 @@
   </div>
 
   <section>
-    <mat-tab-group mat-align-tabs="start">
-      <mat-tab label="Perfil">
-        <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">
-          <div class="row userImg">
-            <img
-              id="imgUser"
-              src="../../../../assets/imagens/cadastroImagem.jpg"
-              class="float-center"
-              alt="..."
-            />
-          </div>
-          <div class="form-group inputFile">
-            <label for="imgPerfil">Imagem de Perfil </label>
-            <input type="file" class="form-control-file" id="inputFile" />
-          </div>
-
-          <div class="form-group">
-            <label for="areasInteresse">Áreas de Interesse </label>
-            <textarea
-              class="form-control"
-              id="areasInteresse"
-              rows="3"
-            ></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="experiencias">Experiências Anteriores </label>
-            <textarea
-              class="form-control"
-              id="experiencias"
-              rows="3"
-            ></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="ies">Instituição de Ensino <em>*</em> </label>
-            <select class="form-control" id="ies">
-              <option value="ufpr">Universidade Federal do Paraná</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="grau">Grau Acadêmico: <em>*</em> </label>
-            <select class="form-control" id="grau">
-              <option *ngFor="let grau of graus" value="{{ grau.id }}">
-                {{ grau.nome }}
-              </option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="curso">Instituição de Ensino <em>*</em> </label>
-            <select class="form-control" id="curso">
-              <option value="curso">Opções de cursos</option>
-            </select>
-          </div>
-
-          <div class="row duplo">
-            <div class="col">
-              <label for="anoInicio">Ano de Início <em>*</em> </label>
-              <input
-                class="form-control"
-                placeholder="yyyy-mm-dd"
-                type="date"
-                id="anoInicio"
-              />
-            </div>
-            <div class="col">
-              <label for="anoConclusao"
-                >Previsão de conclusão <em>*</em>
-              </label>
-              <input
-                class="form-control"
-                placeholder="yyyy-mm-dd"
-                type="date"
-                id="anoConclusao"
-              />
-            </div>
-
-            <div class="form-group inputFile">
-              <label for="comprovanteMatricula"
-                >Comprovante de Matrícula <em>*</em>
-              </label>
-              <input
-                type="file"
-                class="form-control-file"
-                id="comprovanteMatricula"
-              />
-            </div>
-          </div>
-
-          <div class="buttonForm">
-            <button
-              type="submit"
-              class="btn btn-success mb-2"
-              [disabled]="this.formCadastro.invalid"
-              (click)="mostrarValores()"
-            >
-              Salvar
-            </button>
-            <button type="submit" class="btn btn-warning mb-2">
-              Limpar
-            </button>
-          </div>
-
-        </form>
-      </mat-tab>
-      <mat-tab label="Dados Pessoais">
-        <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">
-          <label class="inicio">
-            <em>*</em>
-            <i>  Campos de preenchimento obrigatório </i>
-          </label>
-          <div class="form-group">
-            <label for="nomeCompleto">Nome Completo</label>
-            <input
-              type="text"
-              class="form-control"
-              id="nomeCompleto"
-              placeholder="Nome Completo"
-              disabled
-            />
-          </div>
-          <div class="form-group">
-            <label for="nomeSocial">Nome Social</label>
-            <input
-              type="text"
-              class="form-control"
-              id="nomeSocial"
-              placeholder="Nome Social"
-            />
-          </div>
-          <div class="form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="usarNomeSocial"
-            />
-            <label class="form-check-label" for="usarNomeSocial"
-              >Desejo usar meu nome social</label
-            >
-          </div>
-          <div class="form-group">
-            <label for="cpf">CPF</label>
-            <input
-              type="text"
-              class="form-control"
-              id="cpf"
-              placeholder="XXX.XXX.XXX-XX"
-              disabled
-            />
-          </div>
-          <div class="row duplo">
-            <div class="col">
-              <label for="genero">Identificação de Gênero <em>*</em> </label>
-              <input
-                type="text"
-                class="form-control"
-                id="genero"
-                placeholder="genero"
-              />
-            </div>
-            <div class="col">
-              <label for="dataNascimento">Data de Nascimento <em>*</em> </label>
-              <input
-                class="form-control"
-                placeholder="yyyy-mm-dd"
-                type="date"
-                id="dataNascimento"
-              />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email <em>*</em> </label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="name@email.com"
-            />
-          </div>
-          <div class="form-group">
-            <label for="telefone">Telefone <em>*</em> </label>
-            <input
-              type="text"
-              class="form-control"
-              id="telefone"
-              placeholder="(XX) 9XXXX-XXXX"
-            />
-          </div>
-          <div class="form-group">
-            <label for="cep">Cep <em>*</em> </label>
-            <input
-              type="text"
-              class="form-control"
-              id="cep"
-              placeholder="XXXXX-XXX"
-            />
-          </div>
-          <div class="form-group">
-            <label for="complemento">Complemento <em>*</em> </label>
-            <input
-              type="text"
-              class="form-control"
-              id="complemento"
-              placeholder="Complemento ou Ponto de Referência."
-            />
-          </div>
-          <div class="form-group">
-            <label for="logradouro">Logradouro <em>*</em> </label>
-            <input
-              type="text"
-              class="form-control"
-              id="logradouro"
-              placeholder="Rua, Avenida, Travessa, etc."
-            />
-          </div>
-          <div class="row duplo">
-            <div class="col">
-              <label for="estado">Estado/UF <em>*</em> </label>
-              <input
-                type="text"
-                class="form-control"
-                id="estado"
-                placeholder="Estado"
-              />
-            </div>
-            <div class="col">
-              <label for="cidade">Cidade <em>*</em> </label>
-              <input
-                type="text"
-                class="form-control"
-                id="cidade"
-                placeholder="Cidade"
-              />
-            </div>
-          </div>
-          <div class="row duplo">
-            <div class="col">
-              <label for="numero">Número <em>*</em> </label>
-              <input
-                type="text"
-                class="form-control"
-                id="numero"
-                placeholder="Número"
-              />
-            </div>
-            <div class="col">
-              <label for="bairro">Bairro <em>*</em> </label>
-              <input type="text" class="form-control" placeholder="Bairro" />
-            </div>
-          </div>       
-
-          <div class="buttonForm">
-            <button
-              type="submit"
-              class="btn btn-success mb-2"
-              [disabled]="this.formCadastro.invalid"
-              (click)="mostrarValores()"
-            >
-              Salvar
-            </button>
-            <button type="submit" class="btn btn-warning mb-2">
-              Limpar
-            </button>
-          </div>
-
-        </form>
-      </mat-tab>
-      <mat-tab label="Segurança">
-        <form class="formCadastro">
-          <div class="form-group">
-            <label for="inputPassword5">Senha atual<em>*</em> </label>
-            <input
-              type="password"
-              id="senha"
-              class="form-control"
-              placeholder="Digite a sua senha atual"
-            />
-          </div>
-          <div class="form-group">
-            <label for="inputPassword5">Nova senha<em>*</em> </label>
-            <input
-              type="password"
-              id="senha"
-              class="form-control"
-              placeholder="Digite a sua nova senha"
-            />
-          </div>
-          <div class="form-group">
-            <label for="inputPassword5">Confirmar Senha <em>*</em> </label>
-            <input
-              type="password"
-              id="senha"
-              class="form-control"
-              placeholder="Confirme a sua nova senha"
-            />
-          </div>
+    <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">      
          
-          <div class="buttonForm">
-            <button
-              type="submit"
-              class="btn btn-success mb-2"
-              [disabled]="this.formCadastro.invalid"
-              (click)="mostrarValores()"
-            >
-              Salvar
-            </button>            
-          </div>
+      <div class="row userImg">
+        <img id="imgUser" src="../../../../assets/imagens/cadastroImagem.jpg" class="float-center" alt="..." />
+      </div>
+      <div class="form-group inputFile">
+        <label for="imgPerfil">Imagem de Perfil </label>
+        <input type="file" class="form-control-file" id="inputFile" />
+      </div>
+      
+     
+      <div class="form-group">
+        <label for="nomeCompleto">Nome Completo</label>
+        <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo" disabled />
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="confirmaNomeSocial" />
+        <label class="form-check-label" for="confirmaNomeSocial">Desejo usar meu nome social</label>
+      </div>
+      <div class="form-group">
+        <label for="nomeSocial">Nome Social</label>
+        <input type="text" class="form-control" id="nomeSocial" placeholder="Nome Social" />
+      </div>     
+      <div class="form-group">
+        <label for="cpf">CPF</label>
+        <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" disabled />
+      </div>
+      <div class="form-group">
+        <label for="email">Email <em>*</em> </label>
+        <input type="email" class="form-control" id="email" placeholder="name@email.com" />
+      </div>
+      <div class="row duplo">
+        <div class="col">
+          <label for="identificacaoGenero">Identificação de Gênero <em>*</em> </label>
+          <input type="text" class="form-control" id="identificacaoGenero" placeholder="Ex: Masculino" />
+        </div>
+        <div class="col">
+          <label for="dataNascimento">Data de Nascimento <em>*</em> </label>
+          <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="dataNascimento" />
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="telefone">Telefone <em>*</em> </label>
+        <input type="text" class="form-control" id="telefone" placeholder="(XX) 9XXXX-XXXX" mask="(00) 00000-0000 || (00) 0000-0000" />
+      </div>
+      <div class="form-group">
+        <label for="cep">CEP <em>*</em> </label>
+        <input type="text" class="form-control" id="cep" placeholder="XXXXX-XXX" />
+      </div>
+      <div class="form-group">
+        <label for="complemento">Complemento <em>*</em> </label>
+        <input type="text" class="form-control" id="complemento" placeholder="Complemento ou Ponto de Referência." />
+      </div>
+      <div class="form-group">
+        <label for="logradouro">Logradouro <em>*</em> </label>
+        <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, Travessa, etc." />
+      </div>
+      <div class="row duplo">
+        <div class="col">
+          <label for="estado">Estado/UF <em>*</em> </label>
+          <input type="text" class="form-control" id="estado" placeholder="Estado" />
+        </div>
+        <div class="col">
+          <label for="cidade">Cidade <em>*</em> </label>
+          <input type="text" class="form-control" id="cidade" placeholder="Cidade" />
+        </div>
+      </div>
+      <div class="row duplo">
+        <div class="col">
+          <label for="numero">Número <em>*</em> </label>
+          <input type="text" class="form-control" id="numero" placeholder="Número" />
+        </div>
+        <div class="col">
+          <label for="bairro">Bairro <em>*</em> </label>
+          <input type="text" class="form-control" placeholder="Bairro" />
+        </div>
+      </div>
+   
 
-        </form>
-      </mat-tab>
-    </mat-tab-group>
+      <div class="form-group">
+        <label for="areasInteresse">Áreas de Interesse </label>
+        <textarea class="form-control" id="areasInteresse" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="experiencias">Experiências Anteriores </label>
+        <textarea class="form-control" id="experiencias" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="ies">Instituição de Ensino <em>*</em> </label>
+        <select class="form-control" id="ies">
+          <option value="ufpr">Universidade Federal do Paraná</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="grau">Grau Acadêmico: <em>*</em> </label>
+        <select class="form-control" id="grau">
+          <option *ngFor="let grau of graus" value="{{ grau.id }}">
+            {{ grau.nome }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="curso">Instituição de Ensino <em>*</em> </label>
+        <select class="form-control" id="curso">
+          <option value="curso">Opções de cursos</option>
+        </select>
+      </div>
+
+      <div class="row duplo">
+        <div class="col">
+          <label for="anoInicio">Ano de Início <em>*</em> </label>
+          <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="anoInicio" />
+        </div>
+        <div class="col">
+          <label for="anoConclusao">Previsão de conclusão <em>*</em> </label>
+          <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="anoConclusao" />
+        </div>
+
+        <div class="form-group inputFile">
+          <label for="comprovanteMatricula">Comprovante de Matrícula <em>*</em>
+          </label>
+          <input type="file" class="form-control-file" id="comprovanteMatricula" />
+        </div>
+      </div>
+
+   
+      <div class="form-group">
+        <label for="inputPassword5">Senha atual<em>*</em> </label>
+        <input type="password" id="senha" class="form-control" placeholder="Digite a sua senha atual" />
+      </div>
+      <div class="form-group">
+        <label for="inputPassword5">Nova senha<em>*</em> </label>
+        <input type="password" id="senha" class="form-control" placeholder="Digite a sua nova senha" />
+      </div>
+      <div class="form-group">
+        <label for="inputPassword5">Confirmar Senha <em>*</em> </label>
+        <input type="password" id="senha" class="form-control" placeholder="Confirme a sua nova senha" />
+      </div>
+
+      <div class="buttonForm">
+        <button type="submit" class="btn btn-success"
+          (click)="mostrarValores()">
+          Salvar
+        </button>
+      </div>
+    </form>
   </section>
 </section>
