@@ -1,11 +1,6 @@
 .topo {
   flex-direction: column;
   align-items: center;
-
-  h1 {
-    text-align: center;
-    font-weight: 500;
-  }
 }
 
 h2 {
@@ -19,7 +14,12 @@ h2 {
   display: flex;
   flex-direction: initial;
   flex-wrap: wrap;
-  justify-content: center;
+}
+
+.content__card{
+  display: flex;
+  // grid-template-columns: repeat(auto_fill, minmax(10rem, 1fr));
+  // column-gap: 4rem;
 }
 
 .ultimasInscricoes {
@@ -30,12 +30,21 @@ h2 {
 .vagasDisponiveis {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: initial !important;
   margin-bottom: 1rem;
 }
 
 .containerCard {
-  display: flex;
+    display: flex;
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(10rem,1fr));
+  // column-gap: 4rem;
+}
+
+.vagasCadastradas{
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(10rem,1fr));
+  // column-gap: 4rem;
 }
 
 .buttonsVagasCadastradas {
@@ -47,10 +56,6 @@ h2 {
   button:first-child {
     margin-right: 0.5rem;
   }
-}
-
-.vagasCadastradas {
-  flex-wrap: wrap;
 }
 
 .statusPosition {
