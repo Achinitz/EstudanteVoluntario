@@ -21,6 +21,16 @@ export class HeaderComponent implements OnInit {
     return doc;
   }
 
+  sidebarMobile(){
+
+    if(document.getElementById('navSideBar').classList.contains('showSideBar')){
+      document.getElementById('navSideBar').classList.remove('showSideBar');
+    }else{
+      document.getElementById('navSideBar').classList.add('showSideBar');
+    }
+
+  }
+
   public logout() {
     console.log('logout')
     localStorage.clear();

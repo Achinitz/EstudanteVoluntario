@@ -17,9 +17,9 @@ h2 {
 }
 
 .content__card{
-  display: flex;
-  // grid-template-columns: repeat(auto_fill, minmax(10rem, 1fr));
-  // column-gap: 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto_fill, minmax(10rem, 1fr));
+  column-gap: 4rem;
 }
 
 .ultimasInscricoes {
@@ -30,7 +30,7 @@ h2 {
 .vagasDisponiveis {
   display: flex;
   flex-wrap: wrap;
-  justify-content: initial !important;
+  justify-content: initial;
   margin-bottom: 1rem;
 }
 

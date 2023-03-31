@@ -81,19 +81,19 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th class="col-8" scope="col">Entidade</th>
-          <th class="col-3" scope="col">Período</th>
-          <th class="col-1" scope="col">Ações</th>
+          <th class="col-6" scope="col">Entidade</th>
+          <th class="col-3 text-center" scope="col">Período</th>
+          <th class="col-3" scope="col">Ações</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let country of countries; index as i">
-          <td>
+          <td class="col-6">
             {{ country.name }}
           </td>
-          <td>10/10/1010 - 20/20/2020</td>
-          <td class="buttonsActions">
-            <button>
+          <td class="col-3 text-center">10/10/1010 - 20/20/2020</td>
+          <td class="col-3 buttonsActions">
+            <button class="button-table">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -110,7 +110,7 @@
                 />
               </svg>
             </button>
-            <button class="button_action">
+            <button class="button-table">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

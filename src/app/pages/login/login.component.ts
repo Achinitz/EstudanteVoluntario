@@ -18,11 +18,11 @@ export class LoginComponent implements OnInit {
 
   login(){
     console.log("Entrou no login");
-    if(this.formLogin.value.cpfoucnpj.length === 11 || this.formLogin.value.cpfoucnpj.length === 14 || this.formLogin.value.cpfoucnpj == 123){
+    if(this.formLogin.value.cpfoucnpj.length === 11 || this.formLogin.value.cpfoucnpj.length === 14 || this.formLogin.value.cpfoucnpj == 11111111111){
       this.router.navigate(['/Estudante']);
-    }else if(this.formLogin.value.cpfoucnpj.length === 14 || this.formLogin.value.cpfoucnpj.length === 18 || this.formLogin.value.cpfoucnpj == 1234){
+    }else if(this.formLogin.value.cpfoucnpj.length === 14 || this.formLogin.value.cpfoucnpj.length === 18 || this.formLogin.value.cpfoucnpj == 22222222222){
       this.router.navigate(['/Entidade'])
-    }else if(this.formLogin.value.cpfoucnpj.length === 14 || this.formLogin.value.cpfoucnpj.length === 18 || this.formLogin.value.cpfoucnpj == 12345){
+    }else if(this.formLogin.value.cpfoucnpj.length === 14 || this.formLogin.value.cpfoucnpj.length === 18 || this.formLogin.value.cpfoucnpj == 33333333333){
       this.router.navigate(['/Administrador'])
     }
   }
