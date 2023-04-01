@@ -4,156 +4,257 @@
   </div>
 
   <section>
-    <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">      
-         
+    <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">
+
       <div class="row userImg">
         <img id="imgUser" src="../../../../assets/imagens/cadastroImagem.jpg" class="float-center" alt="..." />
       </div>
       <div class="form-group inputFile">
         <label for="imgPerfil">Imagem de Perfil </label>
-        <input type="file" class="form-control-file" id="inputFile" />
+        <input type="file" class="form-control-file" id="inputFile" formControlName="imgPerfil" />
       </div>
-      
-     
-      <div class="form-group">
-        <label for="nomeCompleto">Nome Completo</label>
-        <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo" disabled />
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="confirmaNomeSocial" />
-        <label class="form-check-label" for="confirmaNomeSocial">Desejo usar meu nome social</label>
-      </div>
-      <div class="form-group">
-        <label for="nomeSocial">Nome Social</label>
-        <input type="text" class="form-control" id="nomeSocial" placeholder="Nome Social" />
-      </div>     
-      <div class="form-group">
-        <label for="cpf">CPF</label>
-        <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" disabled />
-      </div>
-      <div class="form-group">
-        <label for="email">Email <em>*</em> </label>
-        <input type="email" class="form-control" id="email" placeholder="name@email.com" />
-      </div>
-      <div class="row duplo">
-        <div class="col">
-          <label for="identificacaoGenero">Identificação de Gênero <em>*</em> </label>
-          <input type="text" class="form-control" id="identificacaoGenero" placeholder="Ex: Masculino" />
-        </div>
-        <div class="col">
-          <label for="dataNascimento">Data de Nascimento <em>*</em> </label>
-          <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="dataNascimento" />
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label for="telefone">Telefone <em>*</em> </label>
-        <input type="text" class="form-control" id="telefone" placeholder="(XX) 9XXXX-XXXX" mask="(00) 00000-0000 || (00) 0000-0000" />
-      </div>
-      <div class="form-group">
-        <label for="cep">CEP <em>*</em> </label>
-        <input type="text" class="form-control" id="cep" placeholder="XXXXX-XXX" />
-      </div>
-      <div class="form-group">
-        <label for="complemento">Complemento <em>*</em> </label>
-        <input type="text" class="form-control" id="complemento" placeholder="Complemento ou Ponto de Referência." />
-      </div>
-      <div class="form-group">
-        <label for="logradouro">Logradouro <em>*</em> </label>
-        <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, Travessa, etc." />
-      </div>
-      <div class="row duplo">
-        <div class="col">
-          <label for="estado">Estado/UF <em>*</em> </label>
-          <input type="text" class="form-control" id="estado" placeholder="Estado" />
-        </div>
-        <div class="col">
-          <label for="cidade">Cidade <em>*</em> </label>
-          <input type="text" class="form-control" id="cidade" placeholder="Cidade" />
-        </div>
-      </div>
-      <div class="row duplo">
-        <div class="col">
-          <label for="numero">Número <em>*</em> </label>
-          <input type="text" class="form-control" id="numero" placeholder="Número" />
-        </div>
-        <div class="col">
-          <label for="bairro">Bairro <em>*</em> </label>
-          <input type="text" class="form-control" placeholder="Bairro" />
-        </div>
-      </div>
-   
-
       <div class="form-group">
         <label for="areasInteresse">Áreas de Interesse </label>
-        <textarea class="form-control" id="areasInteresse" rows="3"></textarea>
+        <textarea class="form-control" id="areasInteresse" rows="3" formControlName="areasInteresse"></textarea>
       </div>
 
       <div class="form-group">
         <label for="experiencias">Experiências Anteriores </label>
-        <textarea class="form-control" id="experiencias" rows="3"></textarea>
+        <textarea class="form-control" id="experiencias" rows="3" formControlName="experiencias"></textarea>
       </div>
 
       <div class="form-group">
+        <label for="nomeCompleto">Nome Completo <em>*</em> </label>
+        <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo"
+          formControlName="nomeCompleto" />
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.nomeCompleto.touched &&
+          formCadastro.controls.nomeCompleto.invalid
+        " [@fadeInOut]>
+          O campo Nome Completo é obrigatório!
+        </small>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="confirmaNomeSocial"
+        formControlName="confirmaNomeSocial" />
+        <label class="form-check-label" for="confirmaNomeSocial">Desejo usar meu nome social</label>
+      </div>
+      <div class="form-group">
+        <label for="nomeSocial">Nome Social</label>
+        <input type="text" class="form-control" id="nomeSocial" placeholder="Nome Social" 
+        formControlName="nomeSocial"/>
+      </div>
+      <div class="form-group">
+        <label for="cpf">CPF <em>*</em> </label>
+        <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" 
+        mask="000.000.000-00" formControlName="cpf"/>
+      </div>
+      <div class="form-group">
+        <label for="email">Email <em>*</em> </label>
+        <input type="email" class="form-control" id="email" placeholder="name@email.com" formControlName="email" />
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.email.touched &&
+          formCadastro.controls.email.invalid
+        " [@fadeInOut]>
+          O campo E-mail é obrigatório!
+        </small>
+      </div>
+      <div class="row duplo">
+        <div class="col">
+          <label for="identificacaoGenero">Identificação de Gênero </label>
+          <input type="text" class="form-control" id="identificacaoGenero" placeholder="Ex: Masculino" />
+        </div>
+        <div class="col">
+          <label for="dataNascimento">Data de Nascimento <em>*</em> </label>
+          <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="dataNascimento"
+            formControlName="dataNascimento" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+            formCadastro.controls.dataNascimento.touched &&
+            formCadastro.controls.dataNascimento.invalid
+          " [@fadeInOut]>
+            O campo Data de Nascimento é obrigatório!
+          </small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="telefone">Telefone <em>*</em> </label>
+        <input type="text" class="form-control" id="telefone" placeholder="(XX) 9XXXX-XXXX" formControlName="telefone"
+          mask="(00) 00000-0000 || (00) 0000-0000" />
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.telefone.touched &&
+        formCadastro.controls.telefone.invalid" [@fadeInOut]>
+          O campo Telefone é obrigatório!
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="cep">CEP <em>*</em> </label>
+        <input type="text" (keyup)="validaCep()" class="form-control" id="cep" placeholder="XXXXX-XXX"
+          formControlName="cep" mask="00000-000" />
+        <label class="form-check-label" for="inlineFormCheck">
+          <a class="link-cep" href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank">
+            Encontre seu CEP
+          </a>
+        </label>
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+            formCadastro.controls.cep.touched && formCadastro.controls.cep.invalid
+          " [@fadeInOut]>
+          <br />
+          O campo CEP é obrigatório!
+        </small>
+      </div>
+      <div class="row duplo">
+        <div class="col">
+          <label for="estado">Estado/UF <em>*</em> </label>
+          <ng-select [items]="estados" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+            formControlName="estado" (ngModelChange)="onAddCidade()" (closeOnSelect)="(true)">
+          </ng-select>
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="" [@fadeInOut]>
+            O campo Estado é obrigatório!
+          </small>
+        </div>
+        <div class="col">
+          <label for="cidade">Cidade <em>*</em> </label>
+          <ng-select [items]="cidades" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+            formControlName="cidade" (ngModelChange)="onAddBairro()" (closeOnSelect)="(true)">
+          </ng-select>
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="" [@fadeInOut]>
+            O campo Cidade é obrigatório!
+          </small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="logradouro">Logradouro <em>*</em> </label>
+        <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, Travessa, etc."
+          formControlName="logradouro" />
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.logradouro.touched &&
+        formCadastro.controls.logradouro.invalid" [@fadeInOut]>
+          O campo Logradouro é obrigatório!
+        </small>
+      </div>
+      <div class="row duplo">
+        <div class="col">
+          <label for="numero">Número <em>*</em> </label>
+          <input type="text" class="form-control" placeholder="Número" formControlName="numero" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.numero.touched &&
+            formCadastro.controls.numero.invalid" [@fadeInOut]>
+            O campo Número é obrigatório!
+          </small>
+        </div>
+        <div class="col">
+          <label for="bairro">Bairro <em>*</em> </label>
+          <input type="text" class="form-control" placeholder="Bairro" formControlName="bairro" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.bairro.touched &&
+            formCadastro.controls.bairro.invalid" [@fadeInOut]>
+            O campo Bairro é obrigatório!
+          </small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="complemento">Complemento </label>
+        <input type="text" class="form-control" id="complemento" placeholder="Complemento ou Ponto de Referência."
+          formControlName="complemento" />
+      </div>
+    
+
+      <div class="form-group">
         <label for="ies">Instituição de Ensino <em>*</em> </label>
-        <select class="form-control" id="ies">
-          <option value="ufpr">Universidade Federal do Paraná</option>
-        </select>
+        <ng-select [items]="instituicoes" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+          formControlName="instituicao" (closeOnSelect)="(true)">
+        </ng-select>
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+            formCadastro.controls.instituicao.touched &&
+            formCadastro.controls.instituicao.invalid
+          " [@fadeInOut]>
+          O campo Instituição de Ensino é obrigatório!
+        </small>
       </div>
 
       <div class="form-group">
         <label for="grau">Grau Acadêmico: <em>*</em> </label>
-        <select class="form-control" id="grau">
-          <option *ngFor="let grau of graus" value="{{ grau.id }}">
-            {{ grau.nome }}
-          </option>
-        </select>
+        <ng-select [items]="graus" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+          formControlName="grau" (closeOnSelect)="(true)">
+        </ng-select>
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+            formCadastro.controls.grau.touched &&
+            formCadastro.controls.grau.invalid
+          " [@fadeInOut]>
+          O campo Grau Acadêmico é obrigatório!
+        </small>
       </div>
 
       <div class="form-group">
-        <label for="curso">Instituição de Ensino <em>*</em> </label>
-        <select class="form-control" id="curso">
-          <option value="curso">Opções de cursos</option>
-        </select>
+        <label for="curso">Curso <em>*</em> </label>
+        <ng-select [items]="cursos" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+          formControlName="curso" (closeOnSelect)="(true)">
+        </ng-select>
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+        formCadastro.controls.curso.touched &&
+        formCadastro.controls.curso.invalid
+      " [@fadeInOut]>
+          O campo Curso é obrigatório!
+        </small>
       </div>
 
       <div class="row duplo">
         <div class="col">
           <label for="anoInicio">Ano de Início <em>*</em> </label>
-          <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="anoInicio" />
+          <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="anoInicio" formControlName="anoInicio" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.anoInicio.touched &&
+          formCadastro.controls.anoInicio.invalid
+        " [@fadeInOut]>
+            O campo Ano de Início é obrigatório!
+          </small>
         </div>
         <div class="col">
           <label for="anoConclusao">Previsão de conclusão <em>*</em> </label>
-          <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="anoConclusao" />
+          <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="anoConclusao"
+            formControlName="anoConclusao" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.anoConclusao.touched &&
+          formCadastro.controls.anoConclusao.invalid
+        " [@fadeInOut]>
+            O campo Previsão de Conclusão é obrigatório!
+          </small>
         </div>
 
         <div class="form-group inputFile">
           <label for="comprovanteMatricula">Comprovante de Matrícula <em>*</em>
           </label>
-          <input type="file" class="form-control-file" id="comprovanteMatricula" />
+          <input type="file" class="form-control-file" id="comprovanteMatricula"
+            formControlName="comprovanteMatricula" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.comprovanteMatricula.touched &&
+          formCadastro.controls.comprovanteMatricula.invalid
+        " [@fadeInOut]>
+            O campo Comprovante de Matrícula é obrigatório!
+          </small>
         </div>
       </div>
 
-   
       <div class="form-group">
-        <label for="inputPassword5">Senha atual<em>*</em> </label>
-        <input type="password" id="senha" class="form-control" placeholder="Digite a sua senha atual" />
+        <label for="inputPassword5">Senha atual </label>
+        <input type="password" id="senha" class="form-control" placeholder="Digite a sua senha atual"
+          formControlName="senha" />
       </div>
       <div class="form-group">
-        <label for="inputPassword5">Nova senha<em>*</em> </label>
-        <input type="password" id="senha" class="form-control" placeholder="Digite a sua nova senha" />
+        <label for="inputPassword5">Nova senha </label>
+        <input type="password" id="novaSenha" class="form-control" placeholder="Digite a sua nova senha"
+          formControlName="novaSenha" />
       </div>
       <div class="form-group">
-        <label for="inputPassword5">Confirmar Senha <em>*</em> </label>
-        <input type="password" id="senha" class="form-control" placeholder="Confirme a sua nova senha" />
+        <label for="inputPassword5">Confirmar Senha </label>
+        <input type="password" id="confirmarSenha" class="form-control" placeholder="Confirme a sua nova senha"
+          formControlName="confirmarSenha" />
       </div>
 
       <div class="buttonForm">
-        <button type="submit" class="btn btn-success"
-          (click)="mostrarValores()">
-          Salvar
+        <button type="submit" class="btn btn-success" (click)="mostrarValores()">
+          Atualizar
+        </button>
+        <button type="reset" class="btn btn-warning">
+          Desfazer alterações
         </button>
       </div>
     </form>
   </section>
-</section>

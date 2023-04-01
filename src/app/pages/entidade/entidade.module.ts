@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { EntidadeRoutingModule } from './entidade-routing.module';
+
 import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PerfilComponent } from './perfil/perfil.component';
@@ -15,9 +16,14 @@ import { AvaliarEstudanteComponent } from './avaliar-estudante/avaliar-estudante
 import { ModalVisualizarComponent } from './avaliar-estudante/modal-visualizar/modal-visualizar.component';
 import { ModalAdicionarAvaliacaoComponent } from './avaliar-estudante/modal-adicionar-avaliacao/modal-adicionar-avaliacao.component';
 import { EntidadeComponent } from './entidade.component';
+import { VagasComponent } from './vagas/vagas.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxMaskModule } from 'ngx-mask';
+
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,7 +32,8 @@ import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { VagasComponent } from './vagas/vagas.component';
+
+import { DataService } from 'src/app/services/data.service';
 
 @NgModule({
   declarations: [
@@ -49,11 +56,13 @@ import { VagasComponent } from './vagas/vagas.component';
     CommonModule,
     EntidadeRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
+    NgSelectModule,
+    NgxMaskModule,
     MatTabsModule,
     MatDatepickerModule,
     MatPaginatorModule,
-    NgbModule,
-    ReactiveFormsModule,
     MatSidenavModule,
     MatIconModule,
     MatDividerModule,
@@ -62,5 +71,6 @@ import { VagasComponent } from './vagas/vagas.component';
     MatToolbarModule,
     MatButtonModule,
   ],
+  providers: [DataService],
 })
 export class EntidadeModule {}
