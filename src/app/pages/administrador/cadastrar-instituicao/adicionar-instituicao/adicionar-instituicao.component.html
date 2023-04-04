@@ -1,171 +1,51 @@
-<section class="d-flex justify-content-center py-2">
+<section class="content">
+  <div class="topo">
+    <h1>Adicionar Instituição</h1>
+  </div>
 
-   
-
-    <section class="content-meu-perfil col-10 px-2 pb-2">
-
-        <h1 class="float-center">
-            Adicionar Instituição
-        </h1>
-
-        <div class="d-flex">
-            <div class="cadastro">
-                <form [formGroup]="formCadastro">
-
-              
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Nome da Instituição <em>*</em></label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="razaoSocial"
-                      placeholder="Nome da Instituição"
-                      formControlName="razaoSocial"
-                    />
-                    <!--
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                      -->
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">CNPJ <em>*</em> </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cnpj"
-                      placeholder="XX.XXX.XXX/XXXX-XX"
-                      formControlName="cnpj"
-                    />
-                    <!--
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                      -->
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Email <em>*</em> </label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="email"
-                      placeholder="name@email.com"
-                      formControlName="email"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Telefone <em>*</em> </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="Telefone"
-                      placeholder="(XX) 9XXXX-XXXX"
-                      formControlName="telefone"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Telefone Auxiliar<em>*</em> </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="Telefone"
-                      placeholder="(XX) 9XXXX-XXXX"
-                      formControlName="telefone"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Cep <em>*</em> </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cep"
-                      placeholder="XXXXX-XXX"
-                      formControlName="cep"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Logradouro <em>*</em> </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="logradouro"
-                      placeholder="Rua, Avenida, Travessa, etc."
-                      formControlName="logradouro"
-                    />
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <label for="exampleFormControlInput1">Número <em>*</em> </label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="numero"
-                        placeholder="Número"
-                        formControlName="numero"
-                      />
-                    </div>
-                    <div class="col">
-                      <label for="exampleFormControlInput1">Bairro <em>*</em> </label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="bairro"
-                        placeholder="Bairro"
-                        formControlName="bairro"
-                      />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Complemento <em>*</em> </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="complemento"
-                      placeholder="Complemento ou Ponto de Referência."
-                      formControlName="complemento"
-                    />
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <label for="exampleFormControlInput1">Estado/UF <em>*</em> </label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Número"
-                        id="estado"
-                        formControlName="estado"
-                      />
-                    </div>
-                    <div class="col">
-                      <label for="exampleFormControlInput1">Cidade <em>*</em> </label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Bairro"
-                        id="cidade"
-                        formControlName="cidade"
-                      />
-                    </div>
-                    <!-- <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-                        <div class="invalid-feedback">Example invalid custom file feedback</div>
-                    </div> -->
-                  </div>                  
-                  <div class="buttonForm">
-                    <!--
-                          <button type="submit" class="btn btn-primary mb-2" [disabled]="this.formCadastro.controls['nomeCompleto'].invalid">Limpar</button>
-                      -->
-                    <button
-                      type="submit"
-                      class="btn mb-2 cadastrar"
-                      [disabled]="this.formCadastro.invalid"
-                    >
-                      Cadastrar
-                    </button>
-                    <button type="submit" class="btn mb-2 limpar">Limpar</button>
-                  </div>
-                </form>
-              </div>
-              
+  <section class="contentDetails">
+    <div class="cadastro">
+     
+      <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">
+        <div class="form-group">
+          <label for="cnpj">CNPJ <em>*</em> </label>
+          <input type="text" class="form-control" id="cnpj" placeholder="XX.XXX.XXX/XXXX-XX" formControlName="cnpj" 
+          mask="00.000.000/0000-00"/>
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+            formCadastro.controls.cnpj.touched && formCadastro.controls.cnpj.invalid
+          " [@fadeInOut]>
+            O campo CNPJ é obrigatório!
+          </small>
         </div>
 
-    </section>
-
+        <div class="form-group">
+          <label for="nome">Nome da Instituição <em>*</em> </label>
+          <input type="text" class="form-control" id="nome" placeholder="Nome da Instituição"
+            formControlName="nome" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+            formCadastro.controls.nome.touched &&
+            formCadastro.controls.nome.invalid
+          " [@fadeInOut]>
+            O campo Nome da Instituição é obrigatório!
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="sigla">Sigla <em>*</em> </label>
+          <input type="text" class="form-control" id="sigla" placeholder="Sigla da Instituição"
+            formControlName="sigla" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+            formCadastro.controls.sigla.touched &&
+            formCadastro.controls.sigla.invalid
+          " [@fadeInOut]>
+            O campo Sigla da Instituição é obrigatório!
+          </small>
+        </div>
+    
+        <div class="buttonForm">
+          <button type="submit" class="btn btn-success">Salvar</button>
+          <button type="reset" class="btn btn-warning">Limpar </button>
+        </div>
+      </form>
+    </div>
+  </section>
 </section>

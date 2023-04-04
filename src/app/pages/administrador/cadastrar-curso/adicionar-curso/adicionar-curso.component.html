@@ -10,211 +10,131 @@
           Cadastrar nova IES
         </button>
       </div>
-      <form>
+      <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">
         <div class="form-group">
-          <label for="ies">Instituição: <em>*</em> </label>
+          <label for="instituicao">Instituição de Ensino <em>*</em> </label>
           <ng-select [items]="instituicoes" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
-          formControlName="ies" (closeOnSelect)="(true)" [(ngModel)]="instituicoes">
-        </ng-select>
+            formControlName="instituicao" (closeOnSelect)="(true)">
+          </ng-select>
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+              formCadastro.controls.instituicao.touched &&
+              formCadastro.controls.instituicao.invalid
+            " [@fadeInOut]>
+            O campo Instituição de Ensino é obrigatório!
+          </small>
         </div>
 
         <div class="form-group">
           <label for="grau">Grau Acadêmico: <em>*</em> </label>
           <ng-select [items]="graus" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
-            formControlName="grau" (closeOnSelect)="(true)" [(ngModel)]="graus">
+            formControlName="grau" (closeOnSelect)="(true)">
           </ng-select>
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+              formCadastro.controls.grau.touched &&
+              formCadastro.controls.grau.invalid
+            " [@fadeInOut]>
+            O campo Grau Acadêmico é obrigatório!
+          </small>
         </div>
 
         <div class="form-group">
-          <label for="curso">Nome do Curso: <em>*</em> </label>
-          <input
-            type="text"
-            class="form-control col-6"
-            id="nomeCurso"
-            placeholder="Digite o nome do curso"
-            formControlName="nomeCurso"
-          />
-          <small
-            id="nomeHelp"
-            class="form-text text-danger ng-star-inserted"
-            *ngIf="
-              formCadastro.controls.nomeCurso.touched &&
-              formCadastro.controls.nomeCurso.invalid
-            "
-            [@fadeInOut]
-          >
+          <label for="campus">Campus: <em>*</em> </label>
+          <input type="text" class="form-control" id="campus" placeholder="Campus"
+          formControlName="campus" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+              formCadastro.controls.campus.touched &&
+              formCadastro.controls.campus.invalid
+            " [@fadeInOut]>
+            O campo Campus é obrigatório!
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="nomeCurso">Nome do Curso <em>*</em> </label>
+          <input type="text" class="form-control" id="nomeCurso" placeholder="Nome do Curso"
+            formControlName="nomeCurso" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+            formCadastro.controls.nomeCurso.touched &&
+            formCadastro.controls.nomeCurso.invalid
+          " [@fadeInOut]>
             O campo Nome do Curso é obrigatório!
           </small>
         </div>
 
         <div class="form-group">
-          <label for="curso">Campus: <em>*</em> </label>
-          <input
-            type="text"
-            class="form-control col-6"
-            id="campus"
-            placeholder="Digite o nome do curso"
-            formControlName="campus"
-          />
+          <label for="cep">CEP <em>*</em> </label>
+          <input type="text" (keyup)="validaCep()" class="form-control" id="cep" placeholder="XXXXX-XXX"
+            formControlName="cep" mask="00000-000" />
+          <label class="form-check-label" for="inlineFormCheck">
+            <a class="link-cep" href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank">
+              Encontre seu CEP
+            </a>
+          </label>
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+              formCadastro.controls.cep.touched && formCadastro.controls.cep.invalid
+            " [@fadeInOut]>
+            <br />
+            O campo CEP é obrigatório!
+          </small>
         </div>
 
-        <div>
-          <div class="form-group">
-            <label for="cep">CEP <em>*</em> </label>
-            <input
-              type="text"
-              (keyup)="validaCep()"
-              class="form-control"
-              id="cep"
-              placeholder="XXXXX-XXX"
-              formControlName="cep"
-              mask="00000-000"
-            />
-            <small
-              id="help"
-              class="form-text text-danger ng-star-inserted"
-              *ngIf="
-                formCadastro.controls.cep.touched &&
-                formCadastro.controls.cep.invalid
-              "
-              [@fadeInOut]
-            >
-              O campo CEP é obrigatório!
+        <div class="row duplo">
+          <div class="col">
+            <label for="estado">Estado/UF <em>*</em> </label>
+            <ng-select [items]="estados" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+              formControlName="estado" (ngModelChange)="onAddCidade()" (closeOnSelect)="(true)">
+            </ng-select>
+            <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="" [@fadeInOut]>
+              O campo Estado é obrigatório!
             </small>
           </div>
-          <div class="row">
-            <div class="col">
-              <label for="estado">Estado/UF <em>*</em> </label>
-              <ng-select
-                [items]="estados"
-                id="ngSelect"
-                bindLabel="nome"
-                bindValue="id"
-                placeholder="Selecione"
-                formControlName="estado"
-                (ngModelChange)="onAddCidade()"
-                (closeOnSelect)="(true)"
-                [(ngModel)]="estado"
-              >
-              </ng-select>
-              <small
-                id="help"
-                class="form-text text-danger ng-star-inserted"
-                *ngIf=""
-                [@fadeInOut]
-              >
-                O campo Estado é obrigatório!
-              </small>
-            </div>
-            <div class="col">
-              <label for="cidade">Cidade <em>*</em> </label>
-              <ng-select
-                [items]="cidades"
-                id="ngSelect"
-                bindLabel="nome"
-                bindValue="id"
-                placeholder="Selecione"
-                formControlName="cidade"
-                (ngModelChange)="onAddBairro()"
-                (closeOnSelect)="(true)"
-              >
-              </ng-select>
-              <small
-                id="help"
-                class="form-text text-danger ng-star-inserted"
-                *ngIf=""
-                [@fadeInOut]
-              >
-                O campo Cidade é obrigatório!
-              </small>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="logradouro">Logradouro <em>*</em> </label>
-            <input
-              type="text"
-              class="form-control"
-              id="logradouro"
-              placeholder="Rua, Avenida, Travessa, etc."
-              formControlName="logradouro"
-            />
-            <small
-              id="logradouroHelp"
-              class="form-text text-danger ng-star-inserted"
-              *ngIf="formCadastro.controls.logradouro.touched"
-              [@fadeInOut]
-            >
-              O campo Logradouro é obrigatório!
+          <div class="col">
+            <label for="cidade">Cidade <em>*</em> </label>
+            <ng-select [items]="cidades" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+              formControlName="cidade" (ngModelChange)="onAddBairro()" (closeOnSelect)="(true)">
+            </ng-select>
+            <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="" [@fadeInOut]>
+              O campo Cidade é obrigatório!
             </small>
           </div>
-          <div class="row duplo">
-            <div class="col">
-              <label for="numero">Número <em>*</em> </label>
-              <input
-                type="text"
-                class="form-control"
-                id="numero"
-                placeholder="Número"
-                formControlName="numero"
-              />
-              <small
-                id="help"
-                class="form-text text-danger ng-star-inserted"
-                *ngIf="formCadastro.controls.numero.touched"
-                [@fadeInOut]
-              >
-                O campo Número é obrigatório!
-              </small>
-            </div>
-            <div class="col">
-              <label for="bairro">Bairro <em>*</em> </label>
-              <input
-                type="text"
-                class="form-control"
-                id="bairro"
-                placeholder="Bairro"
-                formControlName="bairro"
-              />
-              <small
-                id="help"
-                class="form-text text-danger ng-star-inserted"
-                *ngIf="formCadastro.controls.bairro.touched"
-                [@fadeInOut]
-              >
-                O campo Bairro é obrigatório!
-              </small>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="complemento">Complemento <em>*</em> </label>
-            <input
-              type="text"
-              class="form-control"
-              id="complemento"
-              placeholder="Complemento ou Ponto de Referência."
-              formControlName="complemento"
-            />
-            <small
-              id="help"
-              class="form-text text-danger ng-star-inserted"
-              *ngIf="formCadastro.controls.complemento.touched"
-              [@fadeInOut]
-            >
-              O campo Complemento é obrigatório!
+        </div>
+
+        <div class="form-group">
+          <label for="logradouro">Logradouro <em>*</em> </label>
+          <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, Travessa, etc."
+            formControlName="logradouro" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.logradouro.touched &&
+          formCadastro.controls.logradouro.invalid" [@fadeInOut]>
+            O campo Logradouro é obrigatório!
+          </small>
+        </div>
+        <div class="row duplo">
+          <div class="col">
+            <label for="numero">Número <em>*</em> </label>
+            <input type="text" class="form-control" placeholder="Número" formControlName="numero" />
+            <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.numero.touched &&
+              formCadastro.controls.numero.invalid" [@fadeInOut]>
+              O campo Número é obrigatório!
             </small>
           </div>
+          <div class="col">
+            <label for="bairro">Bairro <em>*</em> </label>
+            <input type="text" class="form-control" placeholder="Bairro" formControlName="bairro" />
+            <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.bairro.touched &&
+              formCadastro.controls.bairro.invalid" [@fadeInOut]>
+              O campo Bairro é obrigatório!
+            </small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="complemento">Complemento </label>
+          <input type="text" class="form-control" id="complemento" placeholder="Complemento ou Ponto de Referência."
+            formControlName="complemento" />
         </div>
 
         <div class="buttonForm">
-          <button type="submit" class="btn btn-success mb-2">Salvar</button>
-          <button
-            type="submit"
-            class="btn btn-danger mb-2"
-            [disabled]="this.formCadastro.invalid"
-            (click)="mostrarValores()"
-          >
-            Cancelar
-          </button>
+          <button type="submit" class="btn btn-success">Salvar</button>
+          <button type="reset" class="btn btn-warning">Limpar </button>
         </div>
       </form>
     </div>
