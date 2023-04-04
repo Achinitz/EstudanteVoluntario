@@ -3,22 +3,22 @@
 </div>
 
 <section>
-<h2>Detalhes da Vaga - {{data.nomeVaga}}</h2>
+    <h2>Detalhes da Vaga - {{data.nomeVaga}}</h2>
 
     <span>Status vaga: {{data.status}}</span>
 
-<div class="contentGrid">
-    <span>Entidade Responsável: {{data.nomeEntidade}}</span>
-    <span>Descrição: {{data.descricao}}</span>
-</div>
+    <div class="contentGrid">
+        <span>Entidade Responsável: {{data.nomeEntidade}}</span>
+        <span>Descrição: {{data.descricao}}</span>
+    </div>
 
-<div>
-    <button>
-        Confirmar
-    </button>
-    <button (click)="fecharModal()">
-        Cancelar
-    </button>
-</div>
+    <div>
+        <button class="btn btn-success">
+            Confirmar
+        </button>
+        <button class="btn btn-danger" (click)="fecharModal()">
+            Cancelar
+        </button>
+    </div>
 
 </section>

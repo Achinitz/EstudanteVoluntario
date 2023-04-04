@@ -23,31 +23,14 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  .cadastrar {
-    margin-right: 1rem;
-    background-color: #008000;
-  }
-  .cancelar {
-    background-color: red;
-  }
 }
 
-.btn {
-  margin-top: 2rem;
-  width: 25%;
-  color: #fff;
-  border-radius: 1rem;
-
-  &:first-child {
-    background: green;
-    margin-right: 1rem;
-  }
-
-  &:nth-of-type(2) {
-    background: red;
-  }
+button {
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
 
   &:hover {
-    opacity: 0.7;
+    opacity: 0.9;
   }
 }

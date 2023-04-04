@@ -31,10 +31,10 @@ export class PerfilComponent implements OnInit {
     { id: 2, nome: 'UTFPR - Universidade Tecnológica Federal do Paraná' },
   ];
   cursos: any = [
-    { id: 1, nome: 'ADMINISTRAÇÃO' },
-    { id: 2, nome: 'ADMINISTRAÇÃO PÚBLICA' },
-    { id: 3, nome: 'AGROECOLOGIA' },
-    { id: 4, nome: 'AGRONOMIA' },
+    { id: 1, nome: 'ADMINISTRAÇÃO - CAMPUS JARDIM BOTÂNICO' },
+    { id: 2, nome: 'ADMINISTRAÇÃO PÚBLICA - campus centro - REITORIA' },
+    { id: 3, nome: 'AGROECOLOGIA - CAMPUS LITORAL' },
+    { id: 4, nome: 'AGRONOMIA - CAMPUS AGRÁRIAS' },
   ];
 
   public formCadastro = new FormGroup({

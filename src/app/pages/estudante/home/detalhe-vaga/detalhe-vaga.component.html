@@ -9,7 +9,9 @@
   </ngb-alert>
 
   <section class="contentDetails">
-
+    <div class="col-6 imgDetails">
+      <img style="width: 50%" src="{{ data.img }}" />
+    </div>
     <div class="col-6 content">
       <div class="row">
         <h3>
@@ -19,22 +21,12 @@
       <div class="row">
         <span> Descrição: {{ data.descricao }} </span>
       </div>
-      <div class="row buttonForm">
-        <button
-          type="submit"
-          class="btn mb-2 cadastrar"          
-        >
-          Cadastrar
-        </button>
-        <button type="submit" class="btn mb-2 cancelar">Cancelar</button>
-      </div>
-    
     </div>
-
-    <div class="col-6 imgDetails">
-      <img style="width: 50%" src="{{ data.img }}" />
+    <div class="buttonForm">
+      <button type="submit" class="btn mb-2 btn-success">
+        Cadastrar
+      </button>
+      <button type="submit" class="btn mb-2 btn-danger">Cancelar</button>
     </div>
-    
-
   </section>
 </section>
