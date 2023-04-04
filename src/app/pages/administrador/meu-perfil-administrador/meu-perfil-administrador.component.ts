@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
 import { EnderecoService } from 'src/app/services/endereco.service';
@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
   animations: genericAnimations
 })
 export class MeuPerfilAdministradorComponent implements OnInit {
+  cpf = '00000000000'
   estado: any;
   cidade: any;
   bairro: any;
@@ -22,24 +23,20 @@ export class MeuPerfilAdministradorComponent implements OnInit {
   estados: any = [];
 
   formCadastro:FormGroup = new FormGroup({
-    cpf: new FormControl(null,[Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$')]),
-    nome: new FormControl(null, [Validators.required]),
-    sobrenome: new FormControl('', [Validators.required]),
+    cpf: new FormControl({value:this.cpf, disabled: true},
+      Validators.required,       
+    ),
+    imgPerfil: new FormControl(null, Validators.required),
+    nomeCompleto: new FormControl(null, [Validators.required]),
     nomeSocial: new FormControl(null),
     confirmaNomeSocial: new FormControl(false),
     identificacaoGenero: new FormControl(null, Validators.required),
     dataNascimento: new FormControl(null, Validators.required),
-    email: new FormControl(null, Validators.required),
+    email: new FormControl(null, [Validators.required, Validators.email]),
     telefone: new FormControl(null, Validators.required),
-    cep: new FormControl(null, Validators.required),
-    logradouro: new FormControl(null, Validators.required),
-    numero: new FormControl(null, Validators.required),
-    bairro: new FormControl(null, Validators.required),
-    complemento: new FormControl(null, Validators.required),
-    estado: new FormControl(null, Validators.required),
-    cidade: new FormControl(null, Validators.required),
     senha: new FormControl(null, Validators.required),
-    confirmarSenha: new FormControl(null, Validators.required)
+    novaSenha: new FormControl(null, Validators.required),
+    confirmarSenha: new FormControl(null, Validators.required),
   });
 
   constructor(private consultaCepService: ConsultaCepService, private enderecoService: EnderecoService, private toast: ToastrService) { 

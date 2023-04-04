@@ -12,8 +12,8 @@ import { ToastrService } from 'ngx-toastr';
   animations: genericAnimations,
 })
 export class CadastrarVagaComponent implements OnInit {
-  submitted = false;
-  utilizarEnderecoEntidade = true;
+  submitted = false; 
+  utilizarEnderecoEntidade:boolean = true;
   estado: any;
   cidade: any;
   bairro: any;
@@ -56,8 +56,8 @@ export class CadastrarVagaComponent implements OnInit {
   }
 
 setEndereco(){
-  this.utilizarEnderecoEntidade=true;
-  console.log('true');
+  this.utilizarEnderecoEntidade=this.utilizarEnderecoEntidade?false:true;
+  console.log(this.utilizarEnderecoEntidade);
 }
 
   inicializaFormulario() {

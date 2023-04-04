@@ -1,41 +1,63 @@
 .topo {
   flex-direction: column;
   align-items: center;
+  
+  h1 {
+    text-align: center;
+    font-weight: 500;
+  }
+}
+
+.formCadastro {
+  align-items: center;
+  padding-top: 1em;
 }
 
 .link-cep {
   text-decoration: none;
 }
 
-.img-user {
-  width: 30%;
+.content {
+  margin-left: auto;
+  margin-right: auto;
+
+  .userImg {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #imgUser {
+    width: 11rem;
+    height: 9rem;
+    border-radius: 50%;
+  }
+
+  .inputFile {
+    display: grid;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  .buttonForm {
+    margin-bottom: 1rem;
+  }
 }
 
-#imgUser {
-  width: 11rem;
-  height: 9rem;
-  border-radius: 50%;
+.form-group {
+  padding: 0.5em;
 }
 
-.inputFile {
-  display: grid;
-}
-
-.buttonForm {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 1em;
-  padding: 0;
+.duplo {
+  padding: 0.5em;
 }
 
 .btn {
   margin: 1rem;
   &:hover {
     opacity: 0.9;
-  } 
+  }
 }
 
-em {
-  color: red;
+.form-check {
+  margin-left: 0.5rem;
 }
