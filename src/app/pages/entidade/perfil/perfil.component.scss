@@ -4,9 +4,10 @@
 
   h1 {
     text-align: center;
-    width: 500;
+    font-weight: 500;
   }
 }
+
 .inicio {
   padding-bottom: 1em;
 }
@@ -38,24 +39,25 @@
   }
 
   .buttonForm {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 1em;
-    padding: 0;
-  }
-
-  .btn {
-    margin: 1rem;
-    width: 25%;
-    border-radius: 1rem;
+    margin-bottom: 1rem;
   }
 }
 
 .form-group {
-  padding-bottom: 1em;
+  padding: 0.5em;
 }
 
 .duplo {
-  padding-bottom: 1em;
+  padding: 0.5em;
+}
+
+.btn {
+  margin: 1rem;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.form-check {
+  margin-left: 0.5rem;
 }

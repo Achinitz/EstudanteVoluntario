@@ -9,9 +9,11 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.scss'],
+  animations: genericAnimations,
 })
 export class PerfilComponent implements OnInit {
   submitted = false;
+  cpf = '00000000000'
   estado: any;
   cidade: any;
   bairro: any;
@@ -19,12 +21,27 @@ export class PerfilComponent implements OnInit {
   cidades: any = [];
   bairros: any = [];
   estados: any = [];
-  
+  graus: any = [
+    { id: 1, nome: 'Bacharelado' },
+    { id: 2, nome: 'Licenciatura' },
+    { id: 3, nome: 'Tecnologia' },
+  ];
+  instituicoes: any = [
+    { id: 1, nome: 'UFPR - Universidade Federal do Paraná' },
+    { id: 2, nome: 'UTFPR - Universidade Tecnológica Federal do Paraná' },
+  ];
+  cursos: any = [
+    { id: 1, nome: 'ADMINISTRAÇÃO - CAMPUS JARDIM BOTÂNICO' },
+    { id: 2, nome: 'ADMINISTRAÇÃO PÚBLICA - campus centro - REITORIA' },
+    { id: 3, nome: 'AGROECOLOGIA - CAMPUS LITORAL' },
+    { id: 4, nome: 'AGRONOMIA - CAMPUS AGRÁRIAS' },
+  ];
+
   public formCadastro = new FormGroup({
-    cpf: new FormControl(null, [
-      Validators.required,
-      Validators.pattern('[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}'),
-    ]),
+    cpf: new FormControl({value:this.cpf, disabled: true},
+      Validators.required,       
+    ),
+    imgPerfil: new FormControl(null, Validators.required),
     nomeCompleto: new FormControl(null, Validators.required),
     nomeSocial: new FormControl(null),
     confirmaNomeSocial: new FormControl(false),
@@ -39,20 +56,24 @@ export class PerfilComponent implements OnInit {
     estado: new FormControl(null, Validators.required),
     cidade: new FormControl(null, Validators.required),
     complemento: new FormControl(null, Validators.required),
+    areasInteresse: new FormControl(null, Validators.required),
+    experiencias: new FormControl(null, Validators.required),
+    instituicao: new FormControl(null, Validators.required),
+    grau: new FormControl(null, Validators.required),
+    curso: new FormControl(null, Validators.required),
+    anoInicio: new FormControl(null, Validators.required),
+    anoConclusao: new FormControl(null, Validators.required),
+    comprovanteMatricula: new FormControl(null, Validators.required),
+
     senha: new FormControl(null, Validators.required),
+    novaSenha: new FormControl(null, Validators.required),
     confirmarSenha: new FormControl(null, Validators.required),
-    termo: new FormControl(null, Validators.required),
   });
 
   mostrarValores() {
     console.log('Formulário enviado');
   }
-  graus: any = [
-    { id: 1, nome: 'Bacharelado' },
-    { id: 2, nome: 'Licenciatura' },
-    { id: 3, nome: 'Tecnologia' },
-  ];
-  
+
   constructor(
     private consultaCepService: ConsultaCepService,
     private enderecoService: EnderecoService,
@@ -64,10 +85,67 @@ export class PerfilComponent implements OnInit {
   inicializaFormulario() {
     this.enderecoService.getEstados().subscribe((data: any) => {
       this.estados = data;
-      //  console.log('Inicio estados');
-      // console.log(data);
-      //  console.log('Fim estados');
     });
+  }
+
+  onAddCidade() {
+    this.enderecoService
+      .getCidades(this.formCadastro.get('estado')?.value)
+      .subscribe((data: any) => {
+        this.cidades = data;
+      });
+  }
+
+  onAddBairro() {
+    // console.log('Inicio cidade selecionado');
+    // console.log(this.formCadastro.get('cidade')?.value);
+    //console.log('Fim cidade selecionado');
+  }
+
+  validaCep() {
+    if (this.formCadastro.get('cep')?.value.length === 8) {
+      let cep = this.formCadastro.get('cep')?.value;
+      this.consultaCepService.getDataCep(cep.replace('-', '')).subscribe(
+        (data: any) => {
+          if (data.erro === true) {
+            this.toast.error('CEP Inválido!');
+          }
+          this.resultadoCep = data;
+          //  console.log(data);
+          this.estados.forEach((element: any) => {
+            if (element.sigla === data.uf) {
+              this.formCadastro.get('estado')?.setValue(element.id);
+            }
+          });
+
+          setTimeout(() => {
+            this.cidades.forEach((element: any) => {
+              if (element.nome === data.localidade) {
+                this.formCadastro.get('cidade')?.setValue(element.id);
+                this.formCadastro.get('logradouro')?.setValue(data.logradouro);
+                this.formCadastro.get('bairro')?.setValue(data.bairro);
+              }
+            });
+          }, 1500);
+        },
+        (error) => {
+          console.log('Ocorreu um erro');
+        }
+      );
+      console.log('CEP ok');
+    }
+  }
+
+  validarSenha() {
+    if (
+      this.formCadastro.get('novaSenha')?.value ==
+        this.formCadastro.get('confirmarSenha')?.value &&
+      !this.formCadastro.get('novaSenha')?.invalid &&
+      !this.formCadastro.get('confirmarSenha')?.invalid
+    ) {
+    } else {
+      this.toast.error('As senhas não são iguais!');
+    }
   }
 
   ngOnInit(): void {}

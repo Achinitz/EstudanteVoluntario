@@ -1,43 +1,29 @@
-.botaoFechar{
-    margin: 0;
-    padding: 0;
-    text-align: end;
-      button{
-          border: none !important;
-          background: none !important;
-          font-size: larger !important;
-          color: #000000 !important;
-      }
+.botaoFechar {
+  margin: 0;
+  padding: 0;
+  text-align: end;
+
+  button {
+    font-size: larger;
+    border: none;
+    background: none;
   }
+}
 
-section{
+.statusVaga {
+  text-align: end;
+}
 
-    .statusVaga{
-        text-align: end;
-    }
+.contentGrid {
+  display: grid;
+}
 
-    .contentGrid{
-        display: grid;
-    }
-    div{
-        button{
-            border: none;
-            background-color: #008000;
-            color: #ffffff;
-            border-radius: 1rem;
-            padding: 0.5rem;
-            margin-top: 0.5rem;
-            margin-right: 0.5rem;
+button {
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
 
-            &:hover{
-                opacity: 0.5;
-            }
-
-            &:nth-of-type(2){
-                background-color: #ff0000 !important;
-                color: #000000 !important;
-            }
-        }
-    }
-
+  &:hover {
+    opacity: 0.9;
+  }
 }

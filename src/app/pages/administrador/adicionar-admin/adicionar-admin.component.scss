@@ -1,0 +1,29 @@
+.topo {
+    flex-direction: column;
+    align-items: center;
+    h1 {
+      text-align: center;
+      font-weight: 500;
+    }
+  }
+
+  .cadastro {
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    padding-bottom: 1em;
+  }
+
+  .buttonForm {
+    margin-bottom: 1rem;
+  }
+  
+  .btn {
+    margin: 1rem;
+    &:hover {
+      opacity: 0.9;
+    }
+  }

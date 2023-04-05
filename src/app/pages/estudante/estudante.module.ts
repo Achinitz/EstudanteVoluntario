@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
 import { EstudanteRoutingModule } from './estudante-routing.module';
 
 import { HomeComponent } from './home/home.component';
@@ -12,15 +12,16 @@ import { DetalheVagaComponent } from './home/detalhe-vaga/detalhe-vaga.component
 import { CertificadoComponent } from './certificado/certificado.component';
 import { EstudanteComponent } from './estudante.component';
 
-import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxMaskModule } from 'ngx-mask';
+
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
-
 import { DataService } from 'src/app/services/data.service';
-
 
 @NgModule({
   declarations: [
@@ -36,15 +37,19 @@ import { DataService } from 'src/app/services/data.service';
   imports: [
     CommonModule,
     EstudanteRoutingModule,
-    MatTabsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatPaginatorModule,
     NgbModule,
+    NgSelectModule,
+    NgxMaskModule,
+    MatTabsModule,
+    MatPaginatorModule,    
     MatDialogModule,
     MatFormFieldModule,
     MatListModule,
+  
   ],
   providers: [DataService],
+  
 })
 export class EstudanteModule {}

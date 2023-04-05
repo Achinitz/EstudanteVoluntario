@@ -28,14 +28,14 @@
     </div>
     <div class="form-group">
       <label for="cpf">CPF <em>*</em> </label>
-      <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" formControlName="cpf" 
-      mask="000.000.000-00" />
+      <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" formControlName="cpf"
+        mask="000.000.000-00" />
       <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
           formCadastro.controls.cpf.touched && formCadastro.controls.cpf.invalid
         " [@fadeInOut]>
         O campo CPF é obrigatório!
       </small>
-     
+
     </div>
     <div class="form-group">
       <label for="email">E-mail <em>*</em> </label>
@@ -66,9 +66,8 @@
     <div class="form-group">
       <label for="telefone">Telefone <em>*</em> </label>
       <input type="text" class="form-control" id="telefone" placeholder="(XX) 9XXXX-XXXX" formControlName="telefone"
-      mask="(00) 00000-0000 || (00) 0000-0000" />
-      <small id="emailHelp" class="form-text text-danger ng-star-inserted"
-        *ngIf="formCadastro.controls.telefone.touched &&
+        mask="(00) 00000-0000 || (00) 0000-0000" />
+      <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.telefone.touched &&
         formCadastro.controls.telefone.invalid" [@fadeInOut]>
         O campo Telefone é obrigatório!
       </small>
@@ -93,7 +92,7 @@
       <div class="col">
         <label for="estado">Estado/UF <em>*</em> </label>
         <ng-select [items]="estados" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
-          formControlName="estado" (ngModelChange)="onAddCidade()" (closeOnSelect)="(true)" [(ngModel)]="estado">
+          formControlName="estado" (ngModelChange)="onAddCidade()" (closeOnSelect)="(true)">
         </ng-select>
         <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="" [@fadeInOut]>
           O campo Estado é obrigatório!
@@ -114,8 +113,7 @@
       <label for="logradouro">Logradouro <em>*</em> </label>
       <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, Travessa, etc."
         formControlName="logradouro" />
-      <small id="emailHelp" class="form-text text-danger ng-star-inserted"
-        *ngIf="formCadastro.controls.logradouro.touched &&
+      <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.logradouro.touched &&
         formCadastro.controls.logradouro.invalid" [@fadeInOut]>
         O campo Logradouro é obrigatório!
       </small>
@@ -125,8 +123,7 @@
       <div class="col">
         <label for="exampleFormControlInput1">Número <em>*</em> </label>
         <input type="text" class="form-control" placeholder="Número" formControlName="numero" />
-        <small id="emailHelp" class="form-text text-danger ng-star-inserted"
-          *ngIf="formCadastro.controls.numero.touched &&
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.numero.touched &&
           formCadastro.controls.numero.invalid" [@fadeInOut]>
           O campo Número é obrigatório!
         </small>
@@ -134,8 +131,7 @@
       <div class="col">
         <label for="exampleFormControlInput1">Bairro <em>*</em> </label>
         <input type="text" class="form-control" placeholder="Bairro" formControlName="bairro" />
-        <small id="emailHelp" class="form-text text-danger ng-star-inserted"
-          *ngIf="formCadastro.controls.bairro.touched &&
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.bairro.touched &&
           formCadastro.controls.bairro.invalid" [@fadeInOut]>
           O campo Bairro é obrigatório!
         </small>
@@ -176,10 +172,10 @@
       </label>
     </div>
     <div class="form-group buttonForm">
-      <button type="submit" class="btn mb-2 btn-success" (click)="mostrarValores()">
+      <button type="submit" class="btn btn-success" (click)="mostrarValores()">
         Cadastrar
       </button>
-      <button type="reset" class="btn mb-2 btn-warning">Limpar</button>
+      <button type="reset" class="btn btn-warning">Limpar</button>
     </div>
   </form>
 </div>

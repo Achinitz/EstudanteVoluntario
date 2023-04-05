@@ -7,6 +7,10 @@
   margin-top: 0.5em;
 }
 
+label {
+  margin-bottom: 1em;
+}
+
 .form-group {
   padding-bottom: 1em;
 }
@@ -36,6 +40,7 @@
 
 .btn {
   margin: 1rem;
-  width: 25%;
-  border-radius: 1rem;
+  &:hover {
+    opacity: 0.9;
+  }
 }
