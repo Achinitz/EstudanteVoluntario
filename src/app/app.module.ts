@@ -15,7 +15,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { MatListModule } from '@angular/material/list';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgSelectModule } from '@ng-select/ng-select';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +40,8 @@ import { CpfCnpjPipe } from './shared/pipe/cpfcnpj.pipe';
 import { CpfPipe } from './shared/pipe/cpf.pipe';
 import { CnpjPipe } from './shared/pipe/cnpj.pipe';
 import { PhonePipe } from './shared/pipe/phone.pipe';
+import { CookieService } from 'ngx-cookie-service';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -90,6 +92,7 @@ import { PhonePipe } from './shared/pipe/phone.pipe';
   ],
   providers: [
     DataService,
+    CookieService
   ],
   bootstrap: [AppComponent],
 })
