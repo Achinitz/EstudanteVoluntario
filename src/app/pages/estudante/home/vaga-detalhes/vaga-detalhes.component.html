@@ -3,21 +3,28 @@
 </div>
 
 <section>
-    <h2>Detalhes da Vaga - {{data.nomeVaga}}</h2>
+    <h2>{{data.nomeVaga}}</h2>   
 
     <span>Status vaga: {{data.status}}</span>
 
     <div class="contentGrid">
         <span>Entidade Responsável: {{data.nomeEntidade}}</span>
         <span>Descrição: {{data.descricao}}</span>
+        <span>Requisitos: {{data.requisitos}}</span>
+        <span>Auxílio: {{data.auxilio}}</span>
+        <span>Endereço: {{data.endereco}}</span>
+        <span>Data: {{data.dia}}</span>
+        <span>Horário de Início: {{data.horarioInicio}}</span>
+        <span>Horário de Encerramento: {{data.horarioEncerramento}}</span>
+        <span>Número de vagas: {{data.numeroVagas}}</span>
     </div>
 
-    <div>
-        <button class="btn btn-success">
-            Confirmar
+    <div class="buttonForm" >
+        <button *ngIf="data.inscrito && data.status === 'Aberto'" class="btn btn-danger">
+            Cancelar inscrição
         </button>
-        <button class="btn btn-danger" (click)="fecharModal()">
-            Cancelar
+        <button *ngIf="!data.inscrito" class="btn btn-primary">
+            Inscrição
         </button>
     </div>
 

@@ -6,6 +6,8 @@ import { DetalheVagaComponent } from './home/detalhe-vaga/detalhe-vaga.component
 import { HomeComponent } from './home/home.component';
 import { VagaDetalhesComponent } from './home/vaga-detalhes/vaga-detalhes.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { InscricoesComponent } from './inscricoes/inscricoes.component';
+import { BuscarVagasComponent } from './buscar-vagas/buscar-vagas.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,14 @@ const routes: Routes = [
       {
         path: 'certificados',
         component: CertificadoComponent,
+      },
+      {
+        path: 'inscricoes',
+        component: InscricoesComponent,
+      },
+      {
+        path: 'buscar-vagas',
+        component: BuscarVagasComponent,
       },
     ],
   },

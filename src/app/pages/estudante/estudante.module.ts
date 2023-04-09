@@ -22,6 +22,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { DataService } from 'src/app/services/data.service';
+import { InscricoesComponent } from './inscricoes/inscricoes.component';
+import { BuscarVagasComponent } from './buscar-vagas/buscar-vagas.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { DataService } from 'src/app/services/data.service';
     DetalheVagaComponent,
     CertificadoComponent,
     EstudanteComponent,
+    InscricoesComponent,
+    BuscarVagasComponent,
   ],
   imports: [
     CommonModule,

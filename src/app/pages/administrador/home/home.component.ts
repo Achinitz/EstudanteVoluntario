@@ -7,6 +7,7 @@ import { Chart, registerables } from 'chart.js';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  nomeAdmin: any = 'Admin Teste';
 
   @ViewChild("meuCanvas", {static: true}) elemento: ElementRef;
 

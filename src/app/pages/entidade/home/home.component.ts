@@ -8,6 +8,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  nomeEntidade: any = 'Entidade Teste';
+
   constructor(private dataService: DataService) {}
 
   vagasDisponiveis: any = [
