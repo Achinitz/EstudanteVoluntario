@@ -1,0 +1,51 @@
+<section class="content">
+    <div class="topo">
+        <h1>Cadastrar Administrador</h1>
+    </div>
+
+    <div class="cadastro">
+        <form [formGroup]="formCadastro" #formDir="ngForm">
+            <div class="form-group">
+                <label for="nomeCompleto">Nome Completo <em>*</em> </label>
+                <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo"
+                    formControlName="nomeCompleto" />
+                <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+                    formCadastro.controls.nomeCompleto.touched &&
+                    formCadastro.controls.nomeCompleto.invalid
+                  " [@fadeInOut]>
+                    O campo Nome Completo é obrigatório!
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="nomeSocial">Nome Social </label>
+                <input type="nomeSocial" class="form-control" id="nomeSocial" placeholder="Nome Social"
+                    formControlName="nomeSocial" />
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF <em>*</em> </label>
+                <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" formControlName="cpf"
+                    mask="000.000.000-00" />
+                <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+                    formCadastro.controls.cpf.touched && formCadastro.controls.cpf.invalid
+                  " [@fadeInOut]>
+                    O campo CPF é obrigatório!
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail <em>*</em> </label>
+                <input type="email" class="form-control" id="email" placeholder="name@email.com"
+                    formControlName="email" />
+                <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+                    formCadastro.controls.email.touched &&
+                    formCadastro.controls.email.invalid
+                  " [@fadeInOut]>
+                    O campo E-mail é obrigatório!
+                </small>
+            </div>
+            <div class="buttonForm">
+                <button type="submit" class="btn btn-success">Salvar</button>
+                <button type="reset" class="btn btn-warning">Limpar </button>
+            </div>
+        </form>
+    </div>
+</section>

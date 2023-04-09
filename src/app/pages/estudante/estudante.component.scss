@@ -1,0 +1,21 @@
+.principal {
+  padding: 2em;
+  margin: 0;
+}
+
+.button_action{
+    border: none;
+    background: powderblue;
+    border-radius: 5px;
+    margin-right: 0.5rem;
+}
+
+.navSideBar {
+  float: left;
+}
+
+.conteudo {
+  flex-direction: column;
+  align-items: initial;
+  display: flex;
+}

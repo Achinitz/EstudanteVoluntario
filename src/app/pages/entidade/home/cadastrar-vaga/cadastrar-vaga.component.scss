@@ -1,0 +1,46 @@
+.topo {
+  flex-direction: column;
+  align-items: center;
+}
+
+.cadastro {
+  margin-top: 0.5em;
+}
+
+label {
+  margin-bottom: 1em;
+}
+
+.form-group {
+  padding-bottom: 1em;
+}
+
+.form-check {
+  padding-bottom: 1em;
+}
+
+.duplo {
+  padding-bottom: 1em;
+}
+
+.contentDetails {
+  display: flex;
+  flex-direction: initial;
+  flex-wrap: wrap;
+  justify-content: initial;
+}
+
+.buttonForm {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1em;
+  padding: 0;
+}
+
+.btn {
+  margin: 1rem;
+  &:hover {
+    opacity: 0.9;
+  }
+}

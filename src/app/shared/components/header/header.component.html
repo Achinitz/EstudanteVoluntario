@@ -6,6 +6,11 @@
         <img [src]="HomePath" class="logohome d-none d-lg-block" />
       </a>
     </div>
+
+    <button class="btn btn-primary btn-acessibilidade" style="border-radius: 50%; width: 50px; height: 50px;" (click)="sidebarMobile()">
+      >
+    </button>
+
     <button
       class="navbar-toggler ml-auto custom-toggle"
       type="button"
@@ -34,7 +39,7 @@
         </a>
       </div>
 
-      <div class="buttons entrar">
+      <div *ngIf="!isLoggedIn" class="buttons entrar">
         <button
           class="btn btn-outline-secondary"
           type="button"
@@ -55,15 +60,34 @@
           <span> Entrar </span>
         </button>
 
-        <!--   <button class="btn" type="submit">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                    <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                    <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
-                </svg>
-                <span>
-                    Cadastrar
-                </span>
-            </button>-->
+
+        <!-- <a data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+          <img class="img__user" src="../../../../assets/imagens/NoUser.jpg">
+        </a>
+
+        <div class="row">
+          <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+              <div class="card card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+      </div>
+
+      <div *ngIf="isLoggedIn">
+        <mat-nav-list>
+          <mat-list-item>
+          </mat-list-item>
+          <mat-list-item (click)="logout()">
+            <a matListItemTitle routerLink>Sair</a>
+            <button mat-icon-button >
+              <mat-icon>logout</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-nav-list>
       </div>
     </div>
   </div>

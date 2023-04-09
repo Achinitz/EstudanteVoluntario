@@ -1,166 +1,109 @@
-section{
+.topo {
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.contentDetails {
+  display: flex;
+  flex-direction: initial;
+  flex-wrap: wrap;
+}
+
+.content__card{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  column-gap: 4rem;
+}
+
+.ultimasInscricoes {
+  display: grid;
+  margin-bottom: 2rem;
+}
+
+.vagasDisponiveis {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: initial;
+  margin-bottom: 1rem;
+}
+
+.containerCard {
     display: flex;
-    align-items: baseline;
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(10rem,1fr));
+  // column-gap: 4rem;
+}
 
-    .navSideBar{
-        justify-content: center;
-        margin-top: 1rem;
-        width: 18%;
-    }
+.vagasCadastradas{
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(10rem,1fr));
+  // column-gap: 4rem;
+}
 
-    h2{
-        text-align: center;
-    }
+.buttonsVagasCadastradas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
 
-    .contentHomeEstudante{
-        width: 81%;
-    }   
-    h1{
-        text-align: center;
-    }
+  button:first-child {
+    margin-right: 0.5rem;
+  }
+}
 
-    .contentHomeEstudante{
-        display: inline;
-        justify-content: center;
-        
-    }
+.statusPosition {
+  width: min-content;
+  padding: 0.3rem;
+  border-radius: 0.4rem;
+  margin: 0.3rem 0rem 0.5rem 0.3rem;
+  padding: 0.3rem;
+}
 
-    .contentPage{
-        padding: 1.5rem;
-        background-color: antiquewhite;
-        border-radius: 0.5rem;
-      }
+.card {
+  width: 15rem;
+  margin-right: 10px;
+  margin-top: 10px;
 
-    .ultimasInscricoes{
-        display: grid;
-        margin-bottom: 2rem;
-
-        span{
-            margin-bottom: 1rem;
-        }
-    }
-    
-    .vagasDisponiveis{
-        display: grid;
-        flex-wrap: wrap;
-        margin-bottom: 1rem;
-    }
-
-    .containerCard{
-        display: flex;
-        //margin-left: auto;
-        //margin-right: auto;
-    }
-
-    .buttonsVagasCadastradas{
+  div:nth-of-type(2) {
+    h4 {
       text-align: center;
-      padding: 1rem 1rem;
-
-        button{
-            &:first-child{
-                margin-right: 0.4rem;
-            }
-            &:nth-of-type(2){
-                background-color: #ba0a0a !important;
-                color: #ffffff !important;
-            }
-
-            &:hover{
-                opacity: 0.7;
-            }
-
-        }
-
     }
 
-    .vagasCadastradas{
-        flex-wrap: wrap;
-        opacity: 0.7;
-        .imgCard{
-            img{
-                max-width: 85%;
-            }
-        }
-
-      /*   span{
-
-        } */
-
+    p:nth-of-type(2) {
+      text-align: center;
+      border-radius: 1rem;
     }
 
-    .statusPosition{
-        width: min-content;
-        padding: 0.3rem;
-        border-radius: 0.4rem;
-        margin: 0.3rem 0rem 0.5rem 0.3rem;
-        padding: 0.3rem;
+    div {
+      display: flex;
+      justify-content: space-between;
     }
-
-    .card{
-        width: 15rem;
-        margin-right: 10px;
-        margin-top: 10px;
-
-        button{
-            border: none;
-            background-color: #008000;
-            color: #ffffff;
-            border-radius: 1rem;
-            padding: 0.5rem;
-
-            &:hover{
-                opacity: 0.5;
-            }
-        }
-
-        div:nth-of-type(2){
-            h4{
-                text-align: center;
-            }
-
-            p:nth-of-type(2){
-                text-align: center;
-                border-radius: 1rem;
-            }
-            div{
-                display: flex;
-                justify-content: space-between;
-            button{
-                border: none;
-                background-color: #008000;
-                color: #ffffff;
-                border-radius: 1rem;
-                padding: 0.5rem;
-
-                &:hover{
-                    opacity: 0.5;
-                }
-
-                &:nth-of-type(2){
-                    background-color: #f5f04a !important;
-                    color: #000000 !important;
-                }
-            }
-        }
-        }
-    }
+  }
 }
 
 .pagination ::ng-deep {
-    margin-left: auto;
-    .page-item {
-      &.active {
-        .page-link {
-          background-color: #fff;
-          color: #439024;
-        }
-      }
-  
+  align-self: center;
+
+  .page-item {
+    &.active {
       .page-link {
         background-color: #fff;
-        color: #7d7d7d;
-        border-color: #ebebec;
-        font-size: 14px;
+        color: #439024;
       }
     }
+
+    .page-link {
+      background-color: #fff;
+      color: #7d7d7d;
+      border-color: #ebebec;
+      font-size: 14px;
+    }
   }
+}

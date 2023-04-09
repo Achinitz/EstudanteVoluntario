@@ -1,98 +1,63 @@
-.content-meu-perfil{
-    display: flex;
+.topo {
+  flex-direction: column;
+  align-items: center;
+  
+  h1 {
+    text-align: center;
+    font-weight: 500;
+  }
+}
+
+.formCadastro {
+  align-items: center;
+  padding-top: 1em;
+}
+
+.link-cep {
+  text-decoration: none;
+}
+
+.content {
+  margin-left: auto;
+  margin-right: auto;
+
+  .userImg {
     flex-direction: column;
     align-items: center;
-    background-color: #b6cfd3;
-    border-radius: 0.5rem;
+  }
+
+  #imgUser {
+    width: 11rem;
+    height: 9rem;
+    border-radius: 50%;
+  }
+
+  .inputFile {
+    display: grid;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  .buttonForm {
+    margin-bottom: 1rem;
+  }
 }
 
-// .ng-select::ng-deep{
-//     .ng-select-container{
-//         .ng-value-container{
-//             .ng-placeholder{
-//                 background: white;
-//                 padding: 9px;
-//                 width: 100%;
-//                 border-radius: 5px;
-//             }
-//         }
-//     }
-// }
-
-.link-cep{
-    text-decoration: none;
+.form-group {
+  padding: 0.5em;
 }
 
-.btn-primary{
-    margin-right: 10px;
+.duplo {
+  padding: 0.5em;
 }
 
-.contentDetails-photo{
+.btn {
+  margin: 1rem;
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
-.img-user{
-    width: 30%;
-}
-
-.cadastrar{
-    background-color: red;
-}
-
-.salvar{
-    background-color: green;
-}
-
-section{    
-    display: flex;
-}
-
-h1{
-    text-align: center;
-    margin-top: 8px;
-    font-weight: 500;
-}
-
-.content{
-    margin-left: auto;
-    margin-right: auto; 
-    div{
-        form{
-            div{
-                margin-top: 0.6rem;
-            }
-        }
-    }
-
-    #imgUser{
-        width: 11rem;
-        height: 9rem;
-        border-radius: 50%;
-    }
-
-    .inputFile{
-        display: grid;
-    }
-
-    .buttonForm{
-        .btn{
-            width: 25%;
-            color: #fff;
-            border-radius: 1rem;
-            border: none;
-            
-            &:first-child{
-                background: green;
-                margin-right: 1rem;
-            }
-        
-            &:nth-of-type(2){
-                background: red;
-            }
-        
-            &:hover{
-                opacity: 0.7;
-            }
-        }
-    }
-
+.form-check {
+  margin-left: 0.5rem;
 }

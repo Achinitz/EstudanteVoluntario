@@ -1,0 +1,35 @@
+<section class="content">
+    <div class="topo">
+        <h1>Vagas Cadastradas</h1>
+    </div>
+
+<section>
+    <div *ngIf="!vagasDisponiveis">
+        <span> No momento não existe vagas cadastradas! </span>
+    </div>
+    <section>
+        <div class="containerCard vagasDisponiveis">
+            <div class="card" *ngFor="let vaga of vagasDisponiveis; let i = index">
+                <p [ngClass]="vaga.status === 'Aberto' ? 'bg-success text-white' : 'bg-warning'" class="statusPosition">
+                    {{ vaga.status }}
+                </p>
+                <div class="imgCard">
+                    <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ vaga.nomeEntidade }}</h4>
+                    <p class="card-text">{{ vaga.descricao }}</p>
+                    <div>
+                        <button class="btn btn-primary" (click)="exibirDetalhes(i)">Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
+        [collectionSize]="this.vagasDisponiveis.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"
+        [(page)]="paginaAtual" (pageChange)="mudancaPagina(paginaAtual)">
+    </ngb-pagination>
+</section>
+
+</section>

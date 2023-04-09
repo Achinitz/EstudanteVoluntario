@@ -1,94 +1,102 @@
-<div class="row">
-  <div class="col col-lg-2 navSideBar">
-    <app-sidebar-estudante></app-sidebar-estudante>
-      </div>
-
-
-  <div class="col contentHomeEstudante">
+<section class="content">
+  <div class="topo">
     <h1>Olá {{ nomeEstudante }} !</h1>
+    <div *ngIf="vagasCadastradas">
+      <ngb-alert #alert type="warning">
+        Os processos seletivos estão em andamento, assim que disponível mais
+        informações entraremos em contato com você!
+      </ngb-alert>
+    </div>
+  </div>
 
-    <section class="row ultimasInscricoes"> 
-        <span class="contentPage" *ngIf="vagasCadastradas">
-            Os processos seletivos estão em andamento, assim que disponível mais
-            informações entraremos em contato com você!
-        </span>
+  <section class="col-12">
+   
+      <section class="row ultimasInscricoes">
+        <h2>Últimas Inscrições</h2>
 
-      <h2>Últimas Inscrições</h2>
 
-      <div *ngIf="!vagasCadastradas">
-        <span> Você ainda não tem inscrições em vagas! </span>
-      </div>
-      <div class="containerCard vagasCadastradas">
-        <div class="card" *ngFor="let vaga of vagasCadastradas; let i = index">
-          <!-- Alterar as cores do botão dependendo do status -->
-          <p
-            [ngClass]="vaga.status === 'aberto' ? 'bg-success' : 'bg-warning'"
-            class="card-text statusPosition"
+          <ngb-alert #alert type="warning" *ngIf="!vagasCadastradas">
+            Você ainda não tem inscrições em vagas!
+          </ngb-alert>
+
+        <div class="content__card">
+          
+          <div
+            class="card"
+            *ngFor="let vaga of vagasCadastradas; let i = index"
           >
-            {{ vaga.status }}
-          </p>
-          <div class="imgCard">
-            <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">{{ vaga.nomeEntidade }}</h4>
-            <p class="card-text">{{ vaga.descricao }}</p>
-          </div>
-          <div class="buttonsVagasCadastradas">
-            <button (click)="exibirDetalhes(i)">Detalhes Vaga</button>
-            <button
-              *ngIf="vaga.status === 'aberto'"
-              (click)="cancelarInscricao(i)"
+            <!-- Alterar as cores do botão dependendo do status -->
+            <p
+              [ngClass]="vaga.status === 'Aberto' ? 'bg-success text-white' : 'bg-warning'"
+              class="statusPosition"
             >
-              Cancelar
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="row vagasDisponiveis">
-      <h2>Vagas Abertas</h2>
-
-      <div *ngIf="!vagasDisponiveis">
-        <span> No momento não existe vagas cadastradas! </span>
-      </div>
-      <section>
-        <div class="containerCard vagasDisponiveis">
-          <div class="card" *ngFor="let vagaDisponivel of vagas; let i = index">
-            <p class="card-text statusPosition bg-success">
-              {{ vagaDisponivel.status }}
+              {{ vaga.status }}
             </p>
             <div class="imgCard">
-              <img
-                src="{{ vagaDisponivel.img }}"
-                class="card-img-top"
-                alt="..."
-              />
+              <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
             </div>
             <div class="card-body">
-              <h4 class="card-title">{{ vagaDisponivel.nomeEntidade }}</h4>
-              <p class="card-text">{{ vagaDisponivel.descricao }}</p>
-              <div>
-                <button (click)="cadastrar(i)">Cadastrar-se</button>
-                <button (click)="exibirDetalhes(i)">Detalhes Vaga</button>
+              <h4 class="card-title">{{ vaga.nomeEntidade }}</h4>
+              <p class="card-text">{{ vaga.descricao }}</p>
+            </div>
+            <div class="buttonsVagasCadastradas">
+              <button class="btn btn-primary" (click)="exibirDetalhes(i)">Detalhes</button>
+              <button
+                *ngIf="vaga.status === 'Aberto'"
+                class="btn btn-danger"
+                (click)="cancelarInscricao(i)"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="row vagasDisponiveis">
+        <h2>Vagas Abertas</h2>
+
+        <div *ngIf="!vagasDisponiveis">
+          <span> No momento não existe vagas cadastradas! </span>
+        </div>
+        <section>
+          <div class="containerCard vagasDisponiveis">
+            <div
+              class="card"
+              *ngFor="let vagaDisponivel of vagas; let i = index"
+            >              
+              <div class="imgCard">
+                <img
+                  src="{{ vagaDisponivel.img }}"
+                  class="card-img-top"
+                  alt="..."
+                />
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">{{ vagaDisponivel.nomeEntidade }}</h4>
+                <p class="card-text">{{ vagaDisponivel.descricao }}</p>
+                <div>
+                  <button class="btn btn-success" (click)="cadastrar(i)">Cadastrar-se</button>
+                  <button class="btn btn-primary" (click)="exibirDetalhes(i)">Detalhes</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
+        <ngb-pagination
+          class="pagination pull-right"
+          [rotate]="true"
+          [maxSize]="3"
+          [directionLinks]="false"
+          [collectionSize]="this.vagasDisponiveis.length"
+          [pageSize]="itemsPerPage"
+          [boundaryLinks]="true"
+          [(page)]="paginaAtual"
+          (pageChange)="mudancaPagina(paginaAtual)"
+        >
+        </ngb-pagination>
       </section>
-      <ngb-pagination
-        class="pagination pull-right"
-        [rotate]="true"
-        [maxSize]="3"
-        [directionLinks]="false"
-        [collectionSize]="this.vagasDisponiveis.length"
-        [pageSize]="itemsPerPage"
-        [boundaryLinks]="true"
-        [(page)]="paginaAtual"
-        (pageChange)="mudancaPagina(paginaAtual)"
-      >
-      </ngb-pagination>
-    </section>
-  </div>
-</div>
+   
+  </section>
+</section>

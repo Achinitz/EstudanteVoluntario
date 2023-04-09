@@ -1,21 +1,29 @@
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
-
 import { EstudanteRoutingModule } from './estudante-routing.module';
+
 import { HomeComponent } from './home/home.component';
 import { SidebarEstudanteComponent } from './sidebar-estudante/sidebar-estudante.component';
 import { VagaDetalhesComponent } from './home/vaga-detalhes/vaga-detalhes.component';
 import { PerfilComponent } from './perfil/perfil.component';
-import { MatTabsModule } from '@angular/material/tabs';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CancelarModalComponent } from './home/cancelar-modal/cancelar-modal.component';
-import { MatDialogModule } from '@angular/material/dialog';
 import { DetalheVagaComponent } from './home/detalhe-vaga/detalhe-vaga.component';
-import { DataService } from 'src/app/services/data.service';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { CertificadoComponent } from './certificado/certificado.component';
+import { EstudanteComponent } from './estudante.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxMaskModule } from 'ngx-mask';
+
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatListModule } from '@angular/material/list';
+import { DataService } from 'src/app/services/data.service';
+import { MinhasInscricoesComponent } from './minhas-inscricoes/minhas-inscricoes.component';
+import { ModalVagaComponent } from './minhas-inscricoes/modal-vaga/modal-vaga.component';
 
 @NgModule({
   declarations: [
@@ -25,21 +33,27 @@ import { CertificadoComponent } from './certificado/certificado.component';
     PerfilComponent,
     CancelarModalComponent,
     DetalheVagaComponent,
-    CertificadoComponent
+    CertificadoComponent,
+    EstudanteComponent,
+    MinhasInscricoesComponent,
+    ModalVagaComponent,
   ],
   imports: [
     CommonModule,
     EstudanteRoutingModule,
-    MatTabsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatPaginatorModule,
     NgbModule,
+    NgSelectModule,
+    NgxMaskModule,
+    MatTabsModule,
+    MatPaginatorModule,    
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatListModule,
+  
   ],
-  providers: [
-    DataService
-  ]
+  providers: [DataService],
+  
 })
-export class EstudanteModule { }
+export class EstudanteModule {}

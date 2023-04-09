@@ -1,42 +1,32 @@
-<section>
+<section class="content">
+  <div class="topo">
+    <h1>Detalhes da Vaga - {{ data.nomeVaga }}</h1>
+  </div>
 
-    <section class="col-2 navSideBar">
-        <app-sidebar-estudante></app-sidebar-estudante>
-    </section>
-    <section class="col-10">
-        <h1> Detalhes da Vaga - {{data.nomeVaga}} </h1>
+  <ngb-alert #alert type="warning">
+    Verifique se você concorda ou se identifica com os detalhes da vaga antes de
+    realizar a inscrição.
+  </ngb-alert>
 
-        <span class="contentPage">
-            Verifique se você concorda ou se identifica com os detalhes da vaga antes de realizar a inscrição.
-        </span>
-        
-        <section class="contentDetails">
-            <div class="col-6 content">
-                <div class="row">
-                    <h3>
-                        {{data.nomeEntidade}}
-                    </h3>
-                </div>
-                <div class="row">
-                    <span>
-                        Descrição: {{data.descricao}}
-                    </span>
-                </div>
-                <div class="row">
-                    <button class="btn">
-                        Cadastrar
-                    </button>
-                    <button class="btn">
-                        Cancelar
-                    </button>
-                </div>
-            </div>
-
-            <div class="col-6 imgDetails">
-                <img style="width: 50%;" src="{{data.img}}">
-            </div>
-        </section>
-
-    </section>
-
+  <section class="contentDetails">
+    <div class="col-6 imgDetails">
+      <img style="width: 50%" src="{{ data.img }}" />
+    </div>
+    <div class="col-6 content">
+      <div class="row">
+        <h3>
+          {{ data.nomeEntidade }}
+        </h3>
+      </div>
+      <div class="row">
+        <span> Descrição: {{ data.descricao }} </span>
+      </div>
+    </div>
+    <div class="buttonForm">
+      <button type="submit" class="btn mb-2 btn-success">
+        Cadastrar
+      </button>
+      <button type="submit" class="btn mb-2 btn-danger">Cancelar</button>
+    </div>
+  </section>
 </section>

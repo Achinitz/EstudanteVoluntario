@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdicionarAdminComponent } from './adicionar-admin/adicionar-admin.component';
+import { AdministradorComponent } from './administrador.component';
+import { AdicionarCursoComponent } from './cadastrar-curso/adicionar-curso/adicionar-curso.component';
 import { CadastrarCursoComponent } from './cadastrar-curso/cadastrar-curso.component';
+
 import { AdicionarInstituicaoComponent } from './cadastrar-instituicao/adicionar-instituicao/adicionar-instituicao.component';
 import { CadastrarInstituicaoComponent } from './cadastrar-instituicao/cadastrar-instituicao.component';
+
 import { HomeComponent } from './home/home.component';
 import { MeuPerfilAdministradorComponent } from './meu-perfil-administrador/meu-perfil-administrador.component';
 import { ValidarEntidadeModalComponent } from './validar-entidades-administrador/validar-entidade-modal/validar-entidade-modal.component';
@@ -13,39 +18,63 @@ import { ValidarVagasAdministradorComponent } from './validar-vagas-administrado
 
 const routes: Routes = [
   {
-    path: "", component: HomeComponent,
+    path: '',
+    component: AdministradorComponent,
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+      },
+      {
+        path: 'meu-perfil',
+        component: MeuPerfilAdministradorComponent,
+      },
+      {
+        path: 'validar-vagas',
+        component: ValidarVagasAdministradorComponent,
+      },
+      {
+        path: 'validar-estudantes',
+        component: ValidarEstudantesAdministradorComponent,
+      },
+      {
+        path: 'validar-entidades',
+        component: ValidarEntidadesAdministradorComponent,
+      },
+      {
+        path: 'cadastrar-instituicao',
+        component: CadastrarInstituicaoComponent,
+      },
+      {
+        path: 'cadastrar-curso',
+        component: CadastrarCursoComponent,
+      },
+      {
+        path: 'adicionar-instituicao',
+        component: AdicionarInstituicaoComponent,
+      },
+      {
+        path: 'adicionar-curso',
+        component: AdicionarCursoComponent,
+      },
+      {
+        path: 'detalhe-vaga',
+        component: DetalheVagaAdministradorComponent,
+      },
+      {
+        path: 'validar-entidade',
+        component: ValidarEntidadeModalComponent,
+      },
+      {
+        path: 'cadastrar-admin',
+        component: AdicionarAdminComponent,
+      },
+    ],
   },
-  {
-    path: "meu-perfil", component: MeuPerfilAdministradorComponent
-  },
-  {
-    path: "validar-vagas", component: ValidarVagasAdministradorComponent
-  },
-  {
-    path: "validar-estudantes", component: ValidarEstudantesAdministradorComponent
-  },
-  {
-    path: "validar-entidades", component: ValidarEntidadesAdministradorComponent
-  },
-  {
-    path: "cadastrar-instituicao", component: CadastrarInstituicaoComponent
-  },
-  {
-    path: "cadastrar-curso", component: CadastrarCursoComponent
-  },
-  {
-    path: "adicionar-instituicao", component: AdicionarInstituicaoComponent
-  },
-  {
-    path: "detalhe-vaga", component: DetalheVagaAdministradorComponent
-  },
-  {
-    path: "validar-entidade", component: ValidarEntidadeModalComponent
-  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AdministradorRoutingModule { }
+export class AdministradorRoutingModule {}

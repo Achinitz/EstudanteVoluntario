@@ -1,53 +1,63 @@
-section{    
-    display: flex;
-    margin-top: 1rem;
-}
+.topo {
+  flex-direction: column;
+  align-items: center;
 
-h1{
+  h1 {
     text-align: center;
+    font-weight: 500;
+  }
 }
 
-.content{
-    margin-left: auto;
-    margin-right: auto; 
-    div{
-        form{
-            div{
-                margin-top: 0.6rem;
-            }
-        }
-    }
+.inicio {
+  padding-bottom: 1em;
+}
 
-    #imgUser{
-        width: 11rem;
-        height: 9rem;
-        border-radius: 50%;
-    }
+.formCadastro {
+  align-items: center;
+  padding-top: 1em;
+}
 
-    .inputFile{
-        display: grid;
-    }
+.content {
+  margin-left: auto;
+  margin-right: auto;
 
-    .buttonForm{
-        .btn{
-            width: 25%;
-            color: #fff;
-            border-radius: 1rem;
-            border: none;
-            
-            &:first-child{
-                background: green;
-                margin-right: 1rem;
-            }
-        
-            &:nth-of-type(2){
-                background: red;
-            }
-        
-            &:hover{
-                opacity: 0.7;
-            }
-        }
-    }
+  .userImg {
+    flex-direction: column;
+    align-items: center;
+  }
 
+  #imgUser {
+    width: 11rem;
+    height: 9rem;
+    border-radius: 50%;
+  }
+
+  .inputFile {
+    display: grid;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  .buttonForm {
+    margin-bottom: 1rem;
+  }
+}
+
+.form-group {
+  padding: 0.5em;
+}
+
+.duplo {
+  padding: 0.5em;
+}
+
+.btn {
+  margin: 1rem;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.form-check {
+  margin-left: 0.5rem;
 }

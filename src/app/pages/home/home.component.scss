@@ -1,3 +1,13 @@
+.container {
+  max-width: 1000px;
+}
+
+.conteudo {
+  padding: 1em;
+  align-items: center;
+  margin: 0.5em;
+}
+
 .titulo {
   justify-content: center;
   display: flex;
@@ -6,16 +16,6 @@
 .logo {
   justify-content: center;
   padding: 1.4em;
-}
-
-.conteudo {
-  padding: 1em;
-  align-items: center;
-}
-
-section {
-  padding: 1em;
-  align-items: center;
 }
 
 .content {
@@ -36,12 +36,11 @@ section {
 }
 
 .btnReadMore {
-  margin: 0.5em;
+  margin: 0.8em;
   background-color: #1265a2;
   border: none;
   &:hover {
     opacity: 0.9;
-    color: #000000;
   }
 }
 
@@ -64,10 +63,6 @@ section {
   font-weight: bold;
 }
 
-.h4 {
-  align-items: flex-start;
-}
-
 .containerCard {
   display: flex;
   flex-wrap: wrap;
@@ -76,11 +71,9 @@ section {
 
   .card {
     max-width: 180px !important;
-    //height:300px;
     border-radius: 10px;
     margin-bottom: 10px;
     flex-wrap: wrap;
-    //margin-left: 35px;
     .imgCard {
       margin-top: 5px;
       display: flex;
@@ -109,7 +102,6 @@ section {
       background: #1265a2;
       color: #ffffff;
       &:hover {
-        color: #000000;
         opacity: 0.9;
       }
     }
@@ -125,15 +117,18 @@ section {
   align-items: center;
   justify-content: center;
   button {
-    padding: 10px;
-    border-radius: 10px;
+    padding: 10px;   
     color: #ffffff;
     background-color: #1265a2;
     border: none;
-
     &:hover {
       opacity: 0.9;
-      color: #000000;
     }
   }
+}
+
+.footercontainer {
+  background: #b6cfd3;
+  padding: 1em;
+  max-width: 1000px;
 }
