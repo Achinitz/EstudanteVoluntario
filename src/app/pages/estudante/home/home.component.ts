@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import Swal from 'sweetalert2';
 import { CancelarModalComponent } from './cancelar-modal/cancelar-modal.component';
 import { VagaDetalhesComponent } from './vaga-detalhes/vaga-detalhes.component';
 
@@ -223,13 +224,25 @@ export class HomeComponent implements OnInit {
 
   //Quando o usuário clicar no botão para cancelar a inscrição
   cancelarInscricao(value: any) {
-    const dialogRef = this.dialog.open(CancelarModalComponent, {
-      width: '50%',
-      data: this.vagasDisponiveis[value],
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');    
-    });
+      Swal.fire({
+        title: 'Deseja realmente cancelar sua inscrição para essa vaga?',
+        text: "Ao confirmar, sua inscrição será removida!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: 'Sua inscrição foi removida com sucesso!',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      })
   }
+
 }
