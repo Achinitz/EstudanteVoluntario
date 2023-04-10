@@ -22,8 +22,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { DataService } from 'src/app/services/data.service';
+
+import { InscricoesComponent } from './inscricoes/inscricoes.component';
+import { BuscarVagasComponent } from './buscar-vagas/buscar-vagas.component';
+
 import { MinhasInscricoesComponent } from './minhas-inscricoes/minhas-inscricoes.component';
 import { ModalVagaComponent } from './minhas-inscricoes/modal-vaga/modal-vaga.component';
+
 
 @NgModule({
   declarations: [
@@ -35,8 +40,13 @@ import { ModalVagaComponent } from './minhas-inscricoes/modal-vaga/modal-vaga.co
     DetalheVagaComponent,
     CertificadoComponent,
     EstudanteComponent,
+
+    InscricoesComponent,
+    BuscarVagasComponent,
+    
     MinhasInscricoesComponent,
     ModalVagaComponent,
+
   ],
   imports: [
     CommonModule,

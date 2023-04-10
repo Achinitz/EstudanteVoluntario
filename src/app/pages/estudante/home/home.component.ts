@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { CancelarModalComponent } from './cancelar-modal/cancelar-modal.component';
@@ -12,126 +11,173 @@ import { VagaDetalhesComponent } from './vaga-detalhes/vaga-detalhes.component';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  nomeEstudante: any = 'Teste';
-  //vagasCadastradas: any = null;
+  nomeEstudante: any = 'Estudante Teste';
+
   vagasCadastradas: any = [
     {
-      nomeEntidade: 'Pequeno Cotolengo',
+      id: 1,
+      nomeEntidade: 'ONG 1',
+      nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
-      descricao: 'Contador de História',
-      status: 'Andamento',
+      descricao: 'Vaga para pessoas de bom coração',
+      requisitos:'Sem requisitos',
+      auxilio:'Não',
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
+      status: 'Aberto',
+      inscrito: false,
     },
     {
-      nomeEntidade: 'APAE',
+      id: 2,
+      nomeEntidade: 'ONG 2',
+      nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
-      descricao: 'Auxiliar de Cozinha',
+      descricao: 'Vaga para pessoas de bom coração',
+      requisitos:'Sem requisitos',
+      auxilio:'Não',
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
       status: 'Andamento',
+      inscrito: true,      
     },
 
     {
-      nomeEntidade: 'Erasto',
+      id: 3,
+      nomeEntidade: 'ONG 3',
+      nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
-      descricao: 'Jardineiro',
+      descricao: 'Vaga para pessoas de bom coração',
+      requisitos:'Sem requisitos',
+      auxilio:'Não',
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
       status: 'Aberto',
+      inscrito: true, 
     },
   ];
 
   vagasDisponiveis: any = [
     {
       id: 1,
-      nomeEntidade: 'APAE 1',
+      nomeEntidade: 'ONG 1',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
+      requisitos:'Sem requisitos',
+      auxilio:'Não',
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
       status: 'Aberto',
+      inscrito: false,
     },
     {
       id: 2,
-      nomeEntidade: 'APAE 2',
+      nomeEntidade: 'ONG 2',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
+      requisitos:'Sem requisitos',
+      auxilio:'Não',
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
       status: 'Aberto',
+      inscrito: false,    
     },
+
     {
       id: 3,
-      nomeEntidade: 'APAE 3',
+      nomeEntidade: 'ONG 3',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
+      requisitos:'Sem requisitos',
+      auxilio:'Não',
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
       status: 'Aberto',
+      inscrito: false,
     },
     {
       id: 4,
-      nomeEntidade: 'APAE 4',
+      nomeEntidade: 'ONG 4',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
+      requisitos:'Sem requisitos',
+      auxilio:'Não',
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
       status: 'Aberto',
+      inscrito: false,
     },
     {
       id: 5,
-      nomeEntidade: 'APAE 5',
+      nomeEntidade: 'ONG 5',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
+      requisitos:'Sem requisitos',
+      auxilio:'Não',
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
       status: 'Aberto',
+      inscrito: false,
     },
     {
       id: 6,
-      nomeEntidade: 'APAE 6',
+      nomeEntidade: 'ONG 6',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
+      requisitos:'Sem requisitos',
+      auxilio:'Não',
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
       status: 'Aberto',
+      inscrito: false,
     },
     {
       id: 7,
-      nomeEntidade: 'APAE 7',
+      nomeEntidade: 'ONG 7',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.jpg',
       descricao: 'Vaga para pessoas de bom coração',
+      requisitos:'Sem requisitos',
+      auxilio:'Não',
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
       status: 'Aberto',
-    },
-    {
-      id: 8,
-      nomeEntidade: 'APAE 8',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-    },
-    {
-      id: 3,
-      nomeEntidade: 'APAE 9',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-    },
-    {
-      id: 9,
-      nomeEntidade: 'APAE 10',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-    },
-    {
-      id: 5,
-      nomeEntidade: 'APAE 11',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-    },
-    {
-      id: 6,
-      nomeEntidade: 'APAE 12',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
+      inscrito: false,
     },
   ];
 
@@ -140,9 +186,6 @@ export class HomeComponent implements OnInit {
   tamanhoPagina: number = this.vagasDisponiveis.length;
   itemsPerPage = 6;
   public vagas: any = this.vagasDisponiveis.slice(0, 6);
-
-  public animal: string = 'Cavalo';
-  public name: string = 'Top';
 
   constructor(
     public dialog: MatDialog,
@@ -168,8 +211,7 @@ export class HomeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      //this.animal = result;
+      console.log('The dialog was closed');    
     });
   }
 
@@ -187,8 +229,7 @@ export class HomeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      //this.animal = result;
+      console.log('The dialog was closed');    
     });
   }
 }
