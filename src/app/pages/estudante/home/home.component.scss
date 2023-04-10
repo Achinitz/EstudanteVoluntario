@@ -18,7 +18,7 @@ h2 {
 
 .content__card{
   display: grid;
-  grid-template-columns: repeat(auto_fill, minmax(10rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
   column-gap: 4rem;
 }
 

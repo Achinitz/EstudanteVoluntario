@@ -74,6 +74,12 @@ mat-nav-list {
 
 };
 
+.img__user{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
 @media screen and (min-width: 450px) {
   .btn-acessibilidade{
     display: none !important;

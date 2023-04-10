@@ -9,16 +9,16 @@
     </div>
   </div>
 
-  <section class="col-12 contentDetails">
+  <section class="col-12">
    
       <section class="row ultimasInscricoes">
         <h2>Últimas Inscrições</h2>
 
-        <div *ngIf="!vagasCadastradas">
-          <ngb-alert #alert type="warning" *ngIf="vagasCadastradas">
+
+          <ngb-alert #alert type="warning" *ngIf="!vagasCadastradas">
             Você ainda não tem inscrições em vagas!
           </ngb-alert>
-        </div>
+
         <div class="content__card">
           
           <div

@@ -59,12 +59,27 @@
           </svg>
           <span> Entrar </span>
         </button>
+
+
+        <!-- <a data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+          <img class="img__user" src="../../../../assets/imagens/NoUser.jpg">
+        </a>
+
+        <div class="row">
+          <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+              <div class="card card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+              </div>
+            </div>
+          </div>
+        </div> -->
+
       </div>
 
       <div *ngIf="isLoggedIn">
         <mat-nav-list>
           <mat-list-item>
-            <a matListItemTitle routerLink="/Estudante">Opções</a>
           </mat-list-item>
           <mat-list-item (click)="logout()">
             <a matListItemTitle routerLink>Sair</a>

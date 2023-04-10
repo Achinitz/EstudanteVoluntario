@@ -63,8 +63,8 @@ svg {
 
 .contentDetails {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
-  column-gap: 3rem;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  column-gap: 1rem;
 
   .imgDetails {
     text-align: center;
