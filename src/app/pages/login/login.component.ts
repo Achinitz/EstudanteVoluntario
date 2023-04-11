@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/Entidade']);
     }else if(this.formLogin.value.cpfoucnpj == '33333333333'){
       localStorage.setItem('usuario', JSON.stringify(this.usuario));
-      this.router.navigate(['/Administrador']);
+      this.router.navigate(['/Admin']);
     }
   }
 

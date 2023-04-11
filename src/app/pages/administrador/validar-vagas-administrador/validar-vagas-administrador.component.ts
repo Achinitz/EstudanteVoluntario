@@ -160,7 +160,7 @@ export class ValidarVagasAdministradorComponent implements OnInit {
 
   redirecionarDetalhes(value: any){
     this.data.data = value;
-    this.router.navigate(['/Administrador/detalhe-vaga']);
+    this.router.navigate(['/Admin/detalhe-vaga']);
   }
 
   ordenarLista(){

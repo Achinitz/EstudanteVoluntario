@@ -35,7 +35,7 @@ export class DetalheVagaAdministradorComponent implements OnInit {
   }
 
   retornar(){
-    this.router.navigate(['/Administrador/validar-vagas']);
+    this.router.navigate(['/Admin/validar-vagas']);
     // this.modalService.open(DetalheVagaAdministradorComponent, { windowClass: 'width:90%; heigth: 50%;', backdrop: 'static', keyboard: false, centered: true });
   }
 
