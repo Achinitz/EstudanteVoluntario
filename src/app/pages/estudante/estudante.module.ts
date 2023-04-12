@@ -27,7 +27,9 @@ import { InscricoesComponent } from './inscricoes/inscricoes.component';
 import { BuscarVagasComponent } from './buscar-vagas/buscar-vagas.component';
 
 import { MinhasInscricoesComponent } from './minhas-inscricoes/minhas-inscricoes.component';
-import { ModalVagaComponent } from './minhas-inscricoes/modal-vaga/modal-vaga.component';
+import { ModalVagaComponent } from './minhas-inscricoes/detalhe-vaga/modal-vaga.component';
+import { DestalhesVagaComponent } from './minhas-inscricoes/destalhes-vaga/destalhes-vaga.component';
+import { ModalCertificadoComponent } from './certificado/modal-certificado/modal-certificado.component';
 
 
 @NgModule({
@@ -46,7 +48,8 @@ import { ModalVagaComponent } from './minhas-inscricoes/modal-vaga/modal-vaga.co
     
     MinhasInscricoesComponent,
     ModalVagaComponent,
-
+    DestalhesVagaComponent,
+    ModalCertificadoComponent,
   ],
   imports: [
     CommonModule,
@@ -63,7 +66,8 @@ import { ModalVagaComponent } from './minhas-inscricoes/modal-vaga/modal-vaga.co
     MatListModule,
   
   ],
-  providers: [DataService],
+  providers: [
+    DataService],
   
 })
 export class EstudanteModule {}

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
-import { ModalVagaComponent } from './modal-vaga/modal-vaga.component';
+import { ModalVagaComponent } from './detalhe-vaga/modal-vaga.component';
+import { DataService } from 'src/app/services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-minhas-inscricoes',
@@ -20,7 +22,7 @@ export class MinhasInscricoesComponent implements OnInit {
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto',
       cidade: 'Curitiba',
-      estado: 'PR',
+      estado: 'Paraná',
       numero: 41,
       rua: 'Rua Amador Bueno',
       bairro: 'Cajuru',
@@ -38,7 +40,8 @@ export class MinhasInscricoesComponent implements OnInit {
       inscritos: 5
     },
   ];
-  constructor(private modalService: NgbModal, public dialog: MatDialog) { }
+  constructor(private modalService: NgbModal, public dialog: MatDialog,
+    private router: Router, private data: DataService) { }
 
     cancelarInscricao(){
       Swal.fire({
@@ -62,9 +65,11 @@ export class MinhasInscricoesComponent implements OnInit {
       })
     }
 
-  visualizarInscricao(){
-      this.modalService.open(ModalVagaComponent, { windowClass: 'width:90%; heigth: 50%;', backdrop: 'static', keyboard: false, centered: true });
-    
+  visualizarInscricao(Vaga : any){
+    // this.data.data = Vaga;
+    // this.router.navigate(['/Estudante/detalhe-vaga']);
+    const modalRef = this.modalService.open(ModalVagaComponent, { windowClass: 'auto', backdrop: 'static', centered: true });
+    modalRef.componentInstance.vagaSelecionada = Vaga;
   }
 
   ngOnInit(): void {

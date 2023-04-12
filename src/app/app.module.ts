@@ -36,10 +36,6 @@ import { DataService } from './services/data.service';
 import { ToastrModule } from 'ngx-toastr';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
-import { CpfCnpjPipe } from './shared/pipe/cpfcnpj.pipe';
-import { CpfPipe } from './shared/pipe/cpf.pipe';
-import { CnpjPipe } from './shared/pipe/cnpj.pipe';
-import { PhonePipe } from './shared/pipe/phone.pipe';
 import { CookieService } from 'ngx-cookie-service';
 import { NgSelectModule } from '@ng-select/ng-select';
 
@@ -57,7 +53,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
     LoginComponent,
     EntidadesComponent,
     SobreNosComponent,
-    
   ],
   exports: [
     MatDatepickerModule,

@@ -11,6 +11,7 @@ import { InscricoesComponent } from './inscricoes/inscricoes.component';
 import { BuscarVagasComponent } from './buscar-vagas/buscar-vagas.component';
 
 import { MinhasInscricoesComponent } from './minhas-inscricoes/minhas-inscricoes.component';
+import { DestalhesVagaComponent } from './minhas-inscricoes/destalhes-vaga/destalhes-vaga.component';
 
 
 const routes: Routes = [
@@ -50,7 +51,11 @@ const routes: Routes = [
        {
         path: 'minhas-inscricoes',
         component: MinhasInscricoesComponent        
-      },
+       },
+       {
+        path: 'detalhe-vaga',
+        component: DestalhesVagaComponent
+       }
     ],
   },
 ];

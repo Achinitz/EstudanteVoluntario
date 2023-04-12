@@ -1,0 +1,67 @@
+<section class="modal-header">
+  <h2 class="modal-title">{{ vagaSelecionada.nomeVaga }} - {{vagaSelecionada.status}}</h2>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</section>
+<section class="modal-body">
+  <div class="row col-12">
+    <div class="col-6">
+      <b class="">Vaga</b>
+      <p class="">{{ vagaSelecionada.nomeVaga }} </p>
+    </div>
+    <div class="col-6">
+      <b class="">Entidade</b>
+      <p class="">{{ vagaSelecionada.nomeEntidade }} </p>
+    </div>
+  </div>
+
+  <div class="row col-12">
+    <div class="col-12">
+      <b class="">Descrição da vaga</b>
+      <p class="">{{ vagaSelecionada.descricao }} </p>
+    </div>
+  </div>
+
+  <div class="row col-12">
+    <div class="col-4">
+      <b class="">Cidade</b>
+      <p class="">{{ vagaSelecionada.cidade }}</p>
+    </div>
+    <div class="col-4">
+      <b class="">Estado</b>
+      <p class="">{{ vagaSelecionada.estado }} </p>
+    </div>
+    <div class="col-4">
+      <b class="">Cep</b>
+      <p class="">{{ vagaSelecionada.cep }} </p>
+    </div>
+  </div>
+
+  <div class="row col-12">
+    <div class="col-12">
+      <b class="">Endereço</b>
+      <p class="">{{ vagaSelecionada.rua }}, {{ vagaSelecionada.numero }} - {{ vagaSelecionada.bairro }}</p>
+    </div>
+  </div>
+
+  <div class="row col-12">
+    <b class="">Tarefas</b>
+    <table class="content__tabela col-12">
+      <tr *ngFor="let tarefa of vagaSelecionada.obrigacoes">
+          <b>*</b> {{ tarefa.nome }}
+      </tr>
+    </table>
+  </div>
+    <br>
+  <div class="row col-12">
+    <b class="">Beneficios</b>
+    <table class="content__tabela col-12">
+      <tr *ngFor="let tarefa of vagaSelecionada.beneficios">
+          <b>*</b> {{ tarefa.nome }}
+      </tr>
+    </table>
+  </div>
+
+</section>
+<section class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Voltar</button>
+</section>
