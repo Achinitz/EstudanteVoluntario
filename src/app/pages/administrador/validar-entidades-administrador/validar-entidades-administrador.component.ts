@@ -32,7 +32,7 @@ export class ValidarEntidadesAdministradorComponent implements OnInit {
       nomeFantasia: 'Estudante Voluntário',
       razaoSocial: 'Valida ai Estudante',
       cnpj: '75054940000162',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       email: 'firma@email.com',
       telefone: '41996683953',
       missao: 'Somos uma familia que blá blá blá',
@@ -79,57 +79,57 @@ export class ValidarEntidadesAdministradorComponent implements OnInit {
     {
       cpf: 1,
       nome: 'Josué',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 2,
       nome: 'Gustavo',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 3,
       nome: 'Amanda',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 4,
       nome: 'Antonio',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 5,
       nome: 'Paula Fernandes',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 6,
       nome: 'Sandy',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 7,
       nome: 'Junior',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 8,
       nome: 'Avril',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 9,
       nome: 'Jhon',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 10,
       nome: 'Alcione',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 11,
       nome: 'Betina',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
   ];
   filter: any;

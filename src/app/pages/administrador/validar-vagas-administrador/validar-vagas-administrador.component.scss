@@ -10,9 +10,6 @@
 }
 
 .content-card-vaga {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-around;
     line-height: 1.5rem;
     padding: 5px;
 }
@@ -31,15 +28,6 @@
     cursor: pointer;
 }
 
-.second-icon {
-    width: 40px;
-    margin-bottom: 5px;
-    background: #328b27;
-    padding: 8px;
-    border-radius: 50%;
-    color: white;
-    cursor: pointer;
-}
 
 .content-card-tarefas,
 .content-card-beneficios {
@@ -54,7 +42,7 @@
 }
 
 .content-card-beneficios-property {
-    background: #e1c882;
+    background: #8be182;
     padding: 0px 5px;
     margin-right: 0.5rem;
     border-radius: 5px;
@@ -62,13 +50,12 @@
 }
 
 .card-content-filtro {
-    margin-top: 1rem;
     display: flex;
-    //justify-content: center;
-    align-items: center;
-    background-color: #e7e7e7;
+    align-items: center;    
+    background-color: #edebe3;
     border-radius: 0.25rem;
     font-weight: 500;
+    padding: 0.5rem;   
 }
 
 .card-content {
@@ -111,54 +98,8 @@
 
 .card {
     width: 100%;
-    margin-right: 10px;
-    margin-top: 10px;
-    background-color: #e7e7e7 !important;
-
-    button {
-        border: none;
-        background-color: #008000;
-        color: #ffffff;
-        border-radius: 1rem;
-        padding: 0.5rem;
-
-        &:hover {
-            opacity: 0.5;
-        }
-    }
-
-    div:nth-of-type(2) {
-        h4 {
-            text-align: center;
-        }
-
-        p:nth-of-type(2) {
-            text-align: center;
-            border-radius: 1rem;
-        }
-
-        div {
-            display: flex;
-            justify-content: space-between;
-
-            button {
-                border: none;
-                background-color: #008000;
-                color: #ffffff;
-                border-radius: 1rem;
-                padding: 0.5rem;
-
-                &:hover {
-                    opacity: 0.5;
-                }
-
-                &:nth-of-type(2) {
-                    background-color: #f5f04a !important;
-                    color: #000000 !important;
-                }
-            }
-        }
-    }
+     margin-top: 10px;
+     padding: 0.5rem;
 }
 
 .card-footer {
