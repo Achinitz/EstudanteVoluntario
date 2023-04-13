@@ -1,7 +1,15 @@
 <div class="content">
-<div class="topo">
-  <h1>Certificados</h1>
-</div>
+  <div class="topo">
+    <h1>Certificados</h1>
+  </div>
+
+  <ngb-alert #alert type="primary" *ngIf="!certificados">
+    Você não possui nenhum certificado, caso tenha terminado seu voluntariado e não aparece o seu certificado, entre em contato com a Entidade!
+  </ngb-alert>
+
+  <ngb-alert #alert type="warning" *ngIf="certificados">
+    Visualize ou faça o download do(s) seu(s) certificado(s)!
+  </ngb-alert>
 
   <div>
     <table class="table table-striped">

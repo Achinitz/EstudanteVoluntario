@@ -10,14 +10,14 @@
   </div>
 
   <section class="col-12">
-   
-      <section class="row ultimasInscricoes">
-        <h2>Últimas Inscrições</h2>
 
+    <h2>Últimas Inscrições</h2>
 
-          <ngb-alert #alert type="warning" *ngIf="!vagasCadastradas">
-            Você ainda não tem inscrições em vagas!
-          </ngb-alert>
+    <ngb-alert type="primary" *ngIf="!vagasCadastradas">
+      Você ainda não tem inscrições em vagas!
+    </ngb-alert>
+
+      <section class="row ultimasInscricoes" *ngIf="vagasCadastradas">
 
         <div class="content__card">
           

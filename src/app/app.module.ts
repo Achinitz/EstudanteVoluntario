@@ -38,6 +38,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CookieService } from 'ngx-cookie-service';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { Pagina404Component } from './pages/pagina404/pagina404.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     LoginComponent,
     EntidadesComponent,
     SobreNosComponent,
+    Pagina404Component,
   ],
   exports: [
     MatDatepickerModule,

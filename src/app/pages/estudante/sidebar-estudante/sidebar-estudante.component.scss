@@ -10,3 +10,12 @@ a{
     align-items: center;
     cursor: pointer;
 }
+
+.badge__alert{
+    margin-left: 0.5rem;
+    padding: 0.15rem 0.3rem;
+    background: #dc3545;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+}

@@ -1,11 +1,16 @@
-   <div>
-     <h1>Minhas Inscrições</h1>
-     <ngb-alert #alert type="warning">
-       Aqui você pode verificar as vagas inscritas
-     </ngb-alert>
-    </div>
 
  <div>
+  <h1>Minhas Inscrições</h1>
+  <ngb-alert #alert type="primary" *ngIf="!vagasCadastradas">
+    Você não possui nenhuma inscrição!
+  </ngb-alert>
+
+  <div *ngIf="vagasCadastradas">
+    <ngb-alert #alert type="warning">
+      Aqui você pode verificar as vagas inscritas
+    </ngb-alert>
+   </div>
+
    <table class="table table-striped">
      <thead>
        <tr>
@@ -17,7 +22,7 @@
          <th class="col-1" scope="col">Ações</th>
        </tr>
      </thead>
-     <tbody *ngIf="vagasCadastradas">
+     <tbody>
        <tr *ngFor="let vaga of vagasCadastradas; index as i">
          <td class="col-4">
            {{ vaga.nomeVaga }}

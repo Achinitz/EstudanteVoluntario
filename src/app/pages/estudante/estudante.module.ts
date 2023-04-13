@@ -21,6 +21,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
+import { MatBadgeModule } from '@angular/material/badge';
 import { DataService } from 'src/app/services/data.service';
 
 import { InscricoesComponent } from './inscricoes/inscricoes.component';
@@ -30,6 +31,8 @@ import { MinhasInscricoesComponent } from './minhas-inscricoes/minhas-inscricoes
 import { ModalVagaComponent } from './minhas-inscricoes/detalhe-vaga/modal-vaga.component';
 import { DestalhesVagaComponent } from './minhas-inscricoes/destalhes-vaga/destalhes-vaga.component';
 import { ModalCertificadoComponent } from './certificado/modal-certificado/modal-certificado.component';
+import { NotificacoesComponent } from './notificacoes/notificacoes.component';
+import { ModalNotificacaoComponent } from './notificacoes/modal-notificacao/modal-notificacao.component';
 
 
 @NgModule({
@@ -50,6 +53,8 @@ import { ModalCertificadoComponent } from './certificado/modal-certificado/modal
     ModalVagaComponent,
     DestalhesVagaComponent,
     ModalCertificadoComponent,
+    NotificacoesComponent,
+    ModalNotificacaoComponent,
   ],
   imports: [
     CommonModule,
@@ -64,7 +69,7 @@ import { ModalCertificadoComponent } from './certificado/modal-certificado/modal
     MatDialogModule,
     MatFormFieldModule,
     MatListModule,
-  
+    MatBadgeModule
   ],
   providers: [
     DataService],
