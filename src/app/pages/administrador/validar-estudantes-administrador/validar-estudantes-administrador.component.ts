@@ -32,7 +32,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
       sobrenome: 'de Oliveira Achinitz',
       cpf: '10722781970',
       rg: '7029275',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricaoPessoal: 'Sou uma Pessoa que gosta muito de ajudar o próximo',
       competencias: [
         {descricao: 'Pró Ativo'},
@@ -64,7 +64,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
       id: 2,
       nomeEntidade: 'APAE 2',
       nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto',
       inscritos: 3
@@ -73,7 +73,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
       id: 3,
       nomeEntidade: 'APAE 3',
       nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto',
       inscritos: 6
@@ -82,7 +82,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
       id: 4,
       nomeEntidade: 'APAE 4',
       nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto',
       inscritos: 8
@@ -91,7 +91,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
       id: 5,
       nomeEntidade: 'APAE 5',
       nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto',
       inscritos: 2
@@ -100,7 +100,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
       id: 6,
       nomeEntidade: 'APAE 6',
       nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto',
       inscritos: 9
@@ -109,7 +109,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
       id: 7,
       nomeEntidade: 'APAE 7',
       nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto',
       inscritos: 2
@@ -118,7 +118,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
       id: 8,
       nomeEntidade: 'APAE 8',
       nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto',
       inscritos: 4
@@ -127,7 +127,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
       id: 3,
       nomeEntidade: 'APAE 9',
       nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto',
       inscritos: 7
@@ -136,7 +136,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
       id: 9,
       nomeEntidade: 'APAE 10',
       nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto',
       inscritos: 10
@@ -145,7 +145,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
       id: 5,
       nomeEntidade: 'APAE 11',
       nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto',
       inscritos: 51
@@ -154,7 +154,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
       id: 6,
       nomeEntidade: 'APAE 12',
       nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto',
       inscritos: 17
@@ -185,57 +185,57 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
     {
       cpf: 1,
       nome: 'Josué',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 2,
       nome: 'Gustavo',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 3,
       nome: 'Amanda',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 4,
       nome: 'Antonio',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 5,
       nome: 'Paula Fernandes',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 6,
       nome: 'Sandy',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 7,
       nome: 'Junior',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 8,
       nome: 'Avril',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 9,
       nome: 'Jhon',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 10,
       nome: 'Alcione',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
     {
       cpf: 11,
       nome: 'Betina',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
     },
   ];
   filter: any;

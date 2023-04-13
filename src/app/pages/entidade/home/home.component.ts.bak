@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
       id: 1,
       nomeEntidade: 'APAE 1',
       nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto'
     },
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
       id: 2,
       nomeEntidade: 'APAE 2',
       nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto'
     },
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
       id: 3,
       nomeEntidade: 'APAE 3',
       nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto'
     },
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
       id: 4,
       nomeEntidade: 'APAE 4',
       nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto'
     },
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
       id: 5,
       nomeEntidade: 'APAE 5',
       nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto'
     },
@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
       id: 6,
       nomeEntidade: 'APAE 6',
       nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto'
     },

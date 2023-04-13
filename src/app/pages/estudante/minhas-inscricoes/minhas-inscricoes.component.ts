@@ -18,7 +18,7 @@ export class MinhasInscricoesComponent implements OnInit {
       id: 1,
       nomeEntidade: 'APAE 1',
       nomeVaga: 'Voluntário Contador de Histórias',      
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       status: 'Aberto',
       cidade: 'Curitiba',

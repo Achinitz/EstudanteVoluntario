@@ -17,7 +17,7 @@ export class DetalheVagaEntidadeComponent implements OnInit {
   vaga: {
     id: 1;
     nomeVaga: "Contador de História";
-    img: "../../assets/imagens/mulherGrandeCoracao.jpg";
+    img: "../../assets/imagens/mulherGrandeCoracao.png";
     descricao: "Vaga para pessoas de bom coração";
     requisitos: "Sem requisitos";
     auxilio: "Não";
