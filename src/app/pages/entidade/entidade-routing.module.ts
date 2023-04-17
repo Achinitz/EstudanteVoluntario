@@ -9,6 +9,8 @@ import { DetalheVagaEntidadeComponent } from './home/detalhe-vaga-entidade/detal
 import { HomeComponent } from './home/home.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { VagasComponent } from './vagas/vagas.component';
+import { DetalhesComponent } from './vagas/detalhes/detalhes.component';
+import { DetalheEstudanteComponent } from './vagas/detalhes/detalhe-estudante/detalhe-estudante.component';
 
 const routes: Routes = [
   {
@@ -29,7 +31,7 @@ const routes: Routes = [
       },
       {
         path: 'detalhe-vaga',
-        component: DetalheVagaEntidadeComponent,
+        component: DetalhesComponent,
       },
       {
         path: 'cadastrar-vaga',
@@ -47,6 +49,10 @@ const routes: Routes = [
         path: 'avaliar-estudante',
         component: AvaliarEstudanteComponent,
       },
+      {
+        path: 'detalhe-estudante',
+        component: DetalheEstudanteComponent
+      }
     ],
   },
 ];
