@@ -14,100 +14,446 @@ export class VagasComponent implements OnInit {
 
   vagasDisponiveis: any = [
     {
-      id: 1,
-      nomeEntidade: "APAE 1",
-      nomeVaga: "Contador de História",
-      img: "../../assets/imagens/mulherGrandeCoracao.png",
-      descricao: "Vaga para pessoas de bom coração",
-      status: "Aberto",
-    },
-    {
-      id: 2,
-      nomeEntidade: "APAE 2",
-      nomeVaga: "Contador de História",
-      img: "../../assets/imagens/mulherGrandeCoracao.png",
-      descricao: "Vaga para pessoas de bom coração",
-      status: "Encerrado",
+      id: 3,
+      nomeEntidade: 'ONG 1',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
+      descricao: 'Vaga para pessoas de bom coração',
+      requisitos: [
+        {descricao: 'Ter 5 pós graduação'},
+        {descricao: 'Algum ai'},
+        {descricao: 'Algum ai'},
+      ],
+      auxilio:'100',
+      auxilioTransporte: true,
+      auxilioAlimentacao: false,
+      endereco:'Rua tal dos omi lá',
+      bairro: 'Cajuru',
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      complemento: 'Prédio Comercial',
+      dataAberturaVaga: '28/01/2023 08:00:00',
+      dataFinalizacaoVaga: '20/02/2023 23:00:00',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
+      status: 'Aberto',
+      inscritos: [
+        {
+          nome: 'Jeronimo',
+          img: null,
+          cpf: '123',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alienigena',
+          img: null,
+          cpf: '1234',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alex',
+          img: null,
+          cpf: '12345',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Tebutrios',
+          img: null,
+          cpf: '123456',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        }
+      ],
     },
     {
       id: 3,
-      nomeEntidade: "APAE 3",
-      nomeVaga: "Contador de História",
-      img: "../../assets/imagens/mulherGrandeCoracao.png",
-      descricao: "Vaga para pessoas de bom coração",
-      status: "Aberto",
-    },
-    {
-      id: 4,
-      nomeEntidade: "APAE 4",
-      nomeVaga: "Contador de História",
-      img: "../../assets/imagens/mulherGrandeCoracao.png",
-      descricao: "Vaga para pessoas de bom coração",
-      status: "Aberto",
-    },
-    {
-      id: 5,
-      nomeEntidade: "APAE 5",
-      nomeVaga: "Contador de História",
-      img: "../../assets/imagens/mulherGrandeCoracao.png",
-      descricao: "Vaga para pessoas de bom coração",
-      status: "Encerrado",
-    },
-    {
-      id: 6,
-      nomeEntidade: "APAE 6",
-      nomeVaga: "Contador de História",
-      img: "../../assets/imagens/mulherGrandeCoracao.png",
-      descricao: "Vaga para pessoas de bom coração",
-      status: "Aberto",
-    },
-    {
-      id: 7,
-      nomeEntidade: "APAE 7",
-      nomeVaga: "Contador de História",
-      img: "../../assets/imagens/mulherGrandeCoracao.png",
-      descricao: "Vaga para pessoas de bom coração",
-      status: "Cancelado",
-    },
-    {
-      id: 8,
-      nomeEntidade: "APAE 8",
-      nomeVaga: "Contador de História",
-      img: "../../assets/imagens/mulherGrandeCoracao.png",
-      descricao: "Vaga para pessoas de bom coração",
-      status: "Aberto",
+      nomeEntidade: 'ONG 1',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
+      descricao: 'Vaga para pessoas de bom coração',
+      requisitos: [
+        {descricao: 'Ter 5 pós graduação'},
+        {descricao: 'Algum ai'},
+        {descricao: 'Algum ai'},
+      ],
+      auxilio:'100',
+      auxilioTransporte: true,
+      auxilioAlimentacao: false,
+      endereco:'Rua tal dos omi lá',
+      bairro: 'Cajuru',
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      complemento: 'Prédio Comercial',
+      dataAberturaVaga: '28/01/2023 08:00:00',
+      dataFinalizacaoVaga: '20/02/2023 23:00:00',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
+      status: 'Aberto',
+      inscritos: [
+        {
+          nome: 'Jeronimo',
+          img: null,
+          cpf: '123',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alienigena',
+          img: null,
+          cpf: '1234',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alex',
+          img: null,
+          cpf: '12345',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'reprovado'
+        },
+        {
+          nome: 'Tebutrios',
+          img: null,
+          cpf: '123456',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'reprovado'
+        }
+      ],
     },
     {
       id: 3,
-      nomeEntidade: "APAE 9",
-      nomeVaga: "Contador de História",
-      img: "../../assets/imagens/mulherGrandeCoracao.png",
-      descricao: "Vaga para pessoas de bom coração",
-      status: "Aberto",
+      nomeEntidade: 'ONG 1',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
+      descricao: 'Vaga para pessoas de bom coração',
+      requisitos:null,
+      auxilio:'100',
+      auxilioTransporte: true,
+      auxilioAlimentacao: false,
+      endereco:'Rua tal dos omi lá',
+      bairro: 'Cajuru',
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      complemento: 'Prédio Comercial',
+      dataAberturaVaga: '28/01/2023 08:00:00',
+      dataFinalizacaoVaga: '20/02/2023 23:00:00',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
+      status: 'Aberto',
+      inscritos: [
+        {
+          nome: 'Jeronimo',
+          img: null,
+          cpf: '123',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alienigena',
+          img: null,
+          cpf: '1234',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alex',
+          img: null,
+          cpf: '12345',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Tebutrios',
+          img: null,
+          cpf: '123456',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        }
+      ],
     },
     {
-      id: 9,
-      nomeEntidade: "APAE 10",
-      nomeVaga: "Contador de História",
-      img: "../../assets/imagens/mulherGrandeCoracao.png",
-      descricao: "Vaga para pessoas de bom coração",
-      status: "Aberto",
+      id: 3,
+      nomeEntidade: 'ONG 1',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
+      descricao: 'Vaga para pessoas de bom coração',
+      requisitos:null,
+      auxilio:'100',
+      auxilioTransporte: true,
+      auxilioAlimentacao: false,
+      endereco:'Rua tal dos omi lá',
+      bairro: 'Cajuru',
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      complemento: 'Prédio Comercial',
+      dataAberturaVaga: '28/01/2023 08:00:00',
+      dataFinalizacaoVaga: '20/02/2023 23:00:00',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
+      status: 'Aberto',
+      inscritos: [
+        {
+          nome: 'Jeronimo',
+          img: null,
+          cpf: '123',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alienigena',
+          img: null,
+          cpf: '1234',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alex',
+          img: null,
+          cpf: '12345',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Tebutrios',
+          img: null,
+          cpf: '123456',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        }
+      ],
     },
     {
-      id: 5,
-      nomeEntidade: "APAE 11",
-      nomeVaga: "Contador de História",
-      img: "../../assets/imagens/mulherGrandeCoracao.png",
-      descricao: "Vaga para pessoas de bom coração",
-      status: "Aberto",
+      id: 3,
+      nomeEntidade: 'ONG 1',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
+      descricao: 'Vaga para pessoas de bom coração',
+      requisitos:null,
+      auxilio:'100',
+      auxilioTransporte: true,
+      auxilioAlimentacao: false,
+      endereco:'Rua tal dos omi lá',
+      bairro: 'Cajuru',
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      complemento: 'Prédio Comercial',
+      dataAberturaVaga: '28/01/2023 08:00:00',
+      dataFinalizacaoVaga: '20/02/2023 23:00:00',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
+      status: 'Aberto',
+      inscritos: [
+        {
+          nome: 'Jeronimo',
+          img: null,
+          cpf: '123',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alienigena',
+          img: null,
+          cpf: '1234',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alex',
+          img: null,
+          cpf: '12345',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Tebutrios',
+          img: null,
+          cpf: '123456',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        }
+      ],
     },
     {
-      id: 6,
-      nomeEntidade: "APAE 12",
-      nomeVaga: "Contador de História",
-      img: "../../assets/imagens/mulherGrandeCoracao.png",
-      descricao: "Vaga para pessoas de bom coração",
-      status: "Aberto",
+      id: 3,
+      nomeEntidade: 'ONG 1',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
+      descricao: 'Vaga para pessoas de bom coração',
+      requisitos:null,
+      auxilio:'100',
+      auxilioTransporte: true,
+      auxilioAlimentacao: false,
+      endereco:'Rua tal dos omi lá',
+      bairro: 'Cajuru',
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      complemento: 'Prédio Comercial',
+      dataAberturaVaga: '28/01/2023 08:00:00',
+      dataFinalizacaoVaga: '20/02/2023 23:00:00',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
+      status: 'Aberto',
+      inscritos: [
+        {
+          nome: 'Jeronimo',
+          img: null,
+          cpf: '123',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alienigena',
+          img: null,
+          cpf: '1234',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alex',
+          img: null,
+          cpf: '12345',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Tebutrios',
+          img: null,
+          cpf: '123456',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        }
+      ],
+    },
+    {
+      id: 3,
+      nomeEntidade: 'ONG 1',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
+      descricao: 'Vaga para pessoas de bom coração',
+      requisitos:null,
+      auxilio:'100',
+      auxilioTransporte: true,
+      auxilioAlimentacao: false,
+      endereco:'Rua tal dos omi lá',
+      bairro: 'Cajuru',
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      complemento: 'Prédio Comercial',
+      dataAberturaVaga: '28/01/2023 08:00:00',
+      dataFinalizacaoVaga: '20/02/2023 23:00:00',
+      dia:'28/01/2023',
+      horarioInicio:'13:00',
+      horarioEncerramento:'17:00',
+      numeroVagas:'3',
+      status: 'Aberto',
+      inscritos: [
+        {
+          nome: 'Jeronimo',
+          img: null,
+          cpf: '123',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alienigena',
+          img: null,
+          cpf: '1234',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alex',
+          img: null,
+          cpf: '12345',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Tebutrios',
+          img: null,
+          cpf: '123456',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        }
+      ],
     },
   ];
 
@@ -133,15 +479,16 @@ export class VagasComponent implements OnInit {
 
   //Vai exibir os detalhes da vaga antes de ele efetivar a inscrição
     exibirDetalhes(value: any): void {
-    const dialogRef = this.dialog.open(DetalheVagaEntidadeComponent, {
-      width: "auto",
-      data: this.vagasDisponiveis[value],
-    });
+      this.dataService.data = value;
+    // const dialogRef = this.dialog.open(DetalheVagaEntidadeComponent, {
+    //   width: "auto",
+    //   data: this.vagasDisponiveis[value],
+    // });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log("The dialog was closed");
-      //this.animal = result;
-    });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   console.log("The dialog was closed");
+    // });
+    this.router.navigate(['/Entidade/detalhe-vaga']);
   } 
 
   ngOnInit(): void {}

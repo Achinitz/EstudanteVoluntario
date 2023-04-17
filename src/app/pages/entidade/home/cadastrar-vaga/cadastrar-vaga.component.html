@@ -3,6 +3,10 @@
     <h1>Cadastrar Vaga</h1>
   </div>
 
+  <ngb-alert #alert type="warning">
+    Verifique os dados se estão corretos antes de finalizar o formulário abaixo!
+  </ngb-alert>
+
   <section class="contentDetails">
     <div class="cadastro">
       <form [formGroup]="formCadastro">

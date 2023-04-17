@@ -34,6 +34,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 
 import { DataService } from 'src/app/services/data.service';
+import { DetalhesComponent } from './vagas/detalhes/detalhes.component';
+import { DetalheEstudanteComponent } from './vagas/detalhes/detalhe-estudante/detalhe-estudante.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { DataService } from 'src/app/services/data.service';
     ModalAdicionarAvaliacaoComponent,
     EntidadeComponent,
     VagasComponent,
+    DetalhesComponent,
+    DetalheEstudanteComponent,
   ],
   imports: [
     CommonModule,
