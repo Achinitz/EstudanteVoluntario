@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from 'src/app/services/data.service';
@@ -10,9 +10,10 @@ import { DetalheEstudanteComponent } from './detalhe-estudante/detalhe-estudante
   templateUrl: './detalhes.component.html',
   styleUrls: ['./detalhes.component.scss']
 })
-export class DetalhesComponent implements OnInit {
+export class DetalhesComponent implements OnInit, OnDestroy {
 
   vaga: any;
+  modalReference: any;
 
   requisitos: any = [
     {descricao: 'Ter 5 pós graduação'},
@@ -67,8 +68,10 @@ export class DetalhesComponent implements OnInit {
   }
 
   visualizarCandidato(candidato:any){
-    const modalRef = this.modalService.open(DetalheEstudanteComponent, { windowClass: 'width:auto; heigth: 50%;', backdrop: 'static', centered: true });
+    // this.router.navigate(['/Entidade/detalhe-estudante']);
+    const modalRef = this.modalService.open(DetalheEstudanteComponent, { windowClass: 'min-width: 80%; heigth: 50%;', centered: true });
     modalRef.componentInstance.candidato = candidato;
+    modalRef.result
   }
 
   removerCandidato(candidato:any){
@@ -93,6 +96,11 @@ export class DetalhesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.dataService.data = this.vaga;
+
   }
 
 }

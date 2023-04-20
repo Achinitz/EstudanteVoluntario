@@ -1,3 +1,36 @@
 .modal-body{
     font-size: 14px !important;
 }
+
+.title__data{
+    font-weight: 500;
+}
+
+.btn__download{
+    border: none;
+    font-size: 14px;
+    background: #babaff;
+    border-radius: 2px;
+    padding: 6px 6px;
+    display: flex;
+    width: auto;
+}
+
+.btn__download__icon{
+    margin-right: 0.5rem;
+}
+
+.card__curso{
+    background: #babaff;
+    padding: 5px;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+}
+
+.btn__group{
+
+}
+
+.btn-success{
+    margin-right: 1rem;
+}

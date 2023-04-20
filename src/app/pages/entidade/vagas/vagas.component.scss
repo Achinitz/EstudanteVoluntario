@@ -10,22 +10,12 @@
     margin-top: 1rem;
   }
   
-  .contentDetails {
-    display: flex;
-    flex-direction: initial;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
 
   .vagasDisponiveis {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-
-  .containerCard {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    grid-column-gap: 4rem;
+    column-gap: 4rem;
   }
   
   .buttonsVagasCadastradas {

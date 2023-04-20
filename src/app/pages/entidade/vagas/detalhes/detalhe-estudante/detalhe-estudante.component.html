@@ -3,71 +3,171 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
   </section>
   <section class="modal-body">
+
+    <section class="col-12 d-flex">
+        <div class="col-7">A</div>
+        <div class="col-5">
+            <button class="btn btn__download col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                <span class="btn__download__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                    </svg>
+                </span>
+                <span>
+                    Download CV
+                </span>
+            </button>
+        </div>
+    </section>
+
+    <br>
   
+    <h2>Dados do Inscrito</h2>
+
     <div class="row col-12">
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span>Nome</span>
+            <span class="title__data">Nome</span>
             <p>{{perfilCadidato.nome}}</p>
         </div>
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span>Idade</span>
+            <span class="title__data">Idade</span>
             <p>{{perfilCadidato.idade}}</p>
         </div>
     </div>
 
     <div class="row col-12">
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span>Nome social</span>
+            <span class="title__data">Nome social</span>
             <p>{{perfilCadidato.nomeSocial ? perfilCadidato.nomeSocial : 'Não possui'}}</p>
         </div>
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span>Genero</span>
+            <span class="title__data">Genero</span>
             <p>{{perfilCadidato.identificacaoGenero}}</p>
         </div>
     </div>
 
     <div class="row col-12">
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span>Data de nascimento</span>
+            <span class="title__data">Data de nascimento</span>
             <p>{{perfilCadidato.dataNascimento}}</p>
         </div>
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span>E-mail</span>
+            <span class="title__data">E-mail</span>
             <p>{{perfilCadidato.email}}</p>
         </div>
     </div>
 
     <div class="row col-12">
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span>Telefone</span>
+            <span class="title__data">Telefone</span>
             <p>{{perfilCadidato.telefone}}</p>
         </div>
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span>E-mail</span>
+            <span class="title__data">E-mail</span>
             <p>{{perfilCadidato.email}}</p>
         </div>
     </div>
 
     <div class="row col-12">
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span>Data de nascimento</span>
+            <span class="title__data">Data de nascimento</span>
             <p>{{perfilCadidato.dataNascimento}}</p>
         </div>
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span>E-mail</span>
+            <span class="title__data">E-mail</span>
             <p>{{perfilCadidato.email}}</p>
         </div>
     </div>
 
     <div class="row col-12">
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span>E-mail</span>
+            <span class="title__data">E-mail</span>
             <p>{{perfilCadidato.email}}</p>
         </div>
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span>Telefone</span>
+            <span class="title__data">Telefone</span>
             <p>{{perfilCadidato.telefone}}</p>
         </div>
+    </div>
+
+    <div class="col-12">
+        <br>
+        <h2>Cursos</h2>
+
+        <ng-template #naoPossuiCursos>
+            Não Possui experiências de Trabalho.
+        </ng-template>
+
+        <section *ngIf="perfilCadidato.cursos != null; else naoPossuiCursos">
+            <div class="card__curso" *ngFor="let curso of perfilCadidato.cursos;">
+                <span>Nome: {{curso.nome}}</span>
+                    <br>
+                <span>Instituição: {{curso.instituicao}}</span>
+                    <br>
+                <span>Situação: {{curso.situacao}}</span>
+            </div>
+        </section>
+    </div>
+
+    <div class="col-12">
+        <br>
+        <h2>Experiências de Trabalho</h2>
+        <ng-template #naoPossuiExperienciaTrabalho>
+            Não Possui experiências de Trabalho.
+        </ng-template>
+        <section *ngIf="perfilCadidato.experienciasTrabalho != null; else naoPossuiExperienciaTrabalho">
+            <div class="card__curso" *ngFor="let trabalho of perfilCadidato.experienciasTrabalho;">
+                <span>Empresa: {{trabalho.empresa}}</span>
+                    <br>
+                <span>Cargo: {{trabalho.cargo}}</span>
+                    <br>
+                <span>Atividades realizadas: {{trabalho.atividades ? trabalho.atividades : 'Não possui descrição'}}</span>
+            </div>
+        </section>
+    </div>
+
+    <div class="col-12">
+        <br>
+        <h2>Certificados</h2>
+        <ng-template #naoPossuiExperienciaTrabalho>
+            Não Possui Certificados.
+        </ng-template>
+        <section *ngIf="perfilCadidato.certificados != null; else naoPossuiExperienciaTrabalho">
+            <table class="col-12 table table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-6">Título</th>
+                        <th class="col-3">Instituição</th>
+                        <th class="col-3 text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let titulo of perfilCadidato.certificados">
+                    <tr>
+                        <td class="col-6">{{ titulo.curso }}</td>
+                        <td class="col-3">{{ titulo.instituicao }}</td>
+                        <td class="col-3 text-center">
+                            <button class="button-table" (click)="downloadCertificado(titulo)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    
+    <div class="btn__group">
+        <br>
+        <button class="btn btn-success" (click)="aprovarCandidato()">
+            Aprovar
+        </button>
+        <button class="btn btn-danger" (click)="reprovarCandidato()">
+            Reprovar
+        </button>
     </div>
 
   </section>

@@ -29,10 +29,6 @@ h1{
   margin-left: 0.5em;
 }
 
-.modal-dialog{
-  width: 100% !important;
-}
-
 .contentPage{
     padding: 1.5rem;
     background-color: antiquewhite;
@@ -95,6 +91,15 @@ h1{
 
 em{
     color: red;
+}
+
+.modal-dialog{
+  min-width: auto !important;
+}
+
+.modal-dialog-entidade-detalhe-vaga{
+  min-width: 80% !important;
+  height: auto !important;
 }
 
 //toast
