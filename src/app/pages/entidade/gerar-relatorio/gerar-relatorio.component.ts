@@ -10,36 +10,34 @@ export class GerarRelatorioComponent implements OnInit {
 
   alunos: any = [
     {
-      id: 1,
-      nome: 'Gustavo',
-      cpf: '1234',
+      nome: 'Jeronimo da Silva Santos Pinto Gonçalves',
+      cpf: '12345678910',
+      status: 'Não encaminhado',
+      vaga: 'Cuidador de Idoso',
+      empresa: 'APAE'
     },
     {
-      id: 2,
-      nome: 'Liaquim',
-      cpf: '12345',
+      nome: 'Jeronimo da Silva Santos Pinto Gonçalves',
+      cpf: '12345678910',
+      status: 'Não encaminhado',
+      vaga: 'Cuidador de Idoso',
+      empresa: 'APAE'
     },
     {
-      id: 3,
-      nome: 'Cesar',
-      cpf: '123456',
+      nome: 'Jeronimo da Silva Santos Pinto Gonçalves',
+      cpf: '12345678910',
+      status: 'Não encaminhado',
+      vaga: 'Cuidador de Idoso',
+      empresa: 'APAE'
     },
     {
-      id: 4,
-      nome: 'Fabiano',
-      cpf: '123457',
-    },
-    {
-      id: 5,
-      nome: 'Tebutrios',
-      cpf: '123458',
-    },
-    {
-      id: 6,
-      nome: 'Victor',
-      cpf: '123459',
-    },  
-  ];
+      nome: 'Jeronimo da Silva Santos Pinto Gonçalves',
+      cpf: '12345678910',
+      status: 'Não encaminhado',
+      vaga: 'Cuidador de Idoso',
+      empresa: 'APAE'
+    }
+  ]
 
   paginaAtual = 1;
   tamanhoPagina: any = this.alunos.length;

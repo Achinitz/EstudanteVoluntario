@@ -1,92 +1,55 @@
 <section class="content">
     <div class="topo">
-      <h1>Relatório da Atividade</h1>
+      <h1>Relatório(s)</h1>
+
+      <ngb-alert #alert type="warning">
+        Verifique os estudantes antes de anexar os relatórios de atividade para cada estudante.
+      </ngb-alert>
     </div>
-  
-    <section class="col-10 d-flex flex-column align-items-center">
-      <span class="contentPage"> Listar os estudantes participantes da atividade para dar presença na atividade / carregar dados da atividade </span>
-  
-      <h2 class="text-left">
-        Selecione o estudante que deseja emitir um relatório
-      </h2>
-  
-      <div class="col-10">
-        <span class="contentPage d-flex">
-          Escolha um estudante para gerar o relatório
-        </span>
-  
-        <div class="d-flex py-2">
-          <div class="col-3">
-            <span>Id</span>
-          </div>
-          <div class="col-3">
-            <span>Nome</span>
-          </div>
-          <div class="col-3">
-            <span>CPF</span>
-          </div>
-          <div class="col-3">
-            <span>Ações</span>
-          </div>
-        </div>
-  
-        <div *ngFor="let aluno of filtroAluno" class="py-1">
-          <div class="d-flex">
-            <div class="col-3">{{ aluno.id }}</div>
-            <div class="col-3">{{ aluno.nome }}</div>
-            <div class="col-3">{{ aluno.cpf }}</div>
-            <div class="col-3">
-              <button>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-file-earmark-plus"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"
-                  />
-                  <path
-                    d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"
-                  />
-                </svg>
+
+    <div class="d-flex col-xl-6 col-lg-6 col-sm-12">
+      <input type="text" class="form-control" placeholder="Informe o nome do aluno ou o nome da Entidade">
+      <button class="btn btn-primary btn-pesquisa">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg>
+      </button>
+    </div>
+
+    <br>
+
+    <section>
+      <ng-template #naoPossuiRelatorio>
+        Essa vaga ainda não possui inscritos
+      </ng-template>
+
+      <table class="col-12 table table-striped" *ngIf="alunos != null; else naoPossuiRelatorio">
+        <thead>
+          <tr>
+            <th class="col-4">Voluntariado</th>
+            <th class="col-3">Empresa</th>
+            <th class="col-2">Situação</th>
+            <th class="col-3 text-center">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let aluno of alunos;">
+            <td class="col-3">{{ aluno.nome | slice: 0 : 15}}...</td>
+            <td class="col-3">{{ aluno.empresa }}</td>
+            <td class="col-3">{{ aluno.status }}</td>
+            <td class="col-3 text-center">
+              <button class="button-table">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                  </svg>
+                </span>
               </button>
-              <button>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-download"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
-                  />
-                  <path
-                    d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <ngb-pagination
-        class="pagination"
-        [rotate]="true"
-        [maxSize]="3"
-        [directionLinks]="false"
-        [collectionSize]="this.alunos.length"
-        [pageSize]="itemsPerPage"
-        [boundaryLinks]="true"
-        [(page)]="paginaAtual"
-        (pageChange)="mudancaPagina(paginaAtual)"
-      >
-      </ngb-pagination>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </section>
-  </section>
   
+</section>
