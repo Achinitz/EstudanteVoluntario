@@ -36,6 +36,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { DataService } from 'src/app/services/data.service';
 import { DetalhesComponent } from './vagas/detalhes/detalhes.component';
 import { DetalheEstudanteComponent } from './vagas/detalhes/detalhe-estudante/detalhe-estudante.component';
+import { NotificacaoComponent } from './notificacao/notificacao.component';
+import { ModalNotificacaoComponent } from './notificacao/modal-notificacao/modal-notificacao.component';
+import { ModalAnexarRelatorioComponent } from './gerar-relatorio/modal-anexar-relatorio/modal-anexar-relatorio.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,9 @@ import { DetalheEstudanteComponent } from './vagas/detalhes/detalhe-estudante/de
     VagasComponent,
     DetalhesComponent,
     DetalheEstudanteComponent,
+    NotificacaoComponent,
+    ModalNotificacaoComponent,
+    ModalAnexarRelatorioComponent,
   ],
   imports: [
     CommonModule,

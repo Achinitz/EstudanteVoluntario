@@ -11,6 +11,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { VagasComponent } from './vagas/vagas.component';
 import { DetalhesComponent } from './vagas/detalhes/detalhes.component';
 import { DetalheEstudanteComponent } from './vagas/detalhes/detalhe-estudante/detalhe-estudante.component';
+import { NotificacaoComponent } from './notificacao/notificacao.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
       {
         path: 'detalhe-estudante',
         component: DetalheEstudanteComponent
+      },
+      {
+        path: 'notificacao',
+        component: NotificacaoComponent
       }
     ],
   },
