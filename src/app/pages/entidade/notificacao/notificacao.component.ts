@@ -9,68 +9,57 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-notificacao',
   templateUrl: './notificacao.component.html',
-  styleUrls: ['./notificacao.component.scss']
+  styleUrls: ['./notificacao.component.scss'],
 })
 export class NotificacaoComponent implements OnInit {
-
-  vagasCadastradas: any = [
+  notificacoes: any = [
     {
       id: 1,
-      nomeEntidade: 'APAE 1',
-      nomeVaga: 'Voluntário Contador de Histórias',      
-      img: '../../assets/imagens/mulherGrandeCoracao.jpg',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-      cidade: 'Curitiba',
-      estado: 'Paraná',
-      numero: 41,
-      rua: 'Rua Amador Bueno',
-      bairro: 'Cajuru',
-      cep: '82960-020',
-      obrigacoes: [
-        {id: 1, nome: 'Escrever Conteúdos'},
-        {id: 2, nome: 'Ser Empático e Acolhedor'},
-        {id: 3, nome: 'Ser Articulado'},
-        {id: 4, nome: 'Incorporar Personagens'},
-      ],
-      beneficios: [
-        {id: 1, nome: 'Refeição no Local'},
-        {id: 2, nome: 'Vale transporte'}
-      ],
-      inscritos: 5
+      nomeRemetente: 'ONG 1',
+      dataEnvio: '28/01/2023 08:00:00',
+      titulo: 'Cancelamento da atividade',
+      mensagem:
+        'Prezado/a estudante, informamos que a vaga "Contador de História" que iniciaria em 03/02 foi cancelada.',
     },
   ];
-  constructor(private modalService: NgbModal, public dialog: MatDialog,
-    private router: Router, private data: DataService) { }
+  constructor(
+    private modalService: NgbModal,
+    public dialog: MatDialog,
+    private router: Router,
+    private data: DataService
+  ) {}
 
-    cancelarInscricao(){
-      Swal.fire({
-        title: 'Deseja realmente excluir essa notificação?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Confirmar',
-        cancelButtonText: 'Cancelar'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: 'Notificação excluida com sucesso!',
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 1500
-          })
-        }
-      })
-    }
+  excluirNotificacao() {
+    Swal.fire({
+      title: 'Deseja realmente excluir essa notificação?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Notificação excluida com sucesso!',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  }
 
-  visualizarInscricao(Vaga : any){
+  visualizarInscricao(Notificacao: any) {
     // this.data.data = Vaga;
     // this.router.navigate(['/Estudante/detalhe-vaga']);
-    const modalRef = this.modalService.open(ModalNotificacaoComponent, { windowClass: 'auto', backdrop: 'static', centered: true });
-    modalRef.componentInstance.vagaSelecionada = Vaga;
+    const modalRef = this.modalService.open(ModalNotificacaoComponent, {
+      windowClass: 'auto',
+      backdrop: 'static',
+      centered: true,
+    });
+    modalRef.componentInstance.vagaSelecionada = Notificacao;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

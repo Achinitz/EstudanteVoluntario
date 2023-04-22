@@ -5,7 +5,6 @@ import { CertificadoComponent } from './certificado/certificado.component';
 import { EntidadeComponent } from './entidade.component';
 import { GerarRelatorioComponent } from './gerar-relatorio/gerar-relatorio.component';
 import { CadastrarVagaComponent } from './home/cadastrar-vaga/cadastrar-vaga.component';
-import { DetalheVagaEntidadeComponent } from './home/detalhe-vaga-entidade/detalhe-vaga-entidade.component';
 import { HomeComponent } from './home/home.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { VagasComponent } from './vagas/vagas.component';

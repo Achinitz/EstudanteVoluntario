@@ -95,6 +95,53 @@ export class DetalhesComponent implements OnInit, OnDestroy {
     })
   }
 
+  
+  finalizarPorUrgencia() {
+    Swal.fire({
+      title: 'Deseja realmente finalizar esse processo seletivo?',
+      text: 'O processo seletivo será fechado antes do prazo previsto, impedindo que outros estudantes possam realizar o cadastro!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Finalizado!',
+          text: 'Processo seletivo Finalizado!!',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  }
+
+  cancelarProcessoSeletivo() {
+    Swal.fire({
+      title: 'Deseja realmente cancelar esse processo seletivo?',
+      text: 'Ao confirmar, esse processo seletivo será cancelado permanentemente!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Cancelado!',
+          text: 'Processo seletivo Cancelado!!',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  }
+
   ngOnInit(): void {
   }
 

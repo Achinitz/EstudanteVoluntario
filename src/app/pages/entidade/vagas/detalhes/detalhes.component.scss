@@ -1,16 +1,29 @@
-h3{
-    font-size: 18px;
-    font-weight: 500;
+h3 {
+  font-size: 18px;
+  font-weight: 500;
 }
 
-.title__data{
-    font-weight: 500;
+.title__data {
+  font-weight: 500;
 }
 
-.imagem__vaga{
-    width: 250px;
+.imagem__vaga {
+  width: 250px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-.modal-dialog{
-    min-width: 80% !important;
+.modal-dialog {
+  min-width: 80% !important;
+}
+
+.buttonsVagasCadastradas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+
+  button:first-child {
+    margin-right: 0.5rem;
   }
+}

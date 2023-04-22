@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
-import { DetalheVagaEntidadeComponent } from '../home/detalhe-vaga-entidade/detalhe-vaga-entidade.component';
 
 @Component({
   selector: "app-vagas",
@@ -14,19 +13,17 @@ export class VagasComponent implements OnInit {
 
   vagasDisponiveis: any = [
     {
-      id: 3,
+      id: 1,
       nomeEntidade: 'ONG 1',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
+      descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mollis sem. Nullam eu imperdiet est, aliquet malesuada ipsum. Nunc id feugiat orci, et blandit erat.',
       requisitos: [
         {descricao: 'Ter 5 pós graduação'},
         {descricao: 'Algum ai'},
         {descricao: 'Algum ai'},
       ],
-      auxilio:'100',
-      auxilioTransporte: true,
-      auxilioAlimentacao: false,
+      auxilio:'Alimentação e Transporte',      
       endereco:'Rua tal dos omi lá',
       bairro: 'Cajuru',
       numero: '23',
@@ -34,10 +31,11 @@ export class VagasComponent implements OnInit {
       estado: 'Paraná',
       complemento: 'Prédio Comercial',
       dataAberturaVaga: '28/01/2023 08:00:00',
-      dataFinalizacaoVaga: '20/02/2023 23:00:00',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
+      dataFinalizacaoVaga: '20/02/2023 23:59:00',      
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
+      horarioInicio: '08:00',
+      horarioEncerramento:'12:00',
       numeroVagas:'3',
       status: 'Aberto',
       inscritos: [
@@ -80,8 +78,8 @@ export class VagasComponent implements OnInit {
       ],
     },
     {
-      id: 3,
-      nomeEntidade: 'ONG 1',
+      id: 2,
+      nomeEntidade: 'ONG 2',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
@@ -90,9 +88,7 @@ export class VagasComponent implements OnInit {
         {descricao: 'Algum ai'},
         {descricao: 'Algum ai'},
       ],
-      auxilio:'100',
-      auxilioTransporte: true,
-      auxilioAlimentacao: false,
+      auxilio:'Alimentação',     
       endereco:'Rua tal dos omi lá',
       bairro: 'Cajuru',
       numero: '23',
@@ -101,9 +97,10 @@ export class VagasComponent implements OnInit {
       complemento: 'Prédio Comercial',
       dataAberturaVaga: '28/01/2023 08:00:00',
       dataFinalizacaoVaga: '20/02/2023 23:00:00',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
+      horarioInicio: '08:00',
+      horarioEncerramento:'12:00',
       numeroVagas:'3',
       status: 'Aberto',
       inscritos: [
@@ -147,7 +144,68 @@ export class VagasComponent implements OnInit {
     },
     {
       id: 3,
-      nomeEntidade: 'ONG 1',
+      nomeEntidade: 'ONG 3',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
+      descricao: 'Vaga para pessoas de bom coração',
+      requisitos:null,
+      auxilio: null,      
+      endereco:'Rua tal dos omi lá',
+      bairro: 'Cajuru',
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      complemento: 'Prédio Comercial',
+      dataAberturaVaga: '28/01/2023 08:00:00',
+      dataFinalizacaoVaga: '20/02/2023 23:00:00',
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
+      horarioInicio: '08:00',
+      horarioEncerramento:'12:00',
+      numeroVagas:'3',
+      status: 'Aberto',
+      inscritos: [
+        {
+          nome: 'Jeronimo',
+          img: null,
+          cpf: '123',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alienigena',
+          img: null,
+          cpf: '1234',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Alex',
+          img: null,
+          cpf: '12345',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        },
+        {
+          nome: 'Tebutrios',
+          img: null,
+          cpf: '123456',
+          curso: 'Analise de Sistemas',
+          idade: 22,
+          dataInscricao: '15/05/2022',
+          status: 'Andamento'
+        }
+      ],
+    },
+    {
+      id: 4,
+      nomeEntidade: 'ONG 4',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
@@ -209,69 +267,7 @@ export class VagasComponent implements OnInit {
     },
     {
       id: 3,
-      nomeEntidade: 'ONG 1',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      requisitos:null,
-      auxilio:'100',
-      auxilioTransporte: true,
-      auxilioAlimentacao: false,
-      endereco:'Rua tal dos omi lá',
-      bairro: 'Cajuru',
-      numero: '23',
-      cidade: 'Curitiba',
-      estado: 'Paraná',
-      complemento: 'Prédio Comercial',
-      dataAberturaVaga: '28/01/2023 08:00:00',
-      dataFinalizacaoVaga: '20/02/2023 23:00:00',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
-      numeroVagas:'3',
-      status: 'Aberto',
-      inscritos: [
-        {
-          nome: 'Jeronimo',
-          img: null,
-          cpf: '123',
-          curso: 'Analise de Sistemas',
-          idade: 22,
-          dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        },
-        {
-          nome: 'Alienigena',
-          img: null,
-          cpf: '1234',
-          curso: 'Analise de Sistemas',
-          idade: 22,
-          dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        },
-        {
-          nome: 'Alex',
-          img: null,
-          cpf: '12345',
-          curso: 'Analise de Sistemas',
-          idade: 22,
-          dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        },
-        {
-          nome: 'Tebutrios',
-          img: null,
-          cpf: '123456',
-          curso: 'Analise de Sistemas',
-          idade: 22,
-          dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        }
-      ],
-    },
-    {
-      id: 3,
-      nomeEntidade: 'ONG 1',
+      nomeEntidade: 'ONG 5',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',

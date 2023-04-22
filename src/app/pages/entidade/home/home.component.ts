@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   vagasDisponiveis: any = [
     {
       id: 1,
-      nomeEntidade: 'APAE 1',
+      nomeEntidade: 'ONG 1',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     },
     {
       id: 2,
-      nomeEntidade: 'APAE 2',
+      nomeEntidade: 'ONG 2',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     },
     {
       id: 3,
-      nomeEntidade: 'APAE 3',
+      nomeEntidade: 'ONG 3',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
     },
     {
       id: 4,
-      nomeEntidade: 'APAE 4',
+      nomeEntidade: 'ONG 4',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
   finalizarPorUrgencia() {
     Swal.fire({
       title: 'Deseja realmente finalizar esse processo seletivo?',
-      text: 'O processo seletivo será fechado antes do prazo previsto. Impedindo que outros estudantes possam realizar o cadastro!',
+      text: 'O processo seletivo será fechado antes do prazo previsto, impedindo que outros estudantes possam realizar o cadastro!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -73,7 +73,7 @@ export class HomeComponent implements OnInit {
   cancelarProcessoSeletivo() {
     Swal.fire({
       title: 'Deseja realmente cancelar esse processo seletivo?',
-      text: 'Ao confirmar, esse processo seletivo será cancelado e excluido permanentemente!',
+      text: 'Ao confirmar, esse processo seletivo será cancelado permanentemente!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

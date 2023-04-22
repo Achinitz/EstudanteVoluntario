@@ -1,9 +1,11 @@
 <section class="modal-header">
-    <h2 class="modal-title">Titulo</h2>
+    <h2 class="modal-title">{{notificacao.titulo}}</h2>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
   </section>
   <section class="modal-body">
-
+    <p>Remetente: {{notificacao.nomeRemetente}}</p>
+    <p>Mensagem: {{notificacao.mensagem}}</p>
+    
   
   </section>
   <section class="modal-footer">

@@ -12,8 +12,10 @@ import { ToastrService } from 'ngx-toastr';
   animations: genericAnimations,
 })
 export class CadastrarVagaComponent implements OnInit {
-  submitted = false; 
-  utilizarEnderecoEntidade:boolean = true;
+  submitted = false;
+  utilizarEnderecoEntidade: boolean = true;
+  possuiAuxilio: boolean = false;
+  termosCondicao: boolean = false;
   estado: any;
   cidade: any;
   bairro: any;
@@ -23,16 +25,20 @@ export class CadastrarVagaComponent implements OnInit {
   estados: any = [];
 
   public formCadastro = new FormGroup({
-    tituloVaga: new FormControl(null,Validators.required),
+    tituloVaga: new FormControl(null, Validators.required),
     descricao: new FormControl(null, Validators.required),
     requisitos: new FormControl(null, Validators.required),
     possuiAuxilio: new FormControl(false, Validators.required),
+    descricaoAuxilio: new FormControl(null, Validators.required),
     dataInicioTrabalho: new FormControl(null, Validators.required),
     dataTerminoTrabalho: new FormControl(null, Validators.required),
     quantidadeVagas: new FormControl(null, Validators.required),
     horarioInicio: new FormControl(null, Validators.required),
     horarioEncerramento: new FormControl(null, Validators.required),
-    utilizarEnderecoEntidade: new FormControl(this.utilizarEnderecoEntidade, Validators.required),
+    utilizarEnderecoEntidade: new FormControl(
+      this.utilizarEnderecoEntidade,
+      Validators.required
+    ),
     cep: new FormControl(null, Validators.required),
     logradouro: new FormControl(null, Validators.required),
     numero: new FormControl(null, Validators.required),
@@ -40,11 +46,25 @@ export class CadastrarVagaComponent implements OnInit {
     complemento: new FormControl(null, Validators.required),
     estado: new FormControl(null, Validators.required),
     cidade: new FormControl(null, Validators.required),
+    dataFinalizacaoVaga: new FormControl(null, Validators.required),
     termosCondicao: new FormControl(false, Validators.required),
   });
 
   mostrarValores() {
     console.log('Formulário enviado');
+  }
+
+  setAuxilio() {
+    this.possuiAuxilio = this.possuiAuxilio ? false : true;
+  }
+
+  setEndereco() {
+    this.utilizarEnderecoEntidade = this.utilizarEnderecoEntidade
+      ? false
+      : true;
+  }
+  aceitarTermo() {
+    this.termosCondicao = this.termosCondicao ? false : true;
   }
 
   constructor(
@@ -55,24 +75,13 @@ export class CadastrarVagaComponent implements OnInit {
     this.inicializaFormulario();
   }
 
-setEndereco(){
-  this.utilizarEnderecoEntidade=this.utilizarEnderecoEntidade?false:true;
-  console.log(this.utilizarEnderecoEntidade);
-}
-
   inicializaFormulario() {
     this.enderecoService.getEstados().subscribe((data: any) => {
-      this.estados = data;
-      //console.log('Inicio estados');
-      //console.log(data);
-      //console.log('Fim estados');
+      this.estados = data;      
     });
   }
 
-  onAddCidade() {
-    // if(this.formCadastro.get("estado")?.value === null && ){
-    //   this.formCadastro.get('cidade')?.setValue(null)
-    // }
+  onAddCidade() {  
     this.enderecoService
       .getCidades(this.formCadastro.get('estado')?.value)
       .subscribe((data: any) => {
@@ -81,9 +90,9 @@ setEndereco(){
   }
 
   onAddBairro() {
-    console.log('Inicio cidade selecionado');
+    /* console.log('Inicio cidade selecionado');
     console.log(this.formCadastro.get('cidade')?.value);
-    console.log('Fim cidade selecionado');
+    console.log('Fim cidade selecionado'); */
   }
 
   validaCep() {
@@ -121,7 +130,5 @@ setEndereco(){
     }
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
