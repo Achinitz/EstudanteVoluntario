@@ -35,6 +35,7 @@
                   Filtre sua busca no campo acima, informando o nome da vaga ou o nome da Entidade que deseja!
                 </ngb-alert>
               </div>
+                <!--Buscar apenas as vagas que estão com o status aberto -->
               <div class="containerCard">
                 <div class="card" *ngFor="let vaga of vagasCadastradas; let i = index">
                   <!-- Alterar as cores do botão dependendo do status -->
@@ -49,10 +50,11 @@
                     <p class="card-text">{{ vaga.nomeVaga }}</p>
                   </div>
                   <div class="buttonsVagasCadastradas">
-                    <button class="btn btn-primary" (click)="exibirDetalhes(i)">
+                    <button class="btn btn-primary" (click)="exibirDetalhes(vaga)">
                       Detalhes
                     </button>
-                    <button *ngIf="vaga.status === 'Aberto'" class="btn btn-danger" (click)="cancelarInscricao(i)">
+                    <!--arrumar botao de cancelar-->
+                    <button *ngIf="vaga.inscrito" class="btn btn-danger" (click)="cancelarInscricao()">
                       Cancelar
                     </button>
                   </div>

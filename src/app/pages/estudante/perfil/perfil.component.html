@@ -2,6 +2,9 @@
   <div class="topo">
     <h1>Meu Perfil</h1>
   </div>
+  <ngb-alert #alert type="warning">
+    Verifique os seus dados e modifique-os se necessário!
+  </ngb-alert>
 
   <section class="contentDetails">
     <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">
@@ -35,19 +38,18 @@
         </small>
       </div>
       <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="confirmaNomeSocial"
-        formControlName="confirmaNomeSocial" />
+        <input type="checkbox" class="form-check-input" id="confirmaNomeSocial" formControlName="confirmaNomeSocial" />
         <label class="form-check-label" for="confirmaNomeSocial">Desejo usar meu nome social</label>
       </div>
       <div class="form-group">
         <label for="nomeSocial">Nome Social</label>
-        <input type="text" class="form-control" id="nomeSocial" placeholder="Nome Social" 
-        formControlName="nomeSocial"/>
+        <input type="text" class="form-control" id="nomeSocial" placeholder="Nome Social"
+          formControlName="nomeSocial" />
       </div>
       <div class="form-group">
         <label for="cpf">CPF <em>*</em> </label>
-        <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" 
-        mask="000.000.000-00" formControlName="cpf"/>
+        <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" mask="000.000.000-00"
+          formControlName="cpf" />
       </div>
       <div class="form-group">
         <label for="email">Email <em>*</em> </label>
@@ -154,7 +156,7 @@
         <input type="text" class="form-control" id="complemento" placeholder="Complemento ou Ponto de Referência."
           formControlName="complemento" />
       </div>
-    
+
 
       <div class="form-group">
         <label for="ies">Instituição de Ensino <em>*</em> </label>

@@ -11,7 +11,8 @@
   <section class="col-12">
 
     <h2>Últimas Inscrições</h2>
-
+    
+  <!--Mostrar apenas as vagas em que o estudante está inscrito -->
     <ngb-alert type="primary" *ngIf="!vagasInscritas">
       Você ainda não tem inscrições em vagas!
     </ngb-alert>
@@ -30,6 +31,7 @@
           </div>
           <div class="card-body">
             <h4 class="card-title">{{ vaga.nomeEntidade }}</h4>
+            <h4 class="card-title">{{ vaga.nomeVaga }}</h4>
             <p class="card-text">{{ vaga.descricao }}</p>
           </div>
           <div class="buttonsVagasCadastradas">

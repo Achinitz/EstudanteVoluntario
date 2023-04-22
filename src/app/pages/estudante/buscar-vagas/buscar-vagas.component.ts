@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
-import { CancelarModalComponent } from '../home/cancelar-modal/cancelar-modal.component';
-import { VagaDetalhesComponent } from '../home/vaga-detalhes/vaga-detalhes.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-buscar-vagas',
@@ -18,13 +17,15 @@ export class BuscarVagasComponent implements OnInit {
       nomeVaga: 'Contador de História 1',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
-      requisitos: 'Sem requisitos',
-      auxilio: 'Não',
-      endereco: 'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia: '28/01/2023',
-      horarioInicio: '13:00',
-      horarioEncerramento: '17:00',
-      numeroVagas: '3',
+      requisitos: 'Gostar de trabalhar com crianças',
+      auxilio:'Alimentação e Transporte',      
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR - CEP 80010-010',     
+      dataFinalizacaoVaga: '20/02/2023 23:59:00',      
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
+      horarioInicio: '08:00',
+      horarioEncerramento:'12:00',
+      numeroVagas:'3',
       status: 'Aberta',
       inscrito: true,
     },
@@ -33,16 +34,18 @@ export class BuscarVagasComponent implements OnInit {
       nomeEntidade: 'ONG 2',
       nomeVaga: 'Contador de História 2',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
+      descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mollis sem. Nullam eu imperdiet est, aliquet malesuada ipsum. Nunc id feugiat orci, et blandit erat.',
       requisitos: 'Sem requisitos',
-      auxilio: 'Não',
-      endereco: 'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia: '28/01/2023',
+      auxilio: null,
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR - CEP 80010-010',     
+      dataFinalizacaoVaga: '20/02/2023 23:59:00',      
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
       horarioInicio: '13:00',
       horarioEncerramento: '17:00',
       numeroVagas: '3',
-      status: 'Andamento',
-      inscrito: true,
+      status: 'Aberta',
+      inscrito: false,
     },
 
     {
@@ -51,15 +54,17 @@ export class BuscarVagasComponent implements OnInit {
       nomeVaga: 'Contador de História 3',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
-      requisitos: 'Sem requisitos',
-      auxilio: 'Não',
-      endereco: 'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia: '28/01/2023',
+      requisitos: null,
+      auxilio: null,
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR - CEP 80010-010',     
+      dataFinalizacaoVaga: '20/02/2023 23:59:00',      
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
       horarioInicio: '13:00',
       horarioEncerramento: '17:00',
       numeroVagas: '3',
       status: 'Aberta',
-      inscrito: true,
+      inscrito: false,
     },
     {
       id: 4,
@@ -68,14 +73,16 @@ export class BuscarVagasComponent implements OnInit {
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       requisitos: 'Sem requisitos',
-      auxilio: 'Não',
-      endereco: 'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia: '28/01/2023',
+      auxilio: null,
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR - CEP 80010-010',     
+      dataFinalizacaoVaga: '20/02/2023 23:59:00',      
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
       horarioInicio: '13:00',
       horarioEncerramento: '17:00',
       numeroVagas: '3',
-      status: 'Encerrada',
-      inscrito: true,
+      status: 'Aberta',
+      inscrito: false,
     },
     {
       id: 5,
@@ -84,14 +91,16 @@ export class BuscarVagasComponent implements OnInit {
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       requisitos: 'Sem requisitos',
-      auxilio: 'Não',
-      endereco: 'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia: '28/01/2023',
+      auxilio: null,
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR - CEP 80010-010',     
+      dataFinalizacaoVaga: '20/02/2023 23:59:00',      
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
       horarioInicio: '13:00',
       horarioEncerramento: '17:00',
       numeroVagas: '3',
-      status: 'Encerrada',
-      inscrito: true,
+      status: 'Aberta',
+      inscrito: false,
     },
     {
       id: 6,
@@ -100,14 +109,16 @@ export class BuscarVagasComponent implements OnInit {
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       requisitos: 'Sem requisitos',
-      auxilio: 'Não',
-      endereco: 'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia: '28/01/2023',
+      auxilio: null,
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR - CEP 80010-010',     
+      dataFinalizacaoVaga: '20/02/2023 23:59:00',      
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
       horarioInicio: '13:00',
       horarioEncerramento: '17:00',
       numeroVagas: '3',
-      status: 'Encerrada',
-      inscrito: true,
+      status: 'Aberta',
+      inscrito: false,
     },
     {
       id: 7,
@@ -116,17 +127,20 @@ export class BuscarVagasComponent implements OnInit {
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       requisitos: 'Sem requisitos',
-      auxilio: 'Não',
-      endereco: 'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia: '28/01/2023',
+      auxilio: null,
+      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR - CEP 80010-010',     
+      dataFinalizacaoVaga: '20/02/2023 23:59:00',      
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
       horarioInicio: '13:00',
       horarioEncerramento: '17:00',
       numeroVagas: '3',
-      status: 'Encerrada',
-      inscrito: true,
+      status: 'Aberta',
+      inscrito: false,
     },
   ];
 
+  //Paginação
   paginaAtual = 1;
   tamanhoPagina: number = this.vagasCadastradas.length;
   itemsPerPage = 6;
@@ -139,6 +153,15 @@ export class BuscarVagasComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+ 
+  public mudancaPagina(pageNum: number): void {
+    this.tamanhoPagina = this.itemsPerPage * (pageNum - 1);
+    this.vagas = this.vagasCadastradas.slice(
+      this.tamanhoPagina,
+      this.tamanhoPagina + 6
+    );
+  }
 
   getStatus(status: string) {
     if (status == 'Aprovação') {
@@ -154,24 +177,10 @@ export class BuscarVagasComponent implements OnInit {
     }
   }
 
-  public mudancaPagina(pageNum: number): void {
-    this.tamanhoPagina = this.itemsPerPage * (pageNum - 1);
-    this.vagas = this.vagasCadastradas.slice(
-      this.tamanhoPagina,
-      this.tamanhoPagina + 6
-    );
-  }
-
-  //Vai exibir os detalhes da vaga antes de ele efetivar a inscrição
+  //Vai exibir os detalhes da vaga para efetivar a inscrição
   exibirDetalhes(value: any): void {
-    const dialogRef = this.dialog.open(VagaDetalhesComponent, {
-      width: 'auto',
-      data: this.vagasCadastradas[value],
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
+    this.dataService.data = value;
+    this.router.navigate(['/Estudante/detalhe-vaga']);
   }
 
   //Vai exibir uma modal para cadastro com as validações dos dados
@@ -181,18 +190,26 @@ export class BuscarVagasComponent implements OnInit {
   }
 
   //Quando o usuário clicar no botão para cancelar a inscrição
-  cancelarInscricao(value: any) {
-    const dialogRef = this.dialog.open(CancelarModalComponent, {
-      width: '50%',
-      data: this.vagasCadastradas[value],
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+  cancelarInscricao() {
+    Swal.fire({
+      title: 'Deseja realmente cancelar a sua inscrição nessa vaga?',
+      text: 'Ao confirmar, a sua inscrição nessa vaga será cancelada!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Inscrição cancelada com sucesso!',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     });
   }
-
-  confirmarCancelamento(value: any) {
-    //abrir modal confimando o cancelamento
-  }
+ 
 }

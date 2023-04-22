@@ -15,7 +15,7 @@ export class VagasComponent implements OnInit {
     {
       id: 1,
       nomeEntidade: 'ONG 1',
-      nomeVaga: 'Contador de História',
+      nomeVaga: 'Contador de História 1',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mollis sem. Nullam eu imperdiet est, aliquet malesuada ipsum. Nunc id feugiat orci, et blandit erat.',
       requisitos: [
@@ -79,8 +79,8 @@ export class VagasComponent implements OnInit {
     },
     {
       id: 2,
-      nomeEntidade: 'ONG 2',
-      nomeVaga: 'Contador de História',
+      nomeEntidade: 'ONG 1',
+      nomeVaga: 'Contador de História 2',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       requisitos: [
@@ -144,8 +144,8 @@ export class VagasComponent implements OnInit {
     },
     {
       id: 3,
-      nomeEntidade: 'ONG 3',
-      nomeVaga: 'Contador de História',
+      nomeEntidade: 'ONG 1',
+      nomeVaga: 'Contador de História 3',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       requisitos:null,
@@ -205,8 +205,8 @@ export class VagasComponent implements OnInit {
     },
     {
       id: 4,
-      nomeEntidade: 'ONG 4',
-      nomeVaga: 'Contador de História',
+      nomeEntidade: 'ONG 1',
+      nomeVaga: 'Contador de História 4',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       requisitos:null,
@@ -267,8 +267,8 @@ export class VagasComponent implements OnInit {
     },
     {
       id: 5,
-      nomeEntidade: 'ONG 5',
-      nomeVaga: 'Contador de História',
+      nomeEntidade: 'ONG 1',
+      nomeVaga: 'Contador de História 5',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       requisitos:null,
@@ -329,8 +329,8 @@ export class VagasComponent implements OnInit {
     },
     {
       id: 6,
-      nomeEntidade: 'ONG 6',
-      nomeVaga: 'Contador de História',
+      nomeEntidade: 'ONG 1',
+      nomeVaga: 'Contador de História 6',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       requisitos:null,
@@ -391,8 +391,8 @@ export class VagasComponent implements OnInit {
     },
     {
       id: 7,
-      nomeEntidade: 'ONG 7',
-      nomeVaga: 'Contador de História',
+      nomeEntidade: 'ONG 1',
+      nomeVaga: 'Contador de História 7',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       requisitos:null,

@@ -84,6 +84,31 @@ export class MinhasInscricoesComponent implements OnInit {
       status: 'Aberta',
       inscrito: true, 
     },
+
+    {
+      id: 4,
+      nomeEntidade: 'ONG 4',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
+      descricao: 'Vaga para pessoas de bom coração',
+      requisitos:'Sem requisitos',
+      auxilio: null,    
+      endereco:'Rua tal dos omi lá',
+      bairro: 'Cajuru',
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      cep: '81700-000',
+      complemento: 'Prédio Comercial',      
+      dataFinalizacaoVaga: '20/02/2023 23:59:00',      
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
+      horarioInicio: '08:00',
+      horarioEncerramento:'12:00',
+      numeroVagas:'3',
+      status: 'Encerrada',
+      inscrito: true, 
+    },
   ];
   
   constructor(

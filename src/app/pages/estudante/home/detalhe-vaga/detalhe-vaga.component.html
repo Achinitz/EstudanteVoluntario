@@ -1,6 +1,7 @@
 <section class="content">
+
   <div class="topo">
-    <h1>Detalhes da Vaga - {{ data.nomeVaga }}</h1>
+    <h1>Detalhes da Vaga - {{ vaga.nomeVaga }}</h1>
   </div>
 
   <ngb-alert #alert type="warning">
@@ -8,25 +9,93 @@
     realizar a inscrição.
   </ngb-alert>
 
-  <section class="contentDetails">
-    <div class="col-6 imgDetails">
-      <img style="width: 50%" src="{{ data.img }}" />
+  <main>
+    <div class="col-12 d-flex imagem__vaga">
+      <img class="imagem__vaga" src="../../../../../assets/imagens/cadastroImagem.jpg">
     </div>
-    <div class="col-6 content">
-      <div class="row">
-        <h3>
-          {{ data.nomeEntidade }}
-        </h3>
+
+    <div class="row col-12">
+      <span class="title__data">Entidade</span>
+      <p *ngIf="vaga.nomeEntidade">{{vaga.nomeEntidade}}</p>
+      <p class="" *ngIf="!vaga.nomeEntidade"> - </p>
+    </div>
+    <div class="row col-12">
+      <div class="col-lg-3 col-sm-12">
+        <span class="title__data">Descrição</span>
+        <p *ngIf="vaga.descricao">{{vaga.descricao}}</p>
+        <p class="" *ngIf="!vaga.descricao"> - </p>
       </div>
-      <div class="row">
-        <span> Descrição: {{ data.descricao }} </span>
+      <div class="col-lg-3 col-sm-12">
+        <span class="title__data">Número de vagas</span>
+        <p *ngIf="vaga.numeroVagas">{{vaga.numeroVagas}}</p>
+        <p class="" *ngIf="!vaga.numeroVagas"> - </p>
+      </div>
+      <div class="col-lg-3 col-sm-12">
+        <span class="title__data">Status</span>
+        <p *ngIf="vaga.status">{{vaga.status}}</p>
+        <p class="" *ngIf="!vaga.status"> - </p>
+      </div>
+      <div class="col-lg-3 col-sm-12">
+        <span class="title__data">Auxílio</span>
+        <p *ngIf="vaga.auxilio">{{vaga.auxilio}}</p>
+        <p class="" *ngIf="!vaga.auxilio">Não possui</p>
       </div>
     </div>
-    <div class="buttonForm">
-      <button type="submit" class="btn mb-2 btn-success">
-        Cadastrar
+
+    <div class="row col-12">
+      <div class="col-lg-3 col-sm-12">
+        <span class="title__data">Data início</span>
+        <p *ngIf="vaga.dataInicioTrabalho">{{vaga.dataInicioTrabalho}}</p>
+        <p class="" *ngIf="!vaga.dataInicioTrabalho"> - </p>
+      </div>
+      <div class="col-lg-3 col-sm-12">
+        <span class="title__data">Data fim</span>
+        <p *ngIf="vaga.dataTerminoTrabalho">{{vaga.dataTerminoTrabalho}}</p>
+        <p class="" *ngIf="!vaga.dataTerminoTrabalho"> - </p>
+      </div>
+      <div class="col-lg-3 col-sm-12">
+        <span class="title__data">Horário início</span>
+        <p *ngIf="vaga.horarioInicio">{{vaga.horarioInicio}}</p>
+        <p class="" *ngIf="!vaga.horarioInicio"> - </p>
+      </div>
+      <div class="col-lg-3 col-sm-12">
+        <span class="title__data">Horário fim</span>
+        <p *ngIf="vaga.horarioEncerramento">{{vaga.horarioEncerramento}}</p>
+        <p class="" *ngIf="!vaga.horarioEncerramento"> - </p>
+      </div>
+    </div>
+
+    <div class="row col-12">
+      <span class="title__data">Endereço</span>
+      <p *ngIf="vaga.endereco">{{vaga.endereco}}</p>
+      <p class="" *ngIf="!vaga.endereco"> - </p>
+    </div>
+
+    <div class="row col-12">
+      <span class="title__data">Encerramento da inscrição</span>
+      <p *ngIf="vaga.dataFinalizacaoVaga">{{vaga.dataFinalizacaoVaga}}</p>
+      <p class="" *ngIf="!vaga.dataFinalizacaoVaga"> - </p>
+    </div>
+
+    <section>
+      <h3> Requisitos</h3>
+      <p *ngIf="vaga.requisitos">{{vaga.requisitos}}</p>
+      <p class="" *ngIf="!vaga.requisitos">Não possui</p>
+
+    </section>
+
+    <div class="buttonsVagasCadastradas">
+      <button *ngIf="!vaga.inscrito" class="btn btn-primary" (click)="confirmarInscricao()" >
+        Inscrição 
       </button>
-      <button type="submit" class="btn mb-2 btn-danger">Cancelar</button>
+      <button *ngIf="vaga.inscrito" class="btn btn-danger" (click)="cancelarInscricao()">
+        Cancelar inscrição
+      </button>
     </div>
-  </section>
+
+    <button class="btn btn-primary" routerLink="/Estudante/buscar-vagas">
+      Voltar
+    </button>
+
+  </main>
 </section>

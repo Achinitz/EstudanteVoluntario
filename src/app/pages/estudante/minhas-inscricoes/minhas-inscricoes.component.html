@@ -18,7 +18,7 @@
         <th class="col-1 text-center" scope="col">Situação</th>
         <th class="col-2 text-center" scope="col">Período do trabalho</th>
         <th class="col-1 text-center" scope="col">Horário</th>
-        <th class="col-1 text-center" scope="col">Ações</th>
+        <th class="col-1" scope="col">Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -30,7 +30,7 @@
         <td class="col-1 text-center">{{vaga.status}}</td>
         <td class="col-2 text-center">{{vaga.dataInicioTrabalho}} - {{vaga.dataTerminoTrabalho}}</td>
         <td class="col-1 text-center">{{vaga.horarioInicio}} - {{vaga.horarioEncerramento}}</td>
-        <td class="col-1 text-center buttonsActions">
+        <td class="col-1 buttonsActions">
           <button class="button-table" (click)="visualizarInscricao(vaga)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
               viewBox="0 0 16 16">
@@ -39,7 +39,7 @@
               <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
             </svg>
           </button>
-          <button class="button-table" (click)="cancelarInscricao()">
+          <button *ngIf="vaga.status == 'Aberta'" class="button-table" (click)="cancelarInscricao()">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
               viewBox="0 0 16 16">
               <path

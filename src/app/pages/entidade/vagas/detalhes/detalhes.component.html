@@ -76,8 +76,8 @@
         <p *ngIf="vaga.estado">{{vaga.estado}}</p>
         <p class="" *ngIf="!vaga.estado"> - </p>
       </div>
-
     </div>
+
     <div class="row col-12">
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Abertura da inscrição</span>
@@ -101,10 +101,8 @@
       </ul>
     </section>
 
-    <div>
-      <h3>
-        Inscritos
-      </h3>
+    <section>
+      <h3> Inscritos</h3>
 
       <ng-template #naoPossuiInscritos>
         Essa vaga ainda não possui inscritos
@@ -151,13 +149,14 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </section>
 
     <div class="buttonsVagasCadastradas">
       <button *ngIf="vaga.status == 'Aberta'" class="btn btn-success" (click)="finalizarPorUrgencia()">
         Finalizar
       </button>
-      <button *ngIf="vaga.status == 'Aberta' || vaga.status == 'Andamento'" class="btn btn-danger" (click)="cancelarProcessoSeletivo()">
+      <button *ngIf="vaga.status == 'Aberta' || vaga.status == 'Andamento'" class="btn btn-danger"
+        (click)="cancelarProcessoSeletivo()">
         Cancelar
       </button>
     </div>
