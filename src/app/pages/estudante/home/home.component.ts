@@ -3,8 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
-import { CancelarModalComponent } from './cancelar-modal/cancelar-modal.component';
 import { VagaDetalhesComponent } from './vaga-detalhes/vaga-detalhes.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalVagaComponent } from '../minhas-inscricoes/detalhe-vaga/modal-vaga.component';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ import { VagaDetalhesComponent } from './vaga-detalhes/vaga-detalhes.component';
 export class HomeComponent implements OnInit {
   nomeEstudante: any = 'Estudante Teste';
 
-  vagasCadastradas: any = [
+  vagasInscritas: any = [
     {
       id: 1,
       nomeEntidade: 'ONG 1',
@@ -22,14 +23,22 @@ export class HomeComponent implements OnInit {
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       requisitos:'Sem requisitos',
-      auxilio:'Não',
-      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
+      auxilio:'Alimentação e Transporte',    
+      endereco:'Rua tal dos omi lá',
+      bairro: 'Cajuru',
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      cep: '81700-000',
+      complemento: 'Prédio Comercial',      
+      dataFinalizacaoVaga: '20/02/2023 23:59:00',      
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
+      horarioInicio: '08:00',
+      horarioEncerramento:'12:00',
       numeroVagas:'3',
-      status: 'Aberto',
-      inscrito: false,
+      status: 'Aberta',
+      inscrito: true,
     },
     {
       id: 2,
@@ -38,11 +47,19 @@ export class HomeComponent implements OnInit {
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       requisitos:'Sem requisitos',
-      auxilio:'Não',
-      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
+      auxilio:'Alimentação e Transporte',    
+      endereco:'Rua tal dos omi lá',
+      bairro: 'Cajuru',
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      cep: '81700-000',
+      complemento: 'Prédio Comercial',      
+      dataFinalizacaoVaga: '20/02/2023 23:59:00',      
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
+      horarioInicio: '08:00',
+      horarioEncerramento:'12:00',
       numeroVagas:'3',
       status: 'Andamento',
       inscrito: true,      
@@ -55,150 +72,45 @@ export class HomeComponent implements OnInit {
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
       requisitos:'Sem requisitos',
-      auxilio:'Não',
-      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
+      auxilio: null,    
+      endereco:'Rua tal dos omi lá',
+      bairro: 'Cajuru',
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      cep: '81700-000',
+      complemento: 'Prédio Comercial',      
+      dataFinalizacaoVaga: '20/02/2023 23:59:00',      
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
+      horarioInicio: '08:00',
+      horarioEncerramento:'12:00',
       numeroVagas:'3',
-      status: 'Aberto',
+      status: 'Aberta',
       inscrito: true, 
     },
   ];
 
-  vagasDisponiveis: any = [
-    {
-      id: 1,
-      nomeEntidade: 'ONG 1',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      requisitos:'Sem requisitos',
-      auxilio:'Não',
-      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
-      numeroVagas:'3',
-      status: 'Aberto',
-      inscrito: false,
-    },
-    {
-      id: 2,
-      nomeEntidade: 'ONG 2',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      requisitos:'Sem requisitos',
-      auxilio:'Não',
-      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
-      numeroVagas:'3',
-      status: 'Aberto',
-      inscrito: false,    
-    },
-
-    {
-      id: 3,
-      nomeEntidade: 'ONG 3',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      requisitos:'Sem requisitos',
-      auxilio:'Não',
-      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
-      numeroVagas:'3',
-      status: 'Aberto',
-      inscrito: false,
-    },
-    {
-      id: 4,
-      nomeEntidade: 'ONG 4',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      requisitos:'Sem requisitos',
-      auxilio:'Não',
-      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
-      numeroVagas:'3',
-      status: 'Aberto',
-      inscrito: false,
-    },
-    {
-      id: 5,
-      nomeEntidade: 'ONG 5',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      requisitos:'Sem requisitos',
-      auxilio:'Não',
-      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
-      numeroVagas:'3',
-      status: 'Aberto',
-      inscrito: false,
-    },
-    {
-      id: 6,
-      nomeEntidade: 'ONG 6',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      requisitos:'Sem requisitos',
-      auxilio:'Não',
-      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
-      numeroVagas:'3',
-      status: 'Aberto',
-      inscrito: false,
-    },
-    {
-      id: 7,
-      nomeEntidade: 'ONG 7',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      requisitos:'Sem requisitos',
-      auxilio:'Não',
-      endereco:'Rua tal, numero 23 - Bairro - Curitiba/PR',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
-      numeroVagas:'3',
-      status: 'Aberto',
-      inscrito: false,
-    },
-  ];
+  
 
   //Variaveis para a paginação
   paginaAtual = 1;
-  tamanhoPagina: number = this.vagasDisponiveis.length;
+  tamanhoPagina: number = this.vagasInscritas.length;
   itemsPerPage = 6;
-  public vagas: any = this.vagasDisponiveis.slice(0, 6);
+  public vagas: any = this.vagasInscritas.slice(0, 6);
 
   constructor(
     public dialog: MatDialog,
     private dataService: DataService,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal,
   ) {}
 
   ngOnInit(): void {}
 
   public mudancaPagina(pageNum: number): void {
     this.tamanhoPagina = this.itemsPerPage * (pageNum - 1);
-    this.vagas = this.vagasDisponiveis.slice(
+    this.vagas = this.vagasInscritas.slice(
       this.tamanhoPagina,
       this.tamanhoPagina + 6
     );
@@ -208,7 +120,7 @@ export class HomeComponent implements OnInit {
   exibirDetalhes(value: any): void {
     const dialogRef = this.dialog.open(VagaDetalhesComponent, {
       width: 'auto',
-      data: this.vagasDisponiveis[value],
+      data: this.vagasInscritas[value],
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -216,9 +128,17 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  visualizarInscricao(Vaga : any){
+    // this.data.data = Vaga;
+    // this.router.navigate(['/Estudante/detalhe-vaga']);
+    const modalRef = this.modalService.open(ModalVagaComponent, { windowClass: 'auto', backdrop: 'static', centered: true });
+    modalRef.componentInstance.vagaSelecionada = Vaga;
+  }
+
+
   //Vai exibir uma modal para cadastro com as validações dos dados
   cadastrar(value: any): void {
-    this.dataService.data = this.vagasDisponiveis[value];
+    this.dataService.data = this.vagasInscritas[value];
     this.router.navigate(['/Estudante/detalhe-vaga']);
   }
 
@@ -243,6 +163,20 @@ export class HomeComponent implements OnInit {
           })
         }
       })
+  }
+
+  getStatus(status: string) {
+    if (status == 'Aprovação') {
+      return 'bg-warning';
+    } else if (status == 'Aberta') {
+      return 'bg-success text-white';
+    } else if (status == 'Cancelada') {
+      return 'bg-danger text-white';
+    } else if (status == 'Andamento') {
+      return 'bg-info text-white';
+    } else {
+      return 'bg-secondary text-white';
+    }
   }
 
 }

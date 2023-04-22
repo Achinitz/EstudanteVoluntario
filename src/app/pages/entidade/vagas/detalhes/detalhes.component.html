@@ -154,10 +154,10 @@
     </div>
 
     <div class="buttonsVagasCadastradas">
-      <button class="btn btn-success" (click)="finalizarPorUrgencia()">
+      <button *ngIf="vaga.status == 'Aberta'" class="btn btn-success" (click)="finalizarPorUrgencia()">
         Finalizar
       </button>
-      <button class="btn btn-danger" (click)="cancelarProcessoSeletivo()">
+      <button *ngIf="vaga.status == 'Aberta' || vaga.status == 'Andamento'" class="btn btn-danger" (click)="cancelarProcessoSeletivo()">
         Cancelar
       </button>
     </div>

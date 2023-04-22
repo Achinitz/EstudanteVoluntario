@@ -7,11 +7,10 @@ import { HomeComponent } from './home/home.component';
 import { VagaDetalhesComponent } from './home/vaga-detalhes/vaga-detalhes.component';
 import { PerfilComponent } from './perfil/perfil.component';
 
-import { InscricoesComponent } from './inscricoes/inscricoes.component';
 import { BuscarVagasComponent } from './buscar-vagas/buscar-vagas.component';
 
 import { MinhasInscricoesComponent } from './minhas-inscricoes/minhas-inscricoes.component';
-import { DestalhesVagaComponent } from './minhas-inscricoes/destalhes-vaga/destalhes-vaga.component';
+
 import { NotificacoesComponent } from './notificacoes/notificacoes.component';
 
 
@@ -40,11 +39,7 @@ const routes: Routes = [
       {
         path: 'certificados',
         component: CertificadoComponent,
-      },
-      {
-        path: 'inscricoes',
-        component: InscricoesComponent,
-      },
+      },      
       {
         path: 'buscar-vagas',
         component: BuscarVagasComponent,
@@ -53,10 +48,7 @@ const routes: Routes = [
         path: 'minhas-inscricoes',
         component: MinhasInscricoesComponent        
        },
-       {
-        path: 'detalhe-vaga',
-        component: DestalhesVagaComponent
-       },
+      
        {
         path: 'notificacoes',
         component: NotificacoesComponent

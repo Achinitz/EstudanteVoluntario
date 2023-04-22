@@ -1,12 +1,12 @@
 <div>
     <h1>Minhas Notificações</h1>
     <ngb-alert #alert type="primary" *ngIf="!notificacoes">
-      Você não possui nenhuma notificação!
+      Você não possui nenhuma notificação.
     </ngb-alert>
   
     <div *ngIf="notificacoes">
       <ngb-alert #alert type="warning">
-        Aqui você pode verificar as notificações recebidas das entidades ou dos administradores!
+        Aqui você pode verificar as notificações recebidas dos(as) administradores.
       </ngb-alert>
      </div>
   
@@ -25,7 +25,7 @@
            <td class="col-3 text-center">{{notificacao.dataEnvio}}</td>
            <td class="col-3 text-center">{{notificacao.nomeRemetente}}</td>
            <td class="col-3 text-center buttonsActions">
-             <button class="button-table" (click)="visualizarInscricao(notificacao)">
+             <button class="button-table" (click)="visualizarNotificacao(notificacao)">
                <svg
                  xmlns="http://www.w3.org/2000/svg"
                  width="16"

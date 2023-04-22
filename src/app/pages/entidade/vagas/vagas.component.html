@@ -11,9 +11,9 @@
     <section>
         <div class="containerCard vagasDisponiveis">
             <div class="card" *ngFor="let vaga of vagasDisponiveis; let i = index">
-                <p [ngClass]="vaga.status === 'Aberto' ? 'bg-success text-white' : 'bg-warning'" class="statusPosition">
+                <p [ngClass]=" getStatus(vaga.status)" class="statusPosition">
                     {{ vaga.status }}
-                </p>
+                  </p>
                 <div class="imgCard">
                     <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
                 </div>

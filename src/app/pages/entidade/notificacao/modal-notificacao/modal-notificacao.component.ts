@@ -10,18 +10,11 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ModalNotificacaoComponent implements OnInit {
 
-  notificacao: any = 
-    {
-      id: 1,
-      nomeRemetente: 'ONG 1',
-      dataEnvio: '28/01/2023 08:00:00',
-      titulo: 'Cancelamento da atividade',
-      mensagem:
-        'Prezado/a estudante, informamos que a vaga "Contador de História" que iniciaria em 03/02 foi cancelada.',
-    };
-  
+  public data: any;   
 
-  constructor(private data:DataService, private router: Router, public activeModal: NgbActiveModal) { }
+  constructor(private dataService: DataService, private router: Router, public activeModal: NgbActiveModal) {
+    this.data = this.dataService.data;
+   }
 
   ngOnInit(): void {
   }

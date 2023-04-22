@@ -37,7 +37,7 @@ export class VagasComponent implements OnInit {
       horarioInicio: '08:00',
       horarioEncerramento:'12:00',
       numeroVagas:'3',
-      status: 'Aberto',
+      status: 'Aberta',
       inscritos: [
         {
           nome: 'Jeronimo',
@@ -102,7 +102,7 @@ export class VagasComponent implements OnInit {
       horarioInicio: '08:00',
       horarioEncerramento:'12:00',
       numeroVagas:'3',
-      status: 'Aberto',
+      status: 'Aberta',
       inscritos: [
         {
           nome: 'Jeronimo',
@@ -163,7 +163,7 @@ export class VagasComponent implements OnInit {
       horarioInicio: '08:00',
       horarioEncerramento:'12:00',
       numeroVagas:'3',
-      status: 'Aberto',
+      status: 'Andamento',
       inscritos: [
         {
           nome: 'Jeronimo',
@@ -225,7 +225,7 @@ export class VagasComponent implements OnInit {
       horarioInicio:'13:00',
       horarioEncerramento:'17:00',
       numeroVagas:'3',
-      status: 'Aberto',
+      status: 'Aberta',
       inscritos: [
         {
           nome: 'Jeronimo',
@@ -266,7 +266,7 @@ export class VagasComponent implements OnInit {
       ],
     },
     {
-      id: 3,
+      id: 5,
       nomeEntidade: 'ONG 5',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
@@ -287,7 +287,7 @@ export class VagasComponent implements OnInit {
       horarioInicio:'13:00',
       horarioEncerramento:'17:00',
       numeroVagas:'3',
-      status: 'Aberto',
+      status: 'Encerrada',
       inscritos: [
         {
           nome: 'Jeronimo',
@@ -328,8 +328,8 @@ export class VagasComponent implements OnInit {
       ],
     },
     {
-      id: 3,
-      nomeEntidade: 'ONG 1',
+      id: 6,
+      nomeEntidade: 'ONG 6',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
@@ -349,7 +349,7 @@ export class VagasComponent implements OnInit {
       horarioInicio:'13:00',
       horarioEncerramento:'17:00',
       numeroVagas:'3',
-      status: 'Aberto',
+      status: 'Cancelada',
       inscritos: [
         {
           nome: 'Jeronimo',
@@ -390,8 +390,8 @@ export class VagasComponent implements OnInit {
       ],
     },
     {
-      id: 3,
-      nomeEntidade: 'ONG 1',
+      id: 7,
+      nomeEntidade: 'ONG 7',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
@@ -411,7 +411,7 @@ export class VagasComponent implements OnInit {
       horarioInicio:'13:00',
       horarioEncerramento:'17:00',
       numeroVagas:'3',
-      status: 'Aberto',
+      status: 'Aberta',
       inscritos: [
         {
           nome: 'Jeronimo',
@@ -471,6 +471,20 @@ export class VagasComponent implements OnInit {
       this.tamanhoPagina,
       this.tamanhoPagina + 6
     );
+  }
+
+  getStatus(status: string) {
+    if (status == 'Aprovação') {
+      return 'bg-warning';
+    } else if (status == 'Aberta') {
+      return 'bg-success text-white';
+    } else if (status == 'Cancelada') {
+      return 'bg-danger text-white';
+    } else if (status == 'Andamento') {
+      return 'bg-info text-white';
+    } else {
+      return 'bg-secondary text-white';
+    }
   }
 
   //Vai exibir os detalhes da vaga antes de ele efetivar a inscrição

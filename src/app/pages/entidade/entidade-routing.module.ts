@@ -54,7 +54,7 @@ const routes: Routes = [
         component: DetalheEstudanteComponent
       },
       {
-        path: 'notificacao',
+        path: 'notificacoes',
         component: NotificacaoComponent
       }
     ],

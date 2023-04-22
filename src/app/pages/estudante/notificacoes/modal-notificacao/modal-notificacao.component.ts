@@ -9,8 +9,10 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./modal-notificacao.component.scss']
 })
 export class ModalNotificacaoComponent implements OnInit {
-
-  constructor(private data:DataService, private router: Router, public activeModal: NgbActiveModal) { }
+  public data: any;
+  constructor(private dataService: DataService, private router: Router, public activeModal: NgbActiveModal) {
+    this.data = this.dataService.data;
+   }
 
   ngOnInit(): void {
   }

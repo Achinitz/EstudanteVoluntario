@@ -24,12 +24,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
 import { DataService } from 'src/app/services/data.service';
 
-import { InscricoesComponent } from './inscricoes/inscricoes.component';
 import { BuscarVagasComponent } from './buscar-vagas/buscar-vagas.component';
 
 import { MinhasInscricoesComponent } from './minhas-inscricoes/minhas-inscricoes.component';
 import { ModalVagaComponent } from './minhas-inscricoes/detalhe-vaga/modal-vaga.component';
-import { DestalhesVagaComponent } from './minhas-inscricoes/destalhes-vaga/destalhes-vaga.component';
+
 import { ModalCertificadoComponent } from './certificado/modal-certificado/modal-certificado.component';
 import { NotificacoesComponent } from './notificacoes/notificacoes.component';
 import { ModalNotificacaoComponent } from './notificacoes/modal-notificacao/modal-notificacao.component';
@@ -45,13 +44,12 @@ import { ModalNotificacaoComponent } from './notificacoes/modal-notificacao/moda
     DetalheVagaComponent,
     CertificadoComponent,
     EstudanteComponent,
-
-    InscricoesComponent,
+    
     BuscarVagasComponent,
     
     MinhasInscricoesComponent,
     ModalVagaComponent,
-    DestalhesVagaComponent,
+ 
     ModalCertificadoComponent,
     NotificacoesComponent,
     ModalNotificacaoComponent,

@@ -67,12 +67,12 @@
   <section>
     <h2>Vagas Publicadas - Abertas</h2>
 
-    <div *ngIf="!vagasDisponiveis">
-      <span> No momento não existe vagas cadastradas! </span>
+    <div *ngIf="!vagasAbertas">
+      <span> No momento não existem vagas abertas cadastradas! </span>
     </div>
 
     <section class="contentDetails">
-      <div class="card" *ngFor="let vaga of vagasDisponiveis; let i = index">
+      <div class="card" *ngFor="let vaga of vagasAbertas; let i = index">
         <div class="imgCard">
           <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
         </div>
@@ -94,12 +94,12 @@
  
   <section>
     <h2>Vagas em Análise</h2>
-    <div *ngIf="!vagasDisponiveis">
-      <span> No momento não existe vagas cadastradas! </span>
+    <div *ngIf="!vagasAprovacao">
+      <span> No momento não existem vagas em análise! </span>
     </div>
 
     <section class="contentDetails">
-      <div class="card" *ngFor="let vaga of vagasDisponiveis; let i = index">
+      <div class="card" *ngFor="let vaga of vagasAprovacao; let i = index">
         <div class="imgCard">
           <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
         </div>
@@ -107,8 +107,8 @@
           <h4 class="card-title">{{ vaga.nomeEntidade }}</h4>
           <p class="card-text">{{ vaga.descricao }}</p>
         </div>
-        <div class="buttonsVagasCadastradas" routerLink="/Entidade/detalhe-vaga">
-          <button class="btn btn-primary">Detalhes Vaga</button>
+        <div class="buttonsVagasCadastradas">
+          <button class="btn btn-primary" (click)="exibirDetalhes(vaga)">Detalhes Vaga</button>
         </div>
       </div>
     </section>

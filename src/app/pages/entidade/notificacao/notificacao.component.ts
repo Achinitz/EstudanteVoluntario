@@ -15,11 +15,11 @@ export class NotificacaoComponent implements OnInit {
   notificacoes: any = [
     {
       id: 1,
-      nomeRemetente: 'ONG 1',
+      nomeRemetente: 'Administração',
       dataEnvio: '28/01/2023 08:00:00',
-      titulo: 'Cancelamento da atividade',
+      titulo: 'Aprovação de vaga',
       mensagem:
-        'Prezado/a estudante, informamos que a vaga "Contador de História" que iniciaria em 03/02 foi cancelada.',
+        'Prezado/a Entidade, informamos que a vaga "Contador de História" foi aprovada com sucesso e que o período de inscrição já está aberto.',
     },
   ];
   constructor(
@@ -50,7 +50,7 @@ export class NotificacaoComponent implements OnInit {
     });
   }
 
-  visualizarInscricao(Notificacao: any) {
+  visualizarNotificacao(Notificacao: any) {
     // this.data.data = Vaga;
     // this.router.navigate(['/Estudante/detalhe-vaga']);
     const modalRef = this.modalService.open(ModalNotificacaoComponent, {
@@ -58,7 +58,7 @@ export class NotificacaoComponent implements OnInit {
       backdrop: 'static',
       centered: true,
     });
-    modalRef.componentInstance.vagaSelecionada = Notificacao;
+    modalRef.componentInstance.data = Notificacao;
   }
 
   ngOnInit(): void {}

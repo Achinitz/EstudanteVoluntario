@@ -8,10 +8,9 @@ import { VagaDetalhesComponent } from '../home/vaga-detalhes/vaga-detalhes.compo
 @Component({
   selector: 'app-buscar-vagas',
   templateUrl: './buscar-vagas.component.html',
-  styleUrls: ['./buscar-vagas.component.scss']
+  styleUrls: ['./buscar-vagas.component.scss'],
 })
 export class BuscarVagasComponent implements OnInit {
-
   vagasCadastradas: any = [
     {
       id: 1,
@@ -26,7 +25,7 @@ export class BuscarVagasComponent implements OnInit {
       horarioInicio: '13:00',
       horarioEncerramento: '17:00',
       numeroVagas: '3',
-      status: 'Aberto',
+      status: 'Aberta',
       inscrito: true,
     },
     {
@@ -59,7 +58,7 @@ export class BuscarVagasComponent implements OnInit {
       horarioInicio: '13:00',
       horarioEncerramento: '17:00',
       numeroVagas: '3',
-      status: 'Aberto',
+      status: 'Aberta',
       inscrito: true,
     },
     {
@@ -75,7 +74,7 @@ export class BuscarVagasComponent implements OnInit {
       horarioInicio: '13:00',
       horarioEncerramento: '17:00',
       numeroVagas: '3',
-      status: 'Encerrado',
+      status: 'Encerrada',
       inscrito: true,
     },
     {
@@ -91,7 +90,7 @@ export class BuscarVagasComponent implements OnInit {
       horarioInicio: '13:00',
       horarioEncerramento: '17:00',
       numeroVagas: '3',
-      status: 'Encerrado',
+      status: 'Encerrada',
       inscrito: true,
     },
     {
@@ -107,7 +106,7 @@ export class BuscarVagasComponent implements OnInit {
       horarioInicio: '13:00',
       horarioEncerramento: '17:00',
       numeroVagas: '3',
-      status: 'Encerrado',
+      status: 'Encerrada',
       inscrito: true,
     },
     {
@@ -123,7 +122,7 @@ export class BuscarVagasComponent implements OnInit {
       horarioInicio: '13:00',
       horarioEncerramento: '17:00',
       numeroVagas: '3',
-      status: 'Encerrado',
+      status: 'Encerrada',
       inscrito: true,
     },
   ];
@@ -141,11 +140,15 @@ export class BuscarVagasComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getStatus(status) {
-    if (status == 'Aberto') {
-      return 'bg-success text-white';
-    } else if (status == 'Andamento') {
+  getStatus(status: string) {
+    if (status == 'Aprovação') {
       return 'bg-warning';
+    } else if (status == 'Aberta') {
+      return 'bg-success text-white';
+    } else if (status == 'Cancelada') {
+      return 'bg-danger text-white';
+    } else if (status == 'Andamento') {
+      return 'bg-info text-white';
     } else {
       return 'bg-secondary text-white';
     }
@@ -192,5 +195,4 @@ export class BuscarVagasComponent implements OnInit {
   confirmarCancelamento(value: any) {
     //abrir modal confimando o cancelamento
   }
-
 }

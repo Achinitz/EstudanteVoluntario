@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 
@@ -10,16 +11,16 @@ import Swal from 'sweetalert2';
 export class HomeComponent implements OnInit {
   nomeEntidade: any = 'Entidade Teste';
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
-  vagasDisponiveis: any = [
+  vagasAbertas: any = [
     {
       id: 1,
       nomeEntidade: 'ONG 1',
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
+      status: 'Aberta',
     },
     {
       id: 2,
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit {
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
+      status: 'Aberta',
     },
     {
       id: 3,
@@ -35,7 +36,7 @@ export class HomeComponent implements OnInit {
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
+      status: 'Aberta',
     },
     {
       id: 4,
@@ -43,7 +44,42 @@ export class HomeComponent implements OnInit {
       nomeVaga: 'Contador de História',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
+      status: 'Aberta',
+    },
+  ];
+
+  vagasAprovacao: any = [
+    {
+      id: 1,
+      nomeEntidade: 'ONG 5',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
+      descricao: 'Vaga para pessoas de bom coração',
+      status: 'Aprovação',
+    },
+    {
+      id: 2,
+      nomeEntidade: 'ONG 6',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
+      descricao: 'Vaga para pessoas de bom coração',
+      status: 'Aprovação',
+    },
+    {
+      id: 3,
+      nomeEntidade: 'ONG 7',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
+      descricao: 'Vaga para pessoas de bom coração',
+      status: 'Aprovação',
+    },
+    {
+      id: 4,
+      nomeEntidade: 'ONG 8',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
+      descricao: 'Vaga para pessoas de bom coração',
+      status: 'Aprovação',
     },
   ];
 
@@ -91,6 +127,11 @@ export class HomeComponent implements OnInit {
         });
       }
     });
+  }
+
+  exibirDetalhes(value: any): void {
+    this.dataService.data = value;
+    this.router.navigate(['/Entidade/detalhe-vaga']);
   }
 
   ngOnInit(): void {}
