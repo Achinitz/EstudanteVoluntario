@@ -3,9 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
-import { VagaDetalhesComponent } from './vaga-detalhes/vaga-detalhes.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalVagaComponent } from '../minhas-inscricoes/detalhe-vaga/modal-vaga.component';
+import { ModalVagaComponent } from '../minhas-inscricoes/modal-inscricao/modal-vaga.component';
 
 @Component({
   selector: 'app-home',
@@ -116,33 +115,13 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  //Vai exibir os detalhes da vaga antes de ele efetivar a inscrição
-  exibirDetalhes(value: any): void {
-    const dialogRef = this.dialog.open(VagaDetalhesComponent, {
-      width: 'auto',
-      data: this.vagasInscritas[value],
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');    
-    });
-  }
-
-  visualizarInscricao(Vaga : any){
-    // this.data.data = Vaga;
-    // this.router.navigate(['/Estudante/detalhe-vaga']);
+  //Chama modal da inscrição
+  visualizarInscricao(Vaga : any){   
     const modalRef = this.modalService.open(ModalVagaComponent, { windowClass: 'auto', backdrop: 'static', centered: true });
     modalRef.componentInstance.vagaSelecionada = Vaga;
   }
 
-
-  //Vai exibir uma modal para cadastro com as validações dos dados
-  cadastrar(value: any): void {
-    this.dataService.data = this.vagasInscritas[value];
-    this.router.navigate(['/Estudante/detalhe-vaga']);
-  }
-
-  //Quando o usuário clicar no botão para cancelar a inscrição
+  //Cancelar a inscrição
   cancelarInscricao(value: any) {
       Swal.fire({
         title: 'Deseja realmente cancelar sua inscrição para essa vaga?',
@@ -165,6 +144,7 @@ export class HomeComponent implements OnInit {
       })
   }
 
+  
   getStatus(status: string) {
     if (status == 'Aprovação') {
       return 'bg-warning';

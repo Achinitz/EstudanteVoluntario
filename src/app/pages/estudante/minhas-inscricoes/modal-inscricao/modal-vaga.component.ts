@@ -20,7 +20,6 @@ export class ModalVagaComponent implements OnInit, OnDestroy {
 
   retornar() {
     this.router.navigate(['/Estudante/minhas-inscricoes']);
-    // this.modalService.open(DetalheVagaAdministradorComponent, { windowClass: 'width:90%; heigth: 50%;', backdrop: 'static', keyboard: false, centered: true });
   }
 
   cancelar() {

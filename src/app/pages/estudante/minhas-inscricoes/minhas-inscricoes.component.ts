@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
-import { ModalVagaComponent } from './detalhe-vaga/modal-vaga.component';
+import { ModalVagaComponent } from './modal-inscricao/modal-vaga.component';
 
 @Component({
   selector: 'app-minhas-inscricoes',
