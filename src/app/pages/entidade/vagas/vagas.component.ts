@@ -94,53 +94,13 @@ export class VagasComponent implements OnInit {
       numero: '23',
       cidade: 'Curitiba',
       estado: 'Paraná',
-      complemento: 'Prédio Comercial',
-      dataAberturaVaga: '28/01/2023 08:00:00',
-      dataFinalizacaoVaga: '20/02/2023 23:00:00',
+      complemento: 'Prédio Comercial',      
       dataInicioTrabalho:'20/02/2023',
       dataTerminoTrabalho:'21/02/2023',
       horarioInicio: '08:00',
       horarioEncerramento:'12:00',
       numeroVagas:'3',
-      status: 'Aberta',
-      inscritos: [
-        {
-          nome: 'Jeronimo',
-          img: null,
-          cpf: '123',
-          curso: 'Analise de Sistemas',
-          idade: 22,
-          dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        },
-        {
-          nome: 'Alienigena',
-          img: null,
-          cpf: '1234',
-          curso: 'Analise de Sistemas',
-          idade: 22,
-          dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        },
-        {
-          nome: 'Alex',
-          img: null,
-          cpf: '12345',
-          curso: 'Analise de Sistemas',
-          idade: 22,
-          dataInscricao: '15/05/2022',
-          status: 'reprovado'
-        },
-        {
-          nome: 'Tebutrios',
-          img: null,
-          cpf: '123456',
-          curso: 'Analise de Sistemas',
-          idade: 22,
-          dataInscricao: '15/05/2022',
-          status: 'reprovado'
-        }
-      ],
+      status: 'Aprovação',     
     },
     {
       id: 3,

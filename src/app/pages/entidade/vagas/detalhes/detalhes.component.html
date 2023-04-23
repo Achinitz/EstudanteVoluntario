@@ -82,12 +82,12 @@
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Abertura da inscrição</span>
         <p *ngIf="vaga.dataAberturaVaga">{{vaga.dataAberturaVaga}}</p>
-        <p class="" *ngIf="!vaga.dataAberturaVaga"> - </p>
+        <p class="" *ngIf="!vaga.dataAberturaVaga"> Vaga em aprovação </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Encerramento da inscrição</span>
         <p *ngIf="vaga.dataFinalizacaoVaga">{{vaga.dataFinalizacaoVaga}}</p>
-        <p class="" *ngIf="!vaga.dataFinalizacaoVaga"> - </p>
+        <p class="" *ngIf="!vaga.dataFinalizacaoVaga"> Vaga em aprovação </p>
       </div>
     </div>
 
@@ -95,10 +95,11 @@
       <h3>
         Requisitos
       </h3>
-
-      <ul *ngFor="let requisito of vaga.requisitos;">
-        <li>{{requisito.descricao}}</li>
-      </ul>
+      <div *ngIf="vaga.requisitos">
+        <ul *ngFor="let requisito of vaga.requisitos;">
+          <li>{{requisito.descricao}}</li>
+        </ul>
+      </div>   
     </section>
 
     <section>
