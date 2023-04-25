@@ -5,12 +5,12 @@
 
   <section class="contentDetails">
     <div class="cadastro">
-     
+
       <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">
         <div class="form-group">
           <label for="cnpj">CNPJ <em>*</em> </label>
-          <input type="text" class="form-control" id="cnpj" placeholder="XX.XXX.XXX/XXXX-XX" formControlName="cnpj" 
-          mask="00.000.000/0000-00"/>
+          <input type="text" class="form-control" id="cnpj" placeholder="XX.XXX.XXX/XXXX-XX" formControlName="cnpj"
+            mask="00.000.000/0000-00" />
           <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
             formCadastro.controls.cnpj.touched && formCadastro.controls.cnpj.invalid
           " [@fadeInOut]>
@@ -20,8 +20,7 @@
 
         <div class="form-group">
           <label for="nome">Nome da Instituição <em>*</em> </label>
-          <input type="text" class="form-control" id="nome" placeholder="Nome da Instituição"
-            formControlName="nome" />
+          <input type="text" class="form-control" id="nome" placeholder="Nome da Instituição" formControlName="nome" />
           <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
             formCadastro.controls.nome.touched &&
             formCadastro.controls.nome.invalid
@@ -40,7 +39,19 @@
             O campo Sigla da Instituição é obrigatório!
           </small>
         </div>
-    
+        <div class="form-group">
+          <label for="estado">Estado/UF <em>*</em> </label>
+          <ng-select [items]="estados" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+            formControlName="uf">
+          </ng-select>
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+            formCadastro.controls.uf.touched &&
+            formCadastro.controls.uf.invalid
+            " [@fadeInOut]>
+            O campo Estado/UF é obrigatório!
+          </small>
+        </div>
+
         <div class="buttonForm">
           <button type="submit" class="btn btn-success">Salvar</button>
           <button type="reset" class="btn btn-warning">Limpar </button>

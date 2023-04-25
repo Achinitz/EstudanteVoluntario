@@ -3,71 +3,55 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-cadastrar-instituicao',
   templateUrl: './cadastrar-instituicao.component.html',
-  styleUrls: ['./cadastrar-instituicao.component.scss']
+  styleUrls: ['./cadastrar-instituicao.component.scss'],
 })
 export class CadastrarInstituicaoComponent implements OnInit {
-
   instituicoes: any = [
     {
+      id: 1,
       cnpj: 75054940000162,
-      nome: 'Fundação',
-      cidade: 'Curitiba'
+      sigla: 'UFPR',
+      nome: 'Universidade Federal do Paraná',
+      uf: 'Paraná',
     },
     {
+      id: 2,
       cnpj: 75054940000162,
-      nome: 'UFPR',
-      cidade: 'Curitiba'
+      sigla: 'UTFPR',
+      nome: 'Universidade Tecnológica Federal do Paraná',
+      uf: 'Paraná',
     },
     {
+      id: 3,
       cnpj: 75054940000162,
-      nome: 'Aurora',
-      cidade: 'Curitiba'
+      sigla: 'PUCPR',
+      nome: 'Pontifícia Universidade Católica do Paraná',
+      uf: 'Paraná',
     },
     {
+      id: 4,
       cnpj: 75054940000162,
-      nome: 'Sadia',
-      cidade: 'Curitiba'
+      sigla: 'UNESPAR',
+      nome: 'Universidade Estadual do Paraná',
+      uf: 'Paraná',
     },
     {
+      id: 5,
       cnpj: 75054940000162,
-      nome: 'Paula Fernandes',
-      cidade: 'Curitiba'
+      sigla: 'UNILA',
+      nome: 'Universidade Federal da Integração Latino-América',
+      uf: 'Paraná',
     },
     {
+      id: 6,
       cnpj: 75054940000162,
-      nome: 'Sandy',
-      cidade: 'Curitiba'
-    },
-    {
-      cnpj: 75054940000162,
-      nome: 'Junior',
-      cidade: 'Curitiba'
-    },
-    {
-      cnpj: 75054940000162,
-      nome: 'Avril',
-      cidade: 'Curitiba'
-    },
-    {
-      cnpj: 75054940000162,
-      nome: 'Jhon',
-      cidade: 'Curitiba'
-    },
-    {
-      cnpj: 75054940000162,
-      nome: 'Alcione',
-      cidade: 'Curitiba'
-    },
-    {
-      cnpj: 75054940000162,
-      nome: 'Betina',
-      cidade: 'Curitiba'
+      sigla: 'UEPG',
+      nome: 'Universidade Estadual de Ponta Grossa',
+      uf: 'Paraná',
     },
   ];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
