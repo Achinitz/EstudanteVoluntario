@@ -56,3 +56,9 @@
 .form-check {
   margin-left: 0.5rem;
 }
+
+@media screen and (min-width: 1300px) {
+  .content{
+    width: 80% !important;
+  }
+}

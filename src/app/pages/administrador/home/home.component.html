@@ -3,7 +3,7 @@
     <h1>Olá {{ nomeAdmin }} !</h1>
   </div>
 
-  <div class="dashboard col-12 d-flex justify-content-center">
+  <div class="dashboard col-12">
     <div>
       <span>
         <svg
@@ -65,10 +65,10 @@
   </div>
 
   <div class="content-main-dashboard">
-    <div class="text-center">
-      <span>
+    <div class="">
+      <ngb-alert #alert type="warning">
         Acompanhe a quantidade de vagas preenchidas esse mês!
-      </span>
+      </ngb-alert>
       <div>
         <canvas id="graficoVagas"></canvas>
       </div>

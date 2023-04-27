@@ -16,21 +16,10 @@ svg {
   padding-right: 9px;
   padding-left: 9px;
   background: green;
-  opacity: 0.6;
   color: white;
   font-weight: 600;
 }
 
-.dashboard {
-  background-color: #c5e0e4;
-  border-radius: 1em;
-  div {
-    padding: 1.5rem;
-  }
-  span {
-    font-size: medium;  
-  }
-}
 .content-main-dashboard {
   display: flex;
   flex-direction: row;

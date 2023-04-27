@@ -27,21 +27,6 @@ svg {
   font-weight: 600;
 }
 
-.dashboard {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #2e6793;
-  color: white;
-  border-radius: 5px;
-  div {
-    padding: 1.5rem;
-  }
-  span {
-    font-size: medium;
-  }
-}
-
 .card {
   width: 15rem;
   margin-right: 10px;
