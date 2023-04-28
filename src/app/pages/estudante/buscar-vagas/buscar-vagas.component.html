@@ -1,72 +1,66 @@
-<header>
-    <form class="col-6">
-        <div class="form-row">
-          <div class="col">
-            <label>
-                <h1>Buscar Vagas</h1>
-            </label>
-            <div class="d-flex" *ngIf="vagasCadastradas">
-                <input type="text" class="form-control" placeholder="Informe o nome da vaga ou o nome da Entidade">
-                <button class="btn btn-primary btn-pesquisa">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                    </svg>
-                </button>
-            </div>
-          </div>
+<section class="content">
+  <form class="col-6 busca">
+    <div class="form-row">
+      <div class="col">
+        <label>
+          <h1>Buscar Vagas</h1>
+        </label>
+        <div class="d-flex" *ngIf="vagasCadastradas">
+          <input type="text" class="form-control" placeholder="Informe o nome da vaga ou o nome da Entidade">
+          <button class="btn btn-primary btn-pesquisa">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+              viewBox="0 0 16 16">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg>
+          </button>
         </div>
-    </form>
+      </div>
+    </div>
+  </form>
 
-    <br>
+  <main>
+    <ngb-alert class="alerta" #alert type="primary" *ngIf="!vagasCadastradas">
+      Não temos vagas abertas no momento, fique de olho em breve surgirão novas oportunidades!
+    </ngb-alert>
 
-    <main>
 
+    <section class="vagasCadastradas" *ngIf="vagasCadastradas">
       <div>
-        <ngb-alert #alert type="primary" *ngIf="!vagasCadastradas">
-          Não temos vagas abertas no momento, fique de olho em breve surgirão novas oportunidades!
+        <ngb-alert #alert type="warning">
+          Filtre sua busca no campo acima, informando o nome da vaga ou o nome da Entidade que deseja!
         </ngb-alert>
       </div>
+      <!--Buscar apenas as vagas que estão com o status aberto -->
+      <div class="containerCard">
+        <div class="card" *ngFor="let vaga of vagasCadastradas; let i = index">
+          <!-- Alterar as cores do botão dependendo do status -->
+          <p [ngClass]=" getStatus(vaga.status)" class="statusPosition">
+            {{ vaga.status }}
+          </p>
+          <div class="imgCard">
+            <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{ vaga.nomeEntidade }}</h4>
+            <p class="card-text">{{ vaga.nomeVaga }}</p>
+          </div>
+          <div class="buttonsVagasCadastradas">
+            <button class="btn btn-primary" (click)="exibirDetalhes(vaga)">
+              Detalhes
+            </button>
+            <!--arrumar botao de cancelar-->
+            <button *ngIf="vaga.inscrito" class="btn btn-danger" (click)="cancelarInscricao()">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
+      [collectionSize]="this.vagasCadastradas.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"
+      [(page)]="paginaAtual" (pageChange)="mudancaPagina(paginaAtual)" *ngIf="vagasCadastradas">
+    </ngb-pagination>
+  </main>
 
-        <section class="content">
-
-            <section class="vagasCadastradas" *ngIf="vagasCadastradas">
-              <div>
-                <ngb-alert #alert type="warning">
-                  Filtre sua busca no campo acima, informando o nome da vaga ou o nome da Entidade que deseja!
-                </ngb-alert>
-              </div>
-                <!--Buscar apenas as vagas que estão com o status aberto -->
-              <div class="containerCard">
-                <div class="card" *ngFor="let vaga of vagasCadastradas; let i = index">
-                  <!-- Alterar as cores do botão dependendo do status -->
-                  <p [ngClass]=" getStatus(vaga.status)" class="statusPosition">
-                    {{ vaga.status }}
-                  </p>
-                  <div class="imgCard">
-                    <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
-                  </div>
-                  <div class="card-body">
-                    <h4 class="card-title">{{ vaga.nomeEntidade }}</h4>
-                    <p class="card-text">{{ vaga.nomeVaga }}</p>
-                  </div>
-                  <div class="buttonsVagasCadastradas">
-                    <button class="btn btn-primary" (click)="exibirDetalhes(vaga)">
-                      Detalhes
-                    </button>
-                    <!--arrumar botao de cancelar-->
-                    <button *ngIf="vaga.inscrito" class="btn btn-danger" (click)="cancelarInscricao()">
-                      Cancelar
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
-              [collectionSize]="this.vagasCadastradas.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"
-              [(page)]="paginaAtual" (pageChange)="mudancaPagina(paginaAtual)" *ngIf="vagasCadastradas">
-            </ngb-pagination>
-          </section>
-
-    </main>
-
-</header>
+</section>
