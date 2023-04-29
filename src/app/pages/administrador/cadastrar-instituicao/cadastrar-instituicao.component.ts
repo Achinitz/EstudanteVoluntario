@@ -49,9 +49,31 @@ export class CadastrarInstituicaoComponent implements OnInit {
       nome: 'Universidade Estadual de Ponta Grossa',
       uf: 'Paraná',
     },
+    {
+      id: 7,
+      cnpj: 75054940000162,
+      sigla: 'UEPG',
+      nome: 'Universidade Estadual de Ponta Grossa',
+      uf: 'Paraná',
+    },
   ];
 
   constructor() {}
+
+  paginaAtual = 1;
+  tamanhoPagina: number = this.instituicoes.length;
+  itemsPerPage = 6;
+  tipoOrdenacao: any;
+  public ies: any = this.instituicoes.slice(0,6);
+
+  
+  public mudancaPagina(pageNum: number): void {
+    this.tamanhoPagina = this.itemsPerPage * (pageNum - 1);
+    this.ies = this.instituicoes.slice(
+      this.tamanhoPagina,
+      this.tamanhoPagina + 6
+    );
+  }
 
   ngOnInit(): void {}
 }

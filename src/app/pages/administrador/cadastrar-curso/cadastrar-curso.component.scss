@@ -1,48 +1,23 @@
-.topo {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  h2 {
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    margin-top: 1rem;
-  }
-  
-  .cadastro {
-    margin-top: 0.5em;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    padding-bottom: 1em;
-  }
-  
-  .duplo {
-    padding-bottom: 1em;
-  }
-  
-  .cadastrar-ies {
-    align-self: flex-end;
-    padding-bottom: 1em;
-  }
-  
-  .buttonForm {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 1em;
-  
-    .cadastrar {
-      margin-right: 1rem;
-      background-color: #008000;
-      color: #fff;
+.busca {
+  margin-bottom: 1rem;
+}
+
+.pagination ::ng-deep {
+  align-self: center;
+
+  .page-item {
+    &.active {
+      .page-link {
+        background-color: #fff;
+        color: #439024;
+      }
     }
-  
-    .limpar {
-      background-color: #ffca2c;
-      color: #000000;
+
+    .page-link {
+      background-color: #fff;
+      color: #7d7d7d;
+      border-color: #ebebec;
+      font-size: 14px;
     }
   }
+}

@@ -1,2 +1,49 @@
-
+<section class="modal-header">
+    <h2 class="modal-title">{{ cursoSelecionado.nome }}</h2>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+  </section>
+  <section class="modal-body">
+    <div class="row col-12">
+      <div class="col-6">
+        <b class="">Instituição</b>
+        <p class="">{{ cursoSelecionado.instituicao }} </p>
+      </div>
+      <div class="col-6">
+        <b class="">Grau</b>
+        <p class="">{{ cursoSelecionado.grauAcademico }} </p>
+      </div>
+    </div>
+    <div class="row col-12">
+      <div class="col-12">
+        <b class="">Campus</b>
+        <p class="">{{ cursoSelecionado.campus }} </p>
+      </div>
+    </div>
+    <div class="row col-12">
+      <div class="col-12">
+        <b class="">Endereço</b>
+        <p class="">{{ cursoSelecionado.endereco }}, {{ cursoSelecionado.numero }} - {{ cursoSelecionado.bairro }}</p>
+      </div>
+    </div>
+    <div class="row col-12">
+      <div class="col-4">
+        <b class="">Cidade</b>
+        <p class="">{{ cursoSelecionado.cidade }}</p>
+      </div>
+      <div class="col-4">
+        <b class="">Estado</b>
+        <p class="">{{ cursoSelecionado.estado }} </p>
+      </div>
+      <div class="col-4">
+        <b class="">CEP</b>
+        <p class="">{{ cursoSelecionado.cep }} </p>
+      </div>
+    </div>
+      
+  
+  
+  </section>
+  <section class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Voltar</button>
+  </section>
   

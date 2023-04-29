@@ -12,6 +12,8 @@ import { ToastrService } from 'ngx-toastr';
   animations: genericAnimations,
 })
 export class AdicionarCursoComponent implements OnInit {
+  universidade: any;
+  campi: any;
   estado: any;
   cidade: any;
   bairro: any;
@@ -31,18 +33,24 @@ export class AdicionarCursoComponent implements OnInit {
     },
     {
       id: 3,
-      nome: 'Tecnologia',
+      nome: 'Tecnológico',
     },
   ];
 
   instituicoes: any = [
-    { id: 1, nome: 'UFPR - Universidade Federal do Paraná - 75054940000162' },
+    {
+      id: 1,
+      sigla: 'UFPR',
+      nome: 'Universidade Federal do Paraná',
+      cnpj: '75054940000162',
+    },
     {
       id: 2,
-      nome: 'UTFPR - Universidade Tecnológica Federal do Paraná - 75054940000162',
+      sigla: 'UTFPR',
+      nome: 'Universidade Tecnológica Federal do Paraná',
+      cnpj: '75054940000162',
     },
   ];
-
 
   formCadastro: FormGroup = new FormGroup({
     cnpj: new FormControl(null, [
@@ -123,6 +131,6 @@ export class AdicionarCursoComponent implements OnInit {
       console.log('CEP ok');
     }
   }
- 
+
   ngOnInit(): void {}
 }

@@ -7,7 +7,7 @@
     <form class="col-6 busca">
       <div class="form-row">
         <div class="d-flex">
-          <input type="text" class="form-control" placeholder="Digite o nome ou sigla da Instituição">
+          <input type="text" class="form-control" placeholder="Digite o nome do curso ou da instituição">
           <button class="btn btn-primary btn-pesquisa">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
               viewBox="0 0 16 16">
@@ -22,21 +22,23 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th class="col-1" scope="col">Sigla</th>
-          <th class="col-4" scope="col">Nome</th>
-          <th class="col-3" scope="col">CNPJ</th>
-          <th class="col-1 text-center" scope="col">UF</th>
+          <th class="col-3" scope="col">Curso</th>
+          <th class="col-1" scope="col">Instituição</th>
+          <th class="col-1" scope="col">Grau</th>
+          <th class="col-2" scope="col">Campus</th>
+          <th class="col-1 text-center" scope="col">Cidade</th>
           <th class="col-2" scope="col">Ações</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let instituicao of instituicoes; index as i">
-          <td class="col-1">{{instituicao.sigla}}</td>
-          <td class="col-4">{{instituicao.nome}}</td>
-          <td class="col-3">{{instituicao.cnpj}}</td>
-          <td class="col-2 text-center">{{instituicao.uf}}</td>
+        <tr *ngFor="let curso of cursos; let i = index">
+          <td class="col-3">{{curso.nome}}</td>
+          <td class="col-1">{{curso.instituicao}}</td>
+          <td class="col-1">{{curso.grauAcademico}}</td>
+          <td class="col-2">{{curso.campus}}</td>
+          <td class="col-2 text-center"></td>
           <td class="col-2 buttonsActions">
-            <button class="button-table">
+            <button class="button-table"  (click)="visualizarCurso(curso)">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
                 viewBox="0 0 16 16">
                 <path
@@ -65,10 +67,13 @@
       </tbody>
 
     </table>
+    <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
+      [collectionSize]="this.cursos.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"
+      [(page)]="paginaAtual" (pageChange)="mudancaPagina(paginaAtual)">
+    </ngb-pagination>
   </div>
 
   <div>
-    <p>mostrar lista de cursos como foi feito no de instituições</p>
     <button routerLink="/Admin/adicionar-curso" type="button" class="btn btn-primary">Adicionar</button>
   </div>
 

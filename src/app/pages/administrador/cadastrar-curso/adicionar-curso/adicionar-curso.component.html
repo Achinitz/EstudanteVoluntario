@@ -5,16 +5,14 @@
 
   <section class="contentDetails">
     <div class="cadastro">
-      <div class="cadastrar-ies">
-        <button type="button" class="btn btn-primary btn-sm" routerLink="/Admin/adicionar-instituicao">
-          Cadastrar nova IES
-        </button>
-      </div>
+
       <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">
-        <div class="form-group">
+
+        <div class="row form-group">
+         
           <label for="instituicao">Instituição de Ensino <em>*</em> </label>
-          <ng-select [items]="instituicoes" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
-            formControlName="instituicao" (closeOnSelect)="(true)">
+          <ng-select [items]="instituicoes" bindLabel="nome" bindValue="id" placeholder="Selecione"
+            formControlName="instituicao">
           </ng-select>
           <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
               formCadastro.controls.instituicao.touched &&
@@ -41,6 +39,7 @@
           <label for="campus">Campus: <em>*</em> </label>
           <input type="text" class="form-control" id="campus" placeholder="Campus"
           formControlName="campus" />
+       
           <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
               formCadastro.controls.campus.touched &&
               formCadastro.controls.campus.invalid
