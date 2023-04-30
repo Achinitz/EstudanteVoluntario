@@ -1,0 +1,95 @@
+<section class="content" *ngIf="instituicao">
+
+    <div class="topo">
+        <h1>Detalhes - {{instituicao.nome}}</h1>
+    </div>
+
+    <main>
+        <h3>Dados</h3>
+        <div class="row col-12">
+            <div class="col-lg-3 col-sm-12">
+                <span class="title__data">Nome</span>
+                <p *ngIf="instituicao.nome">{{instituicao.nome}}</p>
+                <p class="" *ngIf="!instituicao.nome"> - </p>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+                <span class="title__data">Sigla</span>
+                <p *ngIf="instituicao.sigla">{{instituicao.sigla}}</p>
+                <p class="" *ngIf="!instituicao.sigla"> - </p>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+                <span class="title__data">CNPJ</span>
+                <p *ngIf="instituicao.cnpj" mask="00.000.000/0000-00">{{instituicao.cnpj}}</p>
+                <p class="" *ngIf="!instituicao.cnpj"> - </p>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+                <span class="title__data">Estado/UF</span>
+                <p *ngIf="instituicao.uf">{{instituicao.uf}}</p>
+                <p class="" *ngIf="!instituicao.uf">-</p>
+            </div>
+        </div>
+
+        
+        <section>
+            <h3>Cursos</h3>
+
+            <ng-template #naoPossuiCursos>
+                Essa Instituição ainda não possui cursos cadastrados.
+            </ng-template>
+
+            <table class="table table-striped" *ngIf="instituicao.cursos else naoPossuiCursos">
+                <thead>
+                    <tr>
+                        <th class="col-3" scope="col">Nome</th>
+                        <th class="col-2 col-sm-none text-center" scope="col">Grau</th>
+                        <th class="col-3 text-center" scope="col">Campus</th>
+                        <th class="col-2 text-center" scope="col">Cidade</th>
+                        <th class="col-2 text-center" scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let curso of instituicao.cursos;">
+                        <td class="col-3"> {{ curso.nome }} </td>
+                        <td class="col-2 col-sm-none text-center">{{ curso.grauAcademico }}</td>
+                        <td class="col-3 text-center"> {{ curso.campus }} </td>
+                        <td class="col-2 text-center">{{ curso.cidade }}/{{ curso.uf }}</td>
+                        <td class="col-2 text-center buttonsActions">
+                            <button class="button-table"  (click)="visualizarCurso(curso)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                    <path
+                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                </svg>
+                            </button>
+                            <button class="button-table"  (click)="excluirCurso(curso)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-x" viewBox="0 0 16 16">
+                                    <path
+                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div class="buttonsVagasCadastradas">
+            <button class="btn btn-warning">
+                Editar
+            </button>
+            <button class="btn btn-danger" (click)="excluirInstituicao(instituicao)">
+                Excluir
+            </button>
+        </div>
+
+        <button class="btn btn-primary voltar" routerLink="/Admin/cadastrar-instituicao">
+            Voltar
+        </button>
+
+    </main>
+
+
+</section>

@@ -33,12 +33,12 @@
       <tbody>
         <tr *ngFor="let curso of cursos; let i = index">
           <td class="col-3">{{curso.nome}}</td>
-          <td class="col-1">{{curso.instituicao}}</td>
+          <td class="col-1">{{curso.instituicaoSigla}}</td>
           <td class="col-1">{{curso.grauAcademico}}</td>
           <td class="col-2">{{curso.campus}}</td>
-          <td class="col-2 text-center"></td>
+          <td class="col-2 text-center">{{curso.cidade}} / {{curso.uf}}</td>
           <td class="col-2 buttonsActions">
-            <button class="button-table"  (click)="visualizarCurso(curso)">
+            <button class="button-table" (click)="visualizarCurso(curso)">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
                 viewBox="0 0 16 16">
                 <path
@@ -55,7 +55,7 @@
                   d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
               </svg>
             </button>
-            <button class="button-table">
+            <button class="button-table"  (click)="excluirCurso(curso)">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
                 viewBox="0 0 16 16">
                 <path
@@ -68,8 +68,8 @@
 
     </table>
     <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
-      [collectionSize]="this.cursos.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"
-      [(page)]="paginaAtual" (pageChange)="mudancaPagina(paginaAtual)">
+      [collectionSize]="this.cursos.length" [pageSize]="itemsPerPage" [boundaryLinks]="true" [(page)]="paginaAtual"
+      (pageChange)="mudancaPagina(paginaAtual)">
     </ngb-pagination>
   </div>
 

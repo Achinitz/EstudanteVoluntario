@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { AdministradorRoutingModule } from './administrador-routing.module';
-
 import { SidebarAdministradorComponent } from './sidebar-administrador/sidebar-administrador.component';
 import { HomeComponent } from './home/home.component';
 import { MeuPerfilAdministradorComponent } from './meu-perfil-administrador/meu-perfil-administrador.component';
@@ -18,12 +17,10 @@ import { AdicionarInstituicaoComponent } from './cadastrar-instituicao/adicionar
 import { AdministradorComponent } from './administrador.component';
 import { AdicionarCursoComponent } from './cadastrar-curso/adicionar-curso/adicionar-curso.component';
 import { AdicionarAdminComponent } from './adicionar-admin/adicionar-admin.component';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ToastrModule } from 'ngx-toastr';
-
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -32,10 +29,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-
 import { CnpjPipe } from 'src/app/shared/pipe/cnpj.pipe';
 import { PhonePipe } from 'src/app/shared/pipe/phone.pipe';
 import { DataService } from 'src/app/services/data.service';
+import { DetalhesInstituicaoComponent } from './cadastrar-instituicao/detalhes-instituicao/detalhes-instituicao.component';
+import { ModalCursoComponent } from './cadastrar-curso/modal-curso/modal-curso.component';
 
 @NgModule({
   declarations: [
@@ -50,12 +48,14 @@ import { DataService } from 'src/app/services/data.service';
     ValidarEntidadeModalComponent,
     CadastrarInstituicaoComponent,
     CadastrarCursoComponent,
+    ModalCursoComponent,
     AdicionarInstituicaoComponent,
     AdministradorComponent,
     AdicionarCursoComponent,
     AdicionarAdminComponent,    
     CnpjPipe,
     PhonePipe,
+    DetalhesInstituicaoComponent,
   ],
   imports: [
     MatIconModule,

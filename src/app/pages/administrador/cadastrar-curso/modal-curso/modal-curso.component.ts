@@ -2,14 +2,14 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from 'src/app/services/data.service';
-import Swal from 'sweetalert2';
+
 
 @Component({
-  selector: 'app-detalhes-curso',
-  templateUrl: './detalhes-curso.component.html',
-  styleUrls: ['./detalhes-curso.component.scss'],
+  selector: 'app-modal-curso',
+  templateUrl: './modal-curso.component.html',
+  styleUrls: ['./modal-curso.component.scss'],
 })
-export class DetalhesCursoComponent implements OnInit, OnDestroy {
+export class ModalCursoComponent implements OnInit, OnDestroy {
   @Input() cursoSelecionado: any;
 
   constructor(
