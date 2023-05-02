@@ -1,94 +1,90 @@
-<section class="content">
-  <section class="mr-2 content-meu-perfil" *ngIf="vaga">
-    <div class="topo">
-      <h1>Detalhes da Vaga</h1>
+<section class="content" *ngIf="vaga">
+
+  <div class="topo">
+    <h1>Detalhes da Vaga</h1>
+  </div>
+
+  <main>
+    <div class="col-12 d-flex imagem__vaga">
+      <img class="imagem__vaga" src="../../../../../assets/imagens/cadastroImagem.jpg">
+    </div>
+    <div class="col-12">
+      <label>Nome: </label>
+      <span>{{ vaga.nomeEntidade }}</span>
+    </div>
+    <div class="col-12">
+      <label>Razão Social: </label>
+      <span>{{ vaga.razaoSocial }}</span>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-sm-12">
+        <label>E-mail: </label>
+        <span>{{ vaga.email }}</span>
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <label>Telefone: </label>
+        <span>{{ vaga.telefone }}</span>
+      </div>
+
     </div>
 
-    <div class="mx-2 d-flex">
-      <section class="col-8 content-detalhes-vaga">
-        <div class="col-12">
-          <label>Nome: </label>
-          <span>{{ vaga.nomeFantasia }}</span>
-        </div>
-        <div class="col-12">
-          <label>Razão Social: </label>
-          <span>{{ vaga.razaoSocial }}</span>
-        </div>
-        <div class="col-12">
-          <label>CNPJ: </label>
-          <span>{{ vaga.cnpj | cnpj }}</span>
-        </div>
-        <div class="col-12">
-          <label>Missao da empresa: </label>
-          <span>{{ vaga.missao }}</span>
-        </div>
-        <div class="col-12">
-          <label>E-mail: </label>
-          <span>{{ vaga.email }}</span>
-        </div>
-        <div class="col-12">
-          <label>Telefone: </label>
-          <span>{{ vaga.telefone | phone }}</span>
-        </div>
-        <div class="col-12">
-          <label>Descrição da Vaga: </label>
-          <span>{{ vaga.descricao }}</span>
-        </div>
-        <div class="col-12">
-          <label>Endereço: </label>
-          <span
-            >{{ vaga.rua }},{{ vaga.numero }}, {{ vaga.bairro }} -
-            {{ vaga.cep }}, {{ vaga.cidade }}-{{ vaga.estado }}</span
-          >
-        </div>
-        <div class="col-12">
-          <label>Obrigações: </label>
-          <ul>
-            <li *ngFor="let obrigacao of vaga.obrigacoes">
-              {{ obrigacao.nome }}
-            </li>
-          </ul>
-        </div>
-        <div class="col-12">
-          <label for="exampleFormControlInput1"
-            >Resolução do Chamado <em class="text-danger">*</em>
-          </label>
-          <!-- <input type="text" class="form-control" placeholder="Estado" formControlName="estado"> -->
-          <ng-select
-            [items]="validacoes"
-            id="ngSelect"
-            bindLabel="nome"
-            bindValue="id"
-            placeholder="Selecione"
-            (closeOnSelect)="(true)"
-            [(ngModel)]="validacao"
-          >
-          </ng-select>
-        </div>
-        <div class="col-12 form-group">
-          <label for="exampleFormControlTextarea1"
-            >Informe o motivo da reprovação</label
-          >
-          <textarea
-            class="form-control"
-            id="exampleFormControlTextarea1"
-            rows="3"
-          ></textarea>
-        </div>
-        <div class="col-12 mb-1 mt-1">
-          <button class="btn btn-primary btn-aprovar" (click)="aprovar()">
-            Finalizar avaliação
-          </button>
-          <button class="btn btn-primary btn-reprovar" (click)="retornar()">
-            Voltar
-          </button>
-        </div>
-      </section>
-      <section class="col-4">
-        <div class="col-12">
-          <img src="../../../../../assets/imagens/ideia.png" />
-        </div>
-      </section>
+    <div class="col-12">
+      <label>Endereço: </label>
+      <span>{{ vaga.endereco }}, {{ vaga.numero }} - {{ vaga.bairro }} -
+        {{ vaga.cidade }}/{{ vaga.estado }}</span>
     </div>
-  </section>
+    <div class="col-12">
+      <label>Descrição da Vaga: </label>
+      <span>{{ vaga.descricao }}</span>
+    </div>
+
+    <div class="col-12">
+      <label>Número de vagas: </label>
+      <span>{{ vaga.numeroVagas}}</span>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 col-sm-12">
+        <label>Data de início do trabalho: </label>
+        <span>{{ vaga.dataInicioTrabalho}}</span>
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <label>Data de término do trabalho: </label>
+        <span>{{ vaga.dataTerminoTrabalho}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-sm-12">
+        <label>Horário de início do trabalho: </label>
+        <span>{{ vaga.horarioInicio}}</span>
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <label>Horário de término do trabalho: </label>
+        <span>{{ vaga.horarioEncerramento}}</span>
+      </div>
+    </div>
+
+
+    <div class="col-4">
+      <label for="aprovacao">Aprovação da vaga <em class="text-danger">*</em></label>
+      <ng-select [items]="validacoes" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+        (closeOnSelect)="(true)" [(ngModel)]="validacao">
+      </ng-select>
+    </div>
+    <div class="col-8 form-group">
+      <label for="mensagemReprovacao">Informe o motivo da reprovação</label>
+      <textarea class="form-control" id="mensagemReprovacao" rows="3"></textarea>
+    </div>
+    <div class="buttonsVagasCadastradas">
+      <button class="btn btn-success" (click)="aprovar()">
+        Finalizar avaliação
+      </button>
+      <button class="btn btn-primary" (click)="retornar()">
+        Voltar
+      </button>
+    </div>
+  </main>
+
+
+
 </section>

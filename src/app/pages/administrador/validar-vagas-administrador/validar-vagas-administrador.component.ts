@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from 'src/app/services/data.service';
-import { DetalheVagaAdministradorComponent } from './detalhe-vaga-administrador/detalhe-vaga-administrador.component';
 
 @Component({
   selector: 'app-validar-vagas-administrador',
@@ -17,145 +16,71 @@ export class ValidarVagasAdministradorComponent implements OnInit {
     {id: 2, nome: 'Mais recentes'}
   ]
 
-  vagasDisponiveis: any = [
+  vagasAprovacao: any = [
     {
       id: 1,
       nomeEntidade: 'ONG 1',
-      nomeVaga: 'Voluntário Contador de Histórias',      
+      razaoSocial: 'ONG 1',
+      email: 'ong1@ong.br',
+      telefone: '4135552525',
+      nomeVaga: 'Contador de História 1',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-      cidade: 'Curitiba',
-      estado: 'PR',
-      numero: 41,
-      rua: 'Rua Amador Bueno',
+      descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mollis sem. Nullam eu imperdiet est, aliquet malesuada ipsum. Nunc id feugiat orci, et blandit erat.',    
+      auxilio:'Alimentação e Transporte',      
+      endereco:'Rua tal dos omi lá',
       bairro: 'Cajuru',
-      cep: '82960-020',
-      obrigacoes: [
-        {id: 1, nome: 'Escrever Conteúdos'},
-        {id: 2, nome: 'Ser Empático e Acolhedor'},
-        {id: 3, nome: 'Ser Articulado'},
-        {id: 4, nome: 'Incorporar Personagens'},
-      ],
-      beneficios: [
-        {id: 1, nome: 'Refeição no Local'},
-        {id: 2, nome: 'Vale transporte'}
-      ],
-      inscritos: 5
-    },
-    {
-      id: 2,
-      nomeEntidade: 'ONG 2',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-      inscritos: 3
-    },
-    {
-      id: 3,
-      nomeEntidade: 'ONG 3',
-      nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-      inscritos: 6
-    },
-    {
-      id: 4,
-      nomeEntidade: 'ONG 4',
-      nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-      inscritos: 8
-    },
-    {
-      id: 5,
-      nomeEntidade: 'ONG 5',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-      inscritos: 2
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      complemento: 'Prédio Comercial',
+      dataCriacao:'20/02/2023',        
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
+      horarioInicio: '08:00',
+      horarioEncerramento:'12:00',
+      numeroVagas:'3',
+      status: 'Aprovação',     
     },
     {
       id: 6,
       nomeEntidade: 'ONG 6',
-      nomeVaga: 'Contador de História',      
+      razaoSocial: 'ONG 6',
+      email: 'ong6@ong.br',
+      nomeVaga: 'Contador de História 6',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-      inscritos: 9
-    },
-    {
-      id: 7,
-      nomeEntidade: 'ONG 7',
-      nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-      inscritos: 2
-    },
-    {
-      id: 8,
-      nomeEntidade: 'ONG 8',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-      inscritos: 4
-    },
-    {
-      id: 9,
-      nomeEntidade: 'ONG 9',
-      nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-      inscritos: 7
-    },
-    {
-      id: 10,
-      nomeEntidade: 'ONG 10',
-      nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-      inscritos: 10
-    },
-    {
-      id: 11,
-      nomeEntidade: 'ONG 11',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-      inscritos: 51
-    },
-    {
-      id: 12,
-      nomeEntidade: 'ONG 12',
-      nomeVaga: 'Contador de História',      
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      status: 'Aberto',
-      inscritos: 17
+      requisitos:null,
+      auxilio:'100',
+      auxilioTransporte: true,
+      auxilioAlimentacao: false,
+      endereco:'Rua tal dos omi lá',
+      bairro: 'Cajuru',
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      complemento: 'Prédio Comercial',
+      dataCriacao:'20/01/2023',
+      dataInicioTrabalho:'20/02/2023',
+      dataTerminoTrabalho:'21/02/2023',
+      horarioInicio: '08:00',
+      horarioEncerramento:'12:00',
+      numeroVagas:'3',
+      status: 'Aprovação',           
     },
   ];
 
   paginaAtual = 1;
-  tamanhoPagina: number = this.vagasDisponiveis.length;
+  tamanhoPagina: number = this.vagasAprovacao.length;
   itemsPerPage = 6;
   tipoOrdenacao: any;
-  public vagas: any = this.vagasDisponiveis.slice(0,6);
+  public vagas: any = this.vagasAprovacao.slice(0,6);
 
   constructor(private modalService: NgbModal, public dialog: MatDialog,
     private router: Router, private data: DataService) { }
 
   public mudancaPagina(pageNum: number): void {
     this.tamanhoPagina = this.itemsPerPage*(pageNum - 1);
-    this.vagas = this.vagasDisponiveis.slice(this.tamanhoPagina, this.tamanhoPagina + 6)
+    this.vagas = this.vagasAprovacao.slice(this.tamanhoPagina, this.tamanhoPagina + 6)
   }
 
   redirecionarDetalhes(value: any){

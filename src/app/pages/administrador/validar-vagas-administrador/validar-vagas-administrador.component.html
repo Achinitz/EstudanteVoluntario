@@ -1,86 +1,43 @@
 <section class="content">
   <div class="topo">
-    <h1>Validar vagas</h1>
+    <h1>Validar Vagas</h1>
   </div>
 
-  <section class="row vagasDisponiveis">
-    <div *ngIf="!vagasDisponiveis">
-      <span> No momento não existe vagas cadastradas! </span>
+  <section class="row vagasAprovacao">
+    <div *ngIf="!vagasAprovacao">
+      <span> No momento não existem vagas em aprovação. </span>
     </div>
     <section>
-      <div class="containerCard vagasDisponiveis">
+      <div class="containerCard vagasAprovacao">
         <ngb-alert #alert type="warning">
           Lembre-se de dar maior prioridade para as vagas que estão a mais tempo
           em espera!
         </ngb-alert>
         <div class="col-12 card-content-filtro">
-          <div class="col-9 p-1">1180 vagas pendentes para validação</div>
+          <div class="col-9 p-1">{{tamanhoPagina}} vaga(s) pendente(s) para validação</div>
           <div class="col-3 p-1">
-            <ng-select
-              [items]="listaOrdenacao"
-              id="ngSelect"
-              bindLabel="nome"
-              bindValue="id"
-              placeholder="Selecione"
-              (ngModelChange)="ordenarLista()"
-              (closeOnSelect)="(true)"
-              [(ngModel)]="tipoOrdenacao"
-            >
+            <ng-select [items]="listaOrdenacao" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+              (ngModelChange)="ordenarLista()" (closeOnSelect)="(true)" [(ngModel)]="tipoOrdenacao">
             </ng-select>
           </div>
         </div>
 
-        <div class="card" *ngFor="let vagaDisponivel of vagas; let i = index">
+        <div class="card" *ngFor="let vaga of vagasAprovacao; let i = index">
           <div class="card-content col-12">
             <div class="imgCard col-3">
-              <img
-                src="{{ vagaDisponivel.img }}"
-                class="card-img-top"
-                alt="..."
-              />
+              <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
             </div>
             <div class="content-card-vaga col-8">
-              <div>
-                <b
-                  >{{ vagaDisponivel.nomeEntidade }} -
-                  {{ vagaDisponivel.nomeVaga }}</b
-                >
-              </div>
-              <div>Detalhes: {{ vagaDisponivel.descricao }}</div>
-              <div class="content-card-tarefas">
-                <span class="content-card-beneficios-title">Tarefas: </span>
-                <span
-                  class="content-card-beneficios-property"
-                  *ngFor="let obrigacao of vagaDisponivel.obrigacoes"
-                >
-                  {{ obrigacao.nome }}
-                </span>
-              </div>
-              <div class="content-card-beneficios">
-                <span class="content-card-beneficios-title">Beneficios: </span>
-                <span
-                  class="content-card-beneficios-property"
-                  *ngFor="let beneficio of vagaDisponivel.beneficios"
-                >
-                  {{ beneficio.nome }}
-                </span>
-              </div>
+              <p><b>{{ vaga.nomeEntidade }} - {{ vaga.nomeVaga }}</b></p>
+              <p><b>Detalhes:</b> {{ vaga.descricao }}</p>
+              <p><b>Data de início do trabalho:</b> {{ vaga.dataInicioTrabalho }}</p>
             </div>
             <div class="col-1 content-card-icons">
-              <div
-                class="first-icon"
-                (click)="redirecionarDetalhes(vagaDisponivel)"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  class="bi bi-arrow-right-square"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
-                  />
+              <div class="first-icon" (click)="redirecionarDetalhes(vaga)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right-square"
+                  viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
                 </svg>
               </div>
             </div>
@@ -89,17 +46,9 @@
       </div>
     </section>
     <div class="row">
-      <ngb-pagination
-        class="pagination pull-right"
-        [rotate]="true"
-        [maxSize]="3"
-        [directionLinks]="false"
-        [collectionSize]="this.vagasDisponiveis.length"
-        [pageSize]="itemsPerPage"
-        [boundaryLinks]="true"
-        [(page)]="paginaAtual"
-        (pageChange)="mudancaPagina(paginaAtual)"
-      >
+      <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
+        [collectionSize]="this.vagasAprovacao.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"
+        [(page)]="paginaAtual" (pageChange)="mudancaPagina(paginaAtual)">
       </ngb-pagination>
     </div>
   </section>

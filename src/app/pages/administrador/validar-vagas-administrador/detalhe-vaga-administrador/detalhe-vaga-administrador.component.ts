@@ -1,7 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog  } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 
@@ -35,8 +35,7 @@ export class DetalheVagaAdministradorComponent implements OnInit {
   }
 
   retornar(){
-    this.router.navigate(['/Admin/validar-vagas']);
-    // this.modalService.open(DetalheVagaAdministradorComponent, { windowClass: 'width:90%; heigth: 50%;', backdrop: 'static', keyboard: false, centered: true });
+    this.router.navigate(['/Admin/validar-vagas']);   
   }
 
   exibirDetalhes(){
