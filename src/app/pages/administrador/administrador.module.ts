@@ -16,7 +16,8 @@ import { CadastrarCursoComponent } from './cadastrar-curso/cadastrar-curso.compo
 import { AdicionarInstituicaoComponent } from './cadastrar-instituicao/adicionar-instituicao/adicionar-instituicao.component';
 import { AdministradorComponent } from './administrador.component';
 import { AdicionarCursoComponent } from './cadastrar-curso/adicionar-curso/adicionar-curso.component';
-import { AdicionarAdminComponent } from './adicionar-admin/adicionar-admin.component';
+import { AdicionarAdminComponent } from './cadastrar-admin/adicionar-admin.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -34,6 +35,7 @@ import { PhonePipe } from 'src/app/shared/pipe/phone.pipe';
 import { DataService } from 'src/app/services/data.service';
 import { DetalhesInstituicaoComponent } from './cadastrar-instituicao/detalhes-instituicao/detalhes-instituicao.component';
 import { ModalCursoComponent } from './cadastrar-curso/modal-curso/modal-curso.component';
+import { AdicionarAdministradorComponent } from './cadastrar-admin/adicionar-administrador/adicionar-administrador.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { ModalCursoComponent } from './cadastrar-curso/modal-curso/modal-curso.c
     CnpjPipe,
     PhonePipe,
     DetalhesInstituicaoComponent,
+    AdicionarAdministradorComponent,
   ],
   imports: [
     MatIconModule,

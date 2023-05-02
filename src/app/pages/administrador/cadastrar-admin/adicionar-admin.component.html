@@ -1,0 +1,99 @@
+<section class="content">
+    <div class="topo">
+        <h1>Cadastrar Administrador</h1>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+          <tr>
+              <th class="col-3" scope="col">CPF</th>
+              <th class="col-3" scope="col">Nome</th>
+              <th class="col-2" scope="col">Perfil</th>
+              <th class="col-1" scope="col">Status</th>
+              <th class="col-2" scope="col">Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let instituicao of instituicoes; index as i;">
+              <td class="col-3">{{instituicao.cnpj}}</td>
+              <td class="col-3">{{instituicao.nome}}</td>
+              <td class="col-2
+              ">
+                <span *ngIf="instituicao.perfil == 3">Administrador</span>
+                <span *ngIf="instituicao.perfil == 4">Administrador geral</span>
+              </td>
+                <td class="col-1" scope="col">Status</td>
+              <td class="col-2 textcenter buttonsActions">
+                <button class="button-table" *ngIf="instituicao.perfil == 3" (click)="promoverAdministrador()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                      </svg>
+                  </button>
+                  <button class="button-table" *ngIf="instituicao.perfil == 4" (click)="removerAdministradorGeral()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                      </svg>
+                  </button>
+                  <button class="button-table" (click)="bloquearUsuario()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-x" viewBox="0 0 16 16">
+                    <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                  </button>
+                </td>
+  </table>
+
+    <div>
+      <button routerLink="/Admin/adicionar-admin" type="button" class="btn btn-primary">
+        Novo
+      </button>
+    </div>
+
+    <!-- <div class="cadastro">
+        <form [formGroup]="formCadastro" #formDir="ngForm">
+            <div class="form-group">
+                <label for="nomeCompleto">Nome Completo <em>*</em> </label>
+                <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo"
+                    formControlName="nomeCompleto" />
+                <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+                    formCadastro.controls.nomeCompleto.touched &&
+                    formCadastro.controls.nomeCompleto.invalid
+                  " [@fadeInOut]>
+                    O campo Nome Completo é obrigatório!
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="nomeSocial">Nome Social </label>
+                <input type="nomeSocial" class="form-control" id="nomeSocial" placeholder="Nome Social"
+                    formControlName="nomeSocial" />
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF <em>*</em> </label>
+                <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" formControlName="cpf"
+                    mask="000.000.000-00" />
+                <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+                    formCadastro.controls.cpf.touched && formCadastro.controls.cpf.invalid
+                  " [@fadeInOut]>
+                    O campo CPF é obrigatório!
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail <em>*</em> </label>
+                <input type="email" class="form-control" id="email" placeholder="name@email.com"
+                    formControlName="email" />
+                <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+                    formCadastro.controls.email.touched &&
+                    formCadastro.controls.email.invalid
+                  " [@fadeInOut]>
+                    O campo E-mail é obrigatório!
+                </small>
+            </div>
+            <div class="buttonForm">
+                <button type="submit" class="btn btn-success">Salvar</button>
+                <button type="reset" class="btn btn-warning">Limpar </button>
+            </div>
+        </form>
+    </div> -->
+</section>

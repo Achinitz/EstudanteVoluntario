@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdicionarAdminComponent } from './adicionar-admin/adicionar-admin.component';
+import { AdicionarAdminComponent } from './cadastrar-admin/adicionar-admin.component';
 import { AdministradorComponent } from './administrador.component';
 import { AdicionarCursoComponent } from './cadastrar-curso/adicionar-curso/adicionar-curso.component';
 import { CadastrarCursoComponent } from './cadastrar-curso/cadastrar-curso.component';
@@ -14,6 +14,7 @@ import { ValidarEntidadesAdministradorComponent } from './validar-entidades-admi
 import { ValidarEstudantesAdministradorComponent } from './validar-estudantes-administrador/validar-estudantes-administrador.component';
 import { DetalheVagaAdministradorComponent } from './validar-vagas-administrador/detalhe-vaga-administrador/detalhe-vaga-administrador.component';
 import { ValidarVagasAdministradorComponent } from './validar-vagas-administrador/validar-vagas-administrador.component';
+import { AdicionarAdministradorComponent } from './cadastrar-admin/adicionar-administrador/adicionar-administrador.component';
 
 
 const routes: Routes = [
@@ -72,6 +73,10 @@ const routes: Routes = [
       {
         path: 'cadastrar-admin',
         component: AdicionarAdminComponent,
+      },
+      {
+        path: 'adicionar-admin',
+        component: AdicionarAdministradorComponent,
       },
     ],
   },
