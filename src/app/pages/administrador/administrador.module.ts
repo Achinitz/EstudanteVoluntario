@@ -17,7 +17,7 @@ import { CadastrarCursoComponent } from './cadastrar-curso/cadastrar-curso.compo
 import { AdicionarInstituicaoComponent } from './cadastrar-instituicao/adicionar-instituicao/adicionar-instituicao.component';
 import { AdministradorComponent } from './administrador.component';
 import { AdicionarCursoComponent } from './cadastrar-curso/adicionar-curso/adicionar-curso.component';
-import { AdicionarAdminComponent } from './adicionar-admin/adicionar-admin.component';
+import { AdicionarAdminComponent } from './cadastrar-admin/adicionar-admin.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
@@ -36,6 +36,7 @@ import { MatListModule } from '@angular/material/list';
 import { CnpjPipe } from 'src/app/shared/pipe/cnpj.pipe';
 import { PhonePipe } from 'src/app/shared/pipe/phone.pipe';
 import { DataService } from 'src/app/services/data.service';
+import { AdicionarAdministradorComponent } from './cadastrar-admin/adicionar-administrador/adicionar-administrador.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { DataService } from 'src/app/services/data.service';
     AdicionarAdminComponent,    
     CnpjPipe,
     PhonePipe,
+    AdicionarAdministradorComponent,
   ],
   imports: [
     MatIconModule,

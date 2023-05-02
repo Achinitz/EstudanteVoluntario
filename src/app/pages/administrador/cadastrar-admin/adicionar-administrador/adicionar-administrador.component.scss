@@ -1,0 +1,64 @@
+.topo {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .formCadastro {
+    align-items: center;
+    padding-top: 1em;
+  }
+  
+  .link-cep {
+    text-decoration: none;
+  }
+  
+  .content {
+    margin-left: auto;
+    margin-right: auto;
+  
+    .userImg {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    #imgUser {
+      width: 11rem;
+      height: 9rem;
+      border-radius: 50%;
+    }
+  
+    .inputFile {
+      display: grid;
+      padding-top: 1em;
+      padding-bottom: 1em;
+    }
+  
+    .buttonForm {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  .form-group {
+    padding: 0.5em;
+  }
+  
+  .duplo {
+    padding: 0.5em;
+  }
+  
+  .btn {
+    margin: 1rem;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+  
+  .form-check {
+    margin-left: 0.5rem;
+  }
+  
+  @media screen and (min-width: 1300px) {
+    .content{
+      width: 80% !important;
+    }
+  }
