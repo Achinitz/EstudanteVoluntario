@@ -9,7 +9,7 @@ import { CadastrarInstituicaoComponent } from './cadastrar-instituicao/cadastrar
 import { DetalhesInstituicaoComponent } from './cadastrar-instituicao/detalhes-instituicao/detalhes-instituicao.component';
 import { HomeComponent } from './home/home.component';
 import { MeuPerfilAdministradorComponent } from './meu-perfil-administrador/meu-perfil-administrador.component';
-import { ValidarEntidadeModalComponent } from './validar-entidades-administrador/validar-entidade-modal/validar-entidade-modal.component';
+import { DetalheEntidadeAdministradorComponent } from './validar-entidades-administrador/detalhe-entidade-administrador/detalhe-entidade-administrador.component';
 import { ValidarEntidadesAdministradorComponent } from './validar-entidades-administrador/validar-entidades-administrador.component';
 import { ValidarEstudantesAdministradorComponent } from './validar-estudantes-administrador/validar-estudantes-administrador.component';
 import { DetalheVagaAdministradorComponent } from './validar-vagas-administrador/detalhe-vaga-administrador/detalhe-vaga-administrador.component';
@@ -68,7 +68,7 @@ const routes: Routes = [
       },
       {
         path: 'validar-entidade',
-        component: ValidarEntidadeModalComponent,
+        component: DetalheEntidadeAdministradorComponent,
       },
       {
         path: 'cadastrar-admin',

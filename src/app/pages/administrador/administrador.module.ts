@@ -10,14 +10,13 @@ import { ValidarEstudantesAdministradorComponent } from './validar-estudantes-ad
 import { ValidarEntidadesAdministradorComponent } from './validar-entidades-administrador/validar-entidades-administrador.component';
 import { DetalheVagaAdministradorComponent } from './validar-vagas-administrador/detalhe-vaga-administrador/detalhe-vaga-administrador.component';
 import { ValidarEstudanteModalComponent } from './validar-estudantes-administrador/validar-estudante-modal/validar-estudante-modal.component';
-import { ValidarEntidadeModalComponent } from './validar-entidades-administrador/validar-entidade-modal/validar-entidade-modal.component';
+
 import { CadastrarInstituicaoComponent } from './cadastrar-instituicao/cadastrar-instituicao.component';
 import { CadastrarCursoComponent } from './cadastrar-curso/cadastrar-curso.component';
 import { AdicionarInstituicaoComponent } from './cadastrar-instituicao/adicionar-instituicao/adicionar-instituicao.component';
 import { AdministradorComponent } from './administrador.component';
 import { AdicionarCursoComponent } from './cadastrar-curso/adicionar-curso/adicionar-curso.component';
 import { AdicionarAdminComponent } from './cadastrar-admin/adicionar-admin.component';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -36,6 +35,7 @@ import { DataService } from 'src/app/services/data.service';
 import { DetalhesInstituicaoComponent } from './cadastrar-instituicao/detalhes-instituicao/detalhes-instituicao.component';
 import { ModalCursoComponent } from './cadastrar-curso/modal-curso/modal-curso.component';
 import { AdicionarAdministradorComponent } from './cadastrar-admin/adicionar-administrador/adicionar-administrador.component';
+import { DetalheEntidadeAdministradorComponent } from './validar-entidades-administrador/detalhe-entidade-administrador/detalhe-entidade-administrador.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import { AdicionarAdministradorComponent } from './cadastrar-admin/adicionar-adm
     ValidarEntidadesAdministradorComponent,
     DetalheVagaAdministradorComponent,
     ValidarEstudanteModalComponent,
-    ValidarEntidadeModalComponent,
+    DetalheEntidadeAdministradorComponent,
     CadastrarInstituicaoComponent,
     CadastrarCursoComponent,
     ModalCursoComponent,

@@ -1,34 +1,21 @@
 <section class="content">
   <div class="topo">
-    <h1>Validar Entidades Cadastradas</h1>
+    <h1>Validar Entidades</h1>
   </div>
 
-  <!-- <div class="input-group col-8">
-        <input 
-        type="search" 
-        class="form-control rounded" 
-        placeholder="Search" 
-        aria-label="Search" 
-        aria-describedby="search-addon"
-        name="search"
-        [(ngModel)]="filter"
-        (ngModelChange)="search()"
-        />
-        <button type="button" class="btn btn-outline-primary">search</button>
-      </div> -->
 
-  <section class="row vagasDisponiveis">
-    <div *ngIf="!entidadesDisponiveis">
+  <section class="row entidadesAprovacao">
+    <div *ngIf="!entidadesAprovacao">
       <span> No momento não existe vagas cadastradas! </span>
     </div>
     <section>
-      <div class="containerCard vagasDisponiveis">
-        <span>
-          Lembre-se de dar maior prioridade para as entidades que estão a mais
-          tempo em espera!
-        </span>
+      <div class="containerCard entidadesAprovacao">
+        <ngb-alert #alert type="warning">
+          Lembre-se de dar maior prioridade para as entidades que estão a mais tempo
+          em espera!
+        </ngb-alert>
         <div class="col-12 card-content-filtro">
-          <div class="col-9 p-1">1180 vagas pendentes para validação</div>
+          <div class="col-9 p-1">{{tamanhoPagina}} vaga(s) pendente(s) para validação</div>
           <div class="col-3 p-1">
             <ng-select
               [items]="listaOrdenacao"
@@ -46,29 +33,13 @@
 
         <div
           class="card"
-          *ngFor="let entidade of entidadesDisponiveis; let i = index"
+          *ngFor="let entidade of entidadesAprovacao; let i = index"
         >
-          <div class="card-content col-12">
-            <div class="imgCard col-3">
-              <img src="{{ entidade.img }}" class="card-img-top" alt="..." />
-            </div>
-            <div class="content-card-vaga col-8">
-              <div>
-                <strong>{{ entidade.nomeFantasia }}</strong>
-              </div>
-              <div>
-                <strong>{{ entidade.razaoSocial }}</strong>
-              </div>
-              <div>{{ entidade.descricaoPessoal }}</div>
-              <div class="content-card-beneficios">
-                <!-- <span class="content-card-beneficios-title">Competências: </span> -->
-                <span
-                  class="content-card-beneficios-property"
-                  *ngFor="let valor of entidade.valores"
-                >
-                  {{ valor.descricao }}
-                </span>
-              </div>
+          <div class="card-content col-12">           
+            <div class="content-card-vaga col-11">
+              <p><b>{{ entidade.nomeFantasia }}</b></p>
+              <p><b>Razão Social:</b> {{entidade.razaoSocial }}</p>
+              <p><b>Cidade:</b> {{ entidade.cidade }} / {{ entidade.estado }}</p>
             </div>
             <div class="col-1 content-card-icons">
               <div class="first-icon" (click)="redirecionarDetalhes(entidade)">
@@ -96,7 +67,7 @@
         [rotate]="true"
         [maxSize]="3"
         [directionLinks]="false"
-        [collectionSize]="this.entidadesDisponiveis.length"
+        [collectionSize]="this.entidadesAprovacao.length"
         [pageSize]="itemsPerPage"
         [boundaryLinks]="true"
         [(page)]="paginaAtual"

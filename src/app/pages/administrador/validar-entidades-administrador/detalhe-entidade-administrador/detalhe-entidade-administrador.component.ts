@@ -7,11 +7,11 @@ import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-validar-entidade-modal',
-  templateUrl: './validar-entidade-modal.component.html',
-  styleUrls: ['./validar-entidade-modal.component.scss']
+  selector: 'app-detalhe-entidade-administrador',
+  templateUrl: './detalhe-entidade-administrador.html',
+  styleUrls: ['./detalhe-entidade-administrador.scss']
 })
-export class ValidarEntidadeModalComponent implements OnInit {
+export class DetalheEntidadeAdministradorComponent implements OnInit {
 
   formResolucao = new FormGroup({
     resolucaoChamado: new FormControl(null, Validators.required),
@@ -35,7 +35,7 @@ export class ValidarEntidadeModalComponent implements OnInit {
     this.formResolucao.get('cnpj').setValue(this.entidade.cnpj);
 
     if(this.entidade == null){
-      this.router.navigate(['/Administrador/validar-entidades']);
+      this.router.navigate(['/Admin/validar-entidades']);
     }
     console.log(this.entidade)
   }
@@ -50,7 +50,7 @@ export class ValidarEntidadeModalComponent implements OnInit {
   }
 
   retornar(){
-    this.router.navigate(['/Administrador/validar-entidades']);
+    this.router.navigate(['/Admin/validar-entidades']);
     // this.modalService.open(DetalheVagaAdministradorComponent, { windowClass: 'width:90%; heigth: 50%;', backdrop: 'static', keyboard: false, centered: true });
   }
 

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ValidarEntidadeModalComponent } from './validar-entidade-modal.component';
+import { DetalheEntidadeAdministradorComponent } from './detalhe-entidade-administrador.component';
 
 describe('ValidarEntidadeModalComponent', () => {
-  let component: ValidarEntidadeModalComponent;
-  let fixture: ComponentFixture<ValidarEntidadeModalComponent>;
+  let component: DetalheEntidadeAdministradorComponent;
+  let fixture: ComponentFixture<DetalheEntidadeAdministradorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ValidarEntidadeModalComponent ]
+      declarations: [ DetalheEntidadeAdministradorComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ValidarEntidadeModalComponent);
+    fixture = TestBed.createComponent(DetalheEntidadeAdministradorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
