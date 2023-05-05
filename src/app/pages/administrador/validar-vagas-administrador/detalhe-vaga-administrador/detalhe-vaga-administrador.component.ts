@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog  } from '@angular/material/dialog';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from 'src/app/services/data.service';
@@ -8,63 +9,76 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-detalhe-vaga-administrador',
   templateUrl: './detalhe-vaga-administrador.component.html',
-  styleUrls: ['./detalhe-vaga-administrador.component.scss']
+  styleUrls: ['./detalhe-vaga-administrador.component.scss'],
 })
 export class DetalheVagaAdministradorComponent implements OnInit {
+  formResolucao = new FormGroup({
+    resolucaoChamado: new FormControl(null, Validators.required),
+    motivo: new FormControl(),
+    idVaga: new FormControl(null, Validators.required),
+  });
 
   validacao: any;
   validacoes: any = [
-    {id: 1, nome: 'Aprovar'},
-    {id: 2, nome: 'Reprovar'},
-  ]
+    { id: 1, nome: 'Aprovar' },
+    { id: 2, nome: 'Reprovar' },
+  ];
 
   vaga: any;
 
-  constructor(private data:DataService,private modalService: NgbModal, 
-    public dialog: MatDialog, private router: Router) { 
+  constructor(
+    private data: DataService,
+    private modalService: NgbModal,
+    public dialog: MatDialog,
+    private router: Router
+  ) {
     this.vaga = this.data.data;
+    this.formResolucao.get('idVaga').setValue(this.vaga.id);
   }
 
-  aprovar(){
+  aprovar() {
     Swal.fire({
       icon: 'success',
       title: 'Vaga avaliada com sucesso!!',
       showConfirmButton: false,
       timer: 1500,
-    })
+    });
   }
 
-  retornar(){
-    this.router.navigate(['/Admin/validar-vagas']);   
+  retornar() {
+    this.router.navigate(['/Admin/validar-vagas']);
   }
 
-  exibirDetalhes(){
-    this.modalService.open(DetalheVagaAdministradorComponent, { windowClass: 'width:90%; heigth: 50%;', backdrop: 'static', keyboard: false, centered: true });
+  exibirDetalhes() {
+    this.modalService.open(DetalheVagaAdministradorComponent, {
+      windowClass: 'width:90%; heigth: 50%;',
+      backdrop: 'static',
+      keyboard: false,
+      centered: true,
+    });
   }
 
-  reprovar(){
+  reprovar() {
     Swal.fire({
       title: 'Deseja realmente reprovar essa vaga?',
-      text: "Ao confirmar, essa vaga será reprovada!",
+      text: 'Ao confirmar, essa vaga será reprovada!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Confirmar',
-      cancelButtonText: 'Cancelar'
+      cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
           title: 'Vaga reprovada com Sucesso!',
           icon: 'success',
           showConfirmButton: false,
-          timer: 1500
-        })
+          timer: 1500,
+        });
       }
-    })
+    });
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

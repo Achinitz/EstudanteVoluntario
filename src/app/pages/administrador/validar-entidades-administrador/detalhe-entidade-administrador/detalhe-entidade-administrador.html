@@ -1,110 +1,75 @@
-<section class="content">
-  <section class="mr-2 content-meu-perfil" *ngIf="entidade">
-    <div class="topo">
-      <h1>Detalhes da Entidade</h1>
+<section class="content" *ngIf="entidade">
+
+  <div class="topo">
+    <h1>Detalhes da Entidade</h1>
+  </div>
+
+  <main>
+    <div class="col-12">
+      <label>Nome Fantasia: </label>
+      <span>{{ entidade.nomeFantasia }}</span>
+    </div>
+    <div class="col-12">
+      <label>Razão Social: </label>
+      <span>{{ entidade.razaoSocial }}</span>
+    </div>
+    <div class="col-12">
+      <label>CNPJ: </label>
+      <span>{{ entidade.cnpj | cnpj }}</span>
+    </div>
+    <div class="col-12">
+      <label>Nome do(a) responsável: </label>
+      <span>{{ entidade.nomeResponsavelCadastro }}</span>
+    </div>
+    <div class="col-12">
+      <label>E-mail: </label>
+      <span>{{ entidade.email }}</span>
+    </div>
+    <div class="col-12">
+      <label>Telefone: </label>
+      <span>{{ entidade.telefone | phone }}</span>
+    </div>
+    <div class="col-12">
+      <label>Endereço: </label>
+      <span>{{ entidade.logradouro }}, {{ entidade.numero }}, {{ entidade.bairro }} -
+        {{ entidade.cep }} - {{ entidade.cidade }}/{{entidade.estado }}</span>
+    </div>
+    <div class="col-12">
+      <label>Data do cadastro: </label>
+      <span>{{ entidade.dataCriacao}}</span>
+    </div>
+    <div class="col-12">
+      <label>Status: </label>
+      <span>{{ entidade.status}}</span>
     </div>
 
-    <div class="mx-2 d-flex">
-      <section class="col-8 content-detalhes-vaga">
-        <div class="col-12">
-          <label>Nome Empresa: </label>
-          <span>{{ entidade.nomeFantasia }}</span>
-        </div>
-        <div class="col-12">
-          <label>Razão Social: </label>
-          <span>{{ entidade.razaoSocial }}</span>
-        </div>
-        <div class="col-12">
-          <label>CNPJ: </label>
-          <span>{{ entidade.cnpj | cnpj }}</span>
-        </div>
-        <div class="col-12">
-          <label>Missao da empresa: </label>
-          <span>{{ entidade.missao }}</span>
-        </div>
-        <div class="col-12">
-          <label>E-mail: </label>
-          <span>{{ entidade.email }}</span>
-        </div>
-        <div class="col-12">
-          <label>Telefone: </label>
-          <span>{{ entidade.telefone | phone }}</span>
-        </div>
-        <div class="col-12">
-          <label>Descrição da Vaga: </label>
-          <span>{{ entidade.descricao }}</span>
-        </div>
-        <div class="col-12">
-          <label>Endereço: </label>
-          <span
-            >{{ entidade.rua }},{{ entidade.numero }}, {{ entidade.bairro }} -
-            {{ entidade.cep }}, {{ entidade.cidade }}-{{
-              entidade.estado
-            }}</span
-          >
-        </div>
-        <div class="col-12">
-          <label>Obrigações: </label>
-          <ul>
-            <li *ngFor="let obrigacao of entidade.obrigacoes">
-              {{ obrigacao.nome }}
-            </li>
-          </ul>
-        </div>
-        <form [formGroup]="formResolucao">
-          <div class="col-12">
-            <label for="exampleFormControlInput1"
-              >Resolução do Chamado <em class="text-danger">*</em>
-            </label>
-            <!-- <input type="text" class="form-control" placeholder="Estado" formControlName="estado"> -->
-            <ng-select
-              [items]="validacoes"
-              id="ngSelect"
-              bindLabel="nome"
-              bindValue="id"
-              placeholder="Selecione"
-              (closeOnSelect)="(true)"
-              formControlName="resolucaoChamado"
-            >
-            </ng-select>
-          </div>
-          <div
-            class="col-12 form-group"
-            *ngIf="formResolucao.get('resolucaoChamado').value == 2"
-          >
-            <label for="exampleFormControlTextarea1"
-              >Informe o motivo da reprovação</label
-            >
-            <textarea
-              class="form-control"
-              id="exampleFormControlTextarea1"
-              rows="3"
-              formControlName="motivo"
-            ></textarea>
-          </div>
-        </form>
-        <div class="col-12 mb-1 mt-1">
-          <button
-            class="btn btn-primary btn-aprovar"
-            (click)="aprovar()"
-            [disabled]="
+    <form [formGroup]="formResolucao">
+      <div class="col-4">
+        <label for="aprovacao">Aprovação da Entidade <em class="text-danger">*</em>
+        </label>        
+        <ng-select [items]="validacoes" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+          (closeOnSelect)="(true)" formControlName="resolucaoChamado">
+        </ng-select>
+      </div>
+      <div class="col-8 form-group" *ngIf="formResolucao.get('resolucaoChamado').value == 2">
+        <label for="exampleFormControlTextarea1">Informe o motivo da reprovação</label>
+        <textarea class="form-control" id="mensagemReprovacao" rows="3" formControlName="motivo"></textarea>
+      </div>
+    </form>
+    <div class="buttonsVagasCadastradas">
+      <button class="btn btn-success" (click)="aprovar()" [disabled]="
               (formResolucao.get('resolucaoChamado').value == 2 &&
                 formResolucao.get('motivo').value == null) ||
               formResolucao.get('resolucaoChamado').value == null
-            "
-          >
-            Finalizar avaliação
-          </button>
-          <button class="btn btn-primary btn-reprovar" (click)="retornar()">
-            Voltar
-          </button>
-        </div>
-      </section>
-      <section class="col-4">
-        <div class="col-12">
-          <img src="../../../../../assets/imagens/ideia.png" />
-        </div>
-      </section>
+            ">
+        Finalizar avaliação
+      </button>
+      <button class="btn btn-primary" (click)="retornar()">
+        Voltar
+      </button>
     </div>
-  </section>
+
+
+  </main>
+
 </section>

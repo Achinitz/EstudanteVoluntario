@@ -23,7 +23,7 @@
       </div>
       <div class="col-lg-4 col-sm-12">
         <label>Telefone: </label>
-        <span>{{ vaga.telefone }}</span>
+        <span>{{ vaga.telefone | phone}}</span>
       </div>
 
     </div>
@@ -64,19 +64,24 @@
       </div>
     </div>
 
-
-    <div class="col-4">
-      <label for="aprovacao">Aprovação da vaga <em class="text-danger">*</em></label>
-      <ng-select [items]="validacoes" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
-        (closeOnSelect)="(true)" [(ngModel)]="validacao">
-      </ng-select>
-    </div>
-    <div class="col-8 form-group">
-      <label for="mensagemReprovacao">Informe o motivo da reprovação</label>
-      <textarea class="form-control" id="mensagemReprovacao" rows="3"></textarea>
-    </div>
+    <form [formGroup]="formResolucao">
+      <div class="col-4">
+        <label for="aprovacao">Aprovação da vaga <em class="text-danger">*</em></label>
+        <ng-select [items]="validacoes" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+          (closeOnSelect)="(true)" formControlName="resolucaoChamado">
+        </ng-select>
+      </div>
+      <div class="col-8 form-group" *ngIf="formResolucao.get('resolucaoChamado').value == 2">
+        <label for="mensagemReprovacao">Informe o motivo da reprovação</label>
+        <textarea class="form-control" id="mensagemReprovacao" rows="3" formControlName="motivo"></textarea>
+      </div>
+    </form>
     <div class="buttonsVagasCadastradas">
-      <button class="btn btn-success" (click)="aprovar()">
+      <button class="btn btn-success" (click)="aprovar()" [disabled]="
+      (formResolucao.get('resolucaoChamado').value == 2 &&
+        formResolucao.get('motivo').value == null) ||
+      formResolucao.get('resolucaoChamado').value == null
+    ">
         Finalizar avaliação
       </button>
       <button class="btn btn-primary" (click)="retornar()">

@@ -1,55 +1,20 @@
 .topo {
-    flex-direction: column;
-    align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.content-meu-perfil{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #b6cfd3;
-    border-radius: 0.5rem;
+label {
+  font-weight: bold;
+  padding: 0.3rem;
 }
 
-h1{
-    margin-left: 1rem;
-    width: 100%;
-    margin-top: 8px;
-    font-weight: 500;
-    margin-bottom: 3rem;
-}
+.buttonsVagasCadastradas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
 
-img{
-    width: 100%;
-}
-
-label{
-    font-weight: bold;
-    margin-right: 5px;
-}
-
-button{
-    width: auto;
-    border: none;
-}
-
-ng-select{
-    width: 230px;
-}
-
-.btn-aprovar{
-    background-color: green;
-    color: white;
+  button:first-child {
     margin-right: 0.5rem;
-}
-
-.btn-reprovar{
-    background-color: red;
-    color: white;
-    margin-right: 1rem;
-}
-
-.content-detalhes-vaga{
-    line-height: 1.5rem;
-    //margin-right: 2rem;
+  }
 }
