@@ -15,6 +15,7 @@ import { ValidarEstudantesAdministradorComponent } from './validar-estudantes-ad
 import { DetalheVagaAdministradorComponent } from './validar-vagas-administrador/detalhe-vaga-administrador/detalhe-vaga-administrador.component';
 import { ValidarVagasAdministradorComponent } from './validar-vagas-administrador/validar-vagas-administrador.component';
 import { AdicionarAdministradorComponent } from './cadastrar-admin/adicionar-administrador/adicionar-administrador.component';
+import { DetalheEstudanteAdministradorComponent } from './validar-estudantes-administrador/detalhe-estudante-administrador/detalhe-estudante-administrador.component';
 
 
 const routes: Routes = [
@@ -70,6 +71,10 @@ const routes: Routes = [
         path: 'validar-entidade',
         component: DetalheEntidadeAdministradorComponent,
       },
+      {
+        path: 'validar-estudante',
+        component: DetalheEstudanteAdministradorComponent,
+      },      
       {
         path: 'cadastrar-admin',
         component: AdicionarAdminComponent,

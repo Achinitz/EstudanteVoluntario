@@ -3,32 +3,18 @@
     <h1>Validar Estudantes</h1>
   </div>
 
-  <!-- <div class="input-group col-8">
-          <input 
-          type="search" 
-          class="form-control rounded" 
-          placeholder="Search" 
-          aria-label="Search" 
-          aria-describedby="search-addon"
-          name="search"
-          [(ngModel)]="filter"
-          (ngModelChange)="search()"
-          />
-          <button type="button" class="btn btn-outline-primary">search</button>
-        </div> -->
-
-  <section class="row vagasDisponiveis">
-    <div *ngIf="!vagasDisponiveis">
-      <span> No momento não existe vagas cadastradas! </span>
+  <section class="row estudantesAprovacao">
+    <div *ngIf="!estudantesAprovacao">
+      <span> No momento não existem estudantes para aprovação. </span>
     </div>
     <section>
       <div class="containerCard vagasDisponiveis">
-        <span>
-          Lembre-se de dar maior prioridade para as vagas que estão a mais tempo
+        <ngb-alert #alert type="warning"> 
+          Lembre-se de dar maior prioridade para os cadastros que estão a mais tempo
           em espera!
-        </span>
+        </ngb-alert>
         <div class="col-12 card-content-filtro">
-          <div class="col-9 p-1">1180 vagas pendentes para validação</div>
+          <div class="col-9 p-1">{{tamanhoPagina}} estudante(s) pendente(s) para validação</div>
           <div class="col-3 p-1">
             <ng-select
               [items]="listaOrdenacao"
@@ -44,34 +30,19 @@
           </div>
         </div>
 
-        <div class="card" *ngFor="let vagaDisponivel of vagas; let i = index">
+        <div class="card" *ngFor="let estudante of estudantesAprovacao; let i = index">
           <div class="card-content col-12">
-            <div class="imgCard col-3">
-              <img
-                src="{{ vagaDisponivel.img }}"
-                class="card-img-top"
-                alt="..."
-              />
-            </div>
-            <div class="content-card-vaga col-8">
-              <div>
-                <b>{{ vagaDisponivel.nome }} {{ vagaDisponivel.sobrenome }}</b>
-              </div>
-              <div>{{ vagaDisponivel.descricaoPessoal }}</div>
-              <div class="content-card-beneficios">
-                <!-- <span class="content-card-beneficios-title">Competências: </span> -->
-                <span
-                  class="content-card-beneficios-property"
-                  *ngFor="let competencia of vagaDisponivel.competencias"
-                >
-                  {{ competencia.descricao }}
-                </span>
-              </div>
+            
+            <div class="content-card-vaga col-11">
+              <div *ngIf="estudante.nomeSocial"> <p><b>{{ estudante.nomeSocial }}</b></p></div>
+              <div *ngIf="!estudante.nomeSocial"> <p><b>{{ estudante.nomeCompleto }}</b></p></div>              
+              <p><b>Curso:</b>  {{ estudante.curso }} - {{ estudante.instituicao }} </p>
+              <p><b>Cidade:</b> {{  estudante.cidade }} / {{  estudante.estado }}</p>             
             </div>
             <div class="col-1 content-card-icons">
               <div
                 class="first-icon"
-                (click)="redirecionarDetalhes(vagaDisponivel)"
+                (click)="redirecionarDetalhes(estudante)"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +67,7 @@
         [rotate]="true"
         [maxSize]="3"
         [directionLinks]="false"
-        [collectionSize]="this.vagasDisponiveis.length"
+        [collectionSize]="this.estudantesAprovacao.length"
         [pageSize]="itemsPerPage"
         [boundaryLinks]="true"
         [(page)]="paginaAtual"

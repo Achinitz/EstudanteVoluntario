@@ -1,0 +1,104 @@
+<section class="content" *ngIf="estudante">
+    <div class="topo">
+        <h1>Detalhes Estudante</h1>
+    </div>
+
+    <main>
+        <div class="col-12" *ngIf="estudante.nomeSocial">
+            <label>Nome Social: </label>
+            <span>{{ estudante.nomeSocial }}</span>
+        </div>
+        <div class="col-12">
+            <label>Nome completo: </label>
+            <span>{{ estudante.nomeCompleto }}</span>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-12">
+                <label>CPF: </label>
+                <span>{{ estudante.cpf}}</span>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <label>Data de Nascimento: </label>
+                <span>{{ estudante.dataNascimento }}</span>
+            </div>
+        </div>
+        <div class="col-12">
+            <label>E-mail: </label>
+            <span>{{ estudante.email }}</span>
+        </div>
+        <div class="col-12">
+            <label>Telefone: </label>
+            <span>{{ estudante.telefone | phone }}</span>
+        </div>
+        <div class="col-12">
+            <label>Endereço: </label>
+            <span>{{ estudante.logradouro }}, {{ estudante.numero }}, {{ estudante.bairro }} -
+                {{ estudante.cep }} - {{ estudante.cidade }}/{{estudante.estado }}</span>
+        </div>
+        <div class="col-12">
+            <label>Curso: </label>
+            <span>{{ estudante.curso}}</span>
+        </div>
+        <div class="col-12">
+            <label>Grau: </label>
+            <span>{{ estudante.grau}}</span>
+        </div>
+        <div class="col-12">
+            <label>Instituição: </label>
+            <span>{{ estudante.instituicao}}</span>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-12">
+                <label>Ano início: </label>
+                <span>{{ estudante.anoInicio}}</span>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <label>Ano conclusão: </label>
+                <span>{{ estudante.anoConclusao}}</span>
+            </div>
+        </div>
+        <div class="col-12">
+            <label>Comprovante de Matrícula: </label>
+            <span>{{ estudante.comprovanteMatricula}}</span>
+        </div>
+        <div class="col-12">
+            <label>Data do cadastro: </label>
+            <span>{{ estudante.dataCriacao}}</span>
+        </div>
+        <div class="col-12">
+            <label>Status: </label>
+            <span>{{ estudante.status}}</span>
+        </div>
+
+        <form [formGroup]="formResolucao">
+            <div class="col-4">
+                <label for="aprovacao">Aprovação Estudante <em class="text-danger">*</em>
+                </label>
+                <ng-select [items]="validacoes" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+                    (closeOnSelect)="(true)" formControlName="resolucaoChamado">
+                </ng-select>
+            </div>
+            <div class="col-8 form-group" *ngIf="formResolucao.get('resolucaoChamado').value == 2">
+                <label for="exampleFormControlTextarea1">Informe o motivo da reprovação</label>
+                <textarea class="form-control" id="mensagemReprovacao" rows="3" formControlName="motivo"></textarea>
+            </div>
+        </form>
+        <div class="buttonsVagasCadastradas">
+            <button class="btn btn-success" (click)="aprovar()" [disabled]="
+                  (formResolucao.get('resolucaoChamado').value == 2 &&
+                    formResolucao.get('motivo').value == null) ||
+                  formResolucao.get('resolucaoChamado').value == null
+                ">
+                Finalizar avaliação
+            </button>
+            <button class="btn btn-primary" (click)="retornar()">
+                Voltar
+            </button>
+        </div>
+
+
+    </main>
+
+
+
+</section>

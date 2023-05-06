@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ValidarEstudanteModalComponent } from './validar-estudante-modal.component';
+import { DetalheEstudanteAdministradorComponent } from './detalhe-estudante-administrador.component';
 
 describe('ValidarEstudanteModalComponent', () => {
-  let component: ValidarEstudanteModalComponent;
-  let fixture: ComponentFixture<ValidarEstudanteModalComponent>;
+  let component: DetalheEstudanteAdministradorComponent;
+  let fixture: ComponentFixture<DetalheEstudanteAdministradorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ValidarEstudanteModalComponent ]
+      declarations: [ DetalheEstudanteAdministradorComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ValidarEstudanteModalComponent);
+    fixture = TestBed.createComponent(DetalheEstudanteAdministradorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

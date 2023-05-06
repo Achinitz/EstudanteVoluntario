@@ -9,7 +9,7 @@ import { ValidarVagasAdministradorComponent } from './validar-vagas-administrado
 import { ValidarEstudantesAdministradorComponent } from './validar-estudantes-administrador/validar-estudantes-administrador.component';
 import { ValidarEntidadesAdministradorComponent } from './validar-entidades-administrador/validar-entidades-administrador.component';
 import { DetalheVagaAdministradorComponent } from './validar-vagas-administrador/detalhe-vaga-administrador/detalhe-vaga-administrador.component';
-import { ValidarEstudanteModalComponent } from './validar-estudantes-administrador/validar-estudante-modal/validar-estudante-modal.component';
+import { DetalheEstudanteAdministradorComponent } from './validar-estudantes-administrador/detalhe-estudante-administrador/detalhe-estudante-administrador.component';
 
 import { CadastrarInstituicaoComponent } from './cadastrar-instituicao/cadastrar-instituicao.component';
 import { CadastrarCursoComponent } from './cadastrar-curso/cadastrar-curso.component';
@@ -46,7 +46,7 @@ import { DetalheEntidadeAdministradorComponent } from './validar-entidades-admin
     ValidarEstudantesAdministradorComponent,
     ValidarEntidadesAdministradorComponent,
     DetalheVagaAdministradorComponent,
-    ValidarEstudanteModalComponent,
+    DetalheEstudanteAdministradorComponent,
     DetalheEntidadeAdministradorComponent,
     CadastrarInstituicaoComponent,
     CadastrarCursoComponent,

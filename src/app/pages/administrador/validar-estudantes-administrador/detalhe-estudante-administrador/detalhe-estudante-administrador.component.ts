@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-detalhe-entidade-administrador',
-  templateUrl: './detalhe-entidade-administrador.component.html',
-  styleUrls: ['./detalhe-entidade-administrador.component.scss'],
+  selector: 'app-detalhe-estudante-administrador',
+  templateUrl: './detalhe-estudante-administrador.component.html',
+  styleUrls: ['./detalhe-estudante-administrador.component.scss'],
 })
-export class DetalheEntidadeAdministradorComponent implements OnInit {
+export class DetalheEstudanteAdministradorComponent implements OnInit {
   formResolucao = new FormGroup({
     resolucaoChamado: new FormControl(null, Validators.required),
     motivo: new FormControl(),
-    cnpj: new FormControl(null, Validators.required),
+    cpf: new FormControl(null, Validators.required),
   });
 
   validacao: any;
@@ -23,40 +22,35 @@ export class DetalheEntidadeAdministradorComponent implements OnInit {
     { id: 2, nome: 'Reprovar' },
   ];
 
-  entidade: any;
+  estudante: any;
 
-  constructor(
-    private data: DataService,
-    public dialog: MatDialog,
-    private router: Router
-  ) {
-    this.entidade = this.data.data;
+  constructor(private data: DataService, private router: Router) {
+    this.estudante = this.data.data;
+    this.formResolucao.get('cpf').setValue(this.estudante.cpf);
 
-    this.formResolucao.get('cnpj').setValue(this.entidade.cnpj);
-
-    if (this.entidade == null) {
-      this.router.navigate(['/Admin/validar-entidades']);
+    if (this.estudante == null) {
+      this.router.navigate(['/Admin/validar-estudantes']);
     }
-    console.log(this.entidade);
+    console.log(this.estudante);
+  }
+
+  retornar() {
+    this.router.navigate(['/Admin/validar-estudantes']);
   }
 
   aprovar() {
     Swal.fire({
       icon: 'success',
-      title: 'Entidade avaliada com sucesso!!',
+      title: 'Estudante aprovado com sucesso!!',
       showConfirmButton: false,
       timer: 1500,
     });
   }
 
-  retornar() {
-    this.router.navigate(['/Admin/validar-entidades']);
-  }
-
   reprovar() {
     Swal.fire({
-      title: 'Deseja realmente reprovar essa Entidade?',
-      text: 'Ao confirmar, essa Entidade será reprovada!',
+      title: 'Deseja realmente reprovar esse cadastro?',
+      text: 'Ao confirmar, esse cadastro será reprovado!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -66,7 +60,7 @@ export class DetalheEntidadeAdministradorComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
-          title: 'Entidade reprovada com Sucesso!',
+          title: 'Estudante aprovado com Sucesso!',
           icon: 'success',
           showConfirmButton: false,
           timer: 1500,
