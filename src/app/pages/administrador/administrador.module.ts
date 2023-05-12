@@ -36,6 +36,8 @@ import { DetalhesInstituicaoComponent } from './cadastrar-instituicao/detalhes-i
 import { ModalCursoComponent } from './cadastrar-curso/modal-curso/modal-curso.component';
 import { AdicionarAdministradorComponent } from './cadastrar-admin/adicionar-administrador/adicionar-administrador.component';
 import { DetalheEntidadeAdministradorComponent } from './validar-entidades-administrador/detalhe-entidade-administrador/detalhe-entidade-administrador.component';
+import { EditarInstituicaoComponent } from './cadastrar-instituicao/editar-instituicao/editar-instituicao.component';
+import { EditarCadastroComponent } from './cadastrar-curso/editar-cadastro/editar-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { DetalheEntidadeAdministradorComponent } from './validar-entidades-admin
     PhonePipe,
     DetalhesInstituicaoComponent,
     AdicionarAdministradorComponent,
+    EditarInstituicaoComponent,
+    EditarCadastroComponent,
   ],
   imports: [
     MatIconModule,

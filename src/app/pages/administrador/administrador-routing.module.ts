@@ -16,6 +16,8 @@ import { DetalheVagaAdministradorComponent } from './validar-vagas-administrador
 import { ValidarVagasAdministradorComponent } from './validar-vagas-administrador/validar-vagas-administrador.component';
 import { AdicionarAdministradorComponent } from './cadastrar-admin/adicionar-administrador/adicionar-administrador.component';
 import { DetalheEstudanteAdministradorComponent } from './validar-estudantes-administrador/detalhe-estudante-administrador/detalhe-estudante-administrador.component';
+import { EditarInstituicaoComponent } from './cadastrar-instituicao/editar-instituicao/editar-instituicao.component';
+import { EditarCadastroComponent } from './cadastrar-curso/editar-cadastro/editar-cadastro.component';
 
 
 const routes: Routes = [
@@ -82,6 +84,14 @@ const routes: Routes = [
       {
         path: 'adicionar-admin',
         component: AdicionarAdministradorComponent,
+      },
+      {
+        path: 'editar-instituicao',
+        component: EditarInstituicaoComponent,
+      },
+      {
+        path: 'editar-curso',
+        component: EditarCadastroComponent,
       },
     ],
   },

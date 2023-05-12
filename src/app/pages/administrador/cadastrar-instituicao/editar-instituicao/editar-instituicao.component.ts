@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 import { EnderecoService } from 'src/app/services/endereco.service';
 
-import { genericAnimations } from 'src/app/shared/animations/animations';
-
-
 @Component({
-  selector: 'app-adicionar-instituicao',
-  templateUrl: './adicionar-instituicao.component.html',
-  styleUrls: ['./adicionar-instituicao.component.scss'],
-  animations: genericAnimations,
+  selector: 'app-editar-instituicao',
+  templateUrl: './editar-instituicao.component.html',
+  styleUrls: ['./editar-instituicao.component.scss']
 })
-export class AdicionarInstituicaoComponent implements OnInit {
+export class EditarInstituicaoComponent implements OnInit {
   estado: any;
   estados: any = [];
   cidades: any = [];
 
   public formCadastro = new FormGroup({
+    id: new FormControl(null),
     cnpj: new FormControl(null, [
       Validators.required,
       Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$'),
@@ -31,9 +30,21 @@ export class AdicionarInstituicaoComponent implements OnInit {
     complemento: new FormControl(null, Validators.required),
     estado: new FormControl(null, Validators.required),
     cidade: new FormControl(null, Validators.required),
+    cursos: new FormControl(null, Validators.required),
   });
 
-  constructor( private enderecoService: EnderecoService,) { 
+  constructor( private enderecoService: EnderecoService,
+    private dataService: DataService,
+    private router: Router) { 
+      this.formCadastro.setValue(this.dataService.data);
+      
+      // console.log('Editar Instituição');
+      // console.log(this.dataService.data);
+      
+      // this.formCadastro.setValue(this.dataService.data);
+      // console.log('valor do formulário');
+      // console.log(this.formCadastro.value);
+
     this.inicializaFormulario();
   }
 
@@ -43,12 +54,15 @@ export class AdicionarInstituicaoComponent implements OnInit {
   
   inicializaFormulario() {
     this.enderecoService.getEstados().subscribe((data: any) => {
-      this.estados = data;
+      this.estados = data;      
     });
   }
 
   onAddCidade() {
-    this.formCadastro.get('estado')?.value == null;
+    console.log('estadooooooooooooooooo');
+    console.log(this.formCadastro.get('estado').value)
+    console.log('fim estadooooooooooooooooo');
+    this.formCadastro.get('cidade')?.value == null;
     this.enderecoService
       .getCidades(this.formCadastro.get('estado')?.value)
       .subscribe((data: any) => {

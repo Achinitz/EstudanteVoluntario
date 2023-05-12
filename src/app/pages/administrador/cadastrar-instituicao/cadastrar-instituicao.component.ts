@@ -17,6 +17,13 @@ export class CadastrarInstituicaoComponent implements OnInit {
       sigla: 'UFPR',
       nome: 'Universidade Federal do Paraná',
       uf: 'Paraná',
+      cep: '82960-020',
+      logradouro: 'Casa',
+      numero: '1133',
+      bairro: 'Cajuru',
+      complemento: 'Casa Amarela',
+      estado: 1,
+      cidade: 2,
       cursos: [
         {
           id: 1,
@@ -67,6 +74,13 @@ export class CadastrarInstituicaoComponent implements OnInit {
       sigla: 'UTFPR',
       nome: 'Universidade Tecnológica Federal do Paraná',
       uf: 'Paraná',
+      cep: '82960-020',
+      logradouro: 'Casa',
+      numero: '1133',
+      bairro: 'Cajuru',
+      complemento: 'Casa Amarela',
+      estado: 1,
+      cidade: 2,
     },
     {
       id: 3,
@@ -74,6 +88,13 @@ export class CadastrarInstituicaoComponent implements OnInit {
       sigla: 'PUCPR',
       nome: 'Pontifícia Universidade Católica do Paraná',
       uf: 'Paraná',
+      cep: '82960-020',
+      logradouro: 'Casa',
+      numero: '1133',
+      bairro: 'Cajuru',
+      complemento: 'Casa Amarela',
+      estado: 1,
+      cidade: 2,
     },
     {
       id: 4,
@@ -81,6 +102,13 @@ export class CadastrarInstituicaoComponent implements OnInit {
       sigla: 'UNESPAR',
       nome: 'Universidade Estadual do Paraná',
       uf: 'Paraná',
+      cep: '82960-020',
+      logradouro: 'Casa',
+      numero: '1133',
+      bairro: 'Cajuru',
+      complemento: 'Casa Amarela',
+      estado: 1,
+      cidade: 2,
     },
     {
       id: 5,
@@ -88,6 +116,13 @@ export class CadastrarInstituicaoComponent implements OnInit {
       sigla: 'UNILA',
       nome: 'Universidade Federal da Integração Latino-América',
       uf: 'Paraná',
+      cep: '82960-020',
+      logradouro: 'Casa',
+      numero: '1133',
+      bairro: 'Cajuru',
+      complemento: 'Casa Amarela',
+      estado: 1,
+      cidade: 2,
     },
     {
       id: 6,
@@ -95,6 +130,13 @@ export class CadastrarInstituicaoComponent implements OnInit {
       sigla: 'UEPG',
       nome: 'Universidade Estadual de Ponta Grossa',
       uf: 'Paraná',
+      cep: '82960-020',
+      logradouro: 'Casa',
+      numero: '1133',
+      bairro: 'Cajuru',
+      complemento: 'Casa Amarela',
+      estado: 1,
+      cidade: 2,
     },
     {
       id: 7,
@@ -102,6 +144,13 @@ export class CadastrarInstituicaoComponent implements OnInit {
       sigla: 'UEPG',
       nome: 'Universidade Estadual de Ponta Grossa',
       uf: 'Paraná',
+      cep: '82960-020',
+      logradouro: 'Casa',
+      numero: '1133',
+      bairro: 'Cajuru',
+      complemento: 'Casa Amarela',
+      estado: 1,
+      cidade: 2,
     },
   ];
 
@@ -128,6 +177,11 @@ export class CadastrarInstituicaoComponent implements OnInit {
   visualizarInstituicao(Instituicao: any) {
     this.dataService.data = Instituicao;
     this.router.navigate(['/Admin/detalhe-instituicao']);
+  }
+
+  editarInstituicao(Instituicao: any){
+    this.dataService.data = Instituicao;
+    this.router.navigate(['/Admin/editar-instituicao']);
   }
 
   excluirInstituicao(Instituicao: any) {

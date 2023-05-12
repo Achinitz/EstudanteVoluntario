@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalCursoComponent } from './modal-curso/modal-curso.component';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-curso',
@@ -111,7 +112,7 @@ export class CadastrarCursoComponent implements OnInit {
     },
   ];
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private router: Router) {}
 
   paginaAtual = 1;
   tamanhoPagina: number = this.cursos.length;
@@ -131,6 +132,10 @@ export class CadastrarCursoComponent implements OnInit {
       centered: true,
     });
     modalRef.componentInstance.cursoSelecionado = Curso;
+  }
+
+  editarCurso(curso:any){
+    this.router.navigate(['/Admin/editar-curso']);
   }
 
   excluirCurso(Curso: any) {   
