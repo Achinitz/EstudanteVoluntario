@@ -15,10 +15,14 @@ h3 {
 .buttonsVagasCadastradas {
   display: flex;
   align-items: center;
-  justify-content: center;
   margin: 1rem;
 
   button:first-child {
     margin-right: 0.5rem;
   }
+}
+
+.voltar{
+  display:flex;   
+  justify-content: flex-end;
 }

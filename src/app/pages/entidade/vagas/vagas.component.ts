@@ -5,38 +5,34 @@ import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
-  selector: "app-vagas",
-  templateUrl: "./vagas.component.html",
-  styleUrls: ["./vagas.component.scss"],
+  selector: 'app-vagas',
+  templateUrl: './vagas.component.html',
+  styleUrls: ['./vagas.component.scss'],
 })
 export class VagasComponent implements OnInit {
-
   vagasDisponiveis: any = [
     {
       id: 1,
       nomeEntidade: 'ONG 1',
       nomeVaga: 'Contador de História 1',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mollis sem. Nullam eu imperdiet est, aliquet malesuada ipsum. Nunc id feugiat orci, et blandit erat.',
-      requisitos: [
-        {descricao: 'Ter 5 pós graduação'},
-        {descricao: 'Algum ai'},
-        {descricao: 'Algum ai'},
-      ],
-      auxilio:'Alimentação e Transporte',      
-      endereco:'Rua tal dos omi lá',
+      descricao:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mollis sem. Nullam eu imperdiet est, aliquet malesuada ipsum. Nunc id feugiat orci, et blandit erat.',
+      requisitos: 'Habilidade com atendimento ao público.',
+      auxilio: 'Alimentação e Transporte',
+      endereco: 'Rua tal dos omi lá',
       bairro: 'Cajuru',
       numero: '23',
       cidade: 'Curitiba',
       estado: 'Paraná',
       complemento: 'Prédio Comercial',
       dataAberturaVaga: '28/01/2023 08:00:00',
-      dataFinalizacaoVaga: '20/02/2023 23:59:00',      
-      dataInicioTrabalho:'20/02/2023',
-      dataTerminoTrabalho:'21/02/2023',
+      dataFinalizacaoVaga: '20/02/2023 23:59:00',
+      dataInicioTrabalho: '20/02/2023',
+      dataTerminoTrabalho: '21/02/2023',
       horarioInicio: '08:00',
-      horarioEncerramento:'12:00',
-      numeroVagas:'3',
+      horarioEncerramento: '12:00',
+      numeroVagas: '3',
       status: 'Aberta',
       inscritos: [
         {
@@ -46,7 +42,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Inscrito',
         },
         {
           nome: 'Alienigena',
@@ -55,7 +51,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Inscrito',
         },
         {
           nome: 'Alex',
@@ -64,7 +60,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Aprovado',
         },
         {
           nome: 'Tebutrios',
@@ -73,8 +69,8 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        }
+          status: 'Inscrito',
+        },
       ],
     },
     {
@@ -83,24 +79,20 @@ export class VagasComponent implements OnInit {
       nomeVaga: 'Contador de História 2',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
-      requisitos: [
-        {descricao: 'Ter 5 pós graduação'},
-        {descricao: 'Algum ai'},
-        {descricao: 'Algum ai'},
-      ],
-      auxilio:'Alimentação',     
-      endereco:'Rua tal dos omi lá',
+      requisitos: 'Habilidades com preparo de alimentos',
+      auxilio: 'Alimentação',
+      endereco: 'Rua tal dos omi lá',
       bairro: 'Cajuru',
       numero: '23',
       cidade: 'Curitiba',
       estado: 'Paraná',
-      complemento: 'Prédio Comercial',      
-      dataInicioTrabalho:'20/02/2023',
-      dataTerminoTrabalho:'21/02/2023',
+      complemento: 'Prédio Comercial',
+      dataInicioTrabalho: '20/02/2023',
+      dataTerminoTrabalho: '21/02/2023',
       horarioInicio: '08:00',
-      horarioEncerramento:'12:00',
-      numeroVagas:'3',
-      status: 'Aprovação',     
+      horarioEncerramento: '12:00',
+      numeroVagas: '3',
+      status: 'Aprovação',
     },
     {
       id: 3,
@@ -108,9 +100,9 @@ export class VagasComponent implements OnInit {
       nomeVaga: 'Contador de História 3',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
-      requisitos:null,
-      auxilio: null,      
-      endereco:'Rua tal dos omi lá',
+      requisitos: null,
+      auxilio: null,
+      endereco: 'Rua tal dos omi lá',
       bairro: 'Cajuru',
       numero: '23',
       cidade: 'Curitiba',
@@ -118,11 +110,11 @@ export class VagasComponent implements OnInit {
       complemento: 'Prédio Comercial',
       dataAberturaVaga: '28/01/2023 08:00:00',
       dataFinalizacaoVaga: '20/02/2023 23:00:00',
-      dataInicioTrabalho:'20/02/2023',
-      dataTerminoTrabalho:'21/02/2023',
+      dataInicioTrabalho: '20/02/2023',
+      dataTerminoTrabalho: '21/02/2023',
       horarioInicio: '08:00',
-      horarioEncerramento:'12:00',
-      numeroVagas:'3',
+      horarioEncerramento: '12:00',
+      numeroVagas: '3',
       status: 'Andamento',
       inscritos: [
         {
@@ -132,7 +124,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Inscrito',
         },
         {
           nome: 'Alienigena',
@@ -141,7 +133,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Inscrito',
         },
         {
           nome: 'Alex',
@@ -150,7 +142,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Aprovado',
         },
         {
           nome: 'Tebutrios',
@@ -159,8 +151,8 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        }
+          status: 'Inscrito',
+        },
       ],
     },
     {
@@ -169,11 +161,11 @@ export class VagasComponent implements OnInit {
       nomeVaga: 'Contador de História 4',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
-      requisitos:null,
-      auxilio:'100',
+      requisitos: null,
+      auxilio: '100',
       auxilioTransporte: true,
       auxilioAlimentacao: false,
-      endereco:'Rua tal dos omi lá',
+      endereco: 'Rua tal dos omi lá',
       bairro: 'Cajuru',
       numero: '23',
       cidade: 'Curitiba',
@@ -181,49 +173,11 @@ export class VagasComponent implements OnInit {
       complemento: 'Prédio Comercial',
       dataAberturaVaga: '28/01/2023 08:00:00',
       dataFinalizacaoVaga: '20/02/2023 23:00:00',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
-      numeroVagas:'3',
+      dia: '28/01/2023',
+      horarioInicio: '13:00',
+      horarioEncerramento: '17:00',
+      numeroVagas: '3',
       status: 'Aberta',
-      inscritos: [
-        {
-          nome: 'Jeronimo',
-          img: null,
-          cpf: '123',
-          curso: 'Analise de Sistemas',
-          idade: 22,
-          dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        },
-        {
-          nome: 'Alienigena',
-          img: null,
-          cpf: '1234',
-          curso: 'Analise de Sistemas',
-          idade: 22,
-          dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        },
-        {
-          nome: 'Alex',
-          img: null,
-          cpf: '12345',
-          curso: 'Analise de Sistemas',
-          idade: 22,
-          dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        },
-        {
-          nome: 'Tebutrios',
-          img: null,
-          cpf: '123456',
-          curso: 'Analise de Sistemas',
-          idade: 22,
-          dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        }
-      ],
     },
     {
       id: 5,
@@ -231,11 +185,11 @@ export class VagasComponent implements OnInit {
       nomeVaga: 'Contador de História 5',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
-      requisitos:null,
-      auxilio:'100',
+      requisitos: null,
+      auxilio: '100',
       auxilioTransporte: true,
       auxilioAlimentacao: false,
-      endereco:'Rua tal dos omi lá',
+      endereco: 'Rua tal dos omi lá',
       bairro: 'Cajuru',
       numero: '23',
       cidade: 'Curitiba',
@@ -243,10 +197,10 @@ export class VagasComponent implements OnInit {
       complemento: 'Prédio Comercial',
       dataAberturaVaga: '28/01/2023 08:00:00',
       dataFinalizacaoVaga: '20/02/2023 23:00:00',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
-      numeroVagas:'3',
+      dia: '28/01/2023',
+      horarioInicio: '13:00',
+      horarioEncerramento: '17:00',
+      numeroVagas: '3',
       status: 'Encerrada',
       inscritos: [
         {
@@ -256,7 +210,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Andamento',
         },
         {
           nome: 'Alienigena',
@@ -265,7 +219,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Andamento',
         },
         {
           nome: 'Alex',
@@ -274,7 +228,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Andamento',
         },
         {
           nome: 'Tebutrios',
@@ -283,8 +237,8 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        }
+          status: 'Andamento',
+        },
       ],
     },
     {
@@ -293,11 +247,11 @@ export class VagasComponent implements OnInit {
       nomeVaga: 'Contador de História 6',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
-      requisitos:null,
-      auxilio:'100',
+      requisitos: null,
+      auxilio: '100',
       auxilioTransporte: true,
       auxilioAlimentacao: false,
-      endereco:'Rua tal dos omi lá',
+      endereco: 'Rua tal dos omi lá',
       bairro: 'Cajuru',
       numero: '23',
       cidade: 'Curitiba',
@@ -305,10 +259,10 @@ export class VagasComponent implements OnInit {
       complemento: 'Prédio Comercial',
       dataAberturaVaga: '28/01/2023 08:00:00',
       dataFinalizacaoVaga: '20/02/2023 23:00:00',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
-      numeroVagas:'3',
+      dia: '28/01/2023',
+      horarioInicio: '13:00',
+      horarioEncerramento: '17:00',
+      numeroVagas: '3',
       status: 'Cancelada',
       inscritos: [
         {
@@ -318,7 +272,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Andamento',
         },
         {
           nome: 'Alienigena',
@@ -327,7 +281,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Andamento',
         },
         {
           nome: 'Alex',
@@ -336,7 +290,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Andamento',
         },
         {
           nome: 'Tebutrios',
@@ -345,8 +299,8 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        }
+          status: 'Andamento',
+        },
       ],
     },
     {
@@ -355,11 +309,11 @@ export class VagasComponent implements OnInit {
       nomeVaga: 'Contador de História 7',
       img: '../../assets/imagens/mulherGrandeCoracao.png',
       descricao: 'Vaga para pessoas de bom coração',
-      requisitos:null,
-      auxilio:'100',
+      requisitos: null,
+      auxilio: '100',
       auxilioTransporte: true,
       auxilioAlimentacao: false,
-      endereco:'Rua tal dos omi lá',
+      endereco: 'Rua tal dos omi lá',
       bairro: 'Cajuru',
       numero: '23',
       cidade: 'Curitiba',
@@ -367,10 +321,10 @@ export class VagasComponent implements OnInit {
       complemento: 'Prédio Comercial',
       dataAberturaVaga: '28/01/2023 08:00:00',
       dataFinalizacaoVaga: '20/02/2023 23:00:00',
-      dia:'28/01/2023',
-      horarioInicio:'13:00',
-      horarioEncerramento:'17:00',
-      numeroVagas:'3',
+      dia: '28/01/2023',
+      horarioInicio: '13:00',
+      horarioEncerramento: '17:00',
+      numeroVagas: '3',
       status: 'Aberta',
       inscritos: [
         {
@@ -380,7 +334,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Andamento',
         },
         {
           nome: 'Alienigena',
@@ -389,7 +343,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Andamento',
         },
         {
           nome: 'Alex',
@@ -398,7 +352,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
+          status: 'Andamento',
         },
         {
           nome: 'Tebutrios',
@@ -407,8 +361,8 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Andamento'
-        }
+          status: 'Andamento',
+        },
       ],
     },
   ];
@@ -448,8 +402,8 @@ export class VagasComponent implements OnInit {
   }
 
   //Vai exibir os detalhes da vaga antes de ele efetivar a inscrição
-    exibirDetalhes(value: any): void {
-      this.dataService.data = value;
+  exibirDetalhes(value: any): void {
+    this.dataService.data = value;
     // const dialogRef = this.dialog.open(DetalheVagaEntidadeComponent, {
     //   width: "auto",
     //   data: this.vagasDisponiveis[value],
@@ -459,7 +413,7 @@ export class VagasComponent implements OnInit {
     //   console.log("The dialog was closed");
     // });
     this.router.navigate(['/Entidade/detalhe-vaga']);
-  } 
+  }
 
   ngOnInit(): void {}
 }

@@ -16,6 +16,8 @@ export class CadastrarVagaComponent implements OnInit {
   utilizarEnderecoEntidade: boolean = true;
   possuiAuxilio: boolean = false;
   termosCondicao: boolean = false;
+  dataInicio: any;
+  dataFimInscricao: any;
   estado: any;
   cidade: any;
   bairro: any;
@@ -63,8 +65,13 @@ export class CadastrarVagaComponent implements OnInit {
       ? false
       : true;
   }
+
   aceitarTermo() {
     this.termosCondicao = this.termosCondicao ? false : true;
+  }
+
+  validarData() {
+    this.dataInicio = this.formCadastro.get('dataInicioTrabalho').value;   
   }
 
   constructor(
@@ -77,11 +84,11 @@ export class CadastrarVagaComponent implements OnInit {
 
   inicializaFormulario() {
     this.enderecoService.getEstados().subscribe((data: any) => {
-      this.estados = data;      
+      this.estados = data;
     });
   }
 
-  onAddCidade() {  
+  onAddCidade() {
     this.enderecoService
       .getCidades(this.formCadastro.get('estado')?.value)
       .subscribe((data: any) => {

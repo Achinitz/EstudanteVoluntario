@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        
+
         <section>
             <h3>Cursos</h3>
 
@@ -54,7 +54,7 @@
                         <td class="col-3 text-center"> {{ curso.campus }} </td>
                         <td class="col-2 text-center">{{ curso.cidade }}/{{ curso.uf }}</td>
                         <td class="col-2 text-center buttonsActions">
-                            <button class="button-table"  (click)="visualizarCurso(curso)">
+                            <button class="button-table" (click)="visualizarCurso(curso)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-eye" viewBox="0 0 16 16">
                                     <path
@@ -63,7 +63,7 @@
                                         d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                                 </svg>
                             </button>
-                            <button class="button-table"  (click)="excluirCurso(curso)">
+                            <button class="button-table" (click)="excluirCurso(curso)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-x" viewBox="0 0 16 16">
                                     <path
@@ -84,10 +84,11 @@
                 Excluir
             </button>
         </div>
-
-        <button class="btn btn-primary voltar" routerLink="/Admin/cadastrar-instituicao">
-            Voltar
-        </button>
+        <div class="voltar">
+            <button class="btn btn-primary voltar" routerLink="/Admin/cadastrar-instituicao">
+                Voltar
+            </button>
+        </div>
 
     </main>
 

@@ -45,13 +45,12 @@
             O campo Requisitos é obrigatório!
           </small>
         </div>
-        <!--Arrumar a funcao para o checked-->
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="possuiAuxilio" (change)="setAuxilio()" 
-          formControlName="possuiAuxilio" />
+          <input type="checkbox" class="form-check-input" id="possuiAuxilio" (change)="setAuxilio()"
+            formControlName="possuiAuxilio" />
           <label class="form-check-label" for="possuiAuxilio">Possui auxílio?</label>
         </div>
-        <div *ngIf="possuiAuxilio" class="form-group">         
+        <div *ngIf="possuiAuxilio" class="form-group">
           <textarea class="form-control" id="descricaoAuxilio" formControlName="descricaoAuxilio"
             placeholder="Descreva o auxílio"></textarea>
         </div>
@@ -61,7 +60,7 @@
               Data de início da Atividade <em>*</em>
             </label>
             <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="dataInicioTrabalho"
-              formControlName="dataInicioTrabalho" />
+              formControlName="dataInicioTrabalho" (change)="validarData()"/>
             <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
                 formCadastro.controls.dataInicioTrabalho.touched &&
                 formCadastro.controls.dataInicioTrabalho.invalid
@@ -87,8 +86,7 @@
         <div class="row duplo">
           <div class="col">
             <label for="horarioInicio"> Horário de inicio <em>*</em> </label>
-            <input class="form-control" type="time" id="horarioInicio"
-              formControlName="horarioInicio" />
+            <input class="form-control" type="time" id="horarioInicio" formControlName="horarioInicio" />
             <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
                 formCadastro.controls.horarioInicio.touched &&
                 formCadastro.controls.horarioInicio.invalid
@@ -100,8 +98,7 @@
             <label for="horarioEncerramento">
               Horário de encerramento <em>*</em>
             </label>
-            <input class="form-control" type="time" id="horarioEncerramento"
-              formControlName="horarioEncerramento" />
+            <input class="form-control" type="time" id="horarioEncerramento" formControlName="horarioEncerramento" />
             <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
               formCadastro.controls.horarioEncerramento.touched &&
               formCadastro.controls.horarioEncerramento.invalid
@@ -129,7 +126,7 @@
           <label class="form-check-label" for="utilizarEnderecoEntidade">Desejo usar o endereço cadastrado da
             Entidade</label>
         </div>
-        <!--Arrumar a funcao para o checked-->
+        
         <div *ngIf="!utilizarEnderecoEntidade">
           <div class="form-group">
             <label for="cep">CEP <em>*</em> </label>
@@ -207,7 +204,7 @@
         <div class="form-group">
           <label for="dataFinalizacaoVaga">Data de encerramento da inscrição <em>*</em> </label>
           <input type="date" class="form-control" id="dataFinalizacaoVaga" placeholder="yyyy-mm-dd"
-            formControlName="dataFinalizacaoVaga" />
+            formControlName="dataFinalizacaoVaga" [max]="dataInicio"/>
           <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
               formCadastro.controls.dataFinalizacaoVaga.touched &&
               formCadastro.controls.dataFinalizacaoVaga.invalid
@@ -218,7 +215,7 @@
 
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="termosCondicao" formControlName="termosCondicao"
-          (change)="aceitarTermo()" />
+            (change)="aceitarTermo()" />
           <label class="form-check-label" for="termosCondicao">Declaro que a vaga cadastrada está de acordo com os
             <a href="/">termos e condições</a> do site</label>
         </div>

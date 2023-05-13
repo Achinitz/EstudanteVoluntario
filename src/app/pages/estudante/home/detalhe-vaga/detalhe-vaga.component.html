@@ -85,17 +85,19 @@
     </section>
 
     <div class="buttonsVagasCadastradas">
-      <button *ngIf="!vaga.inscrito" class="btn btn-primary" (click)="confirmarInscricao()" >
-        Inscrição 
+      <button *ngIf="!vaga.inscrito" class="btn btn-primary" (click)="confirmarInscricao()">
+        Inscrição
       </button>
       <button *ngIf="vaga.inscrito" class="btn btn-danger" (click)="cancelarInscricao()">
         Cancelar inscrição
       </button>
     </div>
 
-    <button class="btn btn-primary" routerLink="/Estudante/buscar-vagas">
-      Voltar
-    </button>
+    <div class="voltar">
+      <button class="btn btn-primary" routerLink="/Estudante/buscar-vagas">
+        Voltar
+      </button>
+    </div>
 
   </main>
 </section>

@@ -44,7 +44,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
       curso: 'ADMINISTRAÇÃO - CAMPUS JARDIM BOTÂNICO',
       anoInicio: '2020',
       anoConclusao: '2025',
-      comprovanteMatricula: 'url',
+      comprovanteMatricula: 'https://uploadev.s3.us-east-1.amazonaws.com/fd1908b9afc86135-TUFS_GenderInMedia-ClassSyllabus.pdf',
     },
   ];
 

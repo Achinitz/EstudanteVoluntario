@@ -96,9 +96,7 @@
         Requisitos
       </h3>
       <div *ngIf="vaga.requisitos">
-        <ul *ngFor="let requisito of vaga.requisitos;">
-          <li>{{requisito.descricao}}</li>
-        </ul>
+        <p>{{vaga.requisitos}}</p>
       </div>   
     </section>
 
@@ -129,7 +127,7 @@
               <span class="ball__aviso"></span>
               {{ inscrito.status }}
             </td>
-            <td class="col-3 text-center">{{ inscrito.curso }}h</td>
+            <td class="col-3 text-center">{{ inscrito.curso }}</td>
             <td class="col-2 text-center buttonsActions">
               <button class="button-table" (click)="visualizarCandidato(inscrito)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
@@ -162,9 +160,12 @@
       </button>
     </div>
 
-    <button class="btn btn-primary" routerLink="/Entidade/vagas">
-      Voltar
-    </button>
+    <div class="voltar">
+      <button class="btn btn-primary" routerLink="/Entidade/vagas">
+        Voltar
+      </button>
+    </div>
+  
 
   </main>
 
