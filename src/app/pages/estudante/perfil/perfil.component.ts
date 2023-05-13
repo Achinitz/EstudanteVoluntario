@@ -36,6 +36,12 @@ export class PerfilComponent implements OnInit {
     { id: 3, nome: 'AGROECOLOGIA - CAMPUS LITORAL' },
     { id: 4, nome: 'AGRONOMIA - CAMPUS AGRÁRIAS' },
   ];
+  estadoCivil: any = [
+    { id: 1, nome: 'Casado (a)' },
+    { id: 2, nome: 'Solteiro (a)' },
+    { id: 3, nome: 'Divorciado (a)' },
+    { id: 4, nome: 'Viúvo (a)' },
+  ];
 
   public formCadastro = new FormGroup({
     cpf: new FormControl({value:this.cpf, disabled: true},
@@ -46,6 +52,7 @@ export class PerfilComponent implements OnInit {
     nomeSocial: new FormControl(null),
     confirmaNomeSocial: new FormControl(false),
     identificacaoGenero: new FormControl(null, Validators.required),
+    estadoCivil: new FormControl(null, Validators.required),
     dataNascimento: new FormControl(null, Validators.required),
     email: new FormControl(null, [Validators.required, Validators.email]),
     telefone: new FormControl(null, Validators.required),

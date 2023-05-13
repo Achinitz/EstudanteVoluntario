@@ -20,6 +20,27 @@ export class FormEstudanteComponent implements OnInit {
   cidades: any = [];
   bairros: any = [];
   estados: any = [];
+  graus: any = [
+    { id: 1, nome: 'Bacharelado' },
+    { id: 2, nome: 'Licenciatura' },
+    { id: 3, nome: 'Tecnologia' },
+  ];
+  instituicoes: any = [
+    { id: 1, nome: 'UFPR - Universidade Federal do Paraná' },
+    { id: 2, nome: 'UTFPR - Universidade Tecnológica Federal do Paraná' },
+  ];
+  cursos: any = [
+    { id: 1, nome: 'ADMINISTRAÇÃO - CAMPUS JARDIM BOTÂNICO' },
+    { id: 2, nome: 'ADMINISTRAÇÃO PÚBLICA - campus centro - REITORIA' },
+    { id: 3, nome: 'AGROECOLOGIA - CAMPUS LITORAL' },
+    { id: 4, nome: 'AGRONOMIA - CAMPUS AGRÁRIAS' },
+  ];
+  estadoCivil: any = [
+    { id: 1, nome: 'Casado (a)' },
+    { id: 2, nome: 'Solteiro (a)' },
+    { id: 3, nome: 'Divorciado (a)' },
+    { id: 4, nome: 'Viúvo (a)' },
+  ];
 
   public formCadastro = new FormGroup({
     cpf: new FormControl(null, [
@@ -29,8 +50,10 @@ export class FormEstudanteComponent implements OnInit {
     nomeCompleto: new FormControl(null, Validators.required),
     nomeSocial: new FormControl(null),
     confirmaNomeSocial: new FormControl(false),
+    comprovanteMatricula: new FormControl(null, Validators.required),
     identificacaoGenero: new FormControl(null, Validators.required),
     dataNascimento: new FormControl(null, Validators.required),
+    estadoCivil: new FormControl(null, Validators.required),
     email: new FormControl(null, [Validators.required, Validators.email]),
     telefone: new FormControl(null, Validators.required),
     cep: new FormControl(null, Validators.required),
@@ -42,6 +65,11 @@ export class FormEstudanteComponent implements OnInit {
     complemento: new FormControl(null, Validators.required),
     senha: new FormControl(null, Validators.required),
     confirmarSenha: new FormControl(null, Validators.required),
+    instituicao: new FormControl(null, Validators.required),
+    grau: new FormControl(null, Validators.required),
+    curso: new FormControl(null, Validators.required),
+    anoInicio: new FormControl(null, Validators.required),
+    anoConclusao: new FormControl(null, Validators.required),
     termo: new FormControl(null, Validators.required),
   });
 

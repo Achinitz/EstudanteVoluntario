@@ -35,8 +35,14 @@
         " [@fadeInOut]>
         O campo CPF é obrigatório!
       </small>
-
     </div>
+    <div class="form-group">
+      <label for="cpf">Estado Civil <em>*</em> </label>
+      <ng-select [items]="estadoCivil" bindLabel="nome" bindValue="id" placeholder="Selecione"
+        formControlName="estadoCivil">
+      </ng-select>
+    </div>
+
     <div class="form-group">
       <label for="email">E-mail <em>*</em> </label>
       <input type="email" class="form-control" id="email" placeholder="name@email.com" formControlName="email" />
@@ -141,6 +147,80 @@
       <label for="complemento">Complemento</label>
       <input type="text" class="form-control" id="complemento" placeholder="Complemento ou Ponto de Referência."
         formControlName="complemento" />
+    </div>
+    <div class="form-group">
+      <label for="ies">Instituição de Ensino <em>*</em> </label>
+      <ng-select [items]="instituicoes" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+        formControlName="instituicao" (closeOnSelect)="(true)">
+      </ng-select>
+      <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.instituicao.touched &&
+          formCadastro.controls.instituicao.invalid
+        " [@fadeInOut]>
+        O campo Instituição de Ensino é obrigatório!
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="grau">Grau Acadêmico: <em>*</em> </label>
+      <ng-select [items]="graus" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+        formControlName="grau" (closeOnSelect)="(true)">
+      </ng-select>
+      <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.grau.touched &&
+          formCadastro.controls.grau.invalid
+        " [@fadeInOut]>
+        O campo Grau Acadêmico é obrigatório!
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="curso">Curso <em>*</em> </label>
+      <ng-select [items]="cursos" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
+        formControlName="curso" (closeOnSelect)="(true)">
+      </ng-select>
+      <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+      formCadastro.controls.curso.touched &&
+      formCadastro.controls.curso.invalid
+    " [@fadeInOut]>
+        O campo Curso é obrigatório!
+      </small>
+    </div>
+
+    <div class="row duplo">
+      <div class="col">
+        <label for="anoInicio">Ano de Início <em>*</em> </label>
+        <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="anoInicio" formControlName="anoInicio" />
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+        formCadastro.controls.anoInicio.touched &&
+        formCadastro.controls.anoInicio.invalid
+      " [@fadeInOut]>
+          O campo Ano de Início é obrigatório!
+        </small>
+      </div>
+      <div class="col">
+        <label for="anoConclusao">Previsão de conclusão <em>*</em> </label>
+        <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="anoConclusao"
+          formControlName="anoConclusao" />
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+        formCadastro.controls.anoConclusao.touched &&
+        formCadastro.controls.anoConclusao.invalid
+      " [@fadeInOut]>
+          O campo Previsão de Conclusão é obrigatório!
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group inputFile">
+      <label for="comprovanteMatricula">Comprovante de Matrícula <em>*</em>
+      </label>
+      <br>
+      <input type="file" class="form-control-file" id="comprovanteMatricula" formControlName="comprovanteMatricula" />
+      <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+      formCadastro.controls.comprovanteMatricula.touched &&
+      formCadastro.controls.comprovanteMatricula.invalid">
+        O campo Comprovante de Matrícula é obrigatório!
+      </small>
     </div>
     <div class="form-group">
       <label for="inputPassword5">Senha <em>*</em> </label>
