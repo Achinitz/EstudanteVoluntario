@@ -4,6 +4,7 @@ import { EnderecoService } from 'src/app/services/endereco.service';
 import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
 import { genericAnimations } from 'src/app/shared/animations/animations';
 import { ToastrService } from 'ngx-toastr';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-cadastrar-vaga',
@@ -16,8 +17,10 @@ export class CadastrarVagaComponent implements OnInit {
   utilizarEnderecoEntidade: boolean = true;
   possuiAuxilio: boolean = false;
   termosCondicao: boolean = false;
+  dataMin: any;
   dataInicio: any;
-  dataFimInscricao: any;
+  hoje: Date = new Date();
+  dataMaxFimInscricao: any;
   estado: any;
   cidade: any;
   bairro: any;
@@ -70,8 +73,20 @@ export class CadastrarVagaComponent implements OnInit {
     this.termosCondicao = this.termosCondicao ? false : true;
   }
 
-  validarData() {
-    this.dataInicio = this.formCadastro.get('dataInicioTrabalho').value;   
+  fimInscricao() {   
+    const inicio = new Date (this.formCadastro.get('dataInicioTrabalho').value);
+    var year = inicio.getFullYear();
+    var month = inicio.getMonth();
+    var day = inicio.getDate();
+    this.dataMaxFimInscricao = new Date(year,month,day-1);  
+  }
+
+  dataMinima() {
+    var year = this.hoje.getFullYear();
+    var month = this.hoje.getMonth();
+    var day = this.hoje.getDate();
+
+    this.dataMin = new Date(year,month,day+5);    
   }
 
   constructor(
@@ -80,6 +95,7 @@ export class CadastrarVagaComponent implements OnInit {
     private toast: ToastrService
   ) {
     this.inicializaFormulario();
+    this.dataMinima();
   }
 
   inicializaFormulario() {
