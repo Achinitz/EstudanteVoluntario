@@ -59,8 +59,9 @@
             <label for="dataInicioTrabalho">
               Data de início da Atividade <em>*</em>
             </label>
+            <!--Mínimo de 5 dias antes da data de hoje-->
             <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="dataInicioTrabalho"
-              formControlName="dataInicioTrabalho" (change)="validarData()"/>
+              formControlName="dataInicioTrabalho" min="{{dataMin | date: 'yyyy-MM-dd'}}" (change)="fimInscricao()" />
             <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
                 formCadastro.controls.dataInicioTrabalho.touched &&
                 formCadastro.controls.dataInicioTrabalho.invalid
@@ -126,7 +127,7 @@
           <label class="form-check-label" for="utilizarEnderecoEntidade">Desejo usar o endereço cadastrado da
             Entidade</label>
         </div>
-        
+
         <div *ngIf="!utilizarEnderecoEntidade">
           <div class="form-group">
             <label for="cep">CEP <em>*</em> </label>
@@ -203,8 +204,9 @@
 
         <div class="form-group">
           <label for="dataFinalizacaoVaga">Data de encerramento da inscrição <em>*</em> </label>
+          <!--Máximo de 2 dias antes da data de início-->
           <input type="date" class="form-control" id="dataFinalizacaoVaga" placeholder="yyyy-mm-dd"
-            formControlName="dataFinalizacaoVaga" [max]="dataInicio"/>
+            formControlName="dataFinalizacaoVaga" max="{{dataMaxFimInscricao | date: 'yyyy-MM-dd'}}" />
           <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
               formCadastro.controls.dataFinalizacaoVaga.touched &&
               formCadastro.controls.dataFinalizacaoVaga.invalid
