@@ -19,6 +19,8 @@ export class CadastrarCursoComponent implements OnInit {
       grauAcademico: 'Bacharelado',
       instituicaoSigla: 'UFPR',
       instituicaoNome: 'Universidade Federal do Paraná',
+      cargaHoraria: '',
+      periodo: '',
       campus: 'CAMPUS JARDIM BOTÂNICO',
       logradouro: 'Rua Prefeito Lothário Meissner',
       numero: 632,
