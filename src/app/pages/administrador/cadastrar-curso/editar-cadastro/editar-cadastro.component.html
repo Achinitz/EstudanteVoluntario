@@ -29,7 +29,7 @@
             </small>
           </div>
           <div class="form-group">
-            <label for="sigla">Sigla <em>*</em> </label>
+            <label for="sigla">Sigla da Instituição<em>*</em> </label>
             <input type="text" class="form-control" id="sigla" placeholder="Sigla da Instituição"
               formControlName="sigla" />
             <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
@@ -63,18 +63,36 @@
               O campo Estado/UF é obrigatório!
             </small>
           </div>
-          <div class="form-group">
-            <label for="logradouro">Logradouro <em>*</em> </label>
-            <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, Travessa, etc."
-              formControlName="logradouro" />
-            <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.logradouro.touched &&
-            formCadastro.controls.logradouro.invalid" [@fadeInOut]>
-              O campo Logradouro é obrigatório!
-            </small>
+          <div class="row duplo">
+            <div class="col-4">
+              <label for="numero">Carga Horária <em>*</em> </label>
+              <input type="text" class="form-control" placeholder="Número" formControlName="numero" />
+              <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.numero.touched &&
+                formCadastro.controls.numero.invalid" [@fadeInOut]>
+                O campo Número é obrigatório!
+              </small>
+            </div>
+            <div class="col-4">
+              <label for="bairro">Periodo <em>*</em> </label>
+              <input type="text" class="form-control" placeholder="Bairro" formControlName="bairro" />
+              <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.bairro.touched &&
+                formCadastro.controls.bairro.invalid" [@fadeInOut]>
+                O campo Bairro é obrigatório!
+              </small>
+            </div>
+            <div class="col-4">
+              <label for="bairro">Periodo <em>*</em> </label>
+              <input type="text" class="form-control" placeholder="Bairro" formControlName="bairro" />
+              <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.bairro.touched &&
+                formCadastro.controls.bairro.invalid" [@fadeInOut]>
+                O campo Bairro é obrigatório!
+              </small>
+            </div>
           </div>
+
           <div class="row duplo">
             <div class="col">
-              <label for="numero">Número <em>*</em> </label>
+              <label for="numero">Logradouro  <em>*</em> </label>
               <input type="text" class="form-control" placeholder="Número" formControlName="numero" />
               <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.numero.touched &&
                 formCadastro.controls.numero.invalid" [@fadeInOut]>
