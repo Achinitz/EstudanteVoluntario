@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FormEstudanteComponent implements OnInit {
   submitted = false;
+  confirmaNomeSocial: boolean = false;
   estado: any;
   cidade: any;
   bairro: any;
@@ -53,6 +54,8 @@ export class FormEstudanteComponent implements OnInit {
     comprovanteMatricula: new FormControl(null, Validators.required),
     identificacaoGenero: new FormControl(null, Validators.required),
     dataNascimento: new FormControl(null, Validators.required),
+    rg: new FormControl(null, Validators.required),
+    rgEmissor: new FormControl(null, Validators.required),
     estadoCivil: new FormControl(null, Validators.required),
     email: new FormControl(null, [Validators.required, Validators.email]),
     telefone: new FormControl(null, Validators.required),
@@ -92,6 +95,10 @@ export class FormEstudanteComponent implements OnInit {
       // console.log(data);
       //  console.log('Fim estados');
     });
+  }
+
+  setNomeSocial() {
+    this.confirmaNomeSocial = this.confirmaNomeSocial ? false : true;
   }
 
   onAddCidade() {

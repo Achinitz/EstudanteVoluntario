@@ -64,16 +64,21 @@
         <p><label>Entidade: </label> {{ vagaSelecionada.nomeEntidade }}</p>
       </div>
     </div>
-    <div class="row col-12">
-      <div class="col-12">
-        <p><label>Descrição da vaga: </label> {{ vagaSelecionada.descricao }}</p>
-      </div>
+    <div class="col-12">
+      <p><label>Descrição da vaga: </label> {{ vagaSelecionada.descricao }}</p>
     </div>
-    <div class="row col-12">
+    <div class="col-12">
+      <p><label>Requisitos: </label> {{ vagaSelecionada.requisitos }}</p>
+    </div>
+    <div class="col-12">
+      <p *ngIf="vagaSelecionada.auxilio"><label>Auxílio ofertado: </label> {{ vagaSelecionada.auxilio }}</p>
+      <p *ngIf="!vagaSelecionada.auxilio"><label>Auxílio ofertado: </label> Não há</p>
+    </div>
+    <div class="col-12">
       <p><label>Período do trabalho: </label> {{ vagaSelecionada.dataInicioTrabalho }} - {{
         vagaSelecionada.dataTerminoTrabalho }}</p>
     </div>
-    <div class="row col-12">
+    <div class="col-12">
       <p><label>Horário: </label> {{ vagaSelecionada.horarioInicio }} - {{ vagaSelecionada.horarioEncerramento }}</p>
     </div>
   </section>
@@ -88,15 +93,15 @@
     <p>
       Declaro, por fim, que estou ciente de que eventuais danos pessoais ou materiais causados no exercício do trabalho
       voluntário serão de total e integral responsabilidade minha e não serão imputados à esta organização.</p>
-    
-      <br />
-    
+
+    <br />
+
     <p *ngIf="!vagaSelecionada.termo">Curitiba, {{dia}} de {{mes}} de {{ano}}.</p>
     <div *ngIf="vagaSelecionada.termo">
       <p>Termo de Adesão aceito em: </p>
-      <p>Curitiba, {{dia}} de {{mes}} de {{ano}}.</p>
+      <p>Curitiba, {{vagaSelecionada.aceiteTermo}}.</p>
     </div>
-   
+
   </section>
 
 </section>

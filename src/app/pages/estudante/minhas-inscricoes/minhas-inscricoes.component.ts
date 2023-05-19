@@ -37,6 +37,7 @@ export class MinhasInscricoesComponent implements OnInit {
       status: 'Aprovado',
       inscrito: true,
       termo: false,
+      
     },
     {
       id: 2,
@@ -63,6 +64,7 @@ export class MinhasInscricoesComponent implements OnInit {
       status: 'Aprovado',
       inscrito: true,
       termo: true,
+      aceiteTermo: '20/02/2023',
     },
 
     {
@@ -89,6 +91,7 @@ export class MinhasInscricoesComponent implements OnInit {
       numeroVagas: '3',
       status: 'Inscrito',
       inscrito: true,
+      aceiteTermo: '20/02/2023',
     },
 
     {
@@ -116,6 +119,7 @@ export class MinhasInscricoesComponent implements OnInit {
       status: 'Avaliado',
       inscrito: true,
       termo: true,
+      aceiteTermo: '20/02/2023',
     },
     {
       id: 5,

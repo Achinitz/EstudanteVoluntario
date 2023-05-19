@@ -28,6 +28,8 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
       nomeSocial: 'Natasha de Oliveira',
       identificacaoGenero: 'Transexual',
       dataNascimento: '01/03/1997',
+      rg: '12165464',
+      rgEmissor: 'SSP/PR',
       email: 'gustavoachinitz@gmail.com',
       telefone: '41996683953',     
       cep: '82960-020',

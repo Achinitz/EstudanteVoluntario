@@ -38,10 +38,11 @@
         </small>
       </div>
       <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="confirmaNomeSocial" formControlName="confirmaNomeSocial" />
+        <input type="checkbox" class="form-check-input" id="confirmaNomeSocial" formControlName="confirmaNomeSocial"
+          (change)="setNomeSocial()" />
         <label class="form-check-label" for="confirmaNomeSocial">Desejo usar meu nome social</label>
       </div>
-      <div class="form-group">
+      <div *ngIf="confirmaNomeSocial" class="form-group">
         <label for="nomeSocial">Nome Social</label>
         <input type="text" class="form-control" id="nomeSocial" placeholder="Nome Social"
           formControlName="nomeSocial" />
@@ -50,6 +51,28 @@
         <label for="cpf">CPF <em>*</em> </label>
         <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" mask="000.000.000-00"
           formControlName="cpf" />
+      </div>
+      <div class="row duplo">
+        <div class="col">
+          <label for="rg">RG </label>
+          <input type="text" class="form-control" placeholder="Número do RG" formControlName="rg" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.rg.touched &&
+          formCadastro.controls.rg.invalid
+        " [@fadeInOut]>
+            O campo RG é obrigatório!
+          </small>
+        </div>
+        <div class="col">
+          <label for="rgEmissor">Órgão emissor <em>*</em> </label>
+          <input class="form-control" type="text" placeholder="Órgão emissor" formControlName="rgEmissor" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+              formCadastro.controls.rgEmissor.touched &&
+              formCadastro.controls.rgEmissor.invalid
+            " [@fadeInOut]>
+            O campo Órgão emissor é obrigatório!
+          </small>
+        </div>
       </div>
       <div class="form-group">
         <label for="cpf">Estado Civil <em>*</em> </label>

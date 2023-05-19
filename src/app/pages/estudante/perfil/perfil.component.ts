@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PerfilComponent implements OnInit {
   submitted = false;
+  confirmaNomeSocial: boolean = false;
   cpf = '00000000000'
   estado: any;
   cidade: any;
@@ -54,6 +55,8 @@ export class PerfilComponent implements OnInit {
     identificacaoGenero: new FormControl(null, Validators.required),
     estadoCivil: new FormControl(null, Validators.required),
     dataNascimento: new FormControl(null, Validators.required),
+    rg: new FormControl(null, Validators.required),
+    rgEmissor: new FormControl(null, Validators.required),
     email: new FormControl(null, [Validators.required, Validators.email]),
     telefone: new FormControl(null, Validators.required),
     cep: new FormControl(null, Validators.required),
@@ -95,6 +98,10 @@ export class PerfilComponent implements OnInit {
     });
   }
 
+  setNomeSocial() {
+    this.confirmaNomeSocial = this.confirmaNomeSocial ? false : true;
+  }
+  
   onAddCidade() {
     this.enderecoService
       .getCidades(this.formCadastro.get('estado')?.value)
