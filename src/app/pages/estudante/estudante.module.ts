@@ -24,6 +24,7 @@ import { ModalVagaComponent } from './minhas-inscricoes/modal-inscricao/modal-va
 import { ModalCertificadoComponent } from './certificado/modal-certificado/modal-certificado.component';
 import { NotificacoesComponent } from './notificacoes/notificacoes.component';
 import { ModalNotificacaoComponent } from './notificacoes/modal-notificacao/modal-notificacao.component';
+import { ModalTermoComponent } from './minhas-inscricoes/modal-termo/modal-termo.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ModalNotificacaoComponent } from './notificacoes/modal-notificacao/moda
     ModalCertificadoComponent,
     NotificacoesComponent,
     ModalNotificacaoComponent,
+    ModalTermoComponent,
   ],
   imports: [
     CommonModule,

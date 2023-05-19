@@ -1,0 +1,107 @@
+<section class="modal-header">
+  <h2 class="modal-title">TERMO DE ADESÃO - Trabalho Voluntário</h2>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</section>
+<section class="modal-body">
+  <section class="info">
+    <h3>Informações do(a) Voluntário(a)</h3>
+    <div class="col-12">
+      <p><label>Nome Completo: </label> {{ estudante.nomeCompleto }} </p>
+    </div>
+    <div class="row col-12">
+      <div class="col-6">
+        <p><label>RG: </label>{{ estudante.rg }} </p>
+      </div>
+      <div class="col-6">
+        <p><label>CPF: </label> {{ estudante.cpf }} </p>
+      </div>
+    </div>
+    <div class="row col-12">
+      <div class="col-6">
+        <p><label>Estado Civil: </label> {{ estudante.estadoCivil }} </p>
+      </div>
+      <div class="col-6">
+        <p><label>Telefone: </label> {{ estudante.telefone }} </p>
+      </div>
+    </div>
+    <div class="col-12">
+      <p><label>E-mail: </label> {{ estudante.email }} </p>
+    </div>
+    <div class="col-12">
+      <span><label>Endereço: </label> {{ estudante.logradouro }}, {{ estudante.numero }}, {{ estudante.bairro }} -
+        {{ estudante.cep }} - {{ estudante.cidade }}/{{estudante.estado }}</span>
+    </div>
+  </section>
+  <hr />
+
+  <section class="info">
+    <h3>Informações da Entidade</h3>
+    <div class="col-12">
+      <p><label>Razão Social: </label> {{ entidade.razaoSocial }} </p>
+    </div>
+    <div class="col-12">
+      <p><label>CNPJ: </label> {{ entidade.cnpj }} </p>
+    </div>
+    <div class="col-12">
+      <p><label>Telefone: </label> {{ entidade.telefone }} </p>
+    </div>
+    <div class="col-12">
+      <p><label>E-mail: </label> {{ entidade.email }} </p>
+    </div>
+    <div class="col-12">
+      <span><label>Endereço: </label> {{ entidade.logradouro }}, {{ entidade.numero }}, {{ entidade.bairro }} -
+        {{ entidade.cep }} - {{ entidade.cidade }}/{{entidade.estado }}</span>
+    </div>
+  </section>
+  <hr />
+  <section class="info">
+    <h3>Informações da Atividade</h3>
+    <div class="row col-12">
+      <div class="col-6">
+        <p><label>Vaga: </label> {{ vagaSelecionada.nomeVaga }}</p>
+      </div>
+      <div class="col-6">
+        <p><label>Entidade: </label> {{ vagaSelecionada.nomeEntidade }}</p>
+      </div>
+    </div>
+    <div class="row col-12">
+      <div class="col-12">
+        <p><label>Descrição da vaga: </label> {{ vagaSelecionada.descricao }}</p>
+      </div>
+    </div>
+    <div class="row col-12">
+      <p><label>Período do trabalho: </label> {{ vagaSelecionada.dataInicioTrabalho }} - {{
+        vagaSelecionada.dataTerminoTrabalho }}</p>
+    </div>
+    <div class="row col-12">
+      <p><label>Horário: </label> {{ vagaSelecionada.horarioInicio }} - {{ vagaSelecionada.horarioEncerramento }}</p>
+    </div>
+  </section>
+  <hr />
+  <section class="info">
+    <p>
+      Pelo presente Termo de Adesão e ciente da Lei n. 9.608/1998 que rege o trabalho voluntário,
+      decido espontaneamente realizar atividade voluntária nesta organização.</p>
+    <p> Declaro, ainda, que estou ciente de que o trabalho não será remunerado e que não configurará vínculo
+      empregatício
+      ou gerará qualquer obrigação de natureza trabalhista, previdenciária ou afim.</p>
+    <p>
+      Declaro, por fim, que estou ciente de que eventuais danos pessoais ou materiais causados no exercício do trabalho
+      voluntário serão de total e integral responsabilidade minha e não serão imputados à esta organização.</p>
+    
+      <br />
+    
+    <p *ngIf="!vagaSelecionada.termo">Curitiba, {{dia}} de {{mes}} de {{ano}}.</p>
+    <div *ngIf="vagaSelecionada.termo">
+      <p>Termo de Adesão aceito em: </p>
+      <p>Curitiba, {{dia}} de {{mes}} de {{ano}}.</p>
+    </div>
+   
+  </section>
+
+</section>
+
+<section class="modal-footer">
+  <button *ngIf="!vagaSelecionada.termo" type="button" class="btn btn-primary" (click)="aceitarTermo()">Aceitar</button>
+  <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Voltar</button>
+</section>

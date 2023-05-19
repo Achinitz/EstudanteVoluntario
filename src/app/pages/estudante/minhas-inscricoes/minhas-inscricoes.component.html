@@ -1,10 +1,10 @@
 <div>
   <h1>Minhas Inscrições</h1>
-  <ngb-alert #alert type="primary" *ngIf="!vagasInscritas">
+  <ngb-alert #alert type="primary" *ngIf="!inscricoes">
     Você ainda não possui nenhuma inscrição!
   </ngb-alert>
 
-  <div *ngIf="vagasInscritas">
+  <div *ngIf="inscricoes">
     <ngb-alert #alert type="warning">
       Aqui você pode verificar os detalhes das vagas em que se inscreveu.
     </ngb-alert>
@@ -18,11 +18,11 @@
         <th class="col-1 text-center" scope="col">Situação</th>
         <th class="col-2 text-center" scope="col">Período do trabalho</th>
         <th class="col-1 text-center" scope="col">Horário</th>
-        <th class="col-1" scope="col">Ações</th>
+        <th class="col-1 text-center" scope="col">Ações</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let vaga of vagasInscritas; index as i">
+      <tr *ngFor="let vaga of inscricoes; index as i">
         <td class="col-3">
           {{ vaga.nomeVaga }}
         </td>
@@ -31,7 +31,7 @@
         <td class="col-2 text-center">{{vaga.dataInicioTrabalho}} - {{vaga.dataTerminoTrabalho}}</td>
         <td class="col-1 text-center">{{vaga.horarioInicio}} - {{vaga.horarioEncerramento}}</td>
         <td class="col-1 buttonsActions">
-          <button class="button-table" (click)="visualizarInscricao(vaga)">
+          <button class="button-table" title="Visualizar" (click)="visualizarInscricao(vaga)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
               viewBox="0 0 16 16">
               <path
@@ -39,13 +39,29 @@
               <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
             </svg>
           </button>
-          <button *ngIf="vaga.status == 'Aberta'" class="button-table" (click)="cancelarInscricao()">
+          <!--Se estiver inscrito aparece a opção para cancelar, se estiver aprovado sem termo aparece o termo para concordar-->
+          <button *ngIf="vaga.status == 'Inscrito'" class="button-table bg-danger" title="Cancelar Inscrição" (click)="cancelarInscricao()">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
               viewBox="0 0 16 16">
               <path
                 d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </button>
+          <button *ngIf="vaga.status == 'Aprovado' && !vaga.termo" class="button-table bg-danger" title="Aceitar Termo" (click)="aceitarTermo(vaga)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-file-earmark-fill" viewBox="0 0 16 16">
+              <path
+                d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z" />
+            </svg>
+          </button>
+          <button *ngIf="vaga.status == 'Aprovado' && vaga.termo || vaga.status == 'Avaliado'" class="button-table" title="Visualizar Termo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-file-earmark-fill" viewBox="0 0 16 16">
+              <path
+                d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z" />
+            </svg>
+          </button>
+
         </td>
       </tr>
     </tbody>
