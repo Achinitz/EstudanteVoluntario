@@ -97,7 +97,7 @@
       </h3>
       <div *ngIf="vaga.requisitos">
         <p>{{vaga.requisitos}}</p>
-      </div>   
+      </div>
     </section>
 
     <section>
@@ -107,18 +107,18 @@
         Essa vaga ainda não possui inscritos
       </ng-template>
 
-      <table class="table table-striped" *ngIf="vaga.inscritos else naoPossuiInscritos">
+      <table class="table table-striped" *ngIf="vaga.inscricoes else naoPossuiInscritos">
         <thead>
           <tr>
             <th class="col-3" scope="col">Nome</th>
             <th class="col-2 col-sm-none text-center" scope="col">Data inscrição</th>
             <th class="col-2 text-center" scope="col">Status</th>
             <th class="col-3 text-center" scope="col">Curso</th>
-            <th class="col-2 text-center" scope="col">Ações</th>
+            <th class="col-1 text-center" scope="col">Ações</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let inscrito of vaga.inscritos;">
+          <tr *ngFor="let inscrito of vaga.inscricoes;">
             <td class="col-3">
               {{ inscrito.nome }}
             </td>
@@ -128,8 +128,8 @@
               {{ inscrito.status }}
             </td>
             <td class="col-3 text-center">{{ inscrito.curso }}</td>
-            <td class="col-2 text-center buttonsActions">
-              <button class="button-table" (click)="visualizarCandidato(inscrito)">
+            <td class="col-1 buttonsActions">
+              <button class="button-table" title="Visualizar" (click)="visualizarCandidato(inscrito)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
                   viewBox="0 0 16 16">
                   <path
@@ -137,7 +137,8 @@
                   <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                 </svg>
               </button>
-              <button class="button-table" (click)="removerCandidato(inscrito)">
+              <button *ngIf="inscrito.status == 'Inscrito' " class="button-table bg-danger" title="Reprovar"
+                (click)="removerCandidato(inscrito)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
                   viewBox="0 0 16 16">
                   <path
@@ -165,7 +166,7 @@
         Voltar
       </button>
     </div>
-  
+
 
   </main>
 

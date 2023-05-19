@@ -1,166 +1,96 @@
 <section class="modal-header">
-    <h2 class="modal-title">Detalhes do Candidato</h2>
+    <h2 class="modal-title">Detalhes do(a) Candidato(a)</h2>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
-  </section>
-  <section class="modal-body">
+</section>
+<section class="modal-body">
 
-    <section class="col-12 d-flex">
-        <div class="col-7"></div>
-        <div class="col-5">
-            <button class="btn btn__download col-xl-4 col-lg-6 col-md-12 col-sm-12">
-                <span class="btn__download__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                    </svg>
-                </span>
-                <span>
-                    Download CV
-                </span>
-            </button>
-        </div>
-    </section>
-
-    <br>
-  
-    <h2>Dados do Inscrito</h2>
-
-    <div class="row col-12">
-        <div class="col-xl-6 col-md-12 col-sm-12">
-            <span class="title__data">Nome</span>
-            <p>{{perfilCadidato.nome}}</p>
-        </div>
-        <div class="col-xl-6 col-md-12 col-sm-12">
-            <span class="title__data">Idade</span>
-            <p>{{perfilCadidato.idade}}</p>
-        </div>
+    <div *ngIf="perfilCandidato.nomeSocial" class="row col-12">
+        <span class="title__data">Nome Social</span>
+        <p>{{perfilCandidato.nomeSocial}}</p>
     </div>
-
     <div class="row col-12">
-        <div class="col-xl-6 col-md-12 col-sm-12">
-            <span class="title__data">Nome social</span>
-            <p>{{perfilCadidato.nomeSocial ? perfilCadidato.nomeSocial : 'Não possui'}}</p>
-        </div>
-        <div class="col-xl-6 col-md-12 col-sm-12">
-            <span class="title__data">Genero</span>
-            <p>{{perfilCadidato.identificacaoGenero}}</p>
-        </div>
+        <span class="title__data">Nome Completo</span>
+        <p>{{perfilCandidato.nome}}</p>
     </div>
 
     <div class="row col-12">
         <div class="col-xl-6 col-md-12 col-sm-12">
             <span class="title__data">Data de nascimento</span>
-            <p>{{perfilCadidato.dataNascimento}}</p>
+            <p>{{perfilCandidato.dataNascimento}}</p>
         </div>
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span class="title__data">E-mail</span>
-            <p>{{perfilCadidato.email}}</p>
+            <span class="title__data">Gênero</span>
+            <p>{{perfilCandidato.identificacaoGenero}}</p>
         </div>
     </div>
-
     <div class="row col-12">
         <div class="col-xl-6 col-md-12 col-sm-12">
             <span class="title__data">Telefone</span>
-            <p>{{perfilCadidato.telefone}}</p>
+            <p>{{perfilCandidato.telefone}}</p>
         </div>
         <div class="col-xl-6 col-md-12 col-sm-12">
             <span class="title__data">E-mail</span>
-            <p>{{perfilCadidato.email}}</p>
+            <p>{{perfilCandidato.email}}</p>
         </div>
+    </div>
+    <div class="row col-12">
+        <span class="title__data">Endereço</span>
+        <p>{{perfilCandidato.logradouro}}, {{perfilCandidato.numero}} - {{perfilCandidato.bairro}} -
+            {{perfilCandidato.cep}} - {{perfilCandidato.cidade}}/{{perfilCandidato.estado}}</p>
     </div>
 
     <div class="row col-12">
-        <div class="col-xl-6 col-md-12 col-sm-12">
-            <span class="title__data">Data de nascimento</span>
-            <p>{{perfilCadidato.dataNascimento}}</p>
-        </div>
-        <div class="col-xl-6 col-md-12 col-sm-12">
-            <span class="title__data">E-mail</span>
-            <p>{{perfilCadidato.email}}</p>
-        </div>
+        <span class="title__data">Curso</span>
+        <p>{{ perfilCandidato.curso}}</p>
     </div>
-
+    <div class="row col-12">
+        <span class="title__data">Grau</span>
+        <p>{{ perfilCandidato.grau}}</p>
+    </div>
+    <div class="row col-12">
+        <span class="title__data">Instituição</span>
+        <p>{{ perfilCandidato.instituicao}}</p>
+    </div>
     <div class="row col-12">
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span class="title__data">E-mail</span>
-            <p>{{perfilCadidato.email}}</p>
+            <span class="title__data">Ano início</span>
+            <p>{{ perfilCandidato.anoInicio}}</p>
         </div>
+
         <div class="col-xl-6 col-md-12 col-sm-12">
-            <span class="title__data">Telefone</span>
-            <p>{{perfilCadidato.telefone}}</p>
+            <span class="title__data">Ano conclusão</span>
+            <p>{{ perfilCandidato.anoConclusao}}</p>
         </div>
     </div>
+    <div class="row col-12">
+        <span class="title__data">Status</span>
+        <p>{{ inscricao.status}}</p>
+    </div>
 
     <div class="col-12">
         <br>
-        <h2>Cursos</h2>
-
-        <ng-template #naoPossuiCursos>
-            Não Possui experiências de Trabalho.
+        <h2>Experiências Anteriores</h2>
+        <ng-template #naoPossuiExperiencia>
+            Não declarou experiências anteriores.
         </ng-template>
-
-        <section *ngIf="perfilCadidato.cursos != null; else naoPossuiCursos">
-            <div class="card__curso" *ngFor="let curso of perfilCadidato.cursos;">
-                <span>Nome: {{curso.nome}}</span>
-                    <br>
-                <span>Instituição: {{curso.instituicao}}</span>
-                    <br>
-                <span>Situação: {{curso.situacao}}</span>
-            </div>
+        <section *ngIf="perfilCandidato.experienciasAnteriores != null; else naoPossuiExperiencia">
+            <span>{{ perfilCandidato.experienciasAnteriores}}</span>
         </section>
     </div>
 
     <div class="col-12">
         <br>
-        <h2>Experiências de Trabalho</h2>
-        <ng-template #naoPossuiExperienciaTrabalho>
-            Não Possui experiências de Trabalho.
+        <h2>Áreas de Interesse</h2>
+        <ng-template #naoPossuiInteresses>
+            Não declarou interesses.
         </ng-template>
-        <section *ngIf="perfilCadidato.experienciasTrabalho != null; else naoPossuiExperienciaTrabalho">
-            <div class="card__curso" *ngFor="let trabalho of perfilCadidato.experienciasTrabalho;">
-                <span>Empresa: {{trabalho.empresa}}</span>
-                    <br>
-                <span>Cargo: {{trabalho.cargo}}</span>
-                    <br>
-                <span>Atividades realizadas: {{trabalho.atividades ? trabalho.atividades : 'Não possui descrição'}}</span>
-            </div>
+        <section *ngIf="perfilCandidato.areasInteresse != null; else naoPossuiInteresses">
+            <span>{{ perfilCandidato.areasInteresse}}</span>
         </section>
     </div>
 
-    <div class="col-12">
-        <br>
-        <h2>Certificados</h2>
-        <ng-template #naoPossuiExperienciaTrabalho>
-            Não Possui Certificados.
-        </ng-template>
-        <section *ngIf="perfilCadidato.certificados != null; else naoPossuiExperienciaTrabalho">
-            <table class="col-12 table table-striped">
-                <thead>
-                    <tr>
-                        <th class="col-6">Título</th>
-                        <th class="col-3">Instituição</th>
-                        <th class="col-3 text-center">Ações</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let titulo of perfilCadidato.certificados">
-                    <tr>
-                        <td class="col-6">{{ titulo.curso }}</td>
-                        <td class="col-3">{{ titulo.instituicao }}</td>
-                        <td class="col-3 text-center">
-                            <button class="button-table" (click)="downloadCertificado(titulo)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </div>
-    
-    <div class="btn__group">
+    <!--Mudar botões que aparecem de acordo com o status da inscrição-->
+    <div *ngIf="inscricao.status == 'Inscrito' "class="btn__group">
         <br>
         <button class="btn btn-success" (click)="aprovarCandidato()">
             Aprovar
@@ -170,7 +100,7 @@
         </button>
     </div>
 
-  </section>
-  <section class="modal-footer">
+</section>
+<section class="modal-footer">
     <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Voltar</button>
-  </section>
+</section>
