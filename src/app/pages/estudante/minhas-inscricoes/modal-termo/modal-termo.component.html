@@ -98,8 +98,11 @@
 
     <p *ngIf="!vagaSelecionada.termo">Curitiba, {{dia}} de {{mes}} de {{ano}}.</p>
     <div *ngIf="vagaSelecionada.termo">
-      <p>Termo de Adesão aceito em: </p>
-      <p>Curitiba, {{vagaSelecionada.aceiteTermo}}.</p>
+      <p>Termo de Adesão aceito em: {{vagaSelecionada.aceiteTermo}}.</p>
+    </div>
+  
+    <div *ngIf="vagaSelecionada.rescisaoTermo">
+      <p>Termo Rescindido em: {{vagaSelecionada.rescisaoTermo}}.</p>
     </div>
 
   </section>

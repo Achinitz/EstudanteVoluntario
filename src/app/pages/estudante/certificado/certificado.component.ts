@@ -8,50 +8,60 @@ import { ModalCertificadoComponent } from './modal-certificado/modal-certificado
 @Component({
   selector: 'app-certificado',
   templateUrl: './certificado.component.html',
-  styleUrls: ['./certificado.component.scss']
+  styleUrls: ['./certificado.component.scss'],
 })
 export class CertificadoComponent implements OnInit {
-
   certificados: any = [
     {
-      vaga: 'Recreador',
-      entidade: 'Amigos do HC',
-      data: '02/12/2022',
-      horas: 3,
+      nomeVaga: 'Recreador',
+      nomeEntidade: 'Associação dos Amigos do Hospital de Clínicas',
+      nomeEstudante: '',
+      dataInicio: '02/12/2022',
+      dataFim: '02/12/2022',
+      cargaHoraria: 3,  
     },
     {
-      vaga: 'Recreador',
-      entidade: 'Amigos do HC',
-      data: '02/12/2022',
-      horas: 3,
+      nomeVaga: 'Recreador',
+      nomeEntidade: 'Associação dos Amigos do Hospital de Clínicas',
+      dataInicio: '02/12/2022',
+      dataFim: '02/12/2022',
+      cargaHoraria: 3,
     },
     {
-      vaga: 'Recreador',
-      entidade: 'Amigos do HC',
-      data: '02/12/2022',
-      horas: 3,
+      nomeVaga: 'Recreador',
+      nomeEntidade: 'Associação dos Amigos do Hospital de Clínicas',
+      dataInicio: '02/12/2022',
+      dataFim: '02/12/2022',
+      cargaHoraria: 3,
     },
     {
-      vaga: 'Recreador',
-      entidade: 'Amigos do HC',
-      data: '02/12/2022',
-      horas: 3,
+      nomeVaga: 'Recreador',
+      nomeEntidade: 'Associação dos Amigos do Hospital de Clínicas',
+      dataInicio: '02/12/2022',
+      dataFim: '02/12/2022',
+      cargaHoraria: 3,
     },
   ];
 
-  constructor(private modalService: NgbModal, public dialog: MatDialog,
-    private router: Router, private data: DataService) { }
+  constructor(
+    private modalService: NgbModal,
+    public dialog: MatDialog,
+    private router: Router,
+    private data: DataService
+  ) {}
 
-  downloadCertificado(certificado:any){
-
+  downloadCertificado(certificado: any) {
+      //fazer a função do certificado no back
   }
 
-  visualizarCertificado(certificado:any){
-    const modalRef = this.modalService.open(ModalCertificadoComponent, { windowClass: 'auto', backdrop: 'static', centered: true });
+  visualizarCertificado(certificado: any) {
+    const modalRef = this.modalService.open(ModalCertificadoComponent, {
+      windowClass: 'auto',
+      backdrop: 'static',
+      centered: true,
+    });
     modalRef.componentInstance.certificado = certificado;
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

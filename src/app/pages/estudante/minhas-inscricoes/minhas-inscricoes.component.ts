@@ -13,6 +13,32 @@ import { ModalTermoComponent } from './modal-termo/modal-termo.component';
 export class MinhasInscricoesComponent implements OnInit {
   inscricoes: any = [
     {
+      id: 3,
+      idEntidade: 3,
+      nomeEntidade: 'ONG 3',
+      nomeVaga: 'Contador de História',
+      img: '../../assets/imagens/mulherGrandeCoracao.png',
+      descricao: 'Vaga para pessoas de bom coração',
+      requisitos: 'Sem requisitos',
+      auxilio: null,
+      endereco: 'Rua tal dos omi lá',
+      bairro: 'Cajuru',
+      numero: '23',
+      cidade: 'Curitiba',
+      estado: 'Paraná',
+      cep: '81700-000',
+      complemento: 'Prédio Comercial',
+      dataFinalizacaoVaga: '20/02/2023 23:59:00',
+      dataInicioTrabalho: '20/02/2023',
+      dataTerminoTrabalho: '21/02/2023',
+      horarioInicio: '08:00',
+      horarioEncerramento: '12:00',
+      numeroVagas: '3',
+      status: 'Inscrito',
+      inscrito: true,
+      aceiteTermo: '20/02/2023',
+    },
+    {
       id: 1,
       idEntidade: 1,
       nomeEntidade: 'ONG 1',
@@ -37,7 +63,6 @@ export class MinhasInscricoesComponent implements OnInit {
       status: 'Aprovado',
       inscrito: true,
       termo: false,
-      
     },
     {
       id: 2,
@@ -68,33 +93,6 @@ export class MinhasInscricoesComponent implements OnInit {
     },
 
     {
-      id: 3,
-      idEntidade: 3,
-      nomeEntidade: 'ONG 3',
-      nomeVaga: 'Contador de História',
-      img: '../../assets/imagens/mulherGrandeCoracao.png',
-      descricao: 'Vaga para pessoas de bom coração',
-      requisitos: 'Sem requisitos',
-      auxilio: null,
-      endereco: 'Rua tal dos omi lá',
-      bairro: 'Cajuru',
-      numero: '23',
-      cidade: 'Curitiba',
-      estado: 'Paraná',
-      cep: '81700-000',
-      complemento: 'Prédio Comercial',
-      dataFinalizacaoVaga: '20/02/2023 23:59:00',
-      dataInicioTrabalho: '20/02/2023',
-      dataTerminoTrabalho: '21/02/2023',
-      horarioInicio: '08:00',
-      horarioEncerramento: '12:00',
-      numeroVagas: '3',
-      status: 'Inscrito',
-      inscrito: true,
-      aceiteTermo: '20/02/2023',
-    },
-
-    {
       id: 4,
       idEntidade: 4,
       nomeEntidade: 'ONG 4',
@@ -116,10 +114,11 @@ export class MinhasInscricoesComponent implements OnInit {
       horarioInicio: '08:00',
       horarioEncerramento: '12:00',
       numeroVagas: '3',
-      status: 'Avaliado',
+      status: 'Encerrado',
       inscrito: true,
       termo: true,
       aceiteTermo: '20/02/2023',
+      rescisaoTermo: '20/02/2023',
     },
     {
       id: 5,
@@ -225,6 +224,28 @@ export class MinhasInscricoesComponent implements OnInit {
     modalRef.componentInstance.vagaSelecionada = Vaga;
     modalRef.componentInstance.estudante = this.estudante;
     modalRef.componentInstance.entidade = this.entidade;
+  }
+
+  rescindirTermo() {
+    Swal.fire({
+      title: 'Deseja realmente rescindir o seu Termo de Adesão nesta vaga?',
+      text: 'Ao confirmar, o seu termo será rescindido!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Termo rescindido com sucesso!',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
   }
 
   ngOnInit(): void {}

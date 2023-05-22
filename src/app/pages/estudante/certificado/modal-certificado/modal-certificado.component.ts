@@ -6,16 +6,18 @@ import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-modal-certificado',
   templateUrl: './modal-certificado.component.html',
-  styleUrls: ['./modal-certificado.component.scss']
+  styleUrls: ['./modal-certificado.component.scss'],
 })
 export class ModalCertificadoComponent implements OnInit {
-  
-
   @Input() certificado: any;
 
-  constructor(private data:DataService, private router: Router, public activeModal: NgbActiveModal) { }
+  constructor(  
+    public activeModal: NgbActiveModal
+  ) {}
 
-  ngOnInit(): void {
+  downloadCertificado() {
+    //fazer a função do certificado no back
   }
 
+  ngOnInit(): void {}
 }

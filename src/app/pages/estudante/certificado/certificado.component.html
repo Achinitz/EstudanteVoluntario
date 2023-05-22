@@ -17,7 +17,7 @@
         <tr>          
           <th class="col-3" scope="col">Vaga</th>
           <th class="col-3" scope="col">Entidade</th>
-          <th class="col-2 text-center" scope="col">Data</th>
+          <th class="col-2 text-center" scope="col">Período</th>
           <th class="col-2 text-center" scope="col">Horas</th>
           <th class="col-2" scope="col">Ações</th>
         </tr>
@@ -25,12 +25,12 @@
       <tbody>
         <tr *ngFor="let certificado of certificados index as i">
           <td class="col-3">
-            {{ certificado.vaga }}
+            {{ certificado.nomeVaga }}
           </td>
 
-          <th class="col-3">{{ certificado.entidade }}</th>
-          <td class="col-2 text-center">{{ certificado.data }}</td>
-          <td class="col-2 text-center">{{ certificado.horas }}h</td>
+          <th class="col-3">{{ certificado.nomeEntidade }}</th>
+          <td class="col-2 text-center">{{ certificado.dataInicio }} - {{ certificado.dataFim }}</td>
+          <td class="col-2 text-center">{{ certificado.cargaHoraria }}h</td>
           <td class="col-2 buttonsActions">
             <button class="button-table" (click)="visualizarCertificado(certificado)">
               <svg
