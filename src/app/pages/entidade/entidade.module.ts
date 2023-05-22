@@ -32,6 +32,8 @@ import { DetalheEstudanteComponent } from './vagas/detalhes/detalhe-estudante/de
 import { NotificacaoComponent } from './notificacao/notificacao.component';
 import { ModalNotificacaoComponent } from './notificacao/modal-notificacao/modal-notificacao.component';
 import { ModalAnexarRelatorioComponent } from './gerar-relatorio/modal-anexar-relatorio/modal-anexar-relatorio.component';
+import { VagasAbertasComponent } from './vagas-abertas/vagas-abertas.component';
+import { VagasAndamentoComponent } from './vagas-andamento/vagas-andamento.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { ModalAnexarRelatorioComponent } from './gerar-relatorio/modal-anexar-re
     NotificacaoComponent,
     ModalNotificacaoComponent,
     ModalAnexarRelatorioComponent,
+    VagasAbertasComponent,
+    VagasAndamentoComponent,
   ],
   imports: [
     CommonModule,

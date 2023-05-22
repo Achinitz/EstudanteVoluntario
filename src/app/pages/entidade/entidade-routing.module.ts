@@ -13,6 +13,8 @@ import { DetalheEstudanteComponent } from './vagas/detalhes/detalhe-estudante/de
 import { NotificacaoComponent } from './notificacao/notificacao.component';
 import { AuthGuard } from 'src/app/guards/auth-guard';
 import { Pagina404Component } from '../pagina404/pagina404.component';
+import { VagasAndamentoComponent } from './vagas-andamento/vagas-andamento.component';
+import { VagasAbertasComponent } from './vagas-abertas/vagas-abertas.component';
 
 const routes: Routes = [
   {
@@ -40,6 +42,18 @@ const routes: Routes = [
       {
         path: 'vagas',
         component: VagasComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Entidade'},
+      },
+      {
+        path: 'vagas-abertas',
+        component: VagasAbertasComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Entidade'},
+      },
+      {
+        path: 'vagas-andamento',
+        component: VagasAndamentoComponent,
         canActivate: [AuthGuard],
         data: {role: 'Entidade'},
       },
