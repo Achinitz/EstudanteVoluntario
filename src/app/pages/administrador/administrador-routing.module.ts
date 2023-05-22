@@ -18,6 +18,7 @@ import { AdicionarAdministradorComponent } from './cadastrar-admin/adicionar-adm
 import { DetalheEstudanteAdministradorComponent } from './validar-estudantes-administrador/detalhe-estudante-administrador/detalhe-estudante-administrador.component';
 import { EditarInstituicaoComponent } from './cadastrar-instituicao/editar-instituicao/editar-instituicao.component';
 import { EditarCadastroComponent } from './cadastrar-curso/editar-cadastro/editar-cadastro.component';
+import { AuthGuard } from 'src/app/guards/auth-guard';
 
 
 const routes: Routes = [
@@ -28,70 +29,108 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'meu-perfil',
         component: MeuPerfilAdministradorComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'validar-vagas',
         component: ValidarVagasAdministradorComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'validar-estudantes',
         component: ValidarEstudantesAdministradorComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'validar-entidades',
         component: ValidarEntidadesAdministradorComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'cadastrar-instituicao',
         component: CadastrarInstituicaoComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'detalhe-instituicao',
         component: DetalhesInstituicaoComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'cadastrar-curso',
         component: CadastrarCursoComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'adicionar-instituicao',
         component: AdicionarInstituicaoComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'adicionar-curso',
         component: AdicionarCursoComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'detalhe-vaga',
         component: DetalheVagaAdministradorComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'validar-entidade',
         component: DetalheEntidadeAdministradorComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'validar-estudante',
         component: DetalheEstudanteAdministradorComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },      
       {
         path: 'cadastrar-admin',
         component: AdicionarAdminComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'adicionar-admin',
         component: AdicionarAdministradorComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'editar-instituicao',
         component: EditarInstituicaoComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
       },
       {
         path: 'editar-curso',
         component: EditarCadastroComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Admin'},
+      },
+      {
+        path: '**',
+        redirectTo: '',
       },
     ],
   },

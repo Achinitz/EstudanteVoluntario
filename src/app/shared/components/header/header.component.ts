@@ -11,11 +11,6 @@ export class HeaderComponent implements OnInit {
   HomePath: string;
 
   constructor(private router: Router) {
-
-    console.log('############################');
-    console.log(localStorage.getItem('usuario'))
-    console.log('############################');
-
     this.LogoPath = '/assets/imagens/logo-menu.png';
     this.HomePath = '/assets/imagens/home-2.svg';
     

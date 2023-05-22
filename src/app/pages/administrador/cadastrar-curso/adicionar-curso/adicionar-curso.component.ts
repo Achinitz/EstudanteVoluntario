@@ -53,10 +53,6 @@ export class AdicionarCursoComponent implements OnInit {
   ];
 
   formCadastro: FormGroup = new FormGroup({
-    cnpj: new FormControl(null, [
-      Validators.required,
-      Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$'),
-    ]),
     instituicao: new FormControl(null, Validators.required),
     grau: new FormControl(null, Validators.required),
     nomeCurso: new FormControl(null, Validators.required),

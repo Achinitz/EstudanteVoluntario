@@ -39,6 +39,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { CookieService } from 'ngx-cookie-service';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { Pagina404Component } from './pages/pagina404/pagina404.component';
+import { AuthGuard } from './guards/auth-guard';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,7 @@ import { Pagina404Component } from './pages/pagina404/pagina404.component';
     MatFormFieldModule,
     MatNativeDateModule,
     NgSelectModule,
-    ToastrModule,
+    ToastrModule,   
   
   ],
   imports: [
@@ -89,7 +90,7 @@ import { Pagina404Component } from './pages/pagina404/pagina404.component';
   ],
   providers: [
     DataService,
-    CookieService
+    CookieService,    
   ],
   bootstrap: [AppComponent],
 })

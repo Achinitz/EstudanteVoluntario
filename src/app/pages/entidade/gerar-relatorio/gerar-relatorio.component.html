@@ -1,9 +1,9 @@
 <section class="content">
     <div class="topo">
-      <h1>Relatório(s)</h1>
+      <h1>Certificados</h1>
 
       <ngb-alert #alert type="warning">
-        Verifique os estudantes antes de anexar os relatórios de atividade para cada estudante.
+        Verifique os estudantes
       </ngb-alert>
     </div>
 
@@ -36,7 +36,7 @@
           <tr *ngFor="let aluno of alunos;">
             <td class="col-3">{{ aluno.nome | slice: 0 : 15}}...</td>
             <td class="col-3">{{ aluno.empresa }}</td>
-            <td class="col-3">{{ aluno.status == true ? 'Encaminhado' : 'Não encaminhado' }}</td>
+            <td class="col-3">{{ aluno.status == true ? 'Avaliado' : 'Não avaliado' }}</td>
             <td class="col-3 text-center">
               <button class="button-table" (click)="anexarRelatorioEstudante(aluno)">
                 <span>

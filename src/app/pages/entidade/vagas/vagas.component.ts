@@ -20,7 +20,7 @@ export class VagasComponent implements OnInit {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mollis sem. Nullam eu imperdiet est, aliquet malesuada ipsum. Nunc id feugiat orci, et blandit erat.',
       requisitos: 'Habilidade com atendimento ao público.',
       auxilio: 'Alimentação e Transporte',
-      endereco: 'Rua tal dos omi lá',
+      logradouro: 'Rua tal dos omi lá',
       bairro: 'Cajuru',
       numero: '23',
       cidade: 'Curitiba',

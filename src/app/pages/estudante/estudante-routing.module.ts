@@ -8,6 +8,8 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { BuscarVagasComponent } from './buscar-vagas/buscar-vagas.component';
 import { MinhasInscricoesComponent } from './minhas-inscricoes/minhas-inscricoes.component';
 import { NotificacoesComponent } from './notificacoes/notificacoes.component';
+import { AuthGuard } from 'src/app/guards/auth-guard';
+import { Pagina404Component } from '../pagina404/pagina404.component';
 
 const routes: Routes = [
   {
@@ -18,31 +20,49 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Estudante'},
       },
       {
         path: 'perfil',
         component: PerfilComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Estudante'},
       },
       {
         path: 'detalhe-vaga',
         component: DetalheVagaComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Estudante'},
       },
       {
         path: 'certificados',
         component: CertificadoComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Estudante'},
       },
       {
         path: 'buscar-vagas',
         component: BuscarVagasComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Estudante'},
       },
       {
         path: 'minhas-inscricoes',
         component: MinhasInscricoesComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Estudante'},
       },
 
       {
         path: 'notificacoes',
         component: NotificacoesComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Estudante'},
+      },
+      {
+        path: '**',
+        component: Pagina404Component,
       },
     ],
   },

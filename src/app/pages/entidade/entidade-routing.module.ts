@@ -11,6 +11,8 @@ import { VagasComponent } from './vagas/vagas.component';
 import { DetalhesComponent } from './vagas/detalhes/detalhes.component';
 import { DetalheEstudanteComponent } from './vagas/detalhes/detalhe-estudante/detalhe-estudante.component';
 import { NotificacaoComponent } from './notificacao/notificacao.component';
+import { AuthGuard } from 'src/app/guards/auth-guard';
+import { Pagina404Component } from '../pagina404/pagina404.component';
 
 const routes: Routes = [
   {
@@ -20,43 +22,73 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Entidade'},
+      },
+      {
+        path: 'Home',
+        component: HomeComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Entidade'},
       },
       {
         path: 'perfil',
         component: PerfilComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Entidade'},
       },
       {
         path: 'vagas',
         component: VagasComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Entidade'},
       },
       {
         path: 'detalhe-vaga',
         component: DetalhesComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Entidade'},
       },
       {
         path: 'cadastrar-vaga',
         component: CadastrarVagaComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Entidade'},
       },
       {
         path: 'gerar-relatorio',
         component: GerarRelatorioComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Entidade'},
       },
       {
         path: 'gerar-certificado',
         component: CertificadoComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Entidade'},
       },
       {
         path: 'avaliar-estudante',
         component: AvaliarEstudanteComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Entidade'},
       },
       {
         path: 'detalhe-estudante',
-        component: DetalheEstudanteComponent
+        component: DetalheEstudanteComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Entidade'},
       },
       {
         path: 'notificacoes',
-        component: NotificacaoComponent
-      }
+        component: NotificacaoComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'Entidade'},
+      },
+      {
+        path: '**',
+        component: Pagina404Component,
+      },
     ],
   },
 ];

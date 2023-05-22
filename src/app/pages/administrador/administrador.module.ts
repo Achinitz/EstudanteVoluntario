@@ -25,6 +25,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
@@ -38,6 +39,7 @@ import { AdicionarAdministradorComponent } from './cadastrar-admin/adicionar-adm
 import { DetalheEntidadeAdministradorComponent } from './validar-entidades-administrador/detalhe-entidade-administrador/detalhe-entidade-administrador.component';
 import { EditarInstituicaoComponent } from './cadastrar-instituicao/editar-instituicao/editar-instituicao.component';
 import { EditarCadastroComponent } from './cadastrar-curso/editar-cadastro/editar-cadastro.component';
+import { AuthGuard } from 'src/app/guards/auth-guard';
 
 @NgModule({
   declarations: [
