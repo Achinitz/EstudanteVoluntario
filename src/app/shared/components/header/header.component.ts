@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -10,14 +11,14 @@ export class HeaderComponent implements OnInit {
   LogoPath: string;
   HomePath: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private loginService: LoginService) {
     this.LogoPath = '/assets/imagens/logo-menu.png';
     this.HomePath = '/assets/imagens/home-2.svg';
     
   }
 
   public get isLoggedIn() {
-    let doc = localStorage.getItem('usuario');
+    let doc = this.loginService.usuarioLogado;
 
     return doc;
   }

@@ -40,6 +40,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { Pagina404Component } from './pages/pagina404/pagina404.component';
 import { AuthGuard } from './guards/auth-guard';
+import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { AuthGuard } from './guards/auth-guard';
     EntidadesComponent,
     SobreNosComponent,
     Pagina404Component,
+    EsqueciSenhaComponent,
   ],
   exports: [
     MatDatepickerModule,

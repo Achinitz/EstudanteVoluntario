@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
@@ -9,6 +10,11 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./vagas-andamento.component.scss']
 })
 export class VagasAndamentoComponent implements OnInit {
+
+  public formData = new FormGroup({
+    filtro: new FormControl(null, Validators.required),
+  });
+
   vagasDisponiveis: any = [
     {
       id: 1,

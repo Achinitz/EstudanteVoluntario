@@ -29,11 +29,10 @@ export class LoginService {
 
   login(login: any): Observable<Usuario | null>{    
     let usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Estudante');
-
-    // if(login.login == login.senha){
-      if(login.cpfoucnpj = '222.222.222-22'){
+    // if(login.login == login.senha){  
+      if(login.cpfoucnpj == '22222222222'){
           usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Entidade');
-      }else if(login.cpfoucnpj == '333.333.333-33'){
+      }else if(login.cpfoucnpj == '33333333333'){
         usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Admin');
       }
       return of(usuario);

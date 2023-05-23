@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,9 @@ const routes: Routes = [
   },
   { 
     path:"login",component: LoginComponent 
+  },
+  { 
+    path:"esqueceu-senha",component: EsqueciSenhaComponent 
   },
   { 
     path:"Admin", loadChildren: () => import('./pages/administrador/administrador.module').then(

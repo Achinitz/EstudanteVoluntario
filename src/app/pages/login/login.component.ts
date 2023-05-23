@@ -39,6 +39,9 @@ export class LoginComponent implements OnInit {
           if(usuario != null){
             this.loginService.usuarioLogado = usuario;
             this.loading = true;
+            console.log('**** que ta retornando nessa bagaça BEGIN');
+            console.log(usuario.perfil)
+            console.log('**** que ta retornando nessa bagaça END');
              if(usuario.perfil == 'Estudante'){
                 this.router.navigate(['/Estudante']);
               }else if(usuario.perfil == 'Entidade'){
