@@ -5,9 +5,7 @@ import { EntidadeRoutingModule } from './entidade-routing.module';
 import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PerfilComponent } from './perfil/perfil.component';
-import { GerarRelatorioComponent } from './gerar-relatorio/gerar-relatorio.component';
 import { CadastrarVagaComponent } from './home/cadastrar-vaga/cadastrar-vaga.component';
-import { CertificadoComponent } from './certificado/certificado.component';
 import { AvaliarEstudanteComponent } from './avaliar-estudante/avaliar-estudante.component';
 import { ModalVisualizarComponent } from './avaliar-estudante/modal-visualizar/modal-visualizar.component';
 import { ModalAdicionarAvaliacaoComponent } from './avaliar-estudante/modal-adicionar-avaliacao/modal-adicionar-avaliacao.component';
@@ -31,7 +29,6 @@ import { DetalhesComponent } from './vagas/detalhes/detalhes.component';
 import { DetalheEstudanteComponent } from './vagas/detalhes/detalhe-estudante/detalhe-estudante.component';
 import { NotificacaoComponent } from './notificacao/notificacao.component';
 import { ModalNotificacaoComponent } from './notificacao/modal-notificacao/modal-notificacao.component';
-import { ModalAnexarRelatorioComponent } from './gerar-relatorio/modal-anexar-relatorio/modal-anexar-relatorio.component';
 import { VagasAbertasComponent } from './vagas-abertas/vagas-abertas.component';
 import { VagasAndamentoComponent } from './vagas-andamento/vagas-andamento.component';
 
@@ -39,10 +36,8 @@ import { VagasAndamentoComponent } from './vagas-andamento/vagas-andamento.compo
   declarations: [
     HomeComponent,
     SidebarComponent,
-    PerfilComponent,       
+    PerfilComponent,
     CadastrarVagaComponent,
-    GerarRelatorioComponent,
-    CertificadoComponent,
     AvaliarEstudanteComponent,
     ModalVisualizarComponent,
     ModalAdicionarAvaliacaoComponent,
@@ -52,7 +47,6 @@ import { VagasAndamentoComponent } from './vagas-andamento/vagas-andamento.compo
     DetalheEstudanteComponent,
     NotificacaoComponent,
     ModalNotificacaoComponent,
-    ModalAnexarRelatorioComponent,
     VagasAbertasComponent,
     VagasAndamentoComponent,
   ],
