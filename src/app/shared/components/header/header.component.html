@@ -80,9 +80,9 @@
       <div *ngIf="isLoggedIn">
         <mat-nav-list>
           <mat-list-item>
-            <button mat-icon-button id="button__user__loged">
+            <button mat-icon-button id="button__user__loged" (click)="redirecionar()">
                 <mat-icon>account_circle</mat-icon>
-                <mat-label>Amanda</mat-label>
+                <mat-label>{{usuario.nome|nomeUsuario}}</mat-label>
             </button>
           </mat-list-item>
           <mat-list-item (click)="logout()">

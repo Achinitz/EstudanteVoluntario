@@ -14,7 +14,7 @@ export class AdicionarAdminComponent implements OnInit {
   instituicoes: any = [
     {
       id: 1,
-      cnpj: 92345678915,
+      cpf: 92345678915,
       sigla: 'UFPR',
       nome: 'Gustavo',
       uf: 'Paraná',
@@ -23,7 +23,7 @@ export class AdicionarAdminComponent implements OnInit {
     },
     {
       id: 2,
-      cnpj: 62345678914,
+      cpf: 62345678914,
       sigla: 'UTFPR',
       nome: 'Amanda',
       uf: 'Paraná',
@@ -32,7 +32,7 @@ export class AdicionarAdminComponent implements OnInit {
     },
     {
       id: 3,
-      cnpj: 22345678913,
+      cpf: 22345678913,
       sigla: 'PUCPR',
       nome: 'Eliaquim',
       uf: 'Paraná',

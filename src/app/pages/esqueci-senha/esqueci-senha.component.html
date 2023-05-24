@@ -2,23 +2,23 @@
     <section class="content">
             <h1>Esqueceu a senha?</h1>
             <P>
-                Informe seu CPF abaixo para prosseguir com a solicitação.
+                Informe seu CPF ou CNPJ abaixo para prosseguir com a solicitação.
             </P>
             <form>
                 <div class="col-xl-12">
                     <label>
-                        CPF <em class="text-danger">*</em>
+                        CPF/CNPJ:<em class="text-danger">*</em>
                     </label>
                         <br>
                             <input 
                                 class="form-control" 
                                 id="cpf" type="text" 
-                                placeholder="XXX.XXX.XXX-XX" 
-                                mask="000.000.000-00">
+                                placeholder="Digite os números" 
+                                mask="000.000.000-00 || 00.000.000/0000-00">
                 </div>
                     <br>
                 <div class="content__botao" (click)="solicitarRecuperacaoSenha()"> 
-                    <button class="col-12 btn-primary">
+                    <button class="col-12 btn btn-primary">
                         Solicitar
                     </button>      
                 </div>
