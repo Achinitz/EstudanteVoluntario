@@ -11,11 +11,18 @@ h2 {
 }
 
 svg {
-  width: 40px;
-  padding-right: 10px;
+  width: 60px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
-.quantidade-chamados {
+.dash {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+/* .quantidade-chamados {
   border-radius: 50%;
   padding-top: 6px;
   border-radius: 20%;
@@ -25,9 +32,28 @@ svg {
   background: green;
   color: white;
   font-weight: 600;
+} */
+
+.card {
+  padding:1rem;
+  justify-content: center;
+ // background-color: #2e6793;
+  color: white;
+  span {
+    font-size: medium;
+  }
 }
 
-.dashboard {
+.dados {
+  margin-left: 1rem;
+  text-align: end;
+}
+
+.quantidade-chamados {
+  font-size: xx-large;
+}
+
+/* .dashboard {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,18 +66,16 @@ svg {
   span {
     font-size: medium;
   }
-}
+} */
 
 .content-main-dashboard {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding-left: 1rem;
   padding-right: 1rem;
-  div {
-    width: 100%;
-    margin-top: 2rem;
-  }
-  span{
+  margin-top: 2rem;
+
+  span {
     font-size: medium;
   }
 }

@@ -4,61 +4,94 @@ import { Chart, registerables } from 'chart.js';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('meuCanvas', { static: true }) elemento: ElementRef;
+
   nomeAdmin: any = 'Admin Teste';
+  vagasAprovacao: any = 10;
+  entidadesAprovacao: any = 3;
+  estudantesAprovacao: any = 2;
+  chart1: any;
+  chart2: any;
+  chart3: any;
+  dataEntidade = [
+    { mes: 'Dez/22', count: 0 },
+    { mes: 'Jan', count: 2 },
+    { mes: 'Fev', count: 8 },
+    { mes: 'Mar', count: 10 },
+    { mes: 'Abr', count: 6 },
+    { mes: 'Mai/23', count: 6 },
+  ];
 
-  @ViewChild("meuCanvas", {static: true}) elemento: ElementRef;
+  dataEstudante = [
+    { mes: 'Dez/22', count: 3 },
+    { mes: 'Jan', count: 10 },
+    { mes: 'Fev', count: 5 },
+    { mes: 'Mar', count: 8 },
+    { mes: 'Abr', count: 9 },
+    { mes: 'Mai/23', count: 3 },
+  ];
 
-  chart:any;
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {
+    this.chart1 = document.getElementById('graficoEntidades');
+    this.chart2 = document.getElementById('graficoEstudantes');
 
-  ngOnInit(){
-    this.chart = document.getElementById('graficoVagas');
     Chart.register(...registerables);
-    this.loadChart();
+    this.loadChart1();
+    this.loadChart2();
   }
 
-  loadChart(){
-    new Chart(this.chart, {
+  loadChart1() {
+    new Chart(this.chart1, {
       type: 'line',
       data: {
-        datasets: [{
-          data:[0,2,3,4,5,6,7,8,9,10,0,0],
-          label: 'vagas preenchidas no ano de 2022',
-          backgroundColor: '#007bff',
-          tension: 0.2,
-          borderColor: '#007bff',
-        }],
-        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        datasets: [
+          {
+            data: this.dataEntidade.map((row) => row.count),
+            label: 'Entidades',
+            backgroundColor: '#7c68ee',
+            tension: 0.2,
+            borderColor: '#7c68ee',
+          },
+        ],
+        labels: this.dataEntidade.map((row) => row.mes),
       },
       options: {
-          plugins: {
-            legend: {
-              display: false
-            }
-          },
         responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            grid: {
-              tickBorderDash: [1,2]
-            },
-            beginAtZero: true,
-            //display: false
-          },
-          x: {
-            //display: false
-            grid: {
-              
-            }
-          }
-        }
-      }
-    })
+      },
+    });
   }
 
+  loadChart2() {
+    new Chart(this.chart2, {
+      type: 'line',
+      data: {
+        datasets: [
+          {
+            data: this.dataEstudante.map((row) => row.count),
+            label: 'Estudantes',
+            backgroundColor: '#008b8b',
+            tension: 0.2,
+            borderColor: '#008b8b',
+          },
+        ],
+        labels: this.dataEntidade.map((row) => row.mes),
+      },
+      options: {
+        responsive: true,
+      },
+    });
+  }
 }
+
+/* {
+  data:[5,12,8,6,10,6],
+  label: 'Vagas',
+  backgroundColor:'#1f8fff',
+  tension: 0.2,
+  borderColor: '#1f8fff',
+} */
