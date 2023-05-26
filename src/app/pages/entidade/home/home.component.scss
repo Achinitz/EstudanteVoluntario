@@ -53,22 +53,24 @@ svg {
 }
 
 .card {
-  width: 15rem;
+  width: 100%;
+  display: flex;
+  flex-direction: initial;
   margin-right: 10px;
   margin-top: 10px;
-  div:nth-of-type(2) {
-    h4 {
-      text-align: center;
-    }
-    p:nth-of-type(2) {
-      text-align: center;
-      border-radius: 1rem;
-    }
-    div {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
+  // div:nth-of-type(2) {
+  //   h4 {
+  //     text-align: center;
+  //   }
+  //   p:nth-of-type(2) {
+  //     text-align: center;
+  //     border-radius: 1rem;
+  //   }
+  //   div {
+  //     display: flex;
+  //     justify-content: space-between;
+  //   }
+  // }
 }
 
 .contentDetails {
@@ -99,4 +101,38 @@ svg {
   padding: 1.5em;
   text-decoration: none;
   font-weight: medium;
+}
+
+
+.card__content{
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonsVagasCadastradas{
+  padding: 1rem;
+  text-align: end;
+
+  button:first-child {
+     margin-right: 0.5rem;
+   }
+}
+
+.card-content-description{
+  line-height: 14px;
+}
+
+.card-content-description:nth-child(2){
+  line-height: 20px;
+}
+
+.statusPosition{
+  padding: 0.8rem;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.colo-topo{
+  font-size: 2rem;
+  margin-top: 1rem;
 }

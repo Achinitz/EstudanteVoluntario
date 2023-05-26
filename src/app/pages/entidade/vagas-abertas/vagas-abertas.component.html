@@ -1,66 +1,86 @@
 <section class="content">
     <div class="topo">
-        <h1>Vagas em Aberto</h1>
+        <h1>Vagas Abertas</h1>
     </div>
 
-    <ngb-alert #alert type="primary">
-        Verifique as vagas em Aberto
-    </ngb-alert>    
+    <!-- <ngb-alert #alert type="primary">
+        Verifique as vagas cadastradas
+    </ngb-alert>   -->
 
-    <h3 class="title__form__filtro">
-        Filtre os Cards abaixo
-    </h3>
-  <form [formGroup]="formData" class="form__filtro">
-    <div class="content-pesquisa mb-2 col-xl-6">
-        <label for="cidade">Nome da vaga</label>
-        <input 
-            type="text" 
-            class="form-control" 
-            placeholder="Informe o nome da vaga"
-            formControlName="filtro">
-      </div>
-        <br>
-    <div>
-        <button class="btn btn-primary btn-pesquisa">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-                viewBox="0 0 16 16">
-                <path
-                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-            </svg>
-            <span>
-                Pesquisar
-            </span>
-        </button>
-    </div>
-    </form>
+    <section class="m-1">
+        <form [formGroup]="formData" class="content-pesquisa d-flex col-xl-6 mb-2">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Filtre por nome a vaga"
+                    formControlName="filtro">
 
-<section>
-    <div *ngIf="!vagasDisponiveis">
-        <span> No momento não existe vagas cadastradas! </span>
-    </div>
-    <section>
-        <div class="containerCard vagasDisponiveis">
+                <button class="btn btn-primary btn-pesquisa">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                  </button>
+        </form>        
+    </section>
+
+    <ngb-alert #alert type="warning">
+      Verifique as vagas que estão em Aberto!
+    </ngb-alert>
+
+    <section class="row card__vaga">
+        <div *ngIf="!vagasDisponiveis">
+          <span> No momento não existem estudantes para aprovação. </span>
+        </div>
+        <section>
+          <div class="containerCard vagasDisponiveis">    
             <div class="card" *ngFor="let vaga of vagasDisponiveis; let i = index">
-                <p [ngClass]=" getStatus(vaga.status)" class="statusPosition">
-                    {{ vaga.status }}
-                  </p>
-                <div class="imgCard">
+              <div class="card-content col-12">
+                <div class="imgCard col-3">
                     <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
                 </div>
-                <div class="card-body">
-                    <h4 class="card-title">{{ vaga.nomeVaga }}</h4>
-                    <p class="card-text">{{ vaga.descricao }}</p>
-                    <div>
-                        <button class="btn btn-primary" (click)="exibirDetalhes(vaga)">Detalhes</button>
-                    </div>
+                <div class="content-card-vaga col-8">
+                  <div> <h3><b>{{ vaga.nomeVaga }} <span [ngClass]="getStatus(vaga.status)">{{  vaga.status }}</span></b></h3></div>            
+                  <p><b>Descrição da Vaga:</b>  {{ vaga.descricao }} </p>
+                  <p><b>Número de Vagas:</b> {{  vaga.numeroVagas }}</p>                        
                 </div>
+                <div class="col-1 content-card-icons">
+                  <div
+                    class="first-icon"
+                    (click)="exibirDetalhes(vaga)"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      class="bi bi-arrow-right-square"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+        </section>
+        <div class="row">
+          <ngb-pagination
+            class="pagination pull-right"
+            [rotate]="true"
+            [maxSize]="3"
+            [directionLinks]="false"
+            [collectionSize]="this.vagasDisponiveis.length"
+            [pageSize]="itemsPerPage"
+            [boundaryLinks]="true"
+            [(page)]="paginaAtual"
+            (pageChange)="mudancaPagina(paginaAtual)"
+          >
+          </ngb-pagination>
         </div>
-    </section>
-    <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
-        [collectionSize]="this.vagasDisponiveis.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"
-        [(page)]="paginaAtual" (pageChange)="mudancaPagina(paginaAtual)">
-    </ngb-pagination>
-</section>
+      </section>
 
 </section>

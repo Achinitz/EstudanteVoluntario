@@ -29,23 +29,16 @@
   width: 15rem;
   margin-right: 10px;
   margin-top: 10px;
+    display: flex;
+  flex-direction: initial;
 
-  div:nth-of-type(2) {
-    h4 {
-      text-align: center;
-    }
 
-    p:nth-of-type(2) {
-      text-align: center;
-      border-radius: 1rem;
-    }
-  }
 }
 
 .buttonsVagasCadastradas {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
   margin: 1rem;
 
   button:first-child {
@@ -75,4 +68,47 @@
       font-size: 14px;
     }
   }
+}
+
+
+.estudantesAprovacao {
+  display: grid;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.containerCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  width: 100%;
+  margin-top: 10px;
+  padding: 0.5rem;
+}
+
+.card-footer {
+  padding: 0 0.5rem 0 0.5rem;
+}
+
+.imgCard {
+  width: 25%;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.badge{
+  font-size: 14px !important;
+  margin-left: 1rem;
+}
+
+.card-content-description{
+  line-height: 14px;
+}
+
+.statusPosition{
+  padding: 0.8rem;
+  border-radius: 5px;
+  font-weight: 600;
 }

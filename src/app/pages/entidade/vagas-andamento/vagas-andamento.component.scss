@@ -1,96 +1,88 @@
 .topo {
-    flex-direction: column;
-    align-items: center; 
-  }
-  
-  h2 {
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    margin-top: 1rem;
-  }
-  
+  flex-direction: column;
+  align-items: center;
+}
 
-  .vagasDisponiveis {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
-    grid-column-gap: 4rem;
-    column-gap: 4rem;
-  }
-  
-  .buttonsVagasCadastradas {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem;
-  
-    button:first-child {
-      margin-right: 0.5rem;
-    }
-  }
+.content-card-vaga {
+  line-height: 1.5rem;
+  padding: 5px;
+}
 
-  .statusPosition {
-    width: min-content;
-    padding: 0.3rem;
-    border-radius: 0.4rem;
-    margin: 0.3rem 0rem 0.5rem 0.3rem;
-    padding: 0.3rem;
-  }
-  
-  .card {
-    width: 15rem;
-    margin-right: 10px;
-    margin-top: 10px;
-  
-    div:nth-of-type(2) {
-      h4 {
-        text-align: center;
-      }
-  
-      p:nth-of-type(2) {
-        text-align: center;
-        border-radius: 1rem;
-      }
-  
-      div {
-        display: flex;
-        justify-content: space-between;
-      }
-    }
-  }
-  
-  .pagination ::ng-deep {
-    align-self: center;
-  
-    .page-item {
-      &.active {
-        .page-link {
-          background-color: #fff;
-          color: #439024;
-        }
-      }
-  
+.content-card-icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.first-icon {
+  width: 25px;
+  margin-top: 5px;
+  background: white;
+  cursor: pointer;
+}
+
+.card-content-filtro {
+  display: flex;
+  align-items: center;
+  background-color: #edebe3;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  padding: 0.5rem;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.pagination ::ng-deep {
+  margin-left: auto;
+  .page-item {
+    &.active {
       .page-link {
         background-color: #fff;
-        color: #7d7d7d;
-        border-color: #ebebec;
-        font-size: 14px;
+        color: #439024;
       }
     }
-  }
 
-  .btn-pesquisa{
-    margin-left: 0.5rem;    
+    .page-link {
+      background-color: #fff;
+      color: #7d7d7d;
+      border-color: #ebebec;
+      font-size: 14px;
+    }
   }
+}
 
-  .form__filtro{
-    background: #f2f2f2;
-    padding: 1rem;
-    border-radius: 5px;
-  }
+.estudantesAprovacao {
+  display: grid;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
 
-  .title__form__filtro{
-    font-size: 20px;
-    text-align: start;
-    width: 100%;
-  }
+.containerCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  width: 100%;
+  margin-top: 10px;
+  padding: 0.5rem;
+}
+
+.card-footer {
+  padding: 0 0.5rem 0 0.5rem;
+}
+
+.imgCard {
+  width: 25%;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.badge{
+  font-size: 14px !important;
+  margin-left: 1rem;
+}

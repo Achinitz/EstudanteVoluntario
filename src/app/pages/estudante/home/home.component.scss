@@ -16,12 +16,6 @@ h2 {
   flex-wrap: wrap;
 }
 
-.content__card{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
-  column-gap: 4rem;
-}
-
 .ultimasInscricoes {
   display: grid;
   margin-bottom: 2rem;
@@ -47,16 +41,16 @@ h2 {
   // column-gap: 4rem;
 }
 
-.buttonsVagasCadastradas {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1rem;
+// .buttonsVagasCadastradas {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin: 1rem;
 
-  button:first-child {
-    margin-right: 0.5rem;
-  }
-}
+//   button:first-child {
+//     margin-right: 0.5rem;
+//   }
+// }
 
 .statusPosition {
   width: min-content;
@@ -67,25 +61,30 @@ h2 {
 }
 
 .card {
-  width: 15rem;
-  margin-right: 10px;
-  margin-top: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: initial;
+  margin-bottom: 1REM;
+  width: 100%;
+  // width: 15rem;
+  // margin-right: 10px;
+  // margin-top: 10px;
 
-  div:nth-of-type(2) {
-    h4 {
-      text-align: center;
-    }
+  // div:nth-of-type(2) {
+  //   h4 {
+  //     text-align: center;
+  //   }
 
-    p:nth-of-type(2) {
-      text-align: center;
-      border-radius: 1rem;
-    }
+  //   p:nth-of-type(2) {
+  //     text-align: center;
+  //     border-radius: 1rem;
+  //   }
 
-    div {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
+  //   div {
+  //     display: flex;
+  //     justify-content: space-between;
+  //   }
+  // }
 }
 
 .pagination ::ng-deep {
@@ -106,4 +105,33 @@ h2 {
       font-size: 14px;
     }
   }
+}
+
+.card__content{
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonsVagasCadastradas{
+  padding: 1rem;
+  text-align: end;
+
+  button:first-child {
+     margin-right: 0.5rem;
+   }
+}
+
+.card-content-description{
+  line-height: 14px;
+}
+
+.topo-title{
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.statusPosition{
+    padding: 0.8rem;
+    border-radius: 5px;
+    font-weight: 600;
 }

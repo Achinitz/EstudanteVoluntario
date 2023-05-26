@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,9 +10,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  nomeEntidade: any = 'Entidade Teste';
+  nomeEntidade: any = '';
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(private dataService: DataService, private router: Router, private loginService: LoginService) {
+    this.nomeEntidade = this.loginService.usuarioLogado;
+  }
 
   vagasAbertas: any = [
     {
@@ -195,6 +198,22 @@ export class HomeComponent implements OnInit {
         });
       }
     });
+  }
+
+  getStatus(status: string) {
+    if (status == 'Aprovação') {
+      return 'bg-warning';
+    } else if (status == 'Aberta') {
+      return 'bg-success text-white';
+    } else if (status == 'inscrito') {
+      return 'bg-success text-white';
+    } else if (status == 'Cancelada') {
+      return 'bg-danger text-white';
+    } else if (status == 'Andamento') {
+      return 'bg-info text-white';
+    } else {
+      return 'bg-secondary text-white';
+    }
   }
 
   exibirDetalhes(value: any): void {

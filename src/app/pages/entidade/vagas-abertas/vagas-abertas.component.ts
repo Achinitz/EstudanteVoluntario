@@ -15,6 +15,24 @@ export class VagasAbertasComponent implements OnInit {
     filtro: new FormControl(null, Validators.required),
   });
 
+  estadosVagas: any = [
+    {
+      id: 1, nome: 'Aberto',
+    },
+    {
+      id: 2, nome: 'Andamento',
+    },
+    {
+      id: 3, nome: 'Aprovação',
+    },
+    {
+      id: 4, nome: 'Encerrada',
+    },
+    {
+      id: 5, nome: 'Cancelada',
+    },
+  ]
+
   vagasDisponiveis: any = [
     {
       id: 1,
@@ -394,15 +412,15 @@ export class VagasAbertasComponent implements OnInit {
 
   getStatus(status: string) {
     if (status == 'Aprovação') {
-      return 'bg-warning';
+      return 'badge bg-warning';
     } else if (status == 'Aberta') {
-      return 'bg-success text-white';
+      return 'badge bg-success text-white';
     } else if (status == 'Cancelada') {
-      return 'bg-danger text-white';
+      return 'badge bg-danger text-white';
     } else if (status == 'Andamento') {
-      return 'bg-info text-white';
+      return 'badge bg-info text-white';
     } else {
-      return 'bg-secondary text-white';
+      return 'badge bg-secondary text-white';
     }
   }
 
