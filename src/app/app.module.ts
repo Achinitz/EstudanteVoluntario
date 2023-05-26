@@ -16,7 +16,6 @@ import { MatListModule } from '@angular/material/list';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -41,6 +40,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { Pagina404Component } from './pages/pagina404/pagina404.component';
 import { AuthGuard } from './guards/auth-guard';
 import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.component';
+import { NomeUsuarioPipe } from './shared/pipe/nome-usuario.pipe';
 
 @NgModule({
   declarations: [
@@ -58,14 +58,14 @@ import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.compo
     SobreNosComponent,
     Pagina404Component,
     EsqueciSenhaComponent,
+    NomeUsuarioPipe,
   ],
   exports: [
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
     NgSelectModule,
-    ToastrModule,   
-  
+    ToastrModule,
   ],
   imports: [
     AppRoutingModule,
@@ -83,17 +83,14 @@ import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.compo
     MatSidenavModule,
     MatTabsModule,
     MatListModule,
-  //  MatToolbar,
-    NgbModule,    
+    //  MatToolbar,
+    NgbModule,
     NgSelectModule,
     NgxMaskModule.forRoot(),
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
-  providers: [
-    DataService,
-    CookieService,    
-  ],
+  providers: [DataService, CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

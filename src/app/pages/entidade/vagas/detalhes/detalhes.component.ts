@@ -55,6 +55,27 @@ export class DetalhesComponent implements OnInit, OnDestroy {
     });
   }
 
+  rescindirTermo() {
+    Swal.fire({
+      title: 'Deseja realmente rescindir o termo desse/a voluntário/a?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Termo rescindido com sucesso!',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  }
+
   finalizarPorUrgencia() {
     Swal.fire({
       title: 'Deseja realmente finalizar esse processo seletivo?',

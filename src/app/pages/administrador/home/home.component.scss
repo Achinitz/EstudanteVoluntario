@@ -11,47 +11,43 @@ h2 {
 }
 
 svg {
-  width: 40px;
-  padding-right: 10px;
+  width: 60px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
-.quantidade-chamados {
-  border-radius: 50%;
-  padding-top: 6px;
-  border-radius: 20%;
-  padding-bottom: 6px;
-  padding-right: 9px;
-  padding-left: 9px;
-  background: green;
-  color: white;
-  font-weight: 600;
-}
-
-.dashboard {
+.dash {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background-color: #2e6793;
+  padding: 1rem;
+}
+
+.card {
+  padding:1rem;
+  justify-content: center; 
   color: white;
-  border-radius: 5px;
-  div {
-    padding: 1.5rem;
-  }
   span {
     font-size: medium;
   }
 }
 
+.dados {
+  margin-left: 1rem;
+  text-align: end;
+}
+
+.quantidade-chamados {
+  font-size: xx-large;
+}
+
 .content-main-dashboard {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding-left: 1rem;
   padding-right: 1rem;
-  div {
-    width: 100%;
-    margin-top: 2rem;
-  }
-  span{
+  margin-top: 2rem;
+
+  span {
     font-size: medium;
   }
 }

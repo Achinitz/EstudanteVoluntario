@@ -10,7 +10,6 @@ import { ValidarEstudantesAdministradorComponent } from './validar-estudantes-ad
 import { ValidarEntidadesAdministradorComponent } from './validar-entidades-administrador/validar-entidades-administrador.component';
 import { DetalheVagaAdministradorComponent } from './validar-vagas-administrador/detalhe-vaga-administrador/detalhe-vaga-administrador.component';
 import { DetalheEstudanteAdministradorComponent } from './validar-estudantes-administrador/detalhe-estudante-administrador/detalhe-estudante-administrador.component';
-
 import { CadastrarInstituicaoComponent } from './cadastrar-instituicao/cadastrar-instituicao.component';
 import { CadastrarCursoComponent } from './cadastrar-curso/cadastrar-curso.component';
 import { AdicionarInstituicaoComponent } from './cadastrar-instituicao/adicionar-instituicao/adicionar-instituicao.component';
@@ -25,7 +24,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
-
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
@@ -40,6 +38,7 @@ import { DetalheEntidadeAdministradorComponent } from './validar-entidades-admin
 import { EditarInstituicaoComponent } from './cadastrar-instituicao/editar-instituicao/editar-instituicao.component';
 import { EditarCadastroComponent } from './cadastrar-curso/editar-cadastro/editar-cadastro.component';
 import { AuthGuard } from 'src/app/guards/auth-guard';
+import { CpfPipe } from 'src/app/shared/pipe/cpf.pipe';
 
 @NgModule({
   declarations: [
@@ -60,6 +59,7 @@ import { AuthGuard } from 'src/app/guards/auth-guard';
     AdicionarCursoComponent,
     AdicionarAdminComponent,    
     CnpjPipe,
+    CpfPipe,
     PhonePipe,
     DetalhesInstituicaoComponent,
     AdicionarAdministradorComponent,
@@ -85,6 +85,6 @@ import { AuthGuard } from 'src/app/guards/auth-guard';
     MatDividerModule,
     MatListModule,
   ],
-  providers: [CnpjPipe, PhonePipe, DataService],
+  providers: [CnpjPipe, PhonePipe, CpfPipe, DataService],
 })
 export class AdministradorModule {}

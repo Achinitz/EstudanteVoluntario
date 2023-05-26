@@ -13,6 +13,10 @@
 
 .mat-button-wrapper{
   border: 1px solid black !important;
+  padding: 8px 6px !important;
+    border-radius: 5px !important;
+    margin-left: -10px !important;
+    border: 1px solid white !important;
 }
 
 .navbar {
@@ -72,6 +76,7 @@ mat-nav-list {
 
   mat-icon {
     color: #ffffff;
+    margin-right: 0.3rem;
   }
 }
 

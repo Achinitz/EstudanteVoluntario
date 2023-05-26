@@ -10,34 +10,38 @@ import { LoginService } from 'src/app/services/login.service';
 export class HeaderComponent implements OnInit {
   LogoPath: string;
   HomePath: string;
+  usuario: any;
 
   constructor(private router: Router, private loginService: LoginService) {
     this.LogoPath = '/assets/imagens/logo-menu.png';
     this.HomePath = '/assets/imagens/home-2.svg';
-    
+    this.usuario = this.loginService.usuarioLogado;
   }
 
   public get isLoggedIn() {
     let doc = this.loginService.usuarioLogado;
-
     return doc;
   }
 
-  sidebarMobile(){
-
-    if(document.getElementById('navSideBar').classList.contains('showSideBar')){
+  sidebarMobile() {
+    if (
+      document.getElementById('navSideBar').classList.contains('showSideBar')
+    ) {
       document.getElementById('navSideBar').classList.remove('showSideBar');
-    }else{
+    } else {
       document.getElementById('navSideBar').classList.add('showSideBar');
     }
+  }
 
+  redirecionar() {
+    let redirecionamento = '/'+this.usuario.perfil
+    this.router.navigate([redirecionamento]);
   }
 
   public logout() {
-    console.log('logout')
+    console.log('logout');
     localStorage.clear();
     this.router.navigate(['/']);
-
   }
 
   ngOnInit() {}

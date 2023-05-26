@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AvaliarEstudanteComponent } from './avaliar-estudante/avaliar-estudante.component';
-import { CertificadoComponent } from './certificado/certificado.component';
 import { EntidadeComponent } from './entidade.component';
-import { GerarRelatorioComponent } from './gerar-relatorio/gerar-relatorio.component';
 import { CadastrarVagaComponent } from './home/cadastrar-vaga/cadastrar-vaga.component';
 import { HomeComponent } from './home/home.component';
 import { PerfilComponent } from './perfil/perfil.component';
@@ -68,19 +66,7 @@ const routes: Routes = [
         component: CadastrarVagaComponent,
         canActivate: [AuthGuard],
         data: {role: 'Entidade'},
-      },
-      {
-        path: 'gerar-relatorio',
-        component: GerarRelatorioComponent,
-        canActivate: [AuthGuard],
-        data: {role: 'Entidade'},
-      },
-      {
-        path: 'gerar-certificado',
-        component: CertificadoComponent,
-        canActivate: [AuthGuard],
-        data: {role: 'Entidade'},
-      },
+      },      
       {
         path: 'avaliar-estudante',
         component: AvaliarEstudanteComponent,

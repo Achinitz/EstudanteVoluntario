@@ -154,7 +154,7 @@ export class VagasComponent implements OnInit {
           curso: 'Analise de Sistemas',
           idade: 22,
           dataInscricao: '15/05/2022',
-          status: 'Inscrito',
+          status: 'Reprovado',
         },
         {
           id: 6,
