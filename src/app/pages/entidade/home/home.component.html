@@ -3,65 +3,62 @@
     <h1>Olá {{ nomeEntidade }} !</h1>
   </div>
 
-  <section class="dashboard col-12">
-    <div>
-      <span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          class="bi bi-card-checklist"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"
-          />
-          <path
-            d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"
-          />
-        </svg>
-      </span>
-      <span class="title-index"> Vagas Pendentes </span>
-      <span class="quantidade-chamados"> 2 </span>
+  <section class="dash col-12">
+
+    <div class="cardGrafico border shadow" style="background-color:dodgerblue">
+      <div class="row align-items-center">
+        <span class="col-3">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
+            <path
+              d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+            <path
+              d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+          </svg>
+        </span>
+        <div class="col-8 dados">
+          <p class="quantidade-chamados"> 4</p>
+          <span class="title-index"> Vagas Abertas </span>
+        </div>
+      </div>  
+     
     </div>
 
-    <div>
-      <span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          class="bi bi-eye"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"
-          />
-          <path
-            d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
-          />
-        </svg>
-      </span>
-      <span class="title-index"> Vagas em Análise </span>
-      <span class="quantidade-chamados"> 2 </span>
+
+    <div class="cardGrafico border shadow" style="background-color:darkcyan ">
+      <div class="row align-items-center">
+        <span class="col-3">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+            <path
+              d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+            <path
+              d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
+          </svg>
+        </span>
+        <div class="col-8 dados">
+          <p class="quantidade-chamados"> 2 </p>
+          <span class="title-index"> Vagas em Andamento </span>
+        </div>
+      </div>
+    
     </div>
-    <div>
-      <span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          class="bi bi-check2-square"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"
-          />
-          <path
-            d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"
-          />
-        </svg>
-      </span>
-      <span class="title-index"> Vagas Finalizadas </span>
-      <span class="quantidade-chamados"> 2 </span>
+
+    <div class="cardGrafico border shadow " style="background-color:mediumslateblue">
+      <div class="row align-items-center">
+        <span class="col-3">
+          <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </span> 
+        <div class="col-8 dados">
+          <p class="quantidade-chamados"> 2 </p>
+          <span class="title-index"> Vagas Canceladas </span>
+        </div>
+      </div>
+     
     </div>
+
+
   </section>
 
   <section>
@@ -91,7 +88,7 @@
       </div>
     </section>
   </section>
- 
+
   <section>
     <h2>Vagas em Análise</h2>
     <div *ngIf="!vagasAprovacao">

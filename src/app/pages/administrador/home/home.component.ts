@@ -87,11 +87,3 @@ export class HomeComponent implements OnInit {
     });
   }
 }
-
-/* {
-  data:[5,12,8,6,10,6],
-  label: 'Vagas',
-  backgroundColor:'#1f8fff',
-  tension: 0.2,
-  borderColor: '#1f8fff',
-} */

@@ -11,37 +11,59 @@ h2 {
 }
 
 svg {
-  width: 40px;
-  padding-right: 10px;
+  width: 60px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.dash {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.cardGrafico {
+  padding: 1rem;
+  justify-content: center;
+  color: white;
+  span {
+    font-size: medium;
+  }
+}
+
+.dados {
+  margin-left: 1rem;
+  text-align: end;
 }
 
 .quantidade-chamados {
-  border-radius: 50%;
-  padding-top: 6px;
-  border-radius: 20%;
-  padding-bottom: 6px;
-  padding-right: 9px;
-  padding-left: 9px;
-  background: green;
-  color: white;
-  font-weight: 600;
+  font-size: xx-large;
+}
+
+.content-main-dashboard {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 2rem;
+
+  span {
+    font-size: medium;
+  }
 }
 
 .card {
   width: 15rem;
   margin-right: 10px;
   margin-top: 10px;
-
   div:nth-of-type(2) {
     h4 {
       text-align: center;
     }
-
     p:nth-of-type(2) {
       text-align: center;
       border-radius: 1rem;
     }
-
     div {
       display: flex;
       justify-content: space-between;

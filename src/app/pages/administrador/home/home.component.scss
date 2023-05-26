@@ -22,22 +22,9 @@ svg {
   padding: 1rem;
 }
 
-/* .quantidade-chamados {
-  border-radius: 50%;
-  padding-top: 6px;
-  border-radius: 20%;
-  padding-bottom: 6px;
-  padding-right: 9px;
-  padding-left: 9px;
-  background: green;
-  color: white;
-  font-weight: 600;
-} */
-
 .card {
   padding:1rem;
-  justify-content: center;
- // background-color: #2e6793;
+  justify-content: center; 
   color: white;
   span {
     font-size: medium;
@@ -52,21 +39,6 @@ svg {
 .quantidade-chamados {
   font-size: xx-large;
 }
-
-/* .dashboard {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #2e6793;
-  color: white;
-  border-radius: 5px;
-  div {
-    padding: 1.5rem;
-  }
-  span {
-    font-size: medium;
-  }
-} */
 
 .content-main-dashboard {
   display: flex;
