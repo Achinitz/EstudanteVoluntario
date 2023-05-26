@@ -1,6 +1,7 @@
 <section class="content">
   <div class="topo">
-    <h1>Olá {{ nomeEntidade }} !</h1>
+    <h1 class="colo-topo">Olá, {{ nomeEntidade.nome }} !
+    </h1>
   </div>
 
   <section class="dash col-12">
@@ -68,7 +69,56 @@
       <span> No momento não existem vagas abertas cadastradas! </span>
     </div>
 
-    <section class="contentDetails">
+    <section class="ultimasInscricoes" *ngIf="vagasAbertas">
+
+      <div class="content__card">
+
+        <div class="card col-12" *ngFor="let vaga of vagasAbertas; let i = index">
+          <!-- Alterar as cores do botão dependendo do status -->
+          <div class="imgCard col-3">
+            <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
+          </div>
+          <section class="card__content col-9">
+            <div class="card-body">
+              <div class="card-title d-flex">
+                <h1>{{ vaga.nomeVaga }} </h1>
+                <span [ngClass]=" getStatus(vaga.status)" class="statusPosition" *ngIf="!vaga.inscrito">
+                  {{ vaga.status }}
+                </span>
+                <span [ngClass]=" getStatus('inscrito')" class="statusPosition" *ngIf="vaga.inscrito">
+                  Inscrito
+                </span>
+              </div>
+              <div class="card-content-description">
+                <p class="card-title">
+                <b>Nome da vaga:</b> 
+                  {{ vaga.nomeVaga }}
+                </p>
+                <p class="card-text">
+                  <b>Descrição:</b> {{ vaga.descricao }}
+                </p>
+                <p class="card-text">
+                  <b>Requisitos:</b> {{ vaga.requisitos }}
+                </p>
+                <p class="card-text">
+                  <b>Número de Vagas:</b> {{ vaga.numeroVagas }}
+                </p>  
+              </div>          
+            </div>
+            <div class="buttonsVagasCadastradas">
+              <button class="btn btn-success" (click)="finalizarPorUrgencia()">
+                Finalizar
+              </button>
+              <button class="btn btn-danger" (click)="cancelarProcessoSeletivo()">
+                Cancelar
+              </button>
+            </div>
+          </section>
+        </div>
+
+      </div>
+
+    <!-- <section class="contentDetails">
       <div class="card" *ngFor="let vaga of vagasAbertas; let i = index">
         <div class="imgCard">
           <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
@@ -86,7 +136,7 @@
           </button>
         </div>
       </div>
-    </section>
+    </section> -->
   </section>
 
   <section>
@@ -95,8 +145,47 @@
       <span> No momento não existem vagas em análise! </span>
     </div>
 
-    <section class="contentDetails">
-      <div class="card" *ngFor="let vaga of vagasAprovacao; let i = index">
+    <section class="">
+
+      <div class="card col-12" *ngFor="let vaga of vagasAprovacao; let i = index">
+        <!-- Alterar as cores do botão dependendo do status -->
+        <div class="imgCard col-3">
+          <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
+        </div>
+        <section class="card__content col-9">
+          <div class="card-body">
+            <div class="card-title d-flex">
+              <h1>{{ vaga.nomeVaga }} </h1>
+              <span [ngClass]=" getStatus(vaga.status)" class="statusPosition" *ngIf="!vaga.inscrito">
+                {{ vaga.status }}
+              </span>
+              <span [ngClass]=" getStatus('inscrito')" class="statusPosition" *ngIf="vaga.inscrito">
+                Inscrito
+              </span>
+            </div>
+            <div class="card-content-description">
+              <p class="card-title">
+              <b>Nome da vaga:</b> 
+                {{ vaga.nomeVaga }}
+              </p>
+              <p class="card-text">
+                <b>Descrição:</b> {{ vaga.descricao }}
+              </p>
+              <p class="card-text">
+                <b>Requisitos:</b> {{ vaga.requisitos }}
+              </p>
+              <p class="card-text">
+                <b>Número de Vagas:</b> {{ vaga.numeroVagas }}
+              </p>  
+            </div>          
+          </div>
+          <div class="buttonsVagasCadastradas">
+            <button class="btn btn-primary" (click)="exibirDetalhes(vaga)">Detalhes Vaga</button>
+          </div>
+        </section>
+      </div>
+
+      <!-- <div class="card" *ngFor="let vaga of vagasAprovacao; let i = index">
         <div class="imgCard">
           <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
         </div>
@@ -107,7 +196,7 @@
         <div class="buttonsVagasCadastradas">
           <button class="btn btn-primary" (click)="exibirDetalhes(vaga)">Detalhes Vaga</button>
         </div>
-      </div>
+      </div> -->
     </section>
   </section>
   <a class="maisvagas" routerLink="/Entidade/vagas">> Mais vagas</a>

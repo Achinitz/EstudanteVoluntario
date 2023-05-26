@@ -168,7 +168,9 @@ export class BuscarVagasComponent implements OnInit {
       return 'bg-warning';
     } else if (status == 'Aberta') {
       return 'bg-success text-white';
-    } else if (status == 'Cancelada') {
+    } else if (status == 'inscrito') {
+      return 'bg-success text-white';
+    }else if (status == 'Cancelada') {
       return 'bg-danger text-white';
     } else if (status == 'Andamento') {
       return 'bg-info text-white';

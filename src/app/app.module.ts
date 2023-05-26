@@ -41,6 +41,7 @@ import { Pagina404Component } from './pages/pagina404/pagina404.component';
 import { AuthGuard } from './guards/auth-guard';
 import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.component';
 import { NomeUsuarioPipe } from './shared/pipe/nome-usuario.pipe';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,7 @@ import { NomeUsuarioPipe } from './shared/pipe/nome-usuario.pipe';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [DataService, CookieService],
+  providers: [DataService, CookieService, LoginService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

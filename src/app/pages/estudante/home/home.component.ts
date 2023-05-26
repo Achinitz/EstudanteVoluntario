@@ -5,6 +5,7 @@ import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalVagaComponent } from '../minhas-inscricoes/modal-inscricao/modal-vaga.component';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-home',
@@ -103,7 +104,10 @@ export class HomeComponent implements OnInit {
     private dataService: DataService,
     private router: Router,
     private modalService: NgbModal,
-  ) {}
+    private loginService: LoginService
+  ) {
+    this.nomeEstudante = this.loginService.usuarioLogado;
+  }
 
   ngOnInit(): void {}
 
@@ -143,12 +147,13 @@ export class HomeComponent implements OnInit {
         }
       })
   }
-
   
   getStatus(status: string) {
     if (status == 'Aprovação') {
       return 'bg-warning';
     } else if (status == 'Aberta') {
+      return 'bg-success text-white';
+    } else if (status == 'inscrito') {
       return 'bg-success text-white';
     } else if (status == 'Cancelada') {
       return 'bg-danger text-white';

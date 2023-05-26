@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,7 @@ import { Chart, registerables } from 'chart.js';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+
   @ViewChild('meuCanvas', { static: true }) elemento: ElementRef;
 
   nomeAdmin: any = 'Admin Teste';
@@ -34,7 +36,9 @@ export class HomeComponent implements OnInit {
     { mes: 'Mai/23', count: 3 },
   ];
 
-  constructor() {}
+  constructor(private loginService: LoginService) {
+    this.nomeAdmin = loginService.usuarioLogado;
+  }
 
   ngOnInit() {
     this.chart1 = document.getElementById('graficoEntidades');

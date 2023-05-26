@@ -417,7 +417,9 @@ export class VagasComponent implements OnInit {
       return 'badge bg-warning';
     } else if (status == 'Aberta') {
       return 'badge bg-success';
-    } else if (status == 'Cancelada') {
+    } else if (status == 'inscrito') {
+      return 'bg-success text-white';
+    }else if (status == 'Cancelada') {
       return 'badge bg-danger';
     } else if (status == 'Andamento') {
       return 'badge bg-info';

@@ -412,15 +412,15 @@ export class VagasAbertasComponent implements OnInit {
 
   getStatus(status: string) {
     if (status == 'Aprovação') {
-      return 'bg-warning';
+      return 'badge bg-warning';
     } else if (status == 'Aberta') {
-      return 'bg-success text-white';
+      return 'badge bg-success text-white';
     } else if (status == 'Cancelada') {
-      return 'bg-danger text-white';
+      return 'badge bg-danger text-white';
     } else if (status == 'Andamento') {
-      return 'bg-info text-white';
+      return 'badge bg-info text-white';
     } else {
-      return 'bg-secondary text-white';
+      return 'badge bg-secondary text-white';
     }
   }
 
