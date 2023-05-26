@@ -1,42 +1,26 @@
 <section class="row">
   <div class="col-lg-6 imgDiv">
-    <img
-      src="../../../assets/imagens/loginImage.jpg"
-      class="card-img-top"    
-      alt="..."
-    />
+    <img src="../../../assets/imagens/loginImage.jpg" class="card-img-top" alt="..." />
   </div>
   <div class="col-lg-4 content__imgDiv">
     <form [formGroup]="formLogin" (ngSubmit)="logar()">
       <h2>Login</h2>
       <div class="form-group">
         <label for="exampleInputEmail1">CPF ou CNPJ <em class="text-danger">*</em></label>
-        <input
-          type="text"
-          class="form-control"
-          id="nomeResponsavelCadastro"
-          placeholder="CPF ou CNPJ"
-          formControlName="cpfoucnpj"
-          pattern="[0-9]*"
-          mask="000.000.000-00 || 00.000.000/0000-00"
-        />
-        <small *ngIf="formLogin.get('cpfoucnpj').errors && formLogin.get('cpfoucnpj').touched && formLogin.get('cpfoucnpj').value == null"
-        class="alert text-danger">
-        <span>
-          Informe o CPF ou CNPJ!
-        </span>
-      </small>
+        <input type="text" class="form-control" id="nomeResponsavelCadastro" placeholder="CPF ou CNPJ"
+          formControlName="cpfoucnpj" pattern="[0-9]*" mask="000.000.000-00 || 00.000.000/0000-00" />
+        <small
+          *ngIf="formLogin.get('cpfoucnpj').errors && formLogin.get('cpfoucnpj').touched && formLogin.get('cpfoucnpj').value == null"
+          class="alert text-danger">
+          <span>
+            Informe o CPF ou CNPJ!
+          </span>
+        </small>
       </div>
       <div class="form-group">
         <label for="inputPassword5">Senha</label>
-        <input
-          type="password"
-          id="senha"
-          formControlName="senha"
-          class="form-control"
-          aria-describedby="passwordHelpBlock"
-          placeholder="Digite a sua senha"
-        />
+        <input type="password" id="senha" formControlName="senha" class="form-control"
+          aria-describedby="passwordHelpBlock" placeholder="Digite a sua senha" />
         <small *ngIf="formLogin.get('senha').errors && (formLogin.get('senha').dirty || formLogin.get('senha').touched)"
           class="alert text-danger">
           <span>
@@ -50,8 +34,10 @@
         <div class="buttonSubmit">
           <button type="submit" class="btn btn-primary col-12">Entrar</button>
         </div>
-        <div *ngIf="mensagem">
-          {{mensagem}}
+        <div class="mensagem" *ngIf="mensagem">
+          <ngb-alert #alert type="danger">
+            {{mensagem}}
+          </ngb-alert>
         </div>
       </div>
     </form>

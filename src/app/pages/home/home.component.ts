@@ -21,13 +21,13 @@ export class HomeComponent implements OnInit {
       img: '../../assets/imagens/pessoasDandoAsMaos.png',
       title: 'Maior conexão social',
       content:
-        'Voluntariar para adquiri ou gostar de contato social, sair de casa e explorar suas próprias forças.',
+        'Voluntariar para adquirir ou gostar de contato social, sair de casa e explorar suas próprias forças.',
     },
     {
       img: '../../assets/imagens/ideia.png',
       title: 'Desenvolver ideias',
       content:
-        'Aproveite a liberdade que o trabalho voluntário proporciona e desenvola ideias geniais.',
+        'Aproveite a liberdade que o trabalho voluntário proporciona e desenvolva ideias geniais.',
     },
     {
       img: '../../assets/imagens/experienciasValiosass.png',

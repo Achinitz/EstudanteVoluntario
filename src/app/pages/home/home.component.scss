@@ -133,6 +133,15 @@ button {
   }
 }
 
+#comoFunciona{
+  img{
+    max-width: 300px;    
+  }
+  div{
+    display: flex;
+    justify-content: center;
+  }
+}
 /* .vagasCards {
   display: flex;
   flex-wrap: wrap;

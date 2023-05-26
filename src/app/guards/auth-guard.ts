@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate{
           return true;
         }        
         this.router.navigate(['/login'], {
-          queryParams: { error: 'Deve fazer o login antes de acessar ' + url }
+          queryParams: { error: 'Deve fazer o login antes de acessar!'}
         });
         return false;
       }
