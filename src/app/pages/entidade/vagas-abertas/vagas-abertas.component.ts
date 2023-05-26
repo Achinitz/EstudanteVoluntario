@@ -15,6 +15,24 @@ export class VagasAbertasComponent implements OnInit {
     filtro: new FormControl(null, Validators.required),
   });
 
+  estadosVagas: any = [
+    {
+      id: 1, nome: 'Aberto',
+    },
+    {
+      id: 2, nome: 'Andamento',
+    },
+    {
+      id: 3, nome: 'Aprovação',
+    },
+    {
+      id: 4, nome: 'Encerrada',
+    },
+    {
+      id: 5, nome: 'Cancelada',
+    },
+  ]
+
   vagasDisponiveis: any = [
     {
       id: 1,
