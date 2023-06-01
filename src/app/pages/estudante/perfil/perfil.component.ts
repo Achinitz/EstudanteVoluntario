@@ -45,11 +45,17 @@ export class PerfilComponent implements OnInit {
   ];
 
   public formCadastro = new FormGroup({
+    id: new FormControl(null),
+    nome: new FormControl(null, Validators.required),       
+    login: new FormControl(null),
+    senha: new FormControl(null),
+    perfil: new FormControl(null),
+    dataCadastro: new FormControl(null),
+    perfilAtivo: new FormControl(null),
     cpf: new FormControl({value:this.cpf, disabled: true},
       Validators.required,       
     ),
     imgPerfil: new FormControl(null, Validators.required),
-    nomeCompleto: new FormControl(null, Validators.required),
     nomeSocial: new FormControl(null),
     confirmaNomeSocial: new FormControl(false),
     identificacaoGenero: new FormControl(null, Validators.required),
@@ -74,10 +80,9 @@ export class PerfilComponent implements OnInit {
     anoInicio: new FormControl(null, Validators.required),
     anoConclusao: new FormControl(null, Validators.required),
     comprovanteMatricula: new FormControl(null, Validators.required),
-
-    senha: new FormControl(null, Validators.required),
-    novaSenha: new FormControl(null, Validators.required),
-    confirmarSenha: new FormControl(null, Validators.required),
+    idAdmin: new FormControl(null),
+    novaSenha: new FormControl(null),
+    confirmarSenha: new FormControl(null),
   });
 
   mostrarValores() {
@@ -160,6 +165,10 @@ export class PerfilComponent implements OnInit {
     } else {
       this.toast.error('As senhas não são iguais!');
     }
+  }
+
+  desativarConta(){
+    
   }
 
   ngOnInit(): void {}

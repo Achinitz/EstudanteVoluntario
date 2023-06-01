@@ -6,6 +6,9 @@ export class Usuario {
         public login?: string,
         public senha?: string,
         public perfil?: string,
+        public imgPerfil?: any,
+        public dataCadastro?: Date,
+        public perfilAtivo?: boolean
     ){   
     }
 }

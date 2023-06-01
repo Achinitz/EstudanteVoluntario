@@ -55,6 +55,10 @@ export class CadastrarVagaComponent implements OnInit {
     termosCondicao: new FormControl(false, Validators.required),
   });
 
+  cadastrarVaga(){
+    
+  }
+
   mostrarValores() {
     console.log('Formulário enviado');
   }

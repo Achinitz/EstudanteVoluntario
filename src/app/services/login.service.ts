@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Usuario } from '../models/usuario.model';
 import { Login } from '../models/login.model';
-import { PerfilUsuario } from '../enums/perfil-usuario';
+import { Perfil } from '../enums/perfil-usuario';
 
 
 @Injectable({
@@ -11,7 +11,7 @@ import { PerfilUsuario } from '../enums/perfil-usuario';
 })
 export class LoginService {
 
-  perfil: PerfilUsuario;
+  perfil: Perfil;
 
   LS_CHAVE: string = "usuarioLogado";
 

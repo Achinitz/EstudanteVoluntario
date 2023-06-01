@@ -27,12 +27,12 @@
       </div>
 
       <div class="form-group">
-        <label for="nomeCompleto">Nome Completo <em>*</em> </label>
+        <label for="nome">Nome Completo <em>*</em> </label>
         <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo"
-          formControlName="nomeCompleto" />
+          formControlName="nome" />
         <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
-          formCadastro.controls.nomeCompleto.touched &&
-          formCadastro.controls.nomeCompleto.invalid
+          formCadastro.controls.nome.touched &&
+          formCadastro.controls.nome.invalid
         " [@fadeInOut]>
           O campo Nome Completo é obrigatório!
         </small>
@@ -46,11 +46,23 @@
         <label for="nomeSocial">Nome Social</label>
         <input type="text" class="form-control" id="nomeSocial" placeholder="Nome Social"
           formControlName="nomeSocial" />
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.nomeSocial.touched &&
+          formCadastro.controls.nomeSocial.value.length == 0
+        " [@fadeInOut]>
+          O campo Nome Social é obrigatório!
+        </small>
       </div>
       <div class="form-group">
         <label for="cpf">CPF <em>*</em> </label>
         <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" mask="000.000.000-00"
           formControlName="cpf" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.cpf.touched &&
+          formCadastro.controls.cpf.invalid
+        " [@fadeInOut]>
+          O campo CPF é obrigatório!
+        </small>
       </div>
       <div class="row duplo">
         <div class="col">
@@ -77,8 +89,14 @@
       <div class="form-group">
         <label for="cpf">Estado Civil <em>*</em> </label>
         <ng-select [items]="estadoCivil" bindLabel="nome" bindValue="id" placeholder="Selecione"
-          formControlName="instituicao">
+          formControlName="estadoCivil">
         </ng-select>
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+        formCadastro.controls.estadoCivil.touched &&
+        formCadastro.controls.estadoCivil.invalid
+      " [@fadeInOut]>
+      O campo Órgão emissor é obrigatório!
+    </small>
       </div>
       <div class="form-group">
         <label for="email">Email <em>*</em> </label>
@@ -93,7 +111,13 @@
       <div class="row duplo">
         <div class="col">
           <label for="identificacaoGenero">Identificação de Gênero </label>
-          <input type="text" class="form-control" id="identificacaoGenero" placeholder="Ex: Masculino" />
+          <input type="text" class="form-control" formControlName="identificacaoGenero" id="identificacaoGenero" placeholder="Ex: Masculino" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.identificacaoGenero.touched &&
+          formCadastro.controls.identificacaoGenero.invalid
+        " [@fadeInOut]>
+          O campo E-mail é obrigatório!
+        </small>
         </div>
         <div class="col">
           <label for="dataNascimento">Data de Nascimento <em>*</em> </label>
@@ -148,7 +172,8 @@
           <ng-select [items]="cidades" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
             formControlName="cidade" (ngModelChange)="onAddBairro()" (closeOnSelect)="(true)">
           </ng-select>
-          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="" [@fadeInOut]>
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+            formCadastro.controls.cidade.touched && formCadastro.controls.cidade.invalid" [@fadeInOut]>
             O campo Cidade é obrigatório!
           </small>
         </div>
@@ -184,6 +209,10 @@
         <label for="complemento">Complemento </label>
         <input type="text" class="form-control" id="complemento" placeholder="Complemento ou Ponto de Referência."
           formControlName="complemento" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.complemento.touched &&
+          formCadastro.controls.complemento.invalid" [@fadeInOut]>
+          O campo Bairro é obrigatório!
+        </small>
       </div>
 
 
@@ -262,12 +291,6 @@
           </small>
         </div>
       </div>
-
-      <div class="form-group">
-        <label for="inputPassword5">Senha atual </label>
-        <input type="password" id="senha" class="form-control" placeholder="Digite a sua senha atual"
-          formControlName="senha" />
-      </div>
       <div class="form-group">
         <label for="inputPassword5">Nova senha </label>
         <input type="password" id="novaSenha" class="form-control" placeholder="Digite a sua nova senha"
@@ -277,6 +300,20 @@
         <label for="inputPassword5">Confirmar Senha </label>
         <input type="password" id="confirmarSenha" class="form-control" placeholder="Confirme a sua nova senha"
           formControlName="confirmarSenha" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.confirmarSenha.touched && 
+          formCadastro.controls.novaSenha.value.length > 0 && 
+          formCadastro.controls.confirmarSenha.value.length == 0
+        " [@fadeInOut]>
+            O campo Confirmar Senha é obrigatório!
+          </small>
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.novaSenha.value?.length > 0 &&
+          formCadastro.controls.confirmarSenha.value?.length > 0 &&
+          formCadastro.controls.novaSenha.value != formCadastro.controls.confirmarSenha.value
+        " [@fadeInOut]>
+            As senhas informadas não são iguais!
+          </small>
       </div>
 
       <div class="buttonForm">
@@ -285,6 +322,9 @@
         </button>
         <button type="reset" class="btn btn-warning">
           Desfazer alterações
+        </button>
+        <button class="btn btn-danger" (click)="desativarConta()">
+          Desativar Conta
         </button>
       </div>
     </form>

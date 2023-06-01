@@ -9,7 +9,7 @@
 
   <section class="contentDetails">
     <div class="cadastro">
-      <form [formGroup]="formCadastro">
+      <form [formGroup]="formCadastro" (ngSubmit)="cadastrarVaga()">
         <label> <em>*</em><i> Campos de preenchimento obrigatório</i> </label>
 
         <div class="form-group">

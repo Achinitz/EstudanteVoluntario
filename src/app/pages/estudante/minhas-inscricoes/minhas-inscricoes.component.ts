@@ -181,7 +181,7 @@ export class MinhasInscricoesComponent implements OnInit {
 
   constructor(private modalService: NgbModal, public dialog: MatDialog) {}
 
-  cancelarInscricao() {
+  cancelarInscricao() { //Id da Inscrição
     Swal.fire({
       title: 'Deseja realmente cancelar a sua inscrição nessa vaga?',
       text: 'Ao confirmar, a sua inscrição nessa vaga será cancelada!',

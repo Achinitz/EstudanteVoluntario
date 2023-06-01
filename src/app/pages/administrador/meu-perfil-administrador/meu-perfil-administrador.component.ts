@@ -167,6 +167,10 @@ export class MeuPerfilAdministradorComponent implements OnInit {
     console.log("Formulário enviado");
   }
 
+      desativarConta(){
+    
+  }
+
   ngOnInit(): void {
   }
 

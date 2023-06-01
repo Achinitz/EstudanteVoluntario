@@ -53,6 +53,7 @@ export class PerfilComponent implements OnInit {
     estado: new FormControl(null, Validators.required),
     cidade: new FormControl(null, Validators.required),
     senha: new FormControl(null, Validators.required),
+    novaSenha: new FormControl(null),
     confirmarSenha: new FormControl(null, Validators.required),
   });
 
@@ -132,6 +133,10 @@ export class PerfilComponent implements OnInit {
     } else {
       this.toast.error('As senhas não são iguais!');
     }
+  }
+
+    desativarConta(){
+    
   }
 
   ngOnInit(): void {}

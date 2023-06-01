@@ -15,12 +15,18 @@
       </div>
       <div class="form-group inputFile">
         <label for="imgPerfil">Imagem de Perfil </label>
-        <input type="file" class="form-control-file" id="inputFile" formControlName="imgPerfil" />
+        <input type="file" class="form-control-file" id="inputFile" accept="image/png, image/jpeg" formControlName="imgPerfil" />
       </div>
 
       <div class="form-group">
         <label for="missao">Missão da Entidade</label>
         <textarea class="form-control" id="missao" rows="3" formControlName="missao"></textarea>
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.missao.touched &&
+          formCadastro.controls.missao.value?.length == 0
+          " [@fadeInOut]>
+            O campo Missão é obrigatório!
+        </small>
       </div>
 
       <div class="form-group">
@@ -115,8 +121,9 @@
         <label for="logradouro">Logradouro <em>*</em> </label>
         <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, Travessa, etc."
           formControlName="logradouro" />
-        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.logradouro.touched &&
-        formCadastro.controls.logradouro.invalid" [@fadeInOut]>
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.logradouro.touched &&
+          formCadastro.controls.logradouro.invalid" [@fadeInOut]>
           O campo Logradouro é obrigatório!
         </small>
       </div>
@@ -154,11 +161,31 @@
         <label for="inputPassword5">Nova senha </label>
         <input type="password" id="novaSenha" class="form-control" placeholder="Digite a sua nova senha"
           formControlName="novaSenha" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.confirmarSenha.touched &&
+          formCadastro.controls.confirmarSenha.value?.length > 0
+        " [@fadeInOut]>
+            O campo Confirmar Senha é obrigatório!
+          </small>
       </div>
       <div class="form-group">
         <label for="inputPassword5">Confirmar Senha </label>
         <input type="password" id="confirmarSenha" class="form-control" placeholder="Confirme a sua nova senha"
           formControlName="confirmarSenha" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.confirmarSenha.touched && 
+          formCadastro.controls.novaSenha.value.length > 0 && 
+          formCadastro.controls.confirmarSenha.value.length == 0
+        " [@fadeInOut]>
+            O campo Confirmar Senha é obrigatório!
+          </small>
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          formCadastro.controls.novaSenha?.value?.length > 0 &&
+          formCadastro.controls.confirmarSenha?.value?.length > 0 &&
+          formCadastro.controls.novaSenha?.value != formCadastro.controls.confirmarSenha?.value
+        " [@fadeInOut]>
+            As senhas informadas não são iguais!
+          </small>
       </div>
 
       <div class="buttonForm">
@@ -167,6 +194,9 @@
         </button>
         <button type="reset" class="btn btn-warning">
           Desfazer alterações
+        </button>
+        <button class="btn btn-danger" (click)="desativarConta()">
+          Desativar Conta
         </button>
       </div>
     </form>
