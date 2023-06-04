@@ -8,9 +8,9 @@
       <div class="form-group">
         <label for="exampleInputEmail1">CPF ou CNPJ <em class="text-danger">*</em></label>
         <input type="text" class="form-control" id="nomeResponsavelCadastro" placeholder="CPF ou CNPJ"
-          formControlName="cpfoucnpj" pattern="[0-9]*" mask="000.000.000-00 || 00.000.000/0000-00" />
+          formControlName="login" pattern="[0-9]*" mask="000.000.000-00 || 00.000.000/0000-00" />
         <small
-          *ngIf="formLogin.get('cpfoucnpj').errors && formLogin.get('cpfoucnpj').touched && formLogin.get('cpfoucnpj').value == null"
+          *ngIf="formLogin.get('login').errors && formLogin.get('login').touched && formLogin.get('login').value == null"
           class="alert text-danger">
           <span>
             Informe o CPF ou CNPJ!
@@ -32,7 +32,7 @@
         <a class="" href="#" routerLink="/esqueceu-senha">Esqueceu a senha?</a>
         <a class="" href="#" routerLink="/cadastro">Não tenho cadastro</a>
         <div class="buttonSubmit">
-          <button type="submit" class="btn btn-primary col-12">Entrar</button>
+          <button type="submit" class="btn btn-primary col-12" [disabled]="formLogin.invalid">Entrar</button>
         </div>
         <div class="mensagem" *ngIf="mensagem">
           <ngb-alert #alert type="danger">

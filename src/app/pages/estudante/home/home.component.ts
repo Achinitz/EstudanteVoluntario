@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalVagaComponent } from '../minhas-inscricoes/modal-inscricao/modal-vaga.component';
 import { LoginService } from 'src/app/services/login.service';
+import { EstudanteService } from 'src/app/services/estudante.service';
 
 @Component({
   selector: 'app-home',
@@ -104,8 +105,18 @@ export class HomeComponent implements OnInit {
     private dataService: DataService,
     private router: Router,
     private modalService: NgbModal,
-    private loginService: LoginService
+    private loginService: LoginService,
+    public estudanteService: EstudanteService
   ) {
+
+    this.estudanteService.teste().subscribe({
+      next: (res:any) => {
+        console.log('***** INCIO *****');
+        console.log(res);
+        console.log('***** FIM *****');
+      }
+    })
+
     this.nomeEstudante = this.loginService.usuarioLogado;
   }
 

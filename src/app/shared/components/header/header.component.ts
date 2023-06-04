@@ -39,7 +39,6 @@ export class HeaderComponent implements OnInit {
   }
 
   public logout() {
-    console.log('logout');
     localStorage.clear();
     this.router.navigate(['/']);
   }

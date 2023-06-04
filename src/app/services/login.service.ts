@@ -4,19 +4,23 @@ import { Observable, of } from 'rxjs';
 import { Usuario } from '../models/usuario.model';
 import { Login } from '../models/login.model';
 import { Perfil } from '../enums/perfil-usuario';
+import { HttpHeaderService } from './http-header.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LoginService extends HttpHeaderService{
 
   perfil: Perfil;
 
-  LS_CHAVE: string = "usuarioLogado";
+  LS_CHAVE: string = "usuario";
 
 
-  constructor() { }
+  constructor(protected http: HttpClient) {
+    super();
+  }
 
   public get usuarioLogado():Usuario{
     let usuario = localStorage[this.LS_CHAVE];
@@ -27,20 +31,28 @@ export class LoginService {
     localStorage[this.LS_CHAVE] = JSON.stringify(usuario);
   }
 
-  login(login: any): Observable<Usuario | null>{    
+  public login(login:Login): Observable<any>{    
+
+    return this.http.post(this.baseUrl + 'auth/login',login,this.httpOptions);
+
     let usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Estudante');
-    // if(login.login == login.senha){  
-      if(login.cpfoucnpj == '22222222222'){
+      if(login.login == '22222222222'){
           usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Entidade');
-      }else if(login.cpfoucnpj == '33333333333'){
+      }else if(login.login == '33333333333'){
         usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Admin');
       }
       return of(usuario);
-    // }else{
-    //   return of(null);
-    // }
-
   }
+
+  // login(login: any): Observable<Usuario | null>{    
+  //   let usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Estudante');
+  //     if(login.cpfoucnpj == '22222222222'){
+  //         usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Entidade');
+  //     }else if(login.cpfoucnpj == '33333333333'){
+  //       usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Admin');
+  //     }
+  //     return of(usuario);
+  // }
 
   logout(){
     delete localStorage['LS_CHAVE'];

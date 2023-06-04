@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   public formLogin = new FormGroup({
     // cpfoucnpj: new FormControl(null,[Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$')]),
-    cpfoucnpj: new FormControl(null,[Validators.required]),
+    login: new FormControl(null,[Validators.required]),
     senha: new FormControl(null, Validators.required),
   });
 
@@ -24,48 +25,42 @@ export class LoginComponent implements OnInit {
     private router: Router, 
     private cookieService: CookieService, 
     private loginService: LoginService,
-    private route: ActivatedRoute) { 
+    private route: ActivatedRoute,private toast: ToastrService) { 
       if(this.loginService.usuarioLogado){
         this.router.navigate(['/Home']);
       }
     }
 
     logar(){
-      this.loading = true;
-      console.log(this.formLogin.get(''))
+      this.loading = true;      
        if(this.formLogin.valid){
         this.loginService.login(this.formLogin.value).subscribe({
-          next: usuario => {            
-          if(usuario != null){
-            this.loginService.usuarioLogado = usuario;
-            this.loading = true;           
-             if(usuario.perfil == 'Estudante'){
+          next: usuario => {   
+            // localStorage.setItem('usuario', JSON.stringify(usuario.user));
+          if(usuario.user.perfil != null){
+            this.loginService.usuarioLogado = usuario.user;
+            this.loading = true;  
+            console.log(usuario)
+            this.toast.success(usuario.message);         
+             if(usuario.user.perfil == 'ESTUDANTE'){
                 this.router.navigate(['/Estudante']);
-              }else if(usuario.perfil == 'Entidade'){
+              }else if(usuario.user.perfil == 'ENTIDADE'){
                 this.router.navigate(['/Entidade']);
-              }else if(usuario.perfil == 'Admin'){
+              }else if(usuario.perfil == 'ADMINISTRADOR'){
                 this.router.navigate(['/Admin']);
               }
           }else{
             this.loading = false;
             this.mensagem = "Usuário/Senha inválidos.";
           }
-        }})
+        },
+        error: (erro:any) => {
+          this.toast.error(erro.error.message);
+          this.formLogin.reset();
+        }
+    })
       }
     }
-
-  // login(){
-  //   if(this.formLogin.value.cpfoucnpj == '11111111111'){
-  //     localStorage.setItem('usuario', JSON.stringify(this.usuario));
-  //     this.router.navigate(['/Estudante']);
-  //   }else if(this.formLogin.get('cpfoucnpj').value == '22222222222'){
-  //     localStorage.setItem('usuario', JSON.stringify(this.usuario));
-  //     this.router.navigate(['/Entidade']);
-  //   }else if(this.formLogin.value.cpfoucnpj == '33333333333'){
-  //     localStorage.setItem('usuario', JSON.stringify(this.usuario));
-  //     this.router.navigate(['/Admin']);
-  //   }
-  // }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe({

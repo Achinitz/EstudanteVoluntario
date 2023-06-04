@@ -25,6 +25,8 @@ import { ModalCertificadoComponent } from './certificado/modal-certificado/modal
 import { NotificacoesComponent } from './notificacoes/notificacoes.component';
 import { ModalNotificacaoComponent } from './notificacoes/modal-notificacao/modal-notificacao.component';
 import { ModalTermoComponent } from './minhas-inscricoes/modal-termo/modal-termo.component';
+import { EstudanteService } from 'src/app/services/estudante.service';
+import { HttpHeaderService } from 'src/app/services/http-header.service';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,6 @@ import { ModalTermoComponent } from './minhas-inscricoes/modal-termo/modal-termo
     MatListModule,
     MatBadgeModule,
   ],
-  providers: [DataService],
+  providers: [DataService, EstudanteService,HttpHeaderService],
 })
 export class EstudanteModule {}

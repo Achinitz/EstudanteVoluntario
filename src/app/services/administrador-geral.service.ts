@@ -4,10 +4,9 @@ import { AdministradorService } from './administrador.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdministradorGeralService extends AdministradorService{
+export class AdministradorGeralServic{
 
   constructor() { 
-    super();
   }
 
   public promoverAdministrador(cpfUsuario : string, cpfResponsavel : string){
