@@ -73,7 +73,7 @@ export class FormEntidadeComponent implements OnInit {
           this.toast.warning('Cnpj já cadastrado!')
         },
         error: (err:any) => {
-
+          this.loginInvalido = err;
         }
       });
     }
@@ -154,8 +154,6 @@ export class FormEntidadeComponent implements OnInit {
   ngOnInit(): void {}
 
   cadastrarEntidade() {
-
-    console.log(this.formCadastro.value)
 
     this.formCadastro.get('nome').setValue(this.formCadastro.get('nomeFantasia')?.value);
 
