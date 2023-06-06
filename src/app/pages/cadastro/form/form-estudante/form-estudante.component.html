@@ -4,11 +4,11 @@
       <i> * Campos de preenchimento obrigatório </i>
     </label>
     <div class="form-group">
-      <label for="cpf">CPF <em>*</em> </label>
-      <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" formControlName="cpf"
-        mask="000.000.000-00" />
+      <label for="login">CPF <em>*</em> </label>
+      <input type="text" class="form-control" id="login" placeholder="XXX.XXX.XXX-XX" formControlName="login"
+        mask="000.000.000-00" (keyup)="verificaCpfExistente()"/>
       <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
-          formCadastro.controls.cpf.touched && formCadastro.controls.cpf.invalid
+          formCadastro.controls.login.touched && formCadastro.controls.login.invalid
         " [@fadeInOut]>
         O campo CPF é obrigatório!
       </small>
@@ -62,7 +62,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="cpf">Estado Civil <em>*</em> </label>
+      <label for="estadoCivil">Estado Civil <em>*</em> </label>
       <ng-select [items]="estadoCivil" bindLabel="nome" bindValue="id" placeholder="Selecione"
         formControlName="estadoCivil">
       </ng-select>

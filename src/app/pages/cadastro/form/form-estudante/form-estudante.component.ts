@@ -46,7 +46,7 @@ export class FormEstudanteComponent implements OnInit {
   ];
 
   public formCadastro = new FormGroup({
-    cpf: new FormControl(null, [
+    login: new FormControl(null, [
       Validators.required,
       Validators.pattern('[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}'),
     ]),
@@ -90,6 +90,20 @@ export class FormEstudanteComponent implements OnInit {
     private loginService: LoginService,
   ) {
     this.inicializaFormulario();
+  }
+
+  verificaCpfExistente(){
+    if (this.formCadastro.get('login')?.value.length === 11) {
+      this.loginService.verificarLogin(this.formCadastro.get('login').value).subscribe({
+        next: (res:any) => {
+          this.loginInvalido = res;
+          this.toast.warning('CPF já cadastrado!')
+        },
+        error: (err:any) => {
+
+        }
+      });
+    }
   }
 
   inicializaFormulario() {

@@ -31,32 +31,19 @@ export class LoginService extends HttpHeaderService{
     localStorage[this.LS_CHAVE] = JSON.stringify(usuario);
   }
 
-  public verificarLogin(login: string):Observable<any>{
-    return this.http.post(this.baseUrl + 'auth/verificarLogin',login,this.httpOptions);
+  public verificarLogin(loginUsuario: string):Observable<any>{
+
+    let usuario = {
+      login: loginUsuario
+    }
+
+    return this.http.post(this.baseUrl + 'auth/verificarLogin', usuario,this.httpOptions);
   }
 
   public login(login:Login): Observable<any>{    
 
     return this.http.post(this.baseUrl + 'auth/login',login,this.httpOptions);
-
-    let usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Estudante');
-      if(login.login == '22222222222'){
-          usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Entidade');
-      }else if(login.login == '33333333333'){
-        usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Admin');
-      }
-      return of(usuario);
   }
-
-  // login(login: any): Observable<Usuario | null>{    
-  //   let usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Estudante');
-  //     if(login.cpfoucnpj == '22222222222'){
-  //         usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Entidade');
-  //     }else if(login.cpfoucnpj == '33333333333'){
-  //       usuario = new Usuario(1, 'Gustavo de Oliveira Achinitz', login.login, login.senha, 'Admin');
-  //     }
-  //     return of(usuario);
-  // }
 
   logout(){
     delete localStorage['LS_CHAVE'];

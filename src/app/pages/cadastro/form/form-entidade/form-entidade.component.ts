@@ -66,20 +66,14 @@ export class FormEntidadeComponent implements OnInit {
   }
 
   verificaCnpjExistente(){
-
-    console.log(this.formCadastro.get('login')?.value.length)
-
     if (this.formCadastro.get('login')?.value.length === 14) {
       this.loginService.verificarLogin(this.formCadastro.get('login').value).subscribe({
         next: (res:any) => {
-          console.log('********* BEGIN ok');
-          console.log(res);
-          console.log('********* END ok');
+          this.loginInvalido = res;
+          this.toast.warning('Cnpj já cadastrado!')
         },
         error: (err:any) => {
-          console.log('********* BEGIN error');
-          console.log(err);
-          console.log('********* END error');
+
         }
       });
     }
