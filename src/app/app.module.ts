@@ -91,7 +91,13 @@ import { LoginService } from './services/login.service';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [DataService, CookieService, LoginService],
-  bootstrap: [AppComponent],
+  providers: [
+    DataService, 
+    CookieService, 
+    LoginService
+  ],
+  bootstrap: [
+    AppComponent
+  ],
 })
 export class AppModule {}

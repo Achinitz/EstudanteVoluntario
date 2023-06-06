@@ -19,8 +19,8 @@ export class EnderecoService {
     return this.http.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${idUF}/municipios`);
   }
 
-  // getBairros(idMunicipio: any){
-  //   return this.http.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${idUF}/municipios`);
-  // }
+   getBairros(idMunicipio: any){
+     return this.http.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${idMunicipio}/municipios`);
+   }
 
 }

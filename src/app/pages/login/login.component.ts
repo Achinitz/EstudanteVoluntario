@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
+import { StatusPerfilEnum } from 'src/app/enums/status-perfil';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  public state = StatusPerfilEnum;
 
   mensagem!:string;
   loading: boolean = false;
@@ -37,21 +40,27 @@ export class LoginComponent implements OnInit {
         this.loginService.login(this.formLogin.value).subscribe({
           next: usuario => {   
             // localStorage.setItem('usuario', JSON.stringify(usuario.user));
-          if(usuario.user.perfil != null){
+
+          if(usuario.user?.perfil != null && usuario.user?.perfil == this.state.APROVADO){
             this.loginService.usuarioLogado = usuario.user;
             this.loading = true;  
-            console.log(usuario)
-            this.toast.success(usuario.message);         
              if(usuario.user.perfil == 'ESTUDANTE'){
+                this.toast.success(usuario.message);
                 this.router.navigate(['/Estudante']);
               }else if(usuario.user.perfil == 'ENTIDADE'){
+                this.toast.success(usuario.message);
                 this.router.navigate(['/Entidade']);
               }else if(usuario.perfil == 'ADMINISTRADOR'){
+                this.toast.success(usuario.message);
                 this.router.navigate(['/Admin']);
               }
           }else{
             this.loading = false;
-            this.mensagem = "Usuário/Senha inválidos.";
+            if(usuario.statusPerfil == this.state.PENDENTE){
+              this.toast.warning(usuario.message);
+            }else{
+              this.toast.error(usuario.message);
+            }            
           }
         },
         error: (erro:any) => {

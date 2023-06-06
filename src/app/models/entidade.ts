@@ -1,4 +1,3 @@
-import { StatusCadastro } from "../enums/status-cadastro";
 import { Usuario } from "./usuario.model";
 
 export class Entidade extends Usuario{
@@ -18,8 +17,7 @@ export class Entidade extends Usuario{
         public termoDeUso?: Boolean,
         public missao?: string,
         public perfilVoluntario?: string,
-        public dataAprovacao?: Date,
-        public statusCadastro?: StatusCadastro    
+        public dataAprovacao?: Date, 
     ){       
         super(); 
     }

@@ -31,6 +31,10 @@ export class LoginService extends HttpHeaderService{
     localStorage[this.LS_CHAVE] = JSON.stringify(usuario);
   }
 
+  public verificarLogin(login: string):Observable<any>{
+    return this.http.post(this.baseUrl + 'auth/verificarLogin',login,this.httpOptions);
+  }
+
   public login(login:Login): Observable<any>{    
 
     return this.http.post(this.baseUrl + 'auth/login',login,this.httpOptions);

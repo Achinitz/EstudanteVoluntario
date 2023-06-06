@@ -8,7 +8,7 @@ export class Usuario {
         public perfil?: string,
         public imgPerfil?: any,
         public dataCadastro?: Date,
-        public perfilAtivo?: boolean
+        public statusPerfil?: string,
     ){   
     }
 }

@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Entidade } from '../models/entidade';
+import { HttpHeaderService } from './http-header.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EntidadeService {
+export class EntidadeService extends HttpHeaderService{
 
-  constructor() { }
+  constructor(protected http: HttpClient) {
+    super();
+  }
 
   public editarDadosEntidade(entidade: Entidade){
 
@@ -21,9 +25,10 @@ export class EntidadeService {
     return entidade;
         
   }
-  public cadastrarEntidade(entidade: Entidade){
-
+  public cadastrarEntidade(cadastro: Entidade){
+    return this.http.post(this.baseUrl + 'auth/cadastro', cadastro, this.httpOptions);
   }
+
   public editarEntidade(entidade: Entidade){
 
   }

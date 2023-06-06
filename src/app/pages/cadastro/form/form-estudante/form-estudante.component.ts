@@ -4,6 +4,7 @@ import { EnderecoService } from 'src/app/services/endereco.service';
 import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
 import { genericAnimations } from 'src/app/shared/animations/animations';
 import { ToastrService } from 'ngx-toastr';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-form-estudante',
@@ -13,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FormEstudanteComponent implements OnInit {
   submitted = false;
+  loginInvalido: boolean = false;
   confirmaNomeSocial: boolean = false;
   estado: any;
   cidade: any;
@@ -49,6 +51,7 @@ export class FormEstudanteComponent implements OnInit {
       Validators.pattern('[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}'),
     ]),
     nomeCompleto: new FormControl(null, Validators.required),
+    perfil: new FormControl('ESTUDANTE'),
     nomeSocial: new FormControl(null),
     confirmaNomeSocial: new FormControl(false),
     comprovanteMatricula: new FormControl(null, Validators.required),
@@ -83,7 +86,8 @@ export class FormEstudanteComponent implements OnInit {
   constructor(
     private consultaCepService: ConsultaCepService,
     private enderecoService: EnderecoService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private loginService: LoginService,
   ) {
     this.inicializaFormulario();
   }
