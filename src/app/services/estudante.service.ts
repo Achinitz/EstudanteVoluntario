@@ -29,7 +29,7 @@ export class EstudanteService extends HttpHeaderService {
   //pegar o código que está certo
   public cadastrarEstudante(cadastro: Estudante): Observable<any> {
     return this.http.post(
-      this.baseUrl + 'auth/login',
+      this.baseUrl + 'auth/cadastro',
       cadastro,
       this.httpOptions
     );
