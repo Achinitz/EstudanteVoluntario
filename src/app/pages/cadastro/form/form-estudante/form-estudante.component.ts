@@ -7,6 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/services/login.service';
 import { EstudanteService } from 'src/app/services/estudante.service';
 import { Router } from '@angular/router';
+import { InstituicaoService } from 'src/app/services/instituicao.service';
+import { CursoService } from 'src/app/services/curso.service';
 
 @Component({
   selector: 'app-form-estudante',
@@ -30,16 +32,8 @@ export class FormEstudanteComponent implements OnInit {
     { id: 2, nome: 'Licenciatura' },
     { id: 3, nome: 'Tecnologia' },
   ];
-  instituicoes: any = [
-    { id: 1, nome: 'UFPR - Universidade Federal do Paraná' },
-    { id: 2, nome: 'UTFPR - Universidade Tecnológica Federal do Paraná' },
-  ];
-  cursos: any = [
-    { id: 1, nome: 'ADMINISTRAÇÃO - CAMPUS JARDIM BOTÂNICO' },
-    { id: 2, nome: 'ADMINISTRAÇÃO PÚBLICA - campus centro - REITORIA' },
-    { id: 3, nome: 'AGROECOLOGIA - CAMPUS LITORAL' },
-    { id: 4, nome: 'AGRONOMIA - CAMPUS AGRÁRIAS' },
-  ];
+  instituicoes: any[] = [];
+  cursos: any[] = [];
   estadoCivil: any = [
     { id: 1, nome: 'Casado (a)' },
     { id: 2, nome: 'Solteiro (a)' },
@@ -96,8 +90,10 @@ export class FormEstudanteComponent implements OnInit {
     private toast: ToastrService,
     private loginService: LoginService,
     private estudanteService: EstudanteService,
-    private router: Router
-  ) {
+    private router: Router,
+    private instituicaoService: InstituicaoService,
+    private cursoService:CursoService
+  ){
     this.inicializaFormulario();
   }
 
@@ -116,6 +112,11 @@ export class FormEstudanteComponent implements OnInit {
   }
 
   inicializaFormulario() {
+    this.instituicaoService.listarIes().subscribe({
+      next: (res:any) => {
+        this.instituicoes = res.instituicoes;
+      }
+    });
     this.enderecoService.getEstados().subscribe((data: any) => {
       this.estados = data;
       //  console.log('Inicio estados');
@@ -143,6 +144,35 @@ export class FormEstudanteComponent implements OnInit {
     //console.log('Inicio cidade selecionado');
     //console.log(this.formCadastro.get('cidade')?.value);
     //console.log('Fim cidade selecionado');
+  }
+
+  onAddCurso(){
+    this.cursoService.listarCursos(this.formCadastro.get('curso.instituicao').value).subscribe({
+      next: (res:any) => {
+        this.cursos = res;
+      },
+      error: (err:any) => {
+        this.toast.error(err.message);
+      }
+    })
+  }
+
+  onAddFile(event:any){
+    console.log(event.file[0])
+  }
+
+  onCheckMinDate(event:any){
+
+
+
+
+
+    
+    console.log(event.file[0])
+  }
+
+  onCheckMaxDate(event:any){
+    console.log(event.file[0])
   }
 
   validaCep() {
@@ -242,13 +272,9 @@ export class FormEstudanteComponent implements OnInit {
 
   cadastrarEstudante() {
 
-    console.log('***** VERIFICAR FORMULÁRIO BEGIN *****');
-    console.log(this.formCadastro.value)
-    console.log('***** VERIFICAR FORMULÁRIO END *****');
-
-    this.formCadastro.get('nome').setValue(
-      this.formCadastro.get('nomeSocial')?.value != null|| '' ? this.formCadastro.get('nomeSocial')?.value :this.formCadastro.get('nome')?.value
-      );
+    // this.formCadastro.get('nome').setValue(
+    //   this.formCadastro.get('nomeSocial')?.value != null || '' ? this.formCadastro.get('nomeSocial').value :this.formCadastro.get('nome').value
+    //   );
 
     this.submitted = true;
     if (this.formCadastro.valid) {
@@ -266,3 +292,11 @@ export class FormEstudanteComponent implements OnInit {
     }
   }
 }
+
+const toBase64 = file => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => resolve(reader.result);
+  reader.onerror = reject;
+});
+

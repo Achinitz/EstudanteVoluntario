@@ -15,7 +15,7 @@ export class EstudanteService extends HttpHeaderService{
   }
 
   public cadastrarEstudante(cadastro: Estudante): Observable<any>{
-    return this.http.post(this.baseUrl + 'auth/login', cadastro, this.httpOptions);
+    return this.http.post(this.baseUrl + 'auth/cadastro', cadastro, this.httpOptions);
   }
 
   public teste(){
