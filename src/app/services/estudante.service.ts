@@ -5,29 +5,75 @@ import { HttpHeaderService } from './http-header.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
-export class EstudanteService extends HttpHeaderService{
-
+export class EstudanteService extends HttpHeaderService {
   constructor(protected http: HttpClient) {
     super();
   }
 
-  public cadastrarEstudante(cadastro: Estudante): Observable<any>{
-    return this.http.post(this.baseUrl + 'auth/login', cadastro, this.httpOptions);
+  public getPerfilEstudante(idUsuario: string): Observable<any> {
+    return this.http.get(
+      this.baseUrl + `estudante/${idUsuario}`,
+      this.httpOptions
+    );
   }
 
-  public teste(){
-    return this.http.get(this.baseUrl + 'admin/estudantes', this.httpOptions);
+  public setPerfilEstudante(usuario: Estudante): Observable<any> {
+    return this.http.patch(
+      this.baseUrl + `estudante/${usuario.id}`,
+      this.httpOptions
+    );
   }
 
-  public editarDadosEstudante(estudante: Estudante){
-
+  //pegar o código que está certo
+  public cadastrarEstudante(cadastro: Estudante): Observable<any> {
+    return this.http.post(
+      this.baseUrl + 'auth/login',
+      cadastro,
+      this.httpOptions
+    );
   }
 
-  public validarEstudante(){
-
+  public listarVagas(): Observable<any> {
+    return this.http.get(this.baseUrl + `estudante/vagas`, this.httpOptions);
   }
 
-}
+  public getDetalheVaga(idVaga: string): Observable<any> {
+    return this.http.get(this.baseUrl + `estudante/vagas/${idVaga}`, this.httpOptions);
+  }
+
+  /*  ARRUMAR FUNCAO NO BACK
+  public listarInscricoes(idUsuario: string): Observable<any>{
+    return this.http.get(this.baseUrl + `estudante/${idUsuario}/inscricoes`, this.httpOptions);   
+  } */
+
+  /*  ARRUMAR FUNCAO NO BACK
+public inscricaoVaga(idUsuario: string, idVaga: string): Observable<any>{
+  return this.http.patch(this.baseUrl + `estudante/${idUsuario}/${idVaga}`, this.httpOptions);   
+} */
+
+  /*  ARRUMAR FUNCAO NO BACK
+public getDetalheInscricao(idUsuario: string, idInscricao: string): Observable<any>{
+  return this.http.get(this.baseUrl + `estudante/${idUsuario}/${idInscricao}`, this.httpOptions);   
+} */
+
+  /*  ARRUMAR FUNCAO NO BACK
+public cancelarInscricao(idInscricao: string): Observable<any>{
+  return this.http.patch(this.baseUrl + `estudante/${idInscricao}/cancelar`, this.httpOptions);   
+} */
+
+  /*  ARRUMAR FUNCAO NO BACK
+public aceitarTermo(idInscricao: string): Observable<any>{
+  return this.http.patch(this.baseUrl + `estudante/${idInscricao}/aceitar`, this.httpOptions);   
+} */
+
+  /*  ARRUMAR FUNCAO NO BACK
+public rescindirTermo(idInscricao: string): Observable<any>{
+  return this.http.patch(this.baseUrl + `estudante/${idInscricao}/rescindir`, this.httpOptions);   
+} */
+
+} /*  ARRUMAR FUNCAO NO BACK
+public listarCertificados(idUsuario: string): Observable<any>{
+  return this.http.get(this.baseUrl + `estudante/${idUsuario}/certificados`, this.httpOptions);   
+} */

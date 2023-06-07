@@ -1,4 +1,6 @@
-export class Administrador {
+import { Usuario } from "./usuario.model";
+
+export class Administrador extends Usuario{
     constructor(
         public nomeCompleto?: string,
         public confirmaNomeSocial?: boolean,
@@ -7,6 +9,7 @@ export class Administrador {
         public dataNascimento?: Date,
         public email?: string,
         public telefone?: string
-    ){        
+    ){       
+        super();  
     }
 }

@@ -1,35 +1,90 @@
 import { Injectable } from '@angular/core';
 import { Administrador } from '../models/administrador';
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaderService } from './http-header.service';
+import { Observable } from 'rxjs';
+import { Usuario } from '../models/usuario.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AdministradorService {
-
-  constructor(protected http: HttpClient){    
+export class AdministradorService extends HttpHeaderService {
+  constructor(protected http: HttpClient) {
+    super();
   }
 
-  public teste(){
-    return this.http.get(`https://localhost:3000`);
+  public getPerfilAdmin(idUsuario: string): Observable<any> {
+    return this.http.get(this.baseUrl + `admin/${idUsuario}`, this.httpOptions);
   }
 
-  public buscarAdministrador(cpfAdministrador: number):Administrador{
-    let administrador: Administrador;
-
-    return administrador;
+  public setPerfilAdmin(usuario: Administrador) {
+    return this.http.patch(
+      this.baseUrl + `admin/${usuario.id}`,
+      usuario,
+      this.httpOptions
+    );
   }
 
-  public editarDadosAdministrador(administrador: Administrador):void{
-
+  public listarEntidades(): Observable<any> {
+    return this.http.get(this.baseUrl + 'admin/entidades', this.httpOptions);
   }
 
-  public cadastrarAdministrador(administrador: Administrador):void{
-
+  public detalhesEntidade(idEntidade: string): Observable<any> {
+    return this.http.get(
+      this.baseUrl + `admin/entidades/${idEntidade}`,
+      this.httpOptions
+    );
   }
 
-  public bloquearAdministrador(cpfUsuario : string):void{
-
+  public validarEntidade(
+    idEntidade: string,
+    idAdmin: string,
+    statusCadastro: string,
+    comentario?: string
+  ): Observable<any> {
+    return this.http.patch(
+      this.baseUrl + `admin/${idEntidade}/${idAdmin}`,
+      { statusCadastro, comentario },
+      this.httpOptions
+    );
   }
 
+  public listarEstudantes(): Observable<any> {
+    return this.http.get(this.baseUrl + 'admin/estudantes', this.httpOptions);
+  }
+
+  public detalhesEstudante(idEstudante: string): Observable<any> {
+    return this.http.get(
+      this.baseUrl + `admin/estudantes/${idEstudante}`,
+      this.httpOptions
+    );
+  }
+
+  public listarAdmins(): Observable<any> {
+    return this.http.get(this.baseUrl + 'admin/admins', this.httpOptions);
+  }
+
+  public detalhesAdmin(idAdmin: string): Observable<any> {
+    return this.http.get(
+      this.baseUrl + `admin/admins/${idAdmin}`,
+      this.httpOptions
+    );
+  }
+
+  public listarVagas(): Observable<any> {
+    return this.http.get(this.baseUrl + 'admin/vagas', this.httpOptions);
+  }
+
+  public detalhesVaga(idvaga: string): Observable<any> {
+    return this.http.get(
+      this.baseUrl + `admin/vagas/${idvaga}`,
+      this.httpOptions
+    );
+  }
+
+  public editarDadosAdministrador(administrador: Administrador): void {}
+
+  public cadastrarAdministrador(administrador: Administrador): void {}
+
+  public bloquearAdministrador(cpfUsuario: string): void {}
 }
