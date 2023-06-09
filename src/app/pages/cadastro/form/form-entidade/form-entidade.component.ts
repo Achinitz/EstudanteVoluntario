@@ -26,9 +26,7 @@ export class FormEntidadeComponent implements OnInit {
   estados: any = [];
 
   public formCadastro = new FormGroup({
-    login: new FormControl(null, [
-      Validators.required,
-    ]),
+    login: new FormControl(null, [Validators.required]),
     razaoSocial: new FormControl(null, Validators.required),
     nome: new FormControl(null, Validators.required),
     nomeFantasia: new FormControl(null, Validators.required),
@@ -60,22 +58,32 @@ export class FormEntidadeComponent implements OnInit {
     private toast: ToastrService,
     private entidadeService: EntidadeService,
     private router: Router,
-    private loginService: LoginService,
+    private loginService: LoginService
   ) {
     this.inicializaFormulario();
   }
 
-  verificaCnpjExistente(){
+  verificaCnpjExistente() {
     if (this.formCadastro.get('login')?.value.length === 14) {
-      this.loginService.verificarLogin(this.formCadastro.get('login').value).subscribe({
-        next: (res:any) => {
-          this.loginInvalido = res;
-          this.toast.warning('Cnpj já cadastrado!')
-        },
-        error: (err:any) => {
-          this.loginInvalido = err;
-        }
-      });
+      var cnpj = this.formCadastro.get('login').value;
+
+      if (!this.validarCNPJ(cnpj)) {
+        this.formCadastro.controls['login'].setErrors({ incorrect: true });
+      }
+
+      //não está passando o dado pro back
+    /*   
+      this.loginService
+        .verificarLogin(this.formCadastro.get('login').value)
+        .subscribe({
+          next: (res: any) => {
+            this.loginInvalido = res;
+            this.toast.warning('Cnpj já cadastrado!');
+          },
+          error: (err: any) => {
+            this.loginInvalido = err;
+          },
+        }); */
     }
   }
 
@@ -105,7 +113,7 @@ export class FormEntidadeComponent implements OnInit {
     console.log('Fim cidade selecionado');
   }
 
-  validaCep() {    
+  validaCep() {
     if (this.formCadastro.get('endereco.cep')?.value.length === 8) {
       let cep = this.formCadastro.get('endereco.cep')?.value;
       this.consultaCepService.getDataCep(cep.replace('-', '')).subscribe(
@@ -154,22 +162,82 @@ export class FormEntidadeComponent implements OnInit {
   ngOnInit(): void {}
 
   cadastrarEntidade() {
-
-    this.formCadastro.get('nome').setValue(this.formCadastro.get('nomeFantasia')?.value);
+    this.formCadastro
+      .get('nome')
+      .setValue(this.formCadastro.get('nomeFantasia')?.value);
 
     this.submitted = true;
     if (this.formCadastro.valid) {
-      this.entidadeService.cadastrarEntidade(this.formCadastro.value).subscribe({
-        next: (res:any) => {
-          this.toast.success(res.message);
-          this.router.navigate(['/login']);
-        },
-        error: (erro:any) => {
-          console.log(erro);
-        },
-      })
-    }else{      
-      this.toast.error('Não foi possível prosseguir, verifique os campos do formulário!');
+      this.entidadeService
+        .cadastrarEntidade(this.formCadastro.value)
+        .subscribe({
+          next: (res: any) => {
+            this.toast.success(res.message);
+            this.router.navigate(['/login']);
+          },
+          error: (erro: any) => {
+            console.log(erro);
+          },
+        });
+    } else {
+      this.toast.error(
+        'Não foi possível prosseguir, verifique os campos do formulário!'
+      );
     }
+  }
+
+  validarCNPJ(cnpj) {
+    let strCNPJ = cnpj.replace(/[^\d]+/g, '');
+    if (
+      strCNPJ === '00000000000000' ||
+      strCNPJ === '11111111111111' ||
+      strCNPJ === '22222222222222' ||
+      strCNPJ === '33333333333333' ||
+      strCNPJ === '44444444444444' ||
+      strCNPJ === '55555555555555' ||
+      strCNPJ === '66666666666666' ||
+      strCNPJ === '77777777777777' ||
+      strCNPJ === '88888888888888' ||
+      strCNPJ === '99999999999999' ||
+      strCNPJ.length !== 14
+    ) {
+      return false;
+    }
+
+    var tamanho = strCNPJ.length - 2;
+    var numeros = strCNPJ.substring(0, tamanho);
+    var digitos = strCNPJ.substring(tamanho);
+    var soma = 0;
+    var pos = tamanho - 7;
+
+    for (let i = tamanho; i >= 1; i--) {
+      soma += numeros.charAt(tamanho - i) * pos--;
+      if (pos < 2) {
+        pos = 9;
+      }
+    }
+
+    var resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+    if (resultado != digitos.charAt(0)) {
+      return false;
+    }
+
+    tamanho = tamanho + 1;
+    numeros = strCNPJ.substring(0, tamanho);
+    soma = 0;
+    pos = tamanho - 7;
+    for (let k = tamanho; k >= 1; k--) {
+      soma += numeros.charAt(tamanho - k) * pos--;
+      if (pos < 2) {
+        pos = 9;
+      }
+    }
+
+    resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+    if (resultado != digitos.charAt(1)) {
+      return false;
+    }
+
+    return true;
   }
 }

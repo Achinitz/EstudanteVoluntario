@@ -3,8 +3,9 @@ import { Inscricao } from "./inscricao";
 
 export class Vaga {
     constructor(
+        public id?: string, //verificar se vai aqui mesmo 
         public nomeEntidade?: string, //verificar se vai aqui mesmo 
-        public nomeVaga?: boolean, //isso aqui não vira outra tabela? ou um enum?
+        public nomeVaga?: string, //isso aqui não vira outra tabela? ou um enum?
         public img?: string,
         public descricao?: string,
         public auxilio?: string,

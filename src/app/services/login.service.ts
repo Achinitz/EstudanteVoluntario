@@ -7,46 +7,43 @@ import { Perfil } from '../enums/perfil-usuario';
 import { HttpHeaderService } from './http-header.service';
 import { HttpClient } from '@angular/common/http';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class LoginService extends HttpHeaderService{
-
+export class LoginService extends HttpHeaderService {
   perfil: Perfil;
 
-  LS_CHAVE: string = "usuario";
-
+  LS_CHAVE: string = 'usuario';
 
   constructor(protected http: HttpClient) {
     super();
   }
 
-  public get usuarioLogado():Usuario{
+  public get usuarioLogado(): Usuario {
     let usuario = localStorage[this.LS_CHAVE];
-    return (usuario ? JSON.parse(localStorage[this.LS_CHAVE]) : null);
+    return usuario ? JSON.parse(localStorage[this.LS_CHAVE]) : null;
   }
 
-  public set usuarioLogado(usuario: Usuario){
+  public set usuarioLogado(usuario: Usuario) {
     localStorage[this.LS_CHAVE] = JSON.stringify(usuario);
   }
 
-  public verificarLogin(loginUsuario: string):Observable<any>{
-
-    let usuario = {
-      login: loginUsuario
-    }
-
-    return this.http.post(this.baseUrl + 'auth/verificarLogin', usuario,this.httpOptions);
+  public verificarLogin(loginUsuario: any): Observable<any> {
+    return this.http.get(
+      this.baseUrl + 'auth/verificarLogin',
+      this.httpOptions
+    );
   }
 
-  public login(login:Login): Observable<any>{    
-
-    return this.http.post(this.baseUrl + 'auth/login',login,this.httpOptions);
+  public login(login: Login): Observable<any> {
+    return this.http.post(this.baseUrl + 'auth/login', login, this.httpOptions);
   }
 
-  logout(){
+  public reativar(login: Login): Observable<any> {
+    return this.http.patch(this.baseUrl + 'auth/reativar', login, this.httpOptions);
+  }
+
+  logout() {
     delete localStorage['LS_CHAVE'];
   }
-
 }

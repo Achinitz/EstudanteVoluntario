@@ -5,36 +5,42 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class InstituicaoService extends HttpHeaderService{
-
+export class InstituicaoService extends HttpHeaderService {
   constructor(protected http: HttpClient) {
     super();
   }
-  public cadastrarInstituicao(instituicao: Instituicao){
 
-  }
-
-  public listarIes():Observable<any>{
+  public listarIes(): Observable<any> {
     return this.http.get(this.baseUrl + 'ies', this.httpOptions);
   }
 
-  public visualizarInstituicao(idInstituicao: number):Instituicao{
-    let instituicao: Instituicao;
-
-    return instituicao;
+  public cadastrarInstituicao(instituicao: Instituicao) {
+    return this.http.post(this.baseUrl + 'ies', instituicao, this.httpOptions);
   }
 
-  public editarInstituicao(idInstituicao: number):Instituicao{
-
-    let instituicao: Instituicao;
-
-    return instituicao;
+  public visualizarInstituicao(idInstituicao: string): Observable<any> {
+    return this.http.get(
+      this.baseUrl + `ies/${idInstituicao}`,
+      this.httpOptions
+    );
   }
 
-  public excluirInstituicao(){
-    
-  }
+  /*  ARRUMAR NO BACK   
+  public editarInstituicao(idInstituicao: string, instituicao: Instituicao) {
+    return this.http.patch(
+      this.baseUrl + `ies/${idInstituicao}`,
+      instituicao,
+      this.httpOptions
+    );
+  } */
 
+  /* ARRUMAR NO BACK
+  public excluirInstituicao(idInstituicao: string) {
+    return this.http.delete(
+      this.baseUrl + `ies/${idInstituicao}`,
+      this.httpOptions
+    );
+  } */
 }

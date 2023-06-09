@@ -18,6 +18,7 @@ import { CursoService } from 'src/app/services/curso.service';
 })
 export class FormEstudanteComponent implements OnInit {
   submitted = false;
+  teste: any;
   loginInvalido: boolean = false;
   confirmaNomeSocial: boolean = false;
   estado: any;
@@ -92,30 +93,41 @@ export class FormEstudanteComponent implements OnInit {
     private estudanteService: EstudanteService,
     private router: Router,
     private instituicaoService: InstituicaoService,
-    private cursoService:CursoService
-  ){
+    private cursoService: CursoService
+  ) {
     this.inicializaFormulario();
   }
 
-  verificaCpfExistente(){
+  verificaCpfExistente() {
     if (this.formCadastro.get('login')?.value.length === 11) {
-      this.loginService.verificarLogin(this.formCadastro.get('login').value).subscribe({
-        next: (res:any) => {
-          this.loginInvalido = res;
-          this.toast.warning('CPF já cadastrado!')
+          
+      let cpf = JSON.stringify(this.formCadastro.get('login').value);
+      console.log(cpf);
+    
+      //verifica se o cpf tem dígitos válidos - OK
+   /*    if (!this.isValidCPF(cpf)) {
+        this.formCadastro.controls['login'].setErrors({ incorrect: true });
+      } else  */
+
+      //verifica se tem cadastro - ERRO: o back não está recebendo o cpf
+      this.loginService.verificarLogin(cpf).subscribe({
+        next: (res: any) => {
+          console.log(res);
+          this.loginInvalido = res.cadastro;
+         // this.toast.warning('CPF já cadastrado!');
         },
-        error: (err:any) => {
+        error: (err: any) => {
           this.loginInvalido = err;
-        }
+        },
       });
     }
   }
 
   inicializaFormulario() {
     this.instituicaoService.listarIes().subscribe({
-      next: (res:any) => {
+      next: (res: any) => {
         this.instituicoes = res.instituicoes;
-      }
+      },
     });
     this.enderecoService.getEstados().subscribe((data: any) => {
       this.estados = data;
@@ -146,33 +158,29 @@ export class FormEstudanteComponent implements OnInit {
     //console.log('Fim cidade selecionado');
   }
 
-  onAddCurso(){
-    this.cursoService.listarCursos(this.formCadastro.get('curso.instituicao').value).subscribe({
-      next: (res:any) => {
-        this.cursos = res;
-      },
-      error: (err:any) => {
-        this.toast.error(err.message);
-      }
-    })
+  onAddCurso() {
+    this.cursoService
+      .listarCursos(this.formCadastro.get('curso.instituicao').value)
+      .subscribe({
+        next: (res: any) => {
+          this.cursos = res;
+        },
+        error: (err: any) => {
+          this.toast.error(err.message);
+        },
+      });
   }
 
-  onAddFile(event:any){
-    console.log(event.file[0])
+  onAddFile(event: any) {
+    console.log(event.file[0]);
   }
 
-  onCheckMinDate(event:any){
-
-
-
-
-
-    
-    console.log(event.file[0])
+  onCheckMinDate(event: any) {
+    console.log(event.file[0]);
   }
 
-  onCheckMaxDate(event:any){
-    console.log(event.file[0])
+  onCheckMaxDate(event: any) {
+    console.log(event.file[0]);
   }
 
   validaCep() {
@@ -196,7 +204,9 @@ export class FormEstudanteComponent implements OnInit {
             this.cidades.forEach((element: any) => {
               if (element.nome === data.localidade) {
                 this.formCadastro.get('endereco.cidade')?.setValue(element.id);
-                this.formCadastro.get('endereco.logradouro')?.setValue(data.logradouro);
+                this.formCadastro
+                  .get('endereco.logradouro')
+                  ?.setValue(data.logradouro);
                 this.formCadastro.get('endereco.bairro')?.setValue(data.bairro);
               }
             });
@@ -211,48 +221,22 @@ export class FormEstudanteComponent implements OnInit {
   }
 
   isValidCPF(cpf: any) {
-    if (typeof cpf !== 'string') {
-      this.toast.error('CPF Inválido!');
-      return false;
-    }
-    cpf = cpf.replace(/[\s.-]*/gim, '');
-    if (
-      !cpf ||
-      cpf.length != 11 ||
-      cpf == '00000000000' ||
-      cpf == '11111111111' ||
-      cpf == '22222222222' ||
-      cpf == '33333333333' ||
-      cpf == '44444444444' ||
-      cpf == '55555555555' ||
-      cpf == '66666666666' ||
-      cpf == '77777777777' ||
-      cpf == '88888888888' ||
-      cpf == '99999999999'
-    ) {
-      this.toast.error('CPF Inválido!');
-      return false;
-    }
-    let soma = 0;
-    let resto;
-    for (var i = 1; i <= 9; i++)
-      soma = soma + parseInt(cpf.substring(i - 1, i)) * (11 - i);
-    resto = (soma * 10) % 11;
-    if (resto == 10 || resto == 11) resto = 0;
-    if (resto != parseInt(cpf.substring(9, 10))) {
-      this.toast.error('CPF Inválido!');
-      return false;
-    }
-    soma = 0;
-    for (let i = 1; i <= 10; i++)
-      soma = soma + parseInt(cpf.substring(i - 1, i)) * (12 - i);
-    resto = (soma * 10) % 11;
-    if (resto == 10 || resto == 11) resto = 0;
-    if (resto != parseInt(cpf.substring(10, 11))) {
-      this.toast.error('CPF Inválido!');
-      return false;
-    }
-    return true;
+    if (typeof cpf !== 'string') return false;
+    cpf = cpf.replace(/[^\d]+/g, '');
+    if (cpf.length !== 11 || !!cpf.match(/(\d)\1{10}/)) return false;
+    cpf = cpf.split('').map((el: any) => +el);
+    const rest = (count: number) =>
+      ((cpf
+        .slice(0, count - 12)
+        .reduce(
+          (soma: number, el: number, index: number) =>
+            soma + el * (count - index),
+          0
+        ) *
+        10) %
+        11) %
+      10;
+    return rest(10) === cpf[9] && rest(11) === cpf[10];
   }
 
   validarSenha() {
@@ -271,32 +255,35 @@ export class FormEstudanteComponent implements OnInit {
   ngOnInit(): void {}
 
   cadastrarEstudante() {
-
     // this.formCadastro.get('nome').setValue(
     //   this.formCadastro.get('nomeSocial')?.value != null || '' ? this.formCadastro.get('nomeSocial').value :this.formCadastro.get('nome').value
     //   );
 
     this.submitted = true;
     if (this.formCadastro.valid) {
-      this.estudanteService.cadastrarEstudante(this.formCadastro.value).subscribe({
-        next: (res:any) => {
-          this.toast.success(res.message);
-          this.router.navigate(['/login']);
-        },
-        error: (erro:any) => {
-          this.toast.error(erro);
-        },
-      })
-    }else{      
-      this.toast.error('Não foi possível prosseguir, verifique os campos do formulário!');
+      this.estudanteService
+        .cadastrarEstudante(this.formCadastro.value)
+        .subscribe({
+          next: (res: any) => {
+            this.toast.success(res.message);
+            this.router.navigate(['/login']);
+          },
+          error: (erro: any) => {
+            this.toast.error(erro);
+          },
+        });
+    } else {
+      this.toast.error(
+        'Não foi possível prosseguir, verifique os campos do formulário!'
+      );
     }
   }
 }
 
-const toBase64 = file => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = () => resolve(reader.result);
-  reader.onerror = reject;
-});
-
+const toBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+  });

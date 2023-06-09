@@ -3,6 +3,7 @@ import { Estudante } from '../models/estudante';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpHeaderService } from './http-header.service';
 import { Observable } from 'rxjs';
+import { Vaga } from '../models/vaga';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,10 @@ export class EstudanteService extends HttpHeaderService {
     super();
   }
 
+  public teste(){
+    return this.http.get(this.baseUrl + 'admin/estudantes', this.httpOptions);
+  }
+  
   public getPerfilEstudante(idUsuario: string): Observable<any> {
     return this.http.get(
       this.baseUrl + `estudante/${idUsuario}`,
@@ -26,7 +31,6 @@ export class EstudanteService extends HttpHeaderService {
     );
   }
 
-  //pegar o código que está certo
   public cadastrarEstudante(cadastro: Estudante): Observable<any> {
     return this.http.post(
       this.baseUrl + 'auth/cadastro',
@@ -35,12 +39,15 @@ export class EstudanteService extends HttpHeaderService {
     );
   }
 
-  public listarVagas(): Observable<any> {
-    return this.http.get(this.baseUrl + `estudante/vagas`, this.httpOptions);
+  public listarVagas(): Observable<Vaga> {
+    return this.http.get(this.baseUrl + 'estudante/vagas', this.httpOptions);
   }
 
-  public getDetalheVaga(idVaga: string): Observable<any> {
-    return this.http.get(this.baseUrl + `estudante/vagas/${idVaga}`, this.httpOptions);
+  public getDetalheVaga(idVaga: string): Observable<Vaga> {
+    return this.http.get(
+      this.baseUrl + `estudante/vagas/${idVaga}`,
+      this.httpOptions
+    );
   }
 
   /*  ARRUMAR FUNCAO NO BACK
@@ -72,7 +79,6 @@ public aceitarTermo(idInscricao: string): Observable<any>{
 public rescindirTermo(idInscricao: string): Observable<any>{
   return this.http.patch(this.baseUrl + `estudante/${idInscricao}/rescindir`, this.httpOptions);   
 } */
-
 } /*  ARRUMAR FUNCAO NO BACK
 public listarCertificados(idUsuario: string): Observable<any>{
   return this.http.get(this.baseUrl + `estudante/${idUsuario}/certificados`, this.httpOptions);   

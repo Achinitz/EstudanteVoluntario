@@ -10,8 +10,9 @@
       <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
           formCadastro.controls.login.touched && formCadastro.controls.login.invalid
         " [@fadeInOut]>
-        O campo CPF é obrigatório!
+        CPF inválido!
       </small>
+      
       <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="loginInvalido == true" [@fadeInOut]> 
         CPF já cadastrado!
       </small>
