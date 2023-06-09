@@ -22,7 +22,7 @@ export class EntidadeService extends HttpHeaderService{
     return this.http.get(this.baseUrl + `entidade/${idUsuario}`, this.httpOptions);   
   }
 
-  public settPerfilEntidade(usuario: Entidade): Observable<any>{
+  public settPerfilEntidade(usuario: Entidade){
     return this.http.patch(this.baseUrl + `entidade/${usuario.id}`, this.httpOptions);   
   }  
 
@@ -50,4 +50,15 @@ export class EntidadeService extends HttpHeaderService{
     public cancelarVaga(idUsuario: string, idVaga:string): Observable<any> {
     return this.http.get(this.baseUrl + `entidade/${idUsuario}/${idVaga}/cancelar`, this.httpOptions);
   } */
+
+    /*  ARRUMAR FUNCAO NO BACK
+    public visualizarInscrito(idUsuario: string, idVaga:string, idEstudante: string): Observable<any> {
+    return this.http.get(this.baseUrl + `entidade/${idUsuario}/${idVaga}/${idEstudante}`, this.httpOptions);
+  } */
+
+    /*  ARRUMAR FUNCAO NO BACK
+    public aprovarInscrito(idUsuario: string, idVaga:string, idEstudante: string, statusInscricao: string): Observable<any> {
+    return this.http.patch(this.baseUrl + `entidade/${idUsuario}/${idVaga}/${idEstudante}`, this.httpOptions);
+  } */
 }
+

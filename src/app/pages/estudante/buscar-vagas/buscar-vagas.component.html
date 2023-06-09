@@ -33,53 +33,54 @@
       </div>
       <!--Buscar apenas as vagas que estão com o status aberto -->
 
- <section class="row ultimasInscricoes" *ngIf="vagasCadastradas">
+      <section class="row ultimasInscricoes" *ngIf="vagasCadastradas">
 
-  <div class="content__card">
+        <div class="content__card">
 
-    <div class="card col-12" *ngFor="let vaga of vagasCadastradas; let i = index">
-      <!-- Alterar as cores do botão dependendo do status -->
-      <div class="imgCard col-3">
-        <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
-      </div>
-      <section class="card__content col-9">
-        <div class="card-body">
-          <div class="card-title d-flex">
-            <h1>{{ vaga.nomeEntidade }} </h1>
-            <span [ngClass]=" getStatus(vaga.status)" class="statusPosition" *ngIf="!vaga.inscrito">
-              {{ vaga.status }}
-            </span>
-            <span [ngClass]=" getStatus('inscrito')" class="statusPosition" *ngIf="vaga.inscrito">
-              Inscrito
-            </span>
+          <div class="card col-12" *ngFor="let vaga of vagasCadastradas; let i = index">
+            <!-- Alterar as cores do botão dependendo do status -->
+            <div class="imgCard col-3">
+              <img src="{{ vaga.img }}" onError="this.src = 'assets/imagens/mulherGrandeCoracao.png'"
+                class="card-img-top" alt="..." />
+            </div>
+            <section class="card__content col-9">
+              <div class="card-body">
+                <div class="card-title d-flex">
+                  <h1>{{ vaga.nomeEntidade }} </h1>
+                  <span [ngClass]=" getStatus(vaga.status)" class="statusPosition" *ngIf="!vaga.inscrito">
+                    {{ vaga.status }}
+                  </span>
+                  <span [ngClass]=" getStatus('inscrito')" class="statusPosition" *ngIf="vaga.inscrito">
+                    Inscrito
+                  </span>
+                </div>
+                <div class="card-content-description">
+                  <p class="card-title">
+                    <b>Nome da vaga:</b>
+                    {{ vaga.nomeVaga }}
+                  </p>
+                  <p class="card-text">
+                    <b>Descrição:</b> {{ vaga.descricao }}
+                  </p>
+                  <p class="card-text">
+                    <b>Requisitos:</b> {{ vaga.requisitos }}
+                  </p>
+                  <p class="card-text">
+                    <b>Número de Vagas:</b> {{ vaga.numeroVagas }}
+                  </p>
+                </div>
+              </div>
+              <div class="buttonsVagasCadastradas">
+                <button class="btn btn-primary" (click)="exibirDetalhes(vaga)">Detalhes</button>
+                <button *ngIf="vaga.status === 'Aberta'" class="btn btn-danger" (click)="cancelarInscricao()">
+                  Cancelar
+                </button>
+              </div>
+            </section>
           </div>
-          <div class="card-content-description">
-            <p class="card-title">
-            <b>Nome da vaga:</b> 
-              {{ vaga.nomeVaga }}
-            </p>
-            <p class="card-text">
-              <b>Descrição:</b> {{ vaga.descricao }}
-            </p>
-            <p class="card-text">
-              <b>Requisitos:</b> {{ vaga.requisitos }}
-            </p>
-            <p class="card-text">
-              <b>Número de Vagas:</b> {{ vaga.numeroVagas }}
-            </p>  
-          </div>          
-        </div>
-        <div class="buttonsVagasCadastradas">
-          <button class="btn btn-primary" (click)="exibirDetalhes(vaga)">Detalhes</button>
-          <button *ngIf="vaga.status === 'Aberta'" class="btn btn-danger" (click)="cancelarInscricao()">
-            Cancelar
-          </button>
+
         </div>
       </section>
-    </div>
-
-  </div>
-</section>
     </section>
     <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
       [collectionSize]="this.vagasCadastradas.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"

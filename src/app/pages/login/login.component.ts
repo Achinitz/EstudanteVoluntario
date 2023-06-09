@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
           next: usuario => {   
             // localStorage.setItem('usuario', JSON.stringify(usuario.user));
 
-          if(usuario.user != null && usuario.user?.statusPerfil == this,this.state.APROVADO){
+          if(usuario.user?.statusPerfil != null && usuario.user?.statusPerfil == this.state.APROVADO){
             this.loginService.usuarioLogado = usuario.user;
             this.loading = true;              
              if(usuario.user.perfil == 'Estudante'){
