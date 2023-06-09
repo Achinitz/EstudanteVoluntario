@@ -5,7 +5,7 @@
         <label>
           <h1>Buscar Vagas</h1>
         </label>
-        <div class="d-flex" *ngIf="vagasCadastradas">
+        <div class="d-flex" *ngIf="vagasCadastradas.length > 0">
           <input type="text" class="form-control" placeholder="Informe o nome da vaga ou o nome da Entidade">
           <button class="btn btn-primary btn-pesquisa">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
@@ -20,12 +20,14 @@
   </form>
 
   <main>
-    <ngb-alert class="alerta" #alert type="primary" *ngIf="!vagasCadastradas">
-      Não temos vagas abertas no momento, fique de olho em breve surgirão novas oportunidades!
-    </ngb-alert>
+    <ng-template #naoPossuiVagas>
+      <ngb-alert class="alerta" #alert type="warning">
+        Não temos vagas abertas no momento, fique de olho em breve surgirão novas oportunidades!
+      </ngb-alert>
+    </ng-template>
 
 
-    <section class="vagasCadastradas" *ngIf="vagasCadastradas">
+    <section class="vagasCadastradas" *ngIf="vagasCadastradas.length > 0 else naoPossuiVagas">
       <div>
         <ngb-alert #alert type="warning">
           Filtre sua busca no campo acima, informando o nome da vaga ou o nome da Entidade que deseja!
@@ -81,11 +83,13 @@
 
         </div>
       </section>
+      
+        <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
+        [collectionSize]="this.vagasCadastradas.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"
+        [(page)]="paginaAtual" (pageChange)="mudancaPagina(paginaAtual)" *ngIf="vagasCadastradas">
+        </ngb-pagination>
+
     </section>
-    <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
-      [collectionSize]="this.vagasCadastradas.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"
-      [(page)]="paginaAtual" (pageChange)="mudancaPagina(paginaAtual)" *ngIf="vagasCadastradas">
-    </ngb-pagination>
   </main>
 
 </section>

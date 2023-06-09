@@ -44,13 +44,13 @@ export class LoginComponent implements OnInit {
           if(usuario.user?.statusPerfil != null && usuario.user?.statusPerfil == this.state.APROVADO){
             this.loginService.usuarioLogado = usuario.user;
             this.loading = true;              
-             if(usuario.user.perfil == 'Estudante'){
+             if(usuario.user.perfil == 'ESTUDANTE'){
                 this.toast.success(usuario.message);
                 this.router.navigate(['/Estudante']);
-              }else if(usuario.user.perfil == 'Entidade'){
+              }else if(usuario.user.perfil == 'ENTIDADE'){
                 this.toast.success(usuario.message);
                 this.router.navigate(['/Entidade']);
-              }else if(usuario.perfil == 'Administrador'){
+              }else if(usuario.perfil == 'ADMINISTRADOR'){
                 this.toast.success(usuario.message);
                 this.router.navigate(['/Admin']);
               }

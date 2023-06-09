@@ -34,8 +34,9 @@ export class HeaderComponent implements OnInit {
   }
 
   redirecionar() {
-    let redirecionamento = '/'+this.usuario.perfil
-    this.router.navigate([redirecionamento]);
+    let urlPerfil = this.usuario.perfil[0].toUpperCase() + this.usuario.perfil.substring(1).toLowerCase();
+    console.log('redirecionando ' + urlPerfil);
+    this.router.navigate(['/' + urlPerfil]);
   }
 
   public logout() {
