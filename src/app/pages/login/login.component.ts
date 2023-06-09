@@ -41,24 +41,26 @@ export class LoginComponent implements OnInit {
           next: usuario => {   
             // localStorage.setItem('usuario', JSON.stringify(usuario.user));
 
-          if(usuario.user?.perfil != null && usuario.user?.perfil == this.state.APROVADO){
+          if(usuario.user != null && usuario.user?.statusPerfil == this,this.state.APROVADO){
             this.loginService.usuarioLogado = usuario.user;
-            this.loading = true;  
-             if(usuario.user.perfil == 'ESTUDANTE'){
+            this.loading = true;              
+             if(usuario.user.perfil == 'Estudante'){
                 this.toast.success(usuario.message);
                 this.router.navigate(['/Estudante']);
-              }else if(usuario.user.perfil == 'ENTIDADE'){
+              }else if(usuario.user.perfil == 'Entidade'){
                 this.toast.success(usuario.message);
                 this.router.navigate(['/Entidade']);
-              }else if(usuario.perfil == 'ADMINISTRADOR'){
+              }else if(usuario.perfil == 'Administrador'){
                 this.toast.success(usuario.message);
                 this.router.navigate(['/Admin']);
               }
           }else{
             this.loading = false;
             if(usuario.statusPerfil == this.state.PENDENTE){
+              console.log('pendente');
               this.toast.warning(usuario.message);
-            }else{
+            }else {
+              console.log('reprovado');
               this.toast.error(usuario.message);
             }            
           }

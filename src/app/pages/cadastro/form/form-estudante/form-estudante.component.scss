@@ -28,3 +28,17 @@
 em {
   color: red;
 }
+
+
+.inputFile-file{
+    background: yellow;
+    border-radius: 5px;
+    cursor: pointer;
+
+    margin: 0.5rem 0rem;
+    padding: 0.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

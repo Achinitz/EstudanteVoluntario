@@ -12,6 +12,9 @@ import { ToastrService } from 'ngx-toastr';
   animations: genericAnimations,
 })
 export class PerfilComponent implements OnInit {
+
+  fotoPerfil:any;
+
   submitted = false;
   confirmaNomeSocial: boolean = false;
   cpf = '00000000000'
@@ -155,6 +158,37 @@ export class PerfilComponent implements OnInit {
     }
   }
 
+  async inputFileImage(event){
+
+    let imagem = event.target.files[0];
+
+    console.log("BEGIN IMAGEM");
+    console.log(event.target.files[0]);
+    console.log("END IMAGEM");
+
+      let file = event.target.files[0];       
+      let byteArrray = await toByteArray(file);
+      let base64 = await toBase64(file);
+      
+      console.log({ file: base64.toString().split(",")[1], fileName: file.name, contentType: file.type })
+
+      this.formCadastro.get('imgPerfil').setValue({ file: base64.toString().split(",")[1], fileName: file.name, contentType: file.type });  
+  }
+
+  async inputFileChange(event){
+    if(event.target.files && event.target.files[0]){
+      let file = event.target.files[0];       
+      let byteArrray = await toByteArray(file);
+      let base64 = await toBase64(file);
+      
+      this.formCadastro.get('comprovanteMatricula').setValue({ file: base64.toString().split(",")[1], fileName: file.name, contentType: file.type });
+    }
+  }
+
+  removeFile(){       
+    this.formCadastro.get('comprovanteMatricula').setValue('');
+  }
+
   validarSenha() {
     if (
       this.formCadastro.get('novaSenha')?.value ==
@@ -173,3 +207,17 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit(): void {}
 }
+
+const toBase64 = file => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => resolve(reader.result);
+  reader.onerror = error => reject(error);
+});
+
+const toByteArray = file => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsArrayBuffer(file);
+  reader.onload = () => resolve(new Uint8Array(reader.result as ArrayBuffer));
+  reader.onerror = error => reject(error);
+});

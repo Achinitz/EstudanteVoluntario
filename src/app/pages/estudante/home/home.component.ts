@@ -109,14 +109,6 @@ export class HomeComponent implements OnInit {
     public estudanteService: EstudanteService
   ) {
 
-    this.estudanteService.teste().subscribe({
-      next: (res:any) => {
-        console.log('***** INCIO *****');
-        console.log(res);
-        console.log('***** FIM *****');
-      }
-    })
-
     this.nomeEstudante = this.loginService.usuarioLogado;
   }
 

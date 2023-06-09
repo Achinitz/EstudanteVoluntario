@@ -14,7 +14,12 @@
       </div>
       <div class="form-group inputFile">
         <label for="imgPerfil">Imagem de Perfil </label>
-        <input type="file" class="form-control-file" id="inputFile" formControlName="imgPerfil" />
+        <input 
+        type="file" 
+        class="form-control-file" 
+        id="inputFile" 
+        (change)="inputFileImage($event)" 
+        />
       </div>
       <div class="form-group">
         <label for="areasInteresse">Áreas de Interesse </label>
@@ -281,8 +286,13 @@
         <div class="form-group inputFile">
           <label for="comprovanteMatricula">Comprovante de Matrícula <em>*</em>
           </label>
-          <input type="file" class="form-control-file" id="comprovanteMatricula"
-            formControlName="comprovanteMatricula" />
+          <input 
+          type="file" 
+          class="mt-1 form-control-file" 
+          id="comprovanteMatricula" 
+          (change)="inputFileChange($event)" 
+          />
+          <br>
           <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
           formCadastro.controls.comprovanteMatricula.touched &&
           formCadastro.controls.comprovanteMatricula.invalid

@@ -268,6 +268,20 @@ export class FormEstudanteComponent implements OnInit {
     }
   }
 
+  async inputFileChange(event){
+    if(event.target.files && event.target.files[0]){
+      let file = event.target.files[0];       
+      let byteArrray = await toByteArray(file);
+      let base64 = await toBase64(file);
+      
+      this.formCadastro.get('comprovanteMatricula').setValue({ file: base64.toString().split(",")[1], fileName: file.name, contentType: file.type });
+    }
+  }
+
+  removeFile(){       
+    this.formCadastro.get('comprovanteMatricula').setValue('');
+  }
+
   ngOnInit(): void {}
 
   cadastrarEstudante() {
@@ -297,6 +311,13 @@ const toBase64 = file => new Promise((resolve, reject) => {
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = () => resolve(reader.result);
-  reader.onerror = reject;
+  reader.onerror = error => reject(error);
+});
+
+const toByteArray = file => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsArrayBuffer(file);
+  reader.onload = () => resolve(new Uint8Array(reader.result as ArrayBuffer));
+  reader.onerror = error => reject(error);
 });
 

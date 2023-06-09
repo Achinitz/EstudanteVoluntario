@@ -28,6 +28,7 @@ export class LoginService extends HttpHeaderService{
   }
 
   public set usuarioLogado(usuario: Usuario){
+    this.usuarioLogado.perfil = this.usuarioLogado.perfil[0].toUpperCase() + this.usuarioLogado.perfil.substring(1);    
     localStorage[this.LS_CHAVE] = JSON.stringify(usuario);
   }
 
