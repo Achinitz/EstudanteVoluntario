@@ -39,16 +39,17 @@ export class EstudanteService extends HttpHeaderService {
     );
   }
 
-  public listarVagas(): Observable<Vaga> {
+  public listarVagas(): Observable<any> {
     return this.http.get(this.baseUrl + 'estudante/vagas', this.httpOptions);
   }
 
-  public getDetalheVaga(idVaga: string): Observable<Vaga> {
+  public getDetalheVaga(idVaga: string): Observable<any>{
     return this.http.get(
       this.baseUrl + `estudante/vagas/${idVaga}`,
       this.httpOptions
     );
   }
+
 
   /*  ARRUMAR FUNCAO NO BACK
   public listarInscricoes(idUsuario: string): Observable<any>{
