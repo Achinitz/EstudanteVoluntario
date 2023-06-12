@@ -33,8 +33,8 @@
           Filtre sua busca no campo acima, informando o nome da vaga ou o nome da Entidade que deseja!
         </ngb-alert>
       </div>
+      
       <!--Buscar apenas as vagas que estão com o status aberto -->
-
       <section class="row ultimasInscricoes" *ngIf="vagasCadastradas">
 
         <div class="content__card">
@@ -48,9 +48,9 @@
             <section class="card__content col-9">
               <div class="card-body">
                 <div class="card-title d-flex">
-                  <h1>{{ vaga.nomeEntidade }} </h1>
-                  <span [ngClass]=" getStatus(vaga.status)" class="statusPosition" *ngIf="!vaga.inscrito">
-                    {{ vaga.status }}
+                  <h1>{{ vaga.entidadeId.nome }} </h1>
+                  <span [ngClass]=" getStatus(vaga.statusVaga)" class="statusPosition" *ngIf="!vaga.inscrito">
+                    {{ vaga.statusVaga }}
                   </span>
                   <span [ngClass]=" getStatus('inscrito')" class="statusPosition" *ngIf="vaga.inscrito">
                     Inscrito

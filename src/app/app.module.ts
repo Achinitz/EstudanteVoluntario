@@ -42,6 +42,7 @@ import { AuthGuard } from './guards/auth-guard';
 import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.component';
 import { NomeUsuarioPipe } from './shared/pipe/nome-usuario.pipe';
 import { LoginService } from './services/login.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,8 @@ import { LoginService } from './services/login.service';
     Pagina404Component,
     EsqueciSenhaComponent,
     NomeUsuarioPipe,
+    
+
   ],
   exports: [
     MatDatepickerModule,
@@ -67,6 +70,7 @@ import { LoginService } from './services/login.service';
     MatNativeDateModule,
     NgSelectModule,
     ToastrModule,
+   
   ],
   imports: [
     AppRoutingModule,
@@ -90,6 +94,7 @@ import { LoginService } from './services/login.service';
     NgxMaskModule.forRoot(),
     ReactiveFormsModule,
     ToastrModule.forRoot(),
+    CommonModule
   ],
   providers: [
     DataService, 

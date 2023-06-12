@@ -1,4 +1,4 @@
-<section class="content">
+<section class="content" *ngIf="vaga">
 
   <div class="topo">
     <h1>Detalhes da Vaga - {{ vaga.nomeVaga }}</h1>
@@ -11,13 +11,14 @@
 
   <main>
     <div class="col-12 d-flex imagem__vaga">
-      <img class="imagem__vaga" src="../../../../../assets/imagens/cadastroImagem.jpg">
+      <img src="{{ vaga.img }}" onError="this.src = 'assets/imagens/cadastroImagem.jpg'" class="card-img-top"
+        alt="..." />
     </div>
 
     <div class="row col-12">
       <span class="title__data">Entidade</span>
-      <p *ngIf="vaga.nomeEntidade">{{vaga.nomeEntidade}}</p>
-      <p class="" *ngIf="!vaga.nomeEntidade"> - </p>
+      <p *ngIf="vaga.entidadeId.nome">{{vaga.entidadeId.nome}}</p>
+      <p class="" *ngIf="!vaga.entidadeId.nome"> - </p>
     </div>
     <div class="row col-12">
       <div class="col-lg-3 col-sm-12">
@@ -32,8 +33,8 @@
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Status</span>
-        <p *ngIf="vaga.status">{{vaga.status}}</p>
-        <p class="" *ngIf="!vaga.status"> - </p>
+        <p *ngIf="vaga.statusVaga">{{vaga.statusVaga}}</p>
+        <p class="" *ngIf="!vaga.statusVaga"> - </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Auxílio</span>
@@ -45,35 +46,36 @@
     <div class="row col-12">
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Data início</span>
-        <p *ngIf="vaga.dataInicioTrabalho">{{vaga.dataInicioTrabalho}}</p>
+        <p *ngIf="vaga.dataInicioTrabalho">{{vaga.dataInicioTrabalho | localDate }}</p>
         <p class="" *ngIf="!vaga.dataInicioTrabalho"> - </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Data fim</span>
-        <p *ngIf="vaga.dataTerminoTrabalho">{{vaga.dataTerminoTrabalho}}</p>
-        <p class="" *ngIf="!vaga.dataTerminoTrabalho"> - </p>
+        <p *ngIf="vaga.dataEncerramentoTrabalho">{{vaga.dataEncerramentoTrabalho | localDate }}</p>
+        <p class="" *ngIf="!vaga.dataEncerramentoTrabalho"> - </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Horário início</span>
-        <p *ngIf="vaga.horarioInicio">{{vaga.horarioInicio}}</p>
-        <p class="" *ngIf="!vaga.horarioInicio"> - </p>
+        <p *ngIf="vaga.horarioInicioTrabalho">{{vaga.horarioInicioTrabalho | localHour}}</p>
+        <p class="" *ngIf="!vaga.horarioInicioTrabalho"> - </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Horário fim</span>
-        <p *ngIf="vaga.horarioEncerramento">{{vaga.horarioEncerramento}}</p>
-        <p class="" *ngIf="!vaga.horarioEncerramento"> - </p>
+        <p *ngIf="vaga.horarioEncerramentoTrabalho">{{vaga.horarioEncerramentoTrabalho | localHour}}</p>
+        <p class="" *ngIf="!vaga.horarioEncerramentoTrabalho"> - </p>
       </div>
     </div>
 
     <div class="row col-12">
       <span class="title__data">Endereço</span>
-      <p *ngIf="vaga.endereco">{{vaga.endereco}}</p>
+      <p *ngIf="vaga.endereco">{{vaga.endereco.logradouro}}, {{vaga.endereco.numero}} - {{vaga.endereco.bairro}} -
+        {{vaga.endereco.cidade}} / {{vaga.endereco.estado}}</p>
       <p class="" *ngIf="!vaga.endereco"> - </p>
     </div>
 
     <div class="row col-12">
       <span class="title__data">Encerramento da inscrição</span>
-      <p *ngIf="vaga.dataFinalizacaoVaga">{{vaga.dataFinalizacaoVaga}}</p>
+      <p *ngIf="vaga.dataFinalizacaoVaga">{{vaga.dataFinalizacaoVaga | localDate }}</p>
       <p class="" *ngIf="!vaga.dataFinalizacaoVaga"> - </p>
     </div>
 
@@ -85,12 +87,12 @@
     </section>
 
     <div class="buttonsVagasCadastradas">
-      <button *ngIf="!vaga.inscrito" class="btn btn-primary" (click)="confirmarInscricao()">
+      <!--   <button *ngIf="!vaga.inscrito" class="btn btn-primary" (click)="confirmarInscricao()">
         Inscrição
-      </button>
-      <button *ngIf="vaga.inscrito" class="btn btn-danger" (click)="cancelarInscricao()">
+      </button> -->
+      <!--  <button *ngIf="vaga.inscrito" class="btn btn-danger" (click)="cancelarInscricao()">
         Cancelar inscrição
-      </button>
+      </button> -->
     </div>
 
     <div class="voltar">

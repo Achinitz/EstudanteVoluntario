@@ -65,13 +65,9 @@ export class BuscarVagasComponent implements OnInit {
   }
 
   //Vai exibir os detalhes da vaga para efetivar a inscrição
-  exibirDetalhes(value: Vaga): void {
-    let id = value.id;
-    console.log(id);
-    let vaga = this.estudanteService.getDetalheVaga(id);
-    console.log(vaga);
-    this.dataService.data = vaga;
-    this.router.navigate(['/Estudante/detalhe-vaga']);
+  exibirDetalhes(value: any): void {  
+    this.router.navigate(['/Estudante/detalhe-vaga', { id: value._id }]);
+       
   }
 
   //Vai exibir uma modal para cadastro com as validações dos dados

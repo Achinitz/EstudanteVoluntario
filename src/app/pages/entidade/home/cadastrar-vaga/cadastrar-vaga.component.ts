@@ -4,7 +4,7 @@ import { EnderecoService } from 'src/app/services/endereco.service';
 import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
 import { genericAnimations } from 'src/app/shared/animations/animations';
 import { ToastrService } from 'ngx-toastr';
-import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-cadastrar-vaga',
