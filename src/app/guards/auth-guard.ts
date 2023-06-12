@@ -24,8 +24,9 @@ export class AuthGuard implements CanActivate{
     state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
       let usuarioLogado = this.loginService.usuarioLogado;
       let url = state.url;
-
      if(usuarioLogado && usuarioLogado.statusPerfil == this.state.APROVADO){
+      console.log('entru')
+      console.log(route.data?.['role'])
         if(route.data?.['role'] && route.data?.['role'].indexOf(usuarioLogado.perfil) === -1){
             this.router.navigate(['/home'],{
             queryParams: {error: 'Proibido o acesso a' + url}});

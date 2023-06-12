@@ -4,6 +4,9 @@ import { EnderecoService } from 'src/app/services/endereco.service';
 import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
 import { genericAnimations } from 'src/app/shared/animations/animations';
 import { ToastrService } from 'ngx-toastr';
+import { EstudanteService } from 'src/app/services/estudante.service';
+import { LoginService } from 'src/app/services/login.service';
+import { CursoService } from 'src/app/services/curso.service';
 
 @Component({
   selector: 'app-perfil',
@@ -15,6 +18,8 @@ export class PerfilComponent implements OnInit {
 
   fotoPerfil:any;
 
+  senha: any;
+  novaSenha: any;
   submitted = false;
   confirmaNomeSocial: boolean = false;
   cpf = '00000000000'
@@ -48,17 +53,10 @@ export class PerfilComponent implements OnInit {
   ];
 
   public formCadastro = new FormGroup({
-    id: new FormControl(null),
-    nome: new FormControl(null, Validators.required),       
-    login: new FormControl(null),
+    nomeCompleto: new FormControl(null, Validators.required),       
+    // login: new FormControl(null),
     senha: new FormControl(null),
-    perfil: new FormControl(null),
-    dataCadastro: new FormControl(null),
-    perfilAtivo: new FormControl(null),
-    cpf: new FormControl({value:this.cpf, disabled: true},
-      Validators.required,       
-    ),
-    imgPerfil: new FormControl(null, Validators.required),
+    // imgPerfil: new FormControl(null, Validators.required),
     nomeSocial: new FormControl(null),
     confirmaNomeSocial: new FormControl(false),
     identificacaoGenero: new FormControl(null, Validators.required),
@@ -68,24 +66,27 @@ export class PerfilComponent implements OnInit {
     rgEmissor: new FormControl(null, Validators.required),
     email: new FormControl(null, [Validators.required, Validators.email]),
     telefone: new FormControl(null, Validators.required),
-    cep: new FormControl(null, Validators.required),
-    logradouro: new FormControl(null, Validators.required),
-    numero: new FormControl(null, Validators.required),
-    bairro: new FormControl(null, Validators.required),
-    estado: new FormControl(null, Validators.required),
-    cidade: new FormControl(null, Validators.required),
-    complemento: new FormControl(null, Validators.required),
+    endereco: new FormGroup({
+      cep: new FormControl(null, Validators.required),
+      logradouro: new FormControl(null, Validators.required),
+      numero: new FormControl(null, Validators.required),
+      bairro: new FormControl(null, Validators.required),
+      complemento: new FormControl(null, Validators.required),
+      estado: new FormControl(null, Validators.required),
+      cidade: new FormControl(null, Validators.required),
+    }),
     areasInteresse: new FormControl(null, Validators.required),
-    experiencias: new FormControl(null, Validators.required),
-    instituicao: new FormControl(null, Validators.required),
-    grau: new FormControl(null, Validators.required),
-    curso: new FormControl(null, Validators.required),
-    anoInicio: new FormControl(null, Validators.required),
-    anoConclusao: new FormControl(null, Validators.required),
+    experiencias: new FormControl(null),
+    curso: new FormGroup({
+      instituicao: new FormControl(null, Validators.required),
+      grau: new FormControl(null, Validators.required),
+      campus: new FormControl(null, Validators.required),
+      nomeCurso: new FormControl(null, Validators.required),
+      anoInicio: new FormControl(null, Validators.required),
+      anoConclusao: new FormControl(null, Validators.required),
+    }),
     comprovanteMatricula: new FormControl(null, Validators.required),
     idAdmin: new FormControl(null),
-    novaSenha: new FormControl(null),
-    confirmarSenha: new FormControl(null),
   });
 
   mostrarValores() {
@@ -95,8 +96,19 @@ export class PerfilComponent implements OnInit {
   constructor(
     private consultaCepService: ConsultaCepService,
     private enderecoService: EnderecoService,
+    private estudanteService: EstudanteService,
+    private loginService: LoginService,
+    private cursoService: CursoService,
     private toast: ToastrService
   ) {
+    
+    this.estudanteService.getPerfilEstudante(this.loginService.usuarioLogado._id).subscribe({
+      next: (res:any) => {
+        console.log(res);
+        this.formCadastro.setValue(res.estudante);        
+      }
+    });
+
     this.inicializaFormulario();
   }
 
@@ -108,6 +120,19 @@ export class PerfilComponent implements OnInit {
 
   setNomeSocial() {
     this.confirmaNomeSocial = this.confirmaNomeSocial ? false : true;
+  }
+
+  onAddCurso() {
+    this.cursoService
+      .listarCursos(this.formCadastro.get('curso.instituicao').value)
+      .subscribe({
+        next: (res: any) => {
+          this.cursos = res;
+        },
+        error: (err: any) => {
+          this.toast.error(err.message);
+        },
+      });
   }
   
   onAddCidade() {
@@ -156,6 +181,10 @@ export class PerfilComponent implements OnInit {
       );
       console.log('CEP ok');
     }
+  }
+
+  perfilEstudante(){
+    console.log(this.formCadastro.value)
   }
 
   async inputFileImage(event){

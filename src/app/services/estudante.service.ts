@@ -26,7 +26,7 @@ export class EstudanteService extends HttpHeaderService {
 
   public setPerfilEstudante(usuario: Estudante): Observable<any> {
     return this.http.patch(
-      this.baseUrl + `estudante/${usuario.id}`,
+      this.baseUrl + `estudante?id:${usuario._id}`,
       this.httpOptions
     );
   }

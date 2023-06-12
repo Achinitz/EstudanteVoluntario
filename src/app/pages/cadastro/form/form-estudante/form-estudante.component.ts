@@ -92,7 +92,7 @@ export class FormEstudanteComponent implements OnInit {
     private estudanteService: EstudanteService,
     private router: Router,
     private instituicaoService: InstituicaoService,
-    private cursoService: CursoService
+    private cursoService: CursoService,
   ) {
     this.inicializaFormulario();
   }

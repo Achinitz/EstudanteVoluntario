@@ -23,7 +23,7 @@ export class EntidadeService extends HttpHeaderService{
   }
 
   public settPerfilEntidade(usuario: Entidade){
-    return this.http.patch(this.baseUrl + `entidade/${usuario.id}`, this.httpOptions);   
+    return this.http.patch(this.baseUrl + `entidade/${usuario._id}`, this.httpOptions);   
   }  
 
   public cadastrarVaga(idUsuario: string, vaga: Vaga){
