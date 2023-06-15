@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario.model';
 import { EstudanteService } from 'src/app/services/estudante.service';
-import { StorageService } from 'src/app/services/storage.service';
+import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,11 +19,11 @@ export class DetalheVagaComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private estudanteService: EstudanteService,
-    private storageService: StorageService,    
+    private loginService: LoginService
   ) {}
 
   ngOnInit(): void {
-    this.usuarioLogado = this.storageService.getUser();
+    this.usuarioLogado = this.loginService.usuarioLogado;
     this.id = this.route.snapshot.paramMap.get('id');
     this.estudanteService.getDetalheVaga(this.id).subscribe({
       next: (res: any) => {
@@ -69,8 +68,4 @@ export class DetalheVagaComponent implements OnInit {
       }
     });
   }
-
- 
-
- 
 }

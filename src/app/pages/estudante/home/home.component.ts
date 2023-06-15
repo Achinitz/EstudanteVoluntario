@@ -5,9 +5,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalVagaComponent } from '../minhas-inscricoes/modal-inscricao/modal-vaga.component';
 import { EstudanteService } from 'src/app/services/estudante.service';
 import { Usuario } from 'src/app/models/usuario.model';
-import { StorageService } from 'src/app/services/storage.service';
 import { Vaga } from 'src/app/models/vaga';
 import { Inscricao } from 'src/app/models/inscricao';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-home',
@@ -22,11 +22,11 @@ export class HomeComponent implements OnInit {
     public dialog: MatDialog,
     private modalService: NgbModal,
     public estudanteService: EstudanteService,
-    private storageService: StorageService
+    private loginService: LoginService,
   ) {}
 
   ngOnInit(): void {
-    this.usuarioLogado = this.storageService.getUser();
+    this.usuarioLogado = this.loginService.usuarioLogado;
     this.getInscricoes(this.usuarioLogado._id);
   }
 

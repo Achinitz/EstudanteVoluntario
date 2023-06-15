@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario.model';
 import { Vaga } from 'src/app/models/vaga';
 import { EstudanteService } from 'src/app/services/estudante.service';
+import { LoginService } from 'src/app/services/login.service';
 import { StorageService } from 'src/app/services/storage.service';
 
 
@@ -19,12 +20,12 @@ export class BuscarVagasComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private router: Router,
-    private estudanteService: EstudanteService,
-    private storageService: StorageService,    
+    private estudanteService: EstudanteService,    
+    private loginService: LoginService
   ) {}
 
   ngOnInit(): void {
-    this.usuarioLogado = this.storageService.getUser();   
+    this.usuarioLogado = this.loginService.usuarioLogado;  
     this.getVagas();
   }
 

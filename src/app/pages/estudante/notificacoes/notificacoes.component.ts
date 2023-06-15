@@ -4,9 +4,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import { ModalNotificacaoComponent } from './modal-notificacao/modal-notificacao.component';
 import { NotificacaoService } from 'src/app/services/notificacao.service';
-import { StorageService } from 'src/app/services/storage.service';
 import { Usuario } from 'src/app/models/usuario.model';
 import { Notificacao } from 'src/app/models/notificacao';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-notificacoes',
@@ -20,12 +20,12 @@ export class NotificacoesComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     public dialog: MatDialog,
-    private storageService: StorageService,
+    private loginService: LoginService,
     private notificacaoService: NotificacaoService
   ) {}
 
   ngOnInit(): void {
-    this.usuarioLogado = this.storageService.getUser();
+    this.usuarioLogado = this.loginService.usuarioLogado;
     this.getNotificacoes(this.usuarioLogado._id);   
   }
 

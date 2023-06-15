@@ -6,9 +6,9 @@ import { ModalVagaComponent } from './modal-inscricao/modal-vaga.component';
 import { ModalTermoComponent } from './modal-termo/modal-termo.component';
 import { EstudanteService } from 'src/app/services/estudante.service';
 import { Usuario } from 'src/app/models/usuario.model';
-import { StorageService } from 'src/app/services/storage.service';
 import { Vaga } from 'src/app/models/vaga';
 import { Inscricao } from 'src/app/models/inscricao';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-minhas-inscricoes',
@@ -23,11 +23,12 @@ export class MinhasInscricoesComponent implements OnInit {
     private modalService: NgbModal,
     public dialog: MatDialog,
     private estudanteService: EstudanteService,
-    private storageService: StorageService
+    private loginService: LoginService
   ) {}
 
   ngOnInit(): void {
-    this.usuarioLogado = this.storageService.getUser();
+    this.usuarioLogado = this.loginService.usuarioLogado;
+    
     this.getInscricoes(this.usuarioLogado._id);
   }
 
