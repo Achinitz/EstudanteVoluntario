@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EstudanteComponent } from './estudante.component';
 import { CertificadoComponent } from './certificado/certificado.component';
-import { DetalheVagaComponent } from './home/detalhe-vaga/detalhe-vaga.component';
+import { DetalheVagaComponent } from './buscar-vagas/detalhe-vaga/detalhe-vaga.component';
 import { HomeComponent } from './home/home.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { BuscarVagasComponent } from './buscar-vagas/buscar-vagas.component';

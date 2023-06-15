@@ -15,9 +15,7 @@ import { CursoService } from 'src/app/services/curso.service';
   animations: genericAnimations,
 })
 export class PerfilComponent implements OnInit {
-
   fotoPerfil:any;
-
   senha: any;
   novaSenha: any;
   submitted = false;
@@ -104,7 +102,7 @@ export class PerfilComponent implements OnInit {
     
     this.estudanteService.getPerfilEstudante(this.loginService.usuarioLogado._id).subscribe({
       next: (res:any) => {
-        console.log(res);
+        //console.log(res);
         this.formCadastro.setValue(res.estudante);        
       }
     });

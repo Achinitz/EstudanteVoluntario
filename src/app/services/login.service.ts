@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { Observable, of } from 'rxjs';
 import { Usuario } from '../models/usuario.model';
 import { Login } from '../models/login.model';
@@ -45,7 +44,4 @@ export class LoginService extends HttpHeaderService {
     return this.http.patch(this.baseUrl + 'auth/reativar', login, this.httpOptions);
   }
 
-  logout() {
-    delete localStorage['LS_CHAVE'];
-  }
 }

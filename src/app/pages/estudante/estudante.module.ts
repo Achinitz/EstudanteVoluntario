@@ -5,7 +5,7 @@ import { EstudanteRoutingModule } from './estudante-routing.module';
 import { HomeComponent } from './home/home.component';
 import { SidebarEstudanteComponent } from './sidebar-estudante/sidebar-estudante.component';
 import { PerfilComponent } from './perfil/perfil.component';
-import { DetalheVagaComponent } from './home/detalhe-vaga/detalhe-vaga.component';
+import { DetalheVagaComponent } from './buscar-vagas/detalhe-vaga/detalhe-vaga.component';
 import { CertificadoComponent } from './certificado/certificado.component';
 import { EstudanteComponent } from './estudante.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

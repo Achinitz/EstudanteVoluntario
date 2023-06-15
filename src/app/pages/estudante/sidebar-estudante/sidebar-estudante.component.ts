@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-sidebar-estudante',
@@ -31,8 +30,7 @@ export class SidebarEstudanteComponent implements OnInit {
    
   }
 
-  public logout() {
-    console.log('logout');
+  public logout() {   
     localStorage.clear();
     this.router.navigate(['/']);
   }
