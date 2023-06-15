@@ -11,7 +11,8 @@
   <main>
 
     <div class="col-12 d-flex imagem__vaga">
-      <img class="imagem__vaga" src="../../../../../assets/imagens/cadastroImagem.jpg">
+      <img src="{{ vaga.img }}" onError="this.src = 'assets/imagens/cadastroImagem.jpg'" class="card-img-top"
+        alt="..." />
     </div>
 
     <div class="row col-12">
@@ -27,8 +28,8 @@
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Status</span>
-        <p *ngIf="vaga.status">{{vaga.status}}</p>
-        <p class="" *ngIf="!vaga.status"> - </p>
+        <p *ngIf="vaga.statusVaga">{{vaga.statusVaga}}</p>
+        <p class="" *ngIf="!vaga.statusVaga"> - </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Auxílio</span>
@@ -45,36 +46,36 @@
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Data fim</span>
-        <p *ngIf="vaga.dataTerminoTrabalho">{{vaga.dataTerminoTrabalho}}</p>
-        <p class="" *ngIf="!vaga.dataTerminoTrabalho"> - </p>
+        <p *ngIf="vaga.dataEncerramentoTrabalho">{{vaga.dataEncerramentoTrabalho}}</p>
+        <p class="" *ngIf="!vaga.dataEncerramentoTrabalho"> - </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Horário início</span>
-        <p *ngIf="vaga.horarioInicio">{{vaga.horarioInicio}}</p>
-        <p class="" *ngIf="!vaga.horarioInicio"> - </p>
+        <p *ngIf="vaga.horarioInicioTrabalho">{{vaga.horarioInicioTrabalho}}</p>
+        <p class="" *ngIf="!vaga.horarioInicioTrabalho"> - </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Horário fim</span>
-        <p *ngIf="vaga.horarioEncerramento">{{vaga.horarioEncerramento}}</p>
-        <p class="" *ngIf="!vaga.horarioEncerramento"> - </p>
+        <p *ngIf="vaga.horarioEncerramentoTrabalho">{{vaga.horarioEncerramentoTrabalho}}</p>
+        <p class="" *ngIf="!vaga.horarioEncerramentoTrabalho"> - </p>
       </div>
     </div>
 
     <div class="row col-12">
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Endereço</span>
-        <p *ngIf="vaga.logradouro">{{vaga.logradouro}}</p>
-        <p class="" *ngIf="!vaga.logradouro"> - </p>
+        <p *ngIf="vaga.endereco">{{vaga.endereco.logradouro}}, {{vaga.endereco.numero}}</p>
+        <p class="" *ngIf="!vaga.endereco"> - </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Cidade</span>
-        <p *ngIf="vaga.cidade">{{vaga.cidade}}</p>
-        <p class="" *ngIf="!vaga.cidade"> - </p>
+        <p *ngIf="vaga.endereco">{{vaga.endereco.cidade}}</p>
+        <p class="" *ngIf="!vaga.endereco"> - </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Estado</span>
-        <p *ngIf="vaga.estado">{{vaga.estado}}</p>
-        <p class="" *ngIf="!vaga.estado"> - </p>
+        <p *ngIf="vaga.endereco">{{vaga.endereco.estado}}</p>
+        <p class="" *ngIf="!vaga.endereco"> - </p>
       </div>
     </div>
 
@@ -120,16 +121,16 @@
         <tbody>
           <tr *ngFor="let inscrito of vaga.inscricoes;">
             <td class="col-3">
-              {{ inscrito.nome }}
+              {{ inscrito.estudanteId.nomeCompleto }}
             </td>
             <td class="col-2 col-sm-none text-center">{{ inscrito.dataInscricao }}</td>
             <td class="col-2 text-center">
               <span class="ball__aviso"></span>
-              {{ inscrito.status }}
+              {{ inscrito.statusInscricao }}
             </td>
-            <td class="col-3 text-center">{{ inscrito.curso }}</td>
+            <td class="col-3 text-center">{{ inscrito.estudanteId.curso.nomeCurso }}</td>
             <td class="col-1 buttonsActions">
-              <button class="button-table" title="Visualizar" (click)="visualizarCandidato(inscrito)">
+              <button class="button-table" title="Visualizar" (click)="visualizarCandidato(inscrito.userId, inscrito.statusInscricao)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
                   viewBox="0 0 16 16">
                   <path
@@ -162,10 +163,10 @@
     </section>
 
     <div class="buttonsVagasCadastradas">
-      <button *ngIf="vaga.status == 'Aberta'" class="btn btn-success" (click)="finalizarPorUrgencia()">
+      <button *ngIf="vaga.statusVaga == 'ABERTA'" class="btn btn-success" (click)="finalizarPorUrgencia()">
         Finalizar
       </button>
-      <button *ngIf="vaga.status == 'Aberta'" class="btn btn-danger" (click)="cancelarProcessoSeletivo()">
+      <button *ngIf="vaga.statusVaga == 'ABERTA'" class="btn btn-danger" (click)="cancelarProcessoSeletivo()">
         Cancelar
       </button>
     </div>

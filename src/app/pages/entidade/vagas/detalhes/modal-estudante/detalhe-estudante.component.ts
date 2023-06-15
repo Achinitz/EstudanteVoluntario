@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { DataService } from 'src/app/services/data.service';
+import { Estudante } from 'src/app/models/estudante';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,40 +9,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./detalhe-estudante.component.scss'],
 })
 export class DetalheEstudanteComponent implements OnInit {
-  @Input() inscricao: any;
+  @Input() inscrito: Estudante;
+  @Input() statusInscricao: string;
 
-  //buscar os dados do Estudante de acordo com o ID da inscrição
-  perfilCandidato: any = {
-    nome: 'Gustavo de Oliveira Achinitz',
-    nomeSocial: 'Natasha de Oliveira',
-    identificacaoGenero: 'Transexual',
-    dataNascimento: '01/03/1997',
-    email: 'gustavoachinitz@gmail.com',
-    telefone: '41996683953',
-    cep: '82960-020',
-    logradouro: 'casa',
-    numero: '1133',
-    bairro: 'bairro',
-    estado: 'PR',
-    cidade: 'Curitiba',
-    complemento: 'Casa',
-    curso: 'Tecnologia em Análise de Sistemas',
-    grau: 'Tecnologia',
-    instituicao: 'SENAI',
-    anoInicio: '2015',
-    anoConclusao: '2025',
-    experienciasAnteriores: null,
-    areasInteresse: null,
-    status: 'Inscrito'      
-  };
-
-  constructor(
-    private data: DataService,
-    private router: Router,
-    public activeModal: NgbActiveModal
-  ) {}
-
-  downloadCertificado(certificado: any) {}
+  constructor(public activeModal: NgbActiveModal) {}
 
   aprovarCandidato() {
     Swal.fire({

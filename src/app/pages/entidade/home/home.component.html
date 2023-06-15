@@ -1,12 +1,9 @@
 <section class="content">
   <div class="topo">
-    <h1 class="colo-topo">Olá, {{ nomeEntidade.nome }} !
-    </h1>
+    <h1 class="colo-topo">Olá, {{ usuarioLogado.nome }} !</h1>
   </div>
-
   <section class="dash col-12">
-
-    <div class="cardGrafico border shadow" style="background-color:dodgerblue">
+    <div class="cardGrafico border shadow" style="background-color: dodgerblue">
       <div class="row align-items-center">
         <span class="col-3">
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
@@ -17,15 +14,13 @@
           </svg>
         </span>
         <div class="col-8 dados">
-          <p class="quantidade-chamados"> 4</p>
+          <p class="quantidade-chamados">4</p>
           <span class="title-index"> Vagas Abertas </span>
         </div>
-      </div>  
-     
+      </div>
     </div>
 
-
-    <div class="cardGrafico border shadow" style="background-color:darkcyan ">
+    <div class="cardGrafico border shadow" style="background-color: darkcyan">
       <div class="row align-items-center">
         <span class="col-3">
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
@@ -36,30 +31,27 @@
           </svg>
         </span>
         <div class="col-8 dados">
-          <p class="quantidade-chamados"> 2 </p>
+          <p class="quantidade-chamados">2</p>
           <span class="title-index"> Vagas em Andamento </span>
         </div>
       </div>
-    
     </div>
 
-    <div class="cardGrafico border shadow " style="background-color:mediumslateblue">
+    <div class="cardGrafico border shadow" style="background-color: mediumslateblue">
       <div class="row align-items-center">
         <span class="col-3">
-          <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
           </svg>
-        </span> 
+        </span>
         <div class="col-8 dados">
-          <p class="quantidade-chamados"> 2 </p>
+          <p class="quantidade-chamados">2</p>
           <span class="title-index"> Vagas Canceladas </span>
         </div>
       </div>
-     
     </div>
-
-
   </section>
 
   <section>
@@ -69,135 +61,93 @@
       <span> No momento não existem vagas abertas cadastradas! </span>
     </div>
 
-    <section class="ultimasInscricoes" *ngIf="vagasAbertas">
-
+    <section class="vagasAbertas" *ngIf="vagasAbertas">
       <div class="content__card">
-
         <div class="card col-12" *ngFor="let vaga of vagasAbertas; let i = index">
-          <!-- Alterar as cores do botão dependendo do status -->
+
           <div class="imgCard col-3">
-            <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
+            <img src="{{ vaga.img }}" onError="this.src = 'assets/imagens/mulherGrandeCoracao.png'" class="card-img-top"
+              alt="..." />
           </div>
           <section class="card__content col-9">
             <div class="card-body">
               <div class="card-title d-flex">
-                <h1>{{ vaga.nomeVaga }} </h1>
-                <span [ngClass]=" getStatus(vaga.status)" class="statusPosition" *ngIf="!vaga.inscrito">
-                  {{ vaga.status }}
-                </span>
-                <span [ngClass]=" getStatus('inscrito')" class="statusPosition" *ngIf="vaga.inscrito">
-                  Inscrito
+                <h1>{{ vaga.nomeVaga }}</h1>
+                <span [ngClass]="getStatus(vaga.statusVaga)" class="statusPosition">
+                  {{ vaga.statusVaga }}
                 </span>
               </div>
               <div class="card-content-description">
                 <p class="card-title">
-                <b>Nome da vaga:</b> 
+                  <b>Nome da vaga:</b>
                   {{ vaga.nomeVaga }}
                 </p>
-                <p class="card-text">
-                  <b>Descrição:</b> {{ vaga.descricao }}
-                </p>
+                <p class="card-text"><b>Descrição:</b> {{ vaga.descricao }}</p>
                 <p class="card-text">
                   <b>Requisitos:</b> {{ vaga.requisitos }}
                 </p>
                 <p class="card-text">
                   <b>Número de Vagas:</b> {{ vaga.numeroVagas }}
-                </p>  
-              </div>          
+                </p>
+              </div>
             </div>
             <div class="buttonsVagasCadastradas">
-              <button class="btn btn-success" (click)="finalizarPorUrgencia()">
-                Finalizar
-              </button>
-              <button class="btn btn-danger" (click)="cancelarProcessoSeletivo()">
-                Cancelar
+              <button class="btn btn-primary" (click)="exibirDetalhes(vaga)">
+                Detalhes da Vaga
               </button>
             </div>
           </section>
         </div>
-
       </div>
-
-    <!-- <section class="contentDetails">
-      <div class="card" *ngFor="let vaga of vagasAbertas; let i = index">
-        <div class="imgCard">
-          <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
-        </div>
-        <div class="card-body">
-          <h4 class="card-title">{{ vaga.nomeVaga }}</h4>
-          <p class="card-text">{{ vaga.descricao }}</p>
-        </div>
-        <div class="buttonsVagasCadastradas">
-          <button class="btn btn-success" (click)="finalizarPorUrgencia()">
-            Finalizar
-          </button>
-          <button class="btn btn-danger" (click)="cancelarProcessoSeletivo()">
-            Cancelar
-          </button>
-        </div>
-      </div>
-    </section> -->
-  </section>
-
-  <section>
-    <h2>Vagas em Análise</h2>
-    <div *ngIf="!vagasAprovacao">
-      <span> No momento não existem vagas em análise! </span>
-    </div>
-
-    <section class="">
-
-      <div class="card col-12" *ngFor="let vaga of vagasAprovacao; let i = index">
-        <!-- Alterar as cores do botão dependendo do status -->
-        <div class="imgCard col-3">
-          <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
-        </div>
-        <section class="card__content col-9">
-          <div class="card-body">
-            <div class="card-title d-flex">
-              <h1>{{ vaga.nomeVaga }} </h1>
-              <span [ngClass]=" getStatus(vaga.status)" class="statusPosition" *ngIf="!vaga.inscrito">
-                {{ vaga.status }}
-              </span>
-              <span [ngClass]=" getStatus('inscrito')" class="statusPosition" *ngIf="vaga.inscrito">
-                Inscrito
-              </span>
-            </div>
-            <div class="card-content-description">
-              <p class="card-title">
-              <b>Nome da vaga:</b> 
-                {{ vaga.nomeVaga }}
-              </p>
-              <p class="card-text">
-                <b>Descrição:</b> {{ vaga.descricao }}
-              </p>
-              <p class="card-text">
-                <b>Requisitos:</b> {{ vaga.requisitos }}
-              </p>
-              <p class="card-text">
-                <b>Número de Vagas:</b> {{ vaga.numeroVagas }}
-              </p>  
-            </div>          
-          </div>
-          <div class="buttonsVagasCadastradas">
-            <button class="btn btn-primary" (click)="exibirDetalhes(vaga)">Detalhes Vaga</button>
-          </div>
-        </section>
-      </div>
-
-      <!-- <div class="card" *ngFor="let vaga of vagasAprovacao; let i = index">
-        <div class="imgCard">
-          <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
-        </div>
-        <div class="card-body">
-          <h4 class="card-title">{{ vaga.nomeVaga }}</h4>
-          <p class="card-text">{{ vaga.descricao }}</p>
-        </div>
-        <div class="buttonsVagasCadastradas">
-          <button class="btn btn-primary" (click)="exibirDetalhes(vaga)">Detalhes Vaga</button>
-        </div>
-      </div> -->
     </section>
+
+    <section>
+      <h2>Vagas em Análise</h2>
+      <div *ngIf="vagasAprovacao == 0">
+        <span> No momento não existem vagas em análise</span>
+      </div>
+
+      <section class="vagasAbertas" *ngIf="vagasAprovacao">
+        <div class="content__card">
+          <div class="card col-12" *ngFor="let vaga of vagasAprovacao; let i = index">
+
+            <div class="imgCard col-3">
+              <img src="{{ vaga.img }}" onError="this.src = 'assets/imagens/mulherGrandeCoracao.png'"
+                class="card-img-top" alt="..." />
+            </div>
+            <section class="card__content col-9">
+              <div class="card-body">
+                <div class="card-title d-flex">
+                  <h1>{{ vaga.nomeVaga }}</h1>
+                  <span [ngClass]="getStatus(vaga.statusVaga)" class="statusPosition">
+                    {{ vaga.statusVaga }}
+                  </span>
+                </div>
+                <div class="card-content-description">
+                  <p class="card-title">
+                    <b>Nome da vaga:</b>
+                    {{ vaga.nomeVaga }}
+                  </p>
+                  <p class="card-text"><b>Descrição:</b> {{ vaga.descricao }}</p>
+                  <p class="card-text">
+                    <b>Requisitos:</b> {{ vaga.requisitos }}
+                  </p>
+                  <p class="card-text">
+                    <b>Número de Vagas:</b> {{ vaga.numeroVagas }}
+                  </p>
+                </div>
+              </div>
+              <div class="buttonsVagasCadastradas">
+                <button class="btn btn-primary" (click)="exibirDetalhes(vaga)">
+                  Detalhes Vaga
+                </button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+    </section>
+    <a class="maisvagas" routerLink="/Entidade/vagas">> Mais vagas</a>
   </section>
-  <a class="maisvagas" routerLink="/Entidade/vagas">> Mais vagas</a>
 </section>

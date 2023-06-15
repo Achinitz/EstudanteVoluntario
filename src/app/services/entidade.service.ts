@@ -41,9 +41,17 @@ export class EntidadeService extends HttpHeaderService{
   public listarVagasAndamento(idUsuario: string): Observable<any> {
     return this.http.get(this.baseUrl + `entidade/${idUsuario}/vagas-andamento`, this.httpOptions);
   }
+
+  public listarVagasAprovacao(idUsuario: string): Observable<any> {
+    return this.http.get(this.baseUrl + `entidade/${idUsuario}/vagas-aprovacao`, this.httpOptions);
+  }
   
   public getDetalheVaga(idUsuario: string, idVaga:string): Observable<any> {
     return this.http.get(this.baseUrl + `entidade/${idUsuario}/${idVaga}`, this.httpOptions);
+  }
+
+    public visualizarInscrito(idUsuario: string, idVaga:string, idEstudante: string): Observable<any> {
+    return this.http.get(this.baseUrl + `entidade/${idUsuario}/${idVaga}/${idEstudante}`, this.httpOptions);
   }
 
   /*  ARRUMAR FUNCAO NO BACK
@@ -51,10 +59,7 @@ export class EntidadeService extends HttpHeaderService{
     return this.http.get(this.baseUrl + `entidade/${idUsuario}/${idVaga}/cancelar`, this.httpOptions);
   } */
 
-    /*  ARRUMAR FUNCAO NO BACK
-    public visualizarInscrito(idUsuario: string, idVaga:string, idEstudante: string): Observable<any> {
-    return this.http.get(this.baseUrl + `entidade/${idUsuario}/${idVaga}/${idEstudante}`, this.httpOptions);
-  } */
+  
 
     /*  ARRUMAR FUNCAO NO BACK
     public aprovarInscrito(idUsuario: string, idVaga:string, idEstudante: string, statusInscricao: string): Observable<any> {

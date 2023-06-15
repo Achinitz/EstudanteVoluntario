@@ -23,7 +23,14 @@ export class Inscricao {
       horarioEncerramentoTrabalho?: string;
       dataFinalizacaoVaga?: string;
     },
-    public estudanteId?: string,
+    public estudanteId?: {
+      _id?: string,
+      nomeCompleto?: string,
+      nomeSocial?: string,
+      curso?: {
+        nomeCurso?:string
+      }
+    },
     public dataInscricao?: Date,
     public statusInscricao?: StatusInscricao,
     public termoAdesao?: boolean

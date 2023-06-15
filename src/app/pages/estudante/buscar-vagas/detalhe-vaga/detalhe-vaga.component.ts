@@ -24,6 +24,11 @@ export class DetalheVagaComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuarioLogado = this.loginService.usuarioLogado;
+    this.getDetalheVaga();
+   
+  }
+
+  getDetalheVaga(){
     this.id = this.route.snapshot.paramMap.get('id');
     this.estudanteService.getDetalheVaga(this.id).subscribe({
       next: (res: any) => {

@@ -1,37 +1,63 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
-import { DetalheEstudanteComponent } from './detalhe-estudante/detalhe-estudante.component';
+import { DetalheEstudanteComponent } from './modal-estudante/detalhe-estudante.component';
+import { Usuario } from 'src/app/models/usuario.model';
+import { EntidadeService } from 'src/app/services/entidade.service';
+import { LoginService } from 'src/app/services/login.service';
+import { StatusVaga } from 'src/app/enums/status-vaga';
 
 @Component({
   selector: 'app-detalhes',
   templateUrl: './detalhes.component.html',
   styleUrls: ['./detalhes.component.scss'],
 })
-export class DetalhesComponent implements OnInit, OnDestroy {
-  vaga: any;
- 
+export class DetalhesComponent implements OnInit {
+  id: any;
+  vaga: any = {};
+  usuarioLogado: Usuario;
+  statusVaga: StatusVaga;
+  inscrito: any;
+
   constructor(
-    private dataService: DataService,
-    private router: Router,
-    private modalService: NgbModal
-  ) {
-    this.vaga = this.dataService.data;
-    // if (this.dataService.data.nomeEntidade == null) {
-    //   this.router.navigate(['/Entidade/vagas']);
-    // }
+    private route: ActivatedRoute,
+    private modalService: NgbModal,
+    private loginService: LoginService,
+    private entidadeService: EntidadeService
+  ) {}
+
+  ngOnInit(): void {
+    this.usuarioLogado = this.loginService.usuarioLogado;
+    this.getDetalheVaga();
   }
 
-  visualizarCandidato(inscricao: any) {
-    // this.router.navigate(['/Entidade/detalhe-estudante']);
-    const modalRef = this.modalService.open(DetalheEstudanteComponent, {
-      windowClass: 'min-width: 80%; heigth: 50%;',
-      centered: true,
-    });
-    modalRef.componentInstance.inscricao = inscricao; 
-    modalRef.result;
+  getDetalheVaga() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.entidadeService
+      .getDetalheVaga(this.usuarioLogado._id, this.id)
+      .subscribe({
+        next: (res: any) => {
+          this.vaga = res;
+        },
+      });
+  }
+
+  visualizarCandidato(userId: string, statusInscricao: string) {
+    this.entidadeService
+      .visualizarInscrito(this.usuarioLogado._id, this.id, userId)
+      .subscribe({
+        next: (res: any) => {
+          this.inscrito = res;
+          const modalRef = this.modalService.open(DetalheEstudanteComponent, {
+            windowClass: 'auto',
+            backdrop: 'static',
+            centered: true,
+          });
+          modalRef.componentInstance.inscrito = this.inscrito;
+          modalRef.componentInstance.statusInscricao = statusInscricao;
+        },
+      });
   }
 
   removerCandidato(inscrito: any) {
@@ -120,11 +146,5 @@ export class DetalhesComponent implements OnInit, OnDestroy {
         });
       }
     });
-  }
-
-  ngOnInit(): void {}
-
-  ngOnDestroy(): void {
-    this.dataService.data = this.vaga;
   }
 }

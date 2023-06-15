@@ -26,7 +26,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { DataService } from 'src/app/services/data.service';
 import { DetalhesComponent } from './vagas/detalhes/detalhes.component';
-import { DetalheEstudanteComponent } from './vagas/detalhes/detalhe-estudante/detalhe-estudante.component';
+import { DetalheEstudanteComponent } from './vagas/detalhes/modal-estudante/detalhe-estudante.component';
 import { NotificacaoComponent } from './notificacao/notificacao.component';
 import { ModalNotificacaoComponent } from './notificacao/modal-notificacao/modal-notificacao.component';
 import { VagasAbertasComponent } from './vagas-abertas/vagas-abertas.component';
@@ -49,6 +49,7 @@ import { VagasAndamentoComponent } from './vagas-andamento/vagas-andamento.compo
     ModalNotificacaoComponent,
     VagasAbertasComponent,
     VagasAndamentoComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -68,6 +69,7 @@ import { VagasAndamentoComponent } from './vagas-andamento/vagas-andamento.compo
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    
   ],
   providers: [DataService],
 })

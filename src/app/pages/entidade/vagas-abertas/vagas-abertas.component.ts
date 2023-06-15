@@ -11,11 +11,16 @@ import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-vagas-abertas',
   templateUrl: './vagas-abertas.component.html',
-  styleUrls: ['./vagas-abertas.component.scss']
+  styleUrls: ['./vagas-abertas.component.scss'],
 })
 export class VagasAbertasComponent implements OnInit {
-  vagasDisponiveis:any = [];
-  img: '../../assets/imagens/mulherGrandeCoracao.png';
+  usuarioLogado: Usuario;
+  vagasDisponiveis: any = [];  
+
+  ngOnInit(): void {
+    this.usuarioLogado = this.loginService.usuarioLogado;
+    this.buscaVagasAbertas(this.usuarioLogado._id);
+  }
 
   public formData = new FormGroup({
     filtro: new FormControl(null, Validators.required),
@@ -23,41 +28,44 @@ export class VagasAbertasComponent implements OnInit {
 
   estadosVagas: any = [
     {
-      id: 1, nome: 'Aberto',
+      id: 1,
+      nome: 'Aberto',
     },
     {
-      id: 2, nome: 'Andamento',
+      id: 2,
+      nome: 'Andamento',
     },
     {
-      id: 3, nome: 'Aprovação',
+      id: 3,
+      nome: 'Aprovação',
     },
     {
-      id: 4, nome: 'Encerrada',
+      id: 4,
+      nome: 'Encerrada',
     },
     {
-      id: 5, nome: 'Cancelada',
+      id: 5,
+      nome: 'Cancelada',
     },
-  ]
+  ];
 
   constructor(
     private dataService: DataService,
     private entidadeService: EntidadeService,
     private loginService: LoginService,
-    public dialog: MatDialog,    
-    private router: Router,    
-    private toast: ToastrService,    
-  ) {
-    this.buscaVagasAbertas(this.loginService.usuarioLogado._id);
-  }
+    public dialog: MatDialog,
+    private router: Router,
+    private toast: ToastrService
+  ) {}
 
-  buscaVagasAbertas(idUsuario: string){
+  buscaVagasAbertas(idUsuario: string) {
     this.entidadeService.listarVagasAbertas(idUsuario).subscribe({
-      next: (res:any) => {
+      next: (res: any) => {
         this.vagasDisponiveis = res;
       },
-      error: (err:any) => {
+      error: (err: any) => {
         this.toast.error(err?.message);
-      }
+      },
     });
   }
 
@@ -82,7 +90,7 @@ export class VagasAbertasComponent implements OnInit {
       return 'badge bg-success';
     } else if (status == 'INSCRITO') {
       return 'bg-success text-white';
-    }else if (status == 'CANCELADA') {
+    } else if (status == 'CANCELADA') {
       return 'badge bg-danger';
     } else if (status == 'ANDAMENTO') {
       return 'badge bg-info';
@@ -96,6 +104,4 @@ export class VagasAbertasComponent implements OnInit {
     this.dataService.data = value;
     this.router.navigate(['/Entidade/detalhe-vaga']);
   }
-
-  ngOnInit(): void {}
 }

@@ -4,67 +4,67 @@
 </section>
 <section class="modal-body">
 
-    <div *ngIf="perfilCandidato.nomeSocial" class="row col-12">
+    <div *ngIf="inscrito.nomeSocial" class="row col-12">
         <span class="title__data">Nome Social</span>
-        <p>{{perfilCandidato.nomeSocial}}</p>
+        <p>{{inscrito.nomeSocial}}</p>
     </div>
     <div class="row col-12">
         <span class="title__data">Nome Completo</span>
-        <p>{{perfilCandidato.nome}}</p>
+        <p>{{inscrito.nomeCompleto}}</p>
     </div>
 
     <div class="row col-12">
         <div class="col-xl-6 col-md-12 col-sm-12">
             <span class="title__data">Data de nascimento</span>
-            <p>{{perfilCandidato.dataNascimento}}</p>
+            <p>{{inscrito.dataNascimento}}</p>
         </div>
         <div class="col-xl-6 col-md-12 col-sm-12">
             <span class="title__data">Gênero</span>
-            <p>{{perfilCandidato.identificacaoGenero}}</p>
+            <p>{{inscrito.identificacaoGenero}}</p>
         </div>
     </div>
     <div class="row col-12">
         <div class="col-xl-6 col-md-12 col-sm-12">
             <span class="title__data">Telefone</span>
-            <p>{{perfilCandidato.telefone}}</p>
+            <p>{{inscrito.telefone}}</p>
         </div>
         <div class="col-xl-6 col-md-12 col-sm-12">
             <span class="title__data">E-mail</span>
-            <p>{{perfilCandidato.email}}</p>
+            <p>{{inscrito.email}}</p>
         </div>
     </div>
     <div class="row col-12">
         <span class="title__data">Endereço</span>
-        <p>{{perfilCandidato.logradouro}}, {{perfilCandidato.numero}} - {{perfilCandidato.bairro}} -
-            {{perfilCandidato.cep}} - {{perfilCandidato.cidade}}/{{perfilCandidato.estado}}</p>
+        <p>{{inscrito.endereco.logradouro}}, {{inscrito.endereco.numero}} - {{inscrito.endereco.bairro}} -
+            {{inscrito.endereco.cep}} - {{inscrito.endereco.cidade}}/{{inscrito.endereco.estado}}</p>
     </div>
 
     <div class="row col-12">
         <span class="title__data">Curso</span>
-        <p>{{ perfilCandidato.curso}}</p>
+        <p>{{ inscrito.curso.nomeCurso}}</p>
     </div>
     <div class="row col-12">
         <span class="title__data">Grau</span>
-        <p>{{ perfilCandidato.grau}}</p>
+        <p>{{ inscrito.curso.grau}}</p>
     </div>
     <div class="row col-12">
         <span class="title__data">Instituição</span>
-        <p>{{ perfilCandidato.instituicao}}</p>
+        <p>{{ inscrito.curso.instituicao}}</p>
     </div>
     <div class="row col-12">
         <div class="col-xl-6 col-md-12 col-sm-12">
             <span class="title__data">Ano início</span>
-            <p>{{ perfilCandidato.anoInicio}}</p>
+            <p>{{ inscrito.curso.anoInicio}}</p>
         </div>
 
         <div class="col-xl-6 col-md-12 col-sm-12">
             <span class="title__data">Ano conclusão</span>
-            <p>{{ perfilCandidato.anoConclusao}}</p>
+            <p>{{ inscrito.curso.anoConclusao}}</p>
         </div>
     </div>
     <div class="row col-12">
         <span class="title__data">Status</span>
-        <p>{{ inscricao.status}}</p>
+        <p>{{ statusInscricao}}</p>
     </div>
 
     <div class="col-12">
@@ -73,8 +73,8 @@
         <ng-template #naoPossuiExperiencia>
             Não declarou experiências anteriores.
         </ng-template>
-        <section *ngIf="perfilCandidato.experienciasAnteriores != null; else naoPossuiExperiencia">
-            <span>{{ perfilCandidato.experienciasAnteriores}}</span>
+        <section *ngIf="inscrito.experiencias != null; else naoPossuiExperiencia">
+            <span>{{ inscrito.experiencias}}</span>
         </section>
     </div>
 
@@ -84,13 +84,13 @@
         <ng-template #naoPossuiInteresses>
             Não declarou interesses.
         </ng-template>
-        <section *ngIf="perfilCandidato.areasInteresse != null; else naoPossuiInteresses">
-            <span>{{ perfilCandidato.areasInteresse}}</span>
+        <section *ngIf="inscrito.areasInteresse != null; else naoPossuiInteresses">
+            <span>{{ inscrito.areasInteresse}}</span>
         </section>
     </div>
 
     <!--Mudar botões que aparecem de acordo com o status da inscrição-->
-    <div *ngIf="inscricao.status == 'Inscrito' "class="btn__group">
+    <div *ngIf="statusInscricao == 'INSCRITO' " class="btn__group">
         <br>
         <button class="btn btn-success" (click)="aprovarCandidato()">
             Aprovar

@@ -3,6 +3,11 @@
   align-items: center;
 }
 
+.colo-topo {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
 h2 {
   padding: 0;
   margin: 0;
@@ -46,7 +51,6 @@ svg {
   padding-left: 1rem;
   padding-right: 1rem;
   margin-top: 2rem;
-
   span {
     font-size: medium;
   }
@@ -58,42 +62,6 @@ svg {
   flex-direction: initial;
   margin-right: 10px;
   margin-top: 10px;
-  // div:nth-of-type(2) {
-  //   h4 {
-  //     text-align: center;
-  //   }
-  //   p:nth-of-type(2) {
-  //     text-align: center;
-  //     border-radius: 1rem;
-  //   }
-  //   div {
-  //     display: flex;
-  //     justify-content: space-between;
-  //   }
-  // }
-}
-
-.contentDetails {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-  column-gap: 1rem;
-
-  .imgDetails {
-    text-align: center;
-  }
-
-  div {
-    .buttonsVagasCadastradas {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 1rem;
-
-      button:first-child {
-        margin-right: 0.5rem;
-      }
-    }
-  }
 }
 
 .maisvagas {
@@ -103,36 +71,25 @@ svg {
   font-weight: medium;
 }
 
-
-.card__content{
+.card__content {
   display: flex;
   flex-direction: column;
 }
 
-.buttonsVagasCadastradas{
+.buttonsVagasCadastradas {
   padding: 1rem;
   text-align: end;
-
-  button:first-child {
-     margin-right: 0.5rem;
-   }
+  button:nth-child(2) {
+    margin-right: 0.5rem;
+  }
 }
 
-.card-content-description{
-  line-height: 14px;
-}
-
-.card-content-description:nth-child(2){
+.card-content-description:nth-child(2) {
   line-height: 20px;
 }
 
-.statusPosition{
+.statusPosition {
   padding: 0.8rem;
   border-radius: 5px;
   font-weight: 600;
-}
-
-.colo-topo{
-  font-size: 2rem;
-  margin-top: 1rem;
 }

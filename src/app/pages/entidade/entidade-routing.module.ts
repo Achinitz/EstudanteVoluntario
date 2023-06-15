@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { VagasComponent } from './vagas/vagas.component';
 import { DetalhesComponent } from './vagas/detalhes/detalhes.component';
-import { DetalheEstudanteComponent } from './vagas/detalhes/detalhe-estudante/detalhe-estudante.component';
+import { DetalheEstudanteComponent } from './vagas/detalhes/modal-estudante/detalhe-estudante.component';
 import { NotificacaoComponent } from './notificacao/notificacao.component';
 import { AuthGuard } from 'src/app/guards/auth-guard';
 import { Pagina404Component } from '../pagina404/pagina404.component';
