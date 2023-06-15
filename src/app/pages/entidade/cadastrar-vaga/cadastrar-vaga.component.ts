@@ -4,6 +4,8 @@ import { EnderecoService } from 'src/app/services/endereco.service';
 import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
 import { genericAnimations } from 'src/app/shared/animations/animations';
 import { ToastrService } from 'ngx-toastr';
+import { LoginService } from 'src/app/services/login.service';
+import { VagaService } from 'src/app/services/vaga.service';
 
 
 @Component({
@@ -13,8 +15,10 @@ import { ToastrService } from 'ngx-toastr';
   animations: genericAnimations,
 })
 export class CadastrarVagaComponent implements OnInit {
+  usuario: any;
   submitted = false;
-  utilizarEnderecoEntidade: boolean = true;
+  utilizarEnderecoEntidade: boolean = false;
+  imagemDaVaga: any;
   possuiAuxilio: boolean = false;
   termosCondicao: boolean = false;
   dataMin: any;
@@ -30,33 +34,64 @@ export class CadastrarVagaComponent implements OnInit {
   estados: any = [];
 
   public formCadastro = new FormGroup({
-    tituloVaga: new FormControl(null, Validators.required),
+    imagemVaga: new FormControl(null),
+    nomeVaga: new FormControl(null, Validators.required),
     descricao: new FormControl(null, Validators.required),
-    requisitos: new FormControl(null, Validators.required),
-    possuiAuxilio: new FormControl(false, Validators.required),
-    descricaoAuxilio: new FormControl(null, Validators.required),
+    requisitos: new FormControl(null),
+    auxilio: new FormControl(false),
+    descricaoAuxilio: new FormControl(null),
+    numeroVagas: new FormControl(0, Validators.required),
+    dataAbertudaVaga: new FormControl(null),                              
+    dataFinalizacaoVaga: new FormControl(null, Validators.required),
     dataInicioTrabalho: new FormControl(null, Validators.required),
     dataTerminoTrabalho: new FormControl(null, Validators.required),
-    quantidadeVagas: new FormControl(null, Validators.required),
-    horarioInicio: new FormControl(null, Validators.required),
-    horarioEncerramento: new FormControl(null, Validators.required),
-    utilizarEnderecoEntidade: new FormControl(
-      this.utilizarEnderecoEntidade,
-      Validators.required
-    ),
-    cep: new FormControl(null, Validators.required),
-    logradouro: new FormControl(null, Validators.required),
-    numero: new FormControl(null, Validators.required),
-    bairro: new FormControl(null, Validators.required),
-    complemento: new FormControl(null, Validators.required),
-    estado: new FormControl(null, Validators.required),
-    cidade: new FormControl(null, Validators.required),
-    dataFinalizacaoVaga: new FormControl(null, Validators.required),
-    termosCondicao: new FormControl(false, Validators.required),
+    horarioInicioTrabalho: new FormControl('08:00', Validators.required),
+    horarioEncerramentoTrabalho: new FormControl('17:00', Validators.required),
+    utilizarEnderecoEntidade: new FormControl(this.utilizarEnderecoEntidade),
+    endereco: new FormGroup({
+      cep: new FormControl(null),
+      logradouro: new FormControl(null),
+      numero: new FormControl(null),
+      bairro: new FormControl(null),
+      complemento: new FormControl(null),
+      estado: new FormControl(null),
+      cidade: new FormControl(null),
+    }),
+    termoCondicao: new FormControl(this.termosCondicao, Validators.required),
   });
+
+  constructor(
+    private consultaCepService: ConsultaCepService,
+    private enderecoService: EnderecoService,
+    private loginService: LoginService,
+    private vagaService: VagaService,
+    private toast: ToastrService
+  ) {
+    this.usuario = this.loginService.usuarioLogado;
+    this.inicializaFormulario();
+    this.dataMinima();
+  }
 
   cadastrarVaga(){
     
+    console.log(this.formCadastro.get('imagemVaga').value)      
+
+    this.vagaService.cadastrarVaga(this.formCadastro.value, this.usuario._id).subscribe({
+      next: (res:any) => {
+        this.toast.success('Cadastrado com Sucesso');
+      },
+      error: (err:any) => {
+        this.toast.error('Ocorre um erro');
+      }
+    });
+
+    if(this.formCadastro.invalid){
+      this.toast.error('Verifique os campos Requeridos!');
+      this.formCadastro.errors;
+    }
+    // console.log(this.usuario);
+    // console.log(JSON.stringify
+    //   (this.formCadastro.value));
   }
 
   mostrarValores() {
@@ -77,6 +112,16 @@ export class CadastrarVagaComponent implements OnInit {
     this.termosCondicao = this.termosCondicao ? false : true;
   }
 
+  async inputFileChange(event){    
+    if(event.target.files && event.target.files[0]){
+      let file = event.target.files[0];       
+      let byteArrray = await toByteArray(file);
+      let base64 = await toBase64(file);
+      
+      this.formCadastro.get('imagemVaga').setValue({ file: base64.toString().split(",")[1], fileName: file.name, contentType: file.type });
+    }
+  }
+
   fimInscricao() {   
     const inicio = new Date (this.formCadastro.get('dataInicioTrabalho').value);
     var year = inicio.getFullYear();
@@ -93,15 +138,6 @@ export class CadastrarVagaComponent implements OnInit {
     this.dataMin = new Date(year,month,day+5);    
   }
 
-  constructor(
-    private consultaCepService: ConsultaCepService,
-    private enderecoService: EnderecoService,
-    private toast: ToastrService
-  ) {
-    this.inicializaFormulario();
-    this.dataMinima();
-  }
-
   inicializaFormulario() {
     this.enderecoService.getEstados().subscribe((data: any) => {
       this.estados = data;
@@ -110,8 +146,10 @@ export class CadastrarVagaComponent implements OnInit {
 
   onAddCidade() {
     this.enderecoService
-      .getCidades(this.formCadastro.get('estado')?.value)
+      .getCidades(this.formCadastro.get('endereco.estado')?.value)
       .subscribe((data: any) => {
+        console.log('Chegou em cidades');
+        console.log(data);
         this.cidades = data;
       });
   }
@@ -123,9 +161,8 @@ export class CadastrarVagaComponent implements OnInit {
   }
 
   validaCep() {
-    console.log(this.formCadastro.get('cep')?.value.length);
-    if (this.formCadastro.get('cep')?.value.length === 8) {
-      let cep = this.formCadastro.get('cep')?.value;
+    if (this.formCadastro.get('endereco.cep')?.value.length === 8) {
+      let cep = this.formCadastro.get('endereco.cep')?.value;
       this.consultaCepService.getDataCep(cep.replace('-', '')).subscribe(
         (data: any) => {
           if (data.erro === true) {
@@ -135,16 +172,17 @@ export class CadastrarVagaComponent implements OnInit {
           console.log(data);
           this.estados.forEach((element: any) => {
             if (element.sigla === data.uf) {
-              this.formCadastro.get('estado')?.setValue(element.id);
+              this.formCadastro.get('endereco.estado')?.setValue(element.id);
             }
           });
-
+          console.log('chegou no SET TIME OUT');
+          console.log()
           setTimeout(() => {
             this.cidades.forEach((element: any) => {
               if (element.nome === data.localidade) {
-                this.formCadastro.get('cidade')?.setValue(element.id);
-                this.formCadastro.get('logradouro')?.setValue(data.logradouro);
-                this.formCadastro.get('bairro')?.setValue(data.bairro);
+                this.formCadastro.get('endereco.cidade')?.setValue(element.id);
+                this.formCadastro.get('endereco.logradouro')?.setValue(data.logradouro);
+                this.formCadastro.get('endereco.bairro')?.setValue(data.bairro);
               }
             });
           }, 1500);
@@ -159,3 +197,17 @@ export class CadastrarVagaComponent implements OnInit {
 
   ngOnInit(): void {}
 }
+
+const toBase64 = file => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => resolve(reader.result);
+  reader.onerror = reject;
+});
+
+const toByteArray = file => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsArrayBuffer(file);
+  reader.onload = () => resolve(new Uint8Array(reader.result as ArrayBuffer));
+  reader.onerror = error => reject(error);
+});

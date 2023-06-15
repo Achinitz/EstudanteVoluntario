@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Vaga } from '../models/vaga';
+import { HttpHeaderService } from './http-header.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class VagaService {
+export class VagaService extends HttpHeaderService{
 
-  constructor() { }
+  constructor(protected http: HttpClient) {
+    super();
+   }
 
   public validarVaga(idVaga:number):void{
   }
@@ -21,8 +26,8 @@ export class VagaService {
 
   }
 
-  public cadastrarVaga(vaga:Vaga):void{
-
+  public cadastrarVaga(vaga:Vaga, idEntidade: string):Observable<any>{
+    return this.http.post(this.baseUrl + `entidade/${idEntidade}/cadastrarvaga`, vaga, this.httpOptions);
   }
 
   public rescindirTermo(idVaga:number){

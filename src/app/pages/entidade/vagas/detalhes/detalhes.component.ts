@@ -19,9 +19,9 @@ export class DetalhesComponent implements OnInit, OnDestroy {
     private modalService: NgbModal
   ) {
     this.vaga = this.dataService.data;
-    if (this.dataService.data.nomeEntidade == null) {
-      this.router.navigate(['/Entidade/vagas']);
-    }
+    // if (this.dataService.data.nomeEntidade == null) {
+    //   this.router.navigate(['/Entidade/vagas']);
+    // }
   }
 
   visualizarCandidato(inscricao: any) {
