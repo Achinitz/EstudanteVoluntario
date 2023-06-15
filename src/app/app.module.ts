@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -43,6 +43,7 @@ import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.compo
 import { NomeUsuarioPipe } from './shared/pipe/nome-usuario.pipe';
 import { LoginService } from './services/login.service';
 import { CommonModule } from '@angular/common';
+import { TokenInterceptor } from './helpers/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -94,12 +95,14 @@ import { CommonModule } from '@angular/common';
     NgxMaskModule.forRoot(),
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   providers: [
     DataService, 
     CookieService, 
-    LoginService
+    LoginService,
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
   ],
   bootstrap: [
     AppComponent

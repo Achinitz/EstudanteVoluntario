@@ -1,54 +1,17 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { DataService } from 'src/app/services/data.service';
-import Swal from 'sweetalert2';
+import { Vaga } from 'src/app/models/vaga';
 
 @Component({
   selector: 'app-modal-vaga',
   templateUrl: './modal-vaga.component.html',
   styleUrls: ['./modal-vaga.component.scss'],
 })
-export class ModalVagaComponent implements OnInit, OnDestroy {
-  @Input() vagaSelecionada: any;
+export class ModalVagaComponent implements OnInit {
+  @Input() vagaSelecionada: Vaga;
+  @Input() statusInscricao: string;
 
-  constructor(
-    private data: DataService,
-    private router: Router,
-    public activeModal: NgbActiveModal
-  ) {}
-
-  retornar() {
-    this.router.navigate(['/Estudante/minhas-inscricoes']);
-  }
-
-  cancelar() {
-    Swal.fire({
-      title: 'Deseja realmente cancelar a sua inscrição nessa vaga?',
-      text: 'Ao confirmar, a sua inscrição nessa vaga será cancelada!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Confirmar',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Inscrição cancelada com sucesso!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
-  }
+  constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {}
-
-  ngOnDestroy(): void {
-    console.log(
-      ' ******** ' + this.vagaSelecionada.nomeEntidade + ' ******** '
-    );
-  }
 }

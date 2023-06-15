@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as dayjs from 'dayjs';
+import { ToastrService } from 'ngx-toastr';
+import { Usuario } from 'src/app/models/usuario.model';
 import { EstudanteService } from 'src/app/services/estudante.service';
+import { StorageService } from 'src/app/services/storage.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,48 +14,28 @@ import Swal from 'sweetalert2';
 export class DetalheVagaComponent implements OnInit {
   id: any;
   vaga: any = {};
-  
+  nome: any;
+  usuarioLogado: Usuario;
+
   constructor(
     private route: ActivatedRoute,
-    private estudanteService: EstudanteService
+    private estudanteService: EstudanteService,
+    private storageService: StorageService,    
   ) {}
 
   ngOnInit(): void {
+    this.usuarioLogado = this.storageService.getUser();
     this.id = this.route.snapshot.paramMap.get('id');
     this.estudanteService.getDetalheVaga(this.id).subscribe({
       next: (res: any) => {
         this.vaga = res[0];
-        console.log(this.vaga);
+        this.nome = this.vaga.entidadeId.nome;
       },
     });
   }
 
-
-  //Quando o usuário clicar no botão para cancelar a inscrição
-  cancelarInscricao() {
-    Swal.fire({
-      title: 'Deseja realmente cancelar a sua inscrição nessa vaga?',
-      text: 'Ao confirmar, a sua inscrição nessa vaga será cancelada!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Confirmar',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Inscrição cancelada com sucesso!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
-  }
-
-  //Quando o usuário clicar no botão para se inscrever
-  confirmarInscricao() {
+  //Realizar inscrição
+  realizarInscricao() {
     Swal.fire({
       title: 'Deseja realmente se inscrever nessa vaga?',
       text: 'Ao confirmar, você será inscrito nessa vaga.',
@@ -65,13 +47,30 @@ export class DetalheVagaComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Inscrição realizada com sucesso!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
+        const idUsuario = this.usuarioLogado._id;
+        this.estudanteService.inscricaoVaga(idUsuario, this.id).subscribe({
+          next: (res: any) => {
+            Swal.fire({
+              title: res.message,
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          },
+          error: (erro: any) => {
+            Swal.fire({
+              title: erro.error.message,
+              icon: 'error',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          },
         });
       }
     });
   }
+
+ 
+
+ 
 }

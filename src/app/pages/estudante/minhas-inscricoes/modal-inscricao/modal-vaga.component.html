@@ -1,8 +1,14 @@
 <section class="modal-header">
-  <h2 class="modal-title">{{ vagaSelecionada.nomeVaga }} - {{vagaSelecionada.status}}</h2>
+  <h2 class="modal-title">{{ vagaSelecionada.nomeVaga }} - {{vagaSelecionada.statusVaga}}</h2>
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </section>
 <section class="modal-body">
+  <div class="row col-12">
+    <div class="col-12">
+      <b class="">Status da Inscrição</b>
+      <p class="">{{ statusInscricao }} </p>
+    </div>
+  </div>
   <div class="row col-12">
     <div class="col-6">
       <b class="">Vaga</b>
@@ -10,7 +16,7 @@
     </div>
     <div class="col-6">
       <b class="">Entidade</b>
-      <p class="">{{ vagaSelecionada.nomeEntidade }} </p>
+      <p class="">{{ vagaSelecionada.entidadeId.nome }} </p>
     </div>
   </div>
   <div class="row col-12">
@@ -22,34 +28,34 @@
   <div class="row col-12">
     <div class="col-12">
       <b class="">Endereço</b>
-      <p class="">{{ vagaSelecionada.endereco }}, {{ vagaSelecionada.numero }} - {{ vagaSelecionada.bairro }}</p>
+      <p class="">{{ vagaSelecionada.endereco.logradouro }}, {{ vagaSelecionada.endereco.numero }} - {{ vagaSelecionada.endereco.bairro }}</p>
     </div>
   </div>
   <div class="row col-12">
     <div class="col-4">
       <b class="">Cidade</b>
-      <p class="">{{ vagaSelecionada.cidade }}</p>
+      <p class="">{{ vagaSelecionada.endereco.cidade }}</p>
     </div>
     <div class="col-4">
       <b class="">Estado</b>
-      <p class="">{{ vagaSelecionada.estado }} </p>
+      <p class="">{{ vagaSelecionada.endereco.estado }} </p>
     </div>
     <div class="col-4">
       <b class="">CEP</b>
-      <p class="">{{ vagaSelecionada.cep }} </p>
+      <p class="">{{ vagaSelecionada.endereco.cep }} </p>
     </div>
   </div>
   <div class="row col-12">
     <b class="">Período do trabalho</b>
-    <p class="">{{ vagaSelecionada.dataInicioTrabalho }} - {{ vagaSelecionada.dataTerminoTrabalho }}</p>
+    <p class="">{{ vagaSelecionada.dataInicioTrabalho | localDate }} - {{ vagaSelecionada.dataEncerramentoTrabalho | localDate}}</p>
   </div>
   <div class="row col-12">
     <b class="">Horário</b>
-    <p class="">{{ vagaSelecionada.horarioInicio }} - {{ vagaSelecionada.horarioEncerramento }}</p>
+    <p class="">{{ vagaSelecionada.horarioInicioTrabalho | localHour}} - {{ vagaSelecionada.horarioEncerramentoTrabalho | localHour }}</p>
   </div>
   <div class="row col-12">
     <b class="">Período de inscrição</b>
-    <p class="">Até {{ vagaSelecionada.dataFinalizacaoVaga }}</p>
+    <p class="">Até {{ vagaSelecionada.dataFinalizacaoVaga |localDate }}</p>
   </div>
 
 

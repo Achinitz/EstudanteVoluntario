@@ -1,61 +1,82 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 import { ModalNotificacaoComponent } from './modal-notificacao/modal-notificacao.component';
+import { NotificacaoService } from 'src/app/services/notificacao.service';
+import { StorageService } from 'src/app/services/storage.service';
+import { Usuario } from 'src/app/models/usuario.model';
+import { Notificacao } from 'src/app/models/notificacao';
 
 @Component({
   selector: 'app-notificacoes',
   templateUrl: './notificacoes.component.html',
-  styleUrls: ['./notificacoes.component.scss']
+  styleUrls: ['./notificacoes.component.scss'],
 })
 export class NotificacoesComponent implements OnInit {
-  notificacoes: any = [
-    {
-      id: 1,
-      nomeRemetente: 'ONG 1',
-      dataEnvio: '28/01/2023 08:00:00',
-      titulo: 'Cancelamento da atividade',
-      mensagem:
-        'Prezado/a estudante, informamos que a vaga "Contador de História" que iniciaria em 03/02 foi cancelada.',
-    },
-  ];
+  usuarioLogado: Usuario;
+  notificacoes: Notificacao[] = []; 
 
- 
-  constructor(private modalService: NgbModal, public dialog: MatDialog,
-    private router: Router, private data: DataService) { }
+  constructor(
+    private modalService: NgbModal,
+    public dialog: MatDialog,
+    private storageService: StorageService,
+    private notificacaoService: NotificacaoService
+  ) {}
 
-    excluirNotificacao(){
-      Swal.fire({
-        title: 'Deseja realmente excluir essa notificação?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Confirmar',
-        cancelButtonText: 'Cancelar'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: 'Notificação excluida com sucesso!',
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 1500
-          })
-        }
-      })
-    }
+  ngOnInit(): void {
+    this.usuarioLogado = this.storageService.getUser();
+    this.getNotificacoes(this.usuarioLogado._id);   
+  }
 
-  visualizarNotificacao(Notificacao : any){
-    // this.data.data = Vaga;
-    // this.router.navigate(['/Estudante/detalhe-vaga']);
-    const modalRef = this.modalService.open(ModalNotificacaoComponent, { windowClass: 'auto', backdrop: 'static', centered: true });
+  getNotificacoes(idUsuario: string) {
+    this.notificacaoService.listarNotificacoes(idUsuario).subscribe({
+      next: (res: any) => {
+        this.notificacoes = res;    
+      },
+    });
+      }
+
+
+  visualizarNotificacao(Notificacao: Notificacao) {
+    const modalRef = this.modalService.open(ModalNotificacaoComponent, {
+      windowClass: 'auto',
+      backdrop: 'static',
+      centered: true,
+    });
     modalRef.componentInstance.data = Notificacao;
   }
 
-  ngOnInit(): void {
+  excluirNotificacao(notificacao: Notificacao) {
+    Swal.fire({
+      title: 'Deseja realmente excluir essa notificação?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.notificacaoService.excluirNotificacao(notificacao._id).subscribe({
+          next: (res: any) => {
+            Swal.fire({
+              title: res.message,
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 1500,
+            }).finally(() => window.location.reload());
+          },
+          error: (erro: any) => {
+            Swal.fire({
+              title: erro.error.message,
+              icon: 'error',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          },
+        });
+      }
+    });
   }
-
 }

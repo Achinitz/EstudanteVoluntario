@@ -5,7 +5,7 @@ import { EntidadeRoutingModule } from './entidade-routing.module';
 import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PerfilComponent } from './perfil/perfil.component';
-import { CadastrarVagaComponent } from './home/cadastrar-vaga/cadastrar-vaga.component';
+import { CadastrarVagaComponent } from './cadastrar-vaga/cadastrar-vaga.component';
 import { AvaliarEstudanteComponent } from './avaliar-estudante/avaliar-estudante.component';
 import { ModalVisualizarComponent } from './avaliar-estudante/modal-visualizar/modal-visualizar.component';
 import { ModalAdicionarAvaliacaoComponent } from './avaliar-estudante/modal-adicionar-avaliacao/modal-adicionar-avaliacao.component';

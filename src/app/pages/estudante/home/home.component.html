@@ -1,7 +1,7 @@
 <section class="content">
   <div class="topo">
-    <h1 class="topo-title">Olá, {{ nomeEstudante.nome }}!</h1>
-    <div *ngIf="vagasInscritas">
+    <h1 class="topo-title">Olá, {{ usuarioLogado.nome }}!</h1>
+    <div *ngIf="inscricoes">
       <ngb-alert #alert type="warning">
         Os processos seletivos estão em andamento, verifique a sua tela de notificações para se manter atualizado(a).
       </ngb-alert>
@@ -13,49 +13,47 @@
     <h2>Últimas Inscrições</h2>
     
   <!--Mostrar apenas as vagas em que o estudante está inscrito -->
-    <ngb-alert type="primary" *ngIf="!vagasInscritas">
+    <ngb-alert type="primary" *ngIf="!inscricoes">
       Você ainda não tem inscrições em vagas!
     </ngb-alert>
 
-    <section class="row ultimasInscricoes" *ngIf="vagasInscritas">
+    <section class="row ultimasInscricoes" *ngIf="inscricoes">
 
       <div class="content__card">
 
-        <div class="card col-12" *ngFor="let vaga of vagasInscritas; let i = index">
+        <div class="card col-12" *ngFor="let inscricao of inscricoes; let i = index">
           <!-- Alterar as cores do botão dependendo do status -->
           <div class="imgCard col-3">
-            <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
+            <img src="{{ inscricao.vagaId.img }}" onError="this.src = 'assets/imagens/mulherGrandeCoracao.png'"
+            class="card-img-top" alt="..." />
           </div>
           <section class="card__content col-9">
             <div class="card-body">
               <div class="card-title d-flex">
-                <h1>{{ vaga.nomeEntidade }} </h1>
-                <span [ngClass]=" getStatus(vaga.status)" class="statusPosition" *ngIf="!vaga.inscrito">
-                  {{ vaga.status }}
-                </span>
-                <span [ngClass]=" getStatus('inscrito')" class="statusPosition" *ngIf="vaga.inscrito">
-                  Inscrito
-                </span>
+                <h1>{{ inscricao.vagaId.entidadeId.nome }} </h1>
+                <span [ngClass]=" getStatusInscricao(inscricao.statusInscricao)" class="statusPosition">
+                  {{inscricao.statusInscricao }}
+                </span>              
               </div>
               <div class="card-content-description">
                 <p class="card-title">
                 <b>Nome da vaga:</b> 
-                  {{ vaga.nomeVaga }}
+                  {{ inscricao.vagaId.nomeVaga }}
                 </p>
                 <p class="card-text">
-                  <b>Descrição:</b> {{ vaga.descricao }}
+                  <b>Descrição:</b> {{ inscricao.vagaId.descricao }}
                 </p>
                 <p class="card-text">
-                  <b>Requisitos:</b> {{ vaga.requisitos }}
+                  <b>Requisitos:</b> {{ inscricao.vagaId.requisitos }}
                 </p>
                 <p class="card-text">
-                  <b>Número de Vagas:</b> {{ vaga.numeroVagas }}
+                  <b>Número de Vagas:</b> {{ inscricao.vagaId.numeroVagas }} 
                 </p>  
               </div>          
             </div>
             <div class="buttonsVagasCadastradas">
-              <button class="btn btn-primary" (click)="visualizarInscricao(vaga)">Detalhes</button>
-              <button *ngIf="vaga.status === 'Aberta'" class="btn btn-danger" (click)="cancelarInscricao(vaga)">
+              <button class="btn btn-primary" (click)="visualizarInscricao(inscricao.vagaId, inscricao.statusInscricao)">Detalhes</button>
+              <button *ngIf="inscricao.statusInscricao == 'INSCRITO'" class="btn btn-danger" (click)="cancelarInscricao(inscricao)">
                 Cancelar
               </button>
             </div>
@@ -64,62 +62,6 @@
 
       </div>
     </section>
-    <ngb-pagination
-          class="pagination pull-right"
-          [rotate]="true"
-          [maxSize]="3"
-          [directionLinks]="false"
-          [collectionSize]="this.vagasInscritas.length"
-          [pageSize]="itemsPerPage"
-          [boundaryLinks]="true"
-          [(page)]="paginaAtual"
-          (pageChange)="mudancaPagina(paginaAtual)"
-        >
-        </ngb-pagination>
-
-    <!-- <section class="row vagasDisponiveis">
-        <h2>Vagas Abertas</h2>
-
-        <div *ngIf="!vagasDisponiveis">
-          <span> No momento não existe vagas cadastradas! </span>
-        </div>
-        <section>
-          <div class="containerCard vagasDisponiveis">
-            <div
-              class="card"
-              *ngFor="let vagaDisponivel of vagas; let i = index"
-            >              
-              <div class="imgCard">
-                <img
-                  src="{{ vagaDisponivel.img }}"
-                  class="card-img-top"
-                  alt="..."
-                />
-              </div>
-              <div class="card-body">
-                <h4 class="card-title">{{ vagaDisponivel.nomeEntidade }}</h4>
-                <p class="card-text">{{ vagaDisponivel.descricao }}</p>
-                <div>
-                  <button class="btn btn-success" (click)="cadastrar(i)">Cadastrar-se</button>
-                  <button class="btn btn-primary" (click)="exibirDetalhes(i)">Detalhes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <ngb-pagination
-          class="pagination pull-right"
-          [rotate]="true"
-          [maxSize]="3"
-          [directionLinks]="false"
-          [collectionSize]="this.vagasDisponiveis.length"
-          [pageSize]="itemsPerPage"
-          [boundaryLinks]="true"
-          [(page)]="paginaAtual"
-          (pageChange)="mudancaPagina(paginaAtual)"
-        >
-        </ngb-pagination>
-      </section> -->
 
   </section>
 </section>
