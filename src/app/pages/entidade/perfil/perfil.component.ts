@@ -83,7 +83,7 @@ export class PerfilComponent implements OnInit {
       next: (res:any) =>{
         this.usuario = res;
       },
-      error: (err:any) => {z 
+      error: (err:any) => {
         this.toast.error(err?.message);
       }
     });
