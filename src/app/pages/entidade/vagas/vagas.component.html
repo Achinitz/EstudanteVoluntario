@@ -3,11 +3,11 @@
         <h1>Vagas Cadastradas</h1>
     </div>
 
-    <!-- <ngb-alert #alert type="primary">
-        Verifique as vagas cadastradas
-    </ngb-alert>   -->
+    <div *ngIf="vagasDisponiveis.length == 0">
+      <span> No momento não existem Vagas em Andamento. </span>
+    </div>
 
-    <section class="m-1">
+    <section class="m-1"  *ngIf="vagasDisponiveis.length > 0">
         <form [formGroup]="formData" class="content-pesquisa d-flex col-xl-6 mb-2">
                 <input 
                     type="text" 
@@ -26,7 +26,7 @@
         
 
         <div class="col-12 card-content-filtro">
-            <div class="col-9 p-1">{{tamanhoPagina}} estudante(s) pendente(s) para validação</div>
+            <div class="col-9 p-1">{{tamanhoPagina}} vaga(s) pendente(s) para validação</div>
             <div class="col-3 p-1">
             <ng-select
                 [items]="estadosVagas"
@@ -39,7 +39,6 @@
             </ng-select>
             </div>
         </div>
-    </section>
 
 
 
@@ -52,10 +51,10 @@
             <div class="card" *ngFor="let vaga of vagasDisponiveis; let i = index">
               <div class="card-content col-12">
                 <div class="imgCard col-3">
-                    <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
+                    <img src="../../assets/imagens/mulherGrandeCoracao.png" class="card-img-top" alt="..." />
                 </div>
                 <div class="content-card-vaga col-8">
-                  <div> <h3><b>{{ vaga.nomeVaga }} <span [ngClass]="getStatus(vaga.status)">{{  vaga.status }}</span></b></h3></div>            
+                  <div> <h3><b>{{ vaga.nomeVaga }} <span [ngClass]="getStatus(vaga.statusVaga)">{{  vaga.statusVaga }}</span></b></h3></div>            
                   <p><b>Descrição da Vaga:</b>  {{ vaga.descricao }} </p>
                   <p><b>Número de Vagas:</b> {{  vaga.numeroVagas }}</p>                        
                 </div>
@@ -96,5 +95,5 @@
           </ngb-pagination>
         </div>
       </section>
-
+    </section>
 </section>

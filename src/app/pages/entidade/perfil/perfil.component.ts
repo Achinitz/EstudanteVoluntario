@@ -4,6 +4,8 @@ import { EnderecoService } from 'src/app/services/endereco.service';
 import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
 import { genericAnimations } from 'src/app/shared/animations/animations';
 import { ToastrService } from 'ngx-toastr';
+import { EntidadeService } from 'src/app/services/entidade.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-perfil',
@@ -17,6 +19,8 @@ export class PerfilComponent implements OnInit {
   cnpj = '00000000000000';
   razaoSocial = 'Razão Social';
   nomeFantasia = 'Nome Fantasia';
+
+  usuario: any;
 
   estado: any;
   cidade: any;
@@ -64,14 +68,24 @@ export class PerfilComponent implements OnInit {
   constructor(
     private consultaCepService: ConsultaCepService,
     private enderecoService: EnderecoService,
+    private entidadeService: EntidadeService,
+    private loginService: LoginService,
     private toast: ToastrService
   ) {
-    this.inicializaFormulario();
+    this.inicializaFormulario(this.loginService.usuarioLogado._id);
   }
 
-  inicializaFormulario() {
+  inicializaFormulario(idUsuario: string) {
     this.enderecoService.getEstados().subscribe((data: any) => {
       this.estados = data;
+    });
+    this.entidadeService.getPerfilEntidade(idUsuario).subscribe({
+      next: (res:any) =>{
+        this.usuario = res;
+      },
+      error: (err:any) => {z 
+        this.toast.error(err?.message);
+      }
     });
   }
 

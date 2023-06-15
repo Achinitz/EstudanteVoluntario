@@ -12,13 +12,23 @@
       <form [formGroup]="formCadastro" (ngSubmit)="cadastrarVaga()">
         <label> <em>*</em><i> Campos de preenchimento obrigatório</i> </label>
 
+        <div class="row userImg">
+          <img id="imgUser" src="../../../../assets/imagens/cadastroImagem.jpg" class="float-center" alt="..."/>
+        </div>
+        <div class="form-group inputFile">
+          <label for="imgPerfil">Imagem de Perfil </label>
+          <br>
+          <input type="file" class="form-control-file" id="inputFile" (change)="inputFileChange($event)"  />
+        </div>
+
         <div class="form-group">
-          <label for="tituloVaga"> Titulo da Vaga <em>*</em> </label>
-          <input type="text" class="form-control" id="tituloVaga" placeholder="Título da Vaga"
-            formControlName="tituloVaga" />
+          <label for="nomeVaga"> Titulo da Vaga <em>*</em> </label>
+          <input type="text" class="form-control" id="nomeVaga" placeholder="Título da Vaga"
+            formControlName="nomeVaga" />
           <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
-              formCadastro.controls.tituloVaga.touched &&
-              formCadastro.controls.tituloVaga.invalid
+              formCadastro.controls.nomeVaga.touched &&
+              formCadastro.controls.nomeVaga.invalid ||
+              formCadastro.controls.nomeVaga.errors
             " [@fadeInOut]>
             O campo Título é obrigatório!
           </small>
@@ -29,30 +39,33 @@
             placeholder="Descreva a vaga"></textarea>
           <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
               formCadastro.controls.descricao.touched &&
-              formCadastro.controls.descricao.invalid
+              formCadastro.controls.descricao.invalid ||
+              formCadastro.controls.descricao.errors
             " [@fadeInOut]>
             O campo Descrição é obrigatório!
           </small>
         </div>
         <div class="form-group">
-          <label for="requisitos"> Requisitos <em>*</em> </label>
+          <label for="requisitos"> Requisitos</label>
           <textarea class="form-control" id="requisitos" rows="3" formControlName="requisitos"
             placeholder="Descreva os requisitos"></textarea>
-          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
-              formCadastro.controls.requisitos.touched &&
-              formCadastro.controls.requisitos.invalid
-            " [@fadeInOut]>
-            O campo Requisitos é obrigatório!
-          </small>
         </div>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="possuiAuxilio" (change)="setAuxilio()"
-            formControlName="possuiAuxilio" />
-          <label class="form-check-label" for="possuiAuxilio">Possui auxílio?</label>
+          <input type="checkbox" class="form-check-input" id="auxilio" (change)="setAuxilio()"
+            formControlName="auxilio" />
+          <label class="form-check-label" for="auxilio">Possui auxílio?</label>
         </div>
         <div *ngIf="possuiAuxilio" class="form-group">
           <textarea class="form-control" id="descricaoAuxilio" formControlName="descricaoAuxilio"
             placeholder="Descreva o auxílio"></textarea>
+            <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+            formCadastro.controls.descricaoAuxilio.touched &&
+            ( formCadastro.controls.descricaoAuxilio.value == '' 
+            || formCadastro.controls.descricaoAuxilio.value == null) && possuiAuxilio
+            
+                   " [@fadeInOut]>
+            O campo Descrição do auxilio é obrigatório!
+        </small>
         </div>
         <div class="row duplo">
           <div class="col">
@@ -60,11 +73,20 @@
               Data de início da Atividade <em>*</em>
             </label>
             <!--Mínimo de 5 dias antes da data de hoje-->
-            <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="dataInicioTrabalho"
-              formControlName="dataInicioTrabalho" min="{{dataMin | date: 'yyyy-MM-dd'}}" (change)="fimInscricao()" />
+            <input 
+              class="form-control" 
+              placeholder="yyyy-mm-dd" 
+              type="date" 
+              id="dataInicioTrabalho"
+              formControlName="dataInicioTrabalho" 
+              min="{{dataMin | date: 'yyyy-MM-dd'}}" 
+              max="{{formCadastro.controls.dataTerminoTrabalho?.value | date: 'yyyy-MM-dd'}}"
+              (change)="fimInscricao()"
+              />
             <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
                 formCadastro.controls.dataInicioTrabalho.touched &&
-                formCadastro.controls.dataInicioTrabalho.invalid
+                formCadastro.controls.dataInicioTrabalho.invalid ||
+                formCadastro.controls.dataInicioTrabalho.errors
               " [@fadeInOut]>
               O campo Data de início da Atividade é obrigatório!
             </small>
@@ -73,11 +95,18 @@
             <label for="dataTerminoTrabalho">
               Data de encerramento da Atividade <em>*</em>
             </label>
-            <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="dataTerminoTrabalho"
-              formControlName="dataTerminoTrabalho" />
+            <input 
+              class="form-control" 
+              placeholder="yyyy-mm-dd" 
+              type="date" 
+              id="dataTerminoTrabalho"
+              formControlName="dataTerminoTrabalho" 
+              min="{{formCadastro.controls.dataInicioTrabalho?.value | date: 'yyyy-MM-dd'}}"
+              />
             <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
                 formCadastro.controls.dataTerminoTrabalho.touched &&
-                formCadastro.controls.dataTerminoTrabalho.invalid
+                formCadastro.controls.dataTerminoTrabalho.invalid ||
+                formCadastro.controls.dataTerminoTrabalho.errors
               " [@fadeInOut]>
               O campo Data de encerramento da Atividade é obrigatório!
             </small>
@@ -86,23 +115,25 @@
 
         <div class="row duplo">
           <div class="col">
-            <label for="horarioInicio"> Horário de inicio <em>*</em> </label>
-            <input class="form-control" type="time" id="horarioInicio" formControlName="horarioInicio" />
+            <label for="horarioInicioTrabalho"> Horário de inicio <em>*</em> </label>
+            <input class="form-control" type="time" id="horarioInicioTrabalho" formControlName="horarioInicioTrabalho" />
             <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
-                formCadastro.controls.horarioInicio.touched &&
-                formCadastro.controls.horarioInicio.invalid
+                formCadastro.controls.horarioInicioTrabalho.touched &&
+                formCadastro.controls.horarioInicioTrabalho.invalid ||
+                formCadastro.controls.horarioInicioTrabalho.errors
               " [@fadeInOut]>
               O campo Horário de início é obrigatório!
             </small>
           </div>
           <div class="col">
-            <label for="horarioEncerramento">
+            <label for="horarioEncerramentoTrabalho">
               Horário de encerramento <em>*</em>
             </label>
-            <input class="form-control" type="time" id="horarioEncerramento" formControlName="horarioEncerramento" />
+            <input class="form-control" type="time" id="horarioEncerramentoTrabalho" formControlName="horarioEncerramentoTrabalho" />
             <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
-              formCadastro.controls.horarioEncerramento.touched &&
-              formCadastro.controls.horarioEncerramento.invalid
+              formCadastro.controls.horarioEncerramentoTrabalho.touched &&
+              formCadastro.controls.horarioEncerramentoTrabalho.invalid ||
+              formCadastro.controls.horarioEncerramentoTrabalho.errors
             " [@fadeInOut]>
               O campo Horário de encerramento é obrigatório!
             </small>
@@ -110,12 +141,13 @@
         </div>
 
         <div class="form-group">
-          <label for="quantidadeVagas">Quantidade de vagas<em>*</em> </label>
-          <input class="form-control" placeholder="Selecione a quantidade" type="number" id="quantidadeVagas"
-            formControlName="quantidadeVagas" />
+          <label for="numeroVagas">Quantidade de vagas<em>*</em> </label>
+          <input class="form-control" placeholder="Selecione a quantidade" type="number" id="numeroVagas"
+            formControlName="numeroVagas" />
           <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
-            formCadastro.controls.quantidadeVagas.touched &&
-            formCadastro.controls.quantidadeVagas.invalid
+            (formCadastro.controls.numeroVagas.touched &&
+            formCadastro.controls.numeroVagas.invalid) ||
+            formCadastro.controls.numeroVagas.errors 
           " [@fadeInOut]>
             O campo Quantidade de vagas é obrigatório!
           </small>
@@ -128,7 +160,9 @@
             Entidade</label>
         </div>
 
-        <div *ngIf="!utilizarEnderecoEntidade">
+        <div formGroupName="endereco" *ngIf="!utilizarEnderecoEntidade" [@fadeInOut]>
+
+        <div>
           <div class="form-group">
             <label for="cep">CEP <em>*</em> </label>
             <input type="text" (keyup)="validaCep()" class="form-control" id="cep" placeholder="XXXXX-XXX"
@@ -139,7 +173,8 @@
               </a>
             </label>
             <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
-              formCadastro.controls.cep.touched && formCadastro.controls.cep.invalid
+                  formCadastro.get('endereco.cep').touched && formCadastro.get('endereco.cep').invalid ||
+                  formCadastro.get('endereco.cep').errors
             " [@fadeInOut]>
               <br />
               O campo CEP é obrigatório!
@@ -151,7 +186,9 @@
               <ng-select [items]="estados" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
                 formControlName="estado" (ngModelChange)="onAddCidade()" (closeOnSelect)="(true)">
               </ng-select>
-              <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="" [@fadeInOut]>
+              <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+                  formCadastro.get('endereco.estado').touched && formCadastro.get('endereco.estado').invalid ||
+                  formCadastro.get('endereco.estado').errors" [@fadeInOut]>
                 O campo Estado é obrigatório!
               </small>
             </div>
@@ -160,7 +197,9 @@
               <ng-select [items]="cidades" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
                 formControlName="cidade" (ngModelChange)="onAddBairro()" (closeOnSelect)="(true)">
               </ng-select>
-              <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="" [@fadeInOut]>
+              <small id="emailHelp" class="form-text text-danger ng-star-inserted" 
+              *ngIf=" (formCadastro.get('endereco.cidade').touched  && formCadastro.get('endereco.cidade').invalid) ||
+              (formCadastro.get('endereco.cidade').errors && formCadastro.get('endereco.cidade').invalid)" [@fadeInOut]>
                 O campo Cidade é obrigatório!
               </small>
             </div>
@@ -171,7 +210,7 @@
             <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, Travessa, etc."
               formControlName="logradouro" />
             <small id="emailHelp" class="form-text text-danger ng-star-inserted"
-              *ngIf="formCadastro.controls.logradouro.touched  && formCadastro.controls.logradouro.invalid"
+              *ngIf="formCadastro.get('endereco.logradouro').touched  && formCadastro.get('endereco.logradouro').invalid"
               [@fadeInOut]>
               O campo Logradouro é obrigatório!
             </small>
@@ -182,7 +221,7 @@
               <label for="exampleFormControlInput1">Número <em>*</em> </label>
               <input type="text" class="form-control" placeholder="Número" formControlName="numero" />
               <small id="emailHelp" class="form-text text-danger ng-star-inserted"
-                *ngIf="formCadastro.controls.numero.touched && formCadastro.controls.numero.invalid" [@fadeInOut]>
+                *ngIf="formCadastro.get('endereco.numero').touched && formCadastro.get('endereco.numero').invalid" [@fadeInOut]>
                 O campo Número é obrigatório!
               </small>
             </div>
@@ -190,7 +229,7 @@
               <label for="exampleFormControlInput1">Bairro <em>*</em> </label>
               <input type="text" class="form-control" placeholder="Bairro" formControlName="bairro" />
               <small id="emailHelp" class="form-text text-danger ng-star-inserted"
-                *ngIf="formCadastro.controls.bairro.touched && formCadastro.controls.bairro.invalid" [@fadeInOut]>
+                *ngIf="formCadastro.get('endereco.bairro').touched && formCadastro.get('endereco.bairro').invalid" [@fadeInOut]>
                 O campo Bairro é obrigatório!
               </small>
             </div>
@@ -201,6 +240,8 @@
               formControlName="complemento" />
           </div>
         </div>
+
+      </div>
 
         <div class="form-group">
           <label for="dataFinalizacaoVaga">Data de encerramento da inscrição <em>*</em> </label>
@@ -216,9 +257,9 @@
         </div>
 
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="termosCondicao" formControlName="termosCondicao"
+          <input type="checkbox" class="form-check-input" id="termoCondicao" formControlName="termoCondicao"
             (change)="aceitarTermo()" />
-          <label class="form-check-label" for="termosCondicao">Declaro que a vaga cadastrada está de acordo com os
+          <label class="form-check-label" for="termoCondicao">Declaro que a vaga cadastrada está de acordo com os
             <a href="/">termos e condições</a> do site</label>
         </div>
 
