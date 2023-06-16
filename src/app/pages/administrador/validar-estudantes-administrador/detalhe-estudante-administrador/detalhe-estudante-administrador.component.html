@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-lg-4 col-sm-12">
                 <label>CPF: </label>
-                <span>{{ estudante.cpf}}</span>
+                <span>{{ estudante.userid.login}}</span>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <label>Data de Nascimento: </label>
@@ -42,29 +42,30 @@
         </div>
         <div class="col-12">
             <label>Endereço: </label>
-            <span>{{ estudante.logradouro }}, {{ estudante.numero }}, {{ estudante.bairro }} -
-                {{ estudante.cep }} - {{ estudante.cidade }}/{{estudante.estado }}</span>
+            <span>{{ estudante.endereco.logradouro }}, {{ estudante.endereco.numero }}, {{ estudante.endereco.bairro }}
+                -
+                {{ estudante.endereco.cep }} - {{ estudante.endereco.cidade }}/{{estudante.endereco.estado }}</span>
         </div>
         <div class="col-12">
             <label>Curso: </label>
-            <span>{{ estudante.curso}}</span>
+            <span>{{ estudante.curso.nomeCurso}}</span>
         </div>
         <div class="col-12">
             <label>Grau: </label>
-            <span>{{ estudante.grau}}</span>
+            <span>{{ estudante.curso.grau}}</span>
         </div>
         <div class="col-12">
             <label>Instituição: </label>
-            <span>{{ estudante.instituicao}}</span>
+            <span>{{ estudante.curso.instituicao}}</span>
         </div>
         <div class="row">
             <div class="col-lg-4 col-sm-12">
                 <label>Ano início: </label>
-                <span>{{ estudante.anoInicio}}</span>
+                <span>{{ estudante.curso.anoInicio}}</span>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <label>Ano conclusão: </label>
-                <span>{{ estudante.anoConclusao}}</span>
+                <span>{{ estudante.curso.anoConclusao}}</span>
             </div>
         </div>
         <div class="col-12">
@@ -73,11 +74,11 @@
         </div>
         <div class="col-12">
             <label>Data do cadastro: </label>
-            <span>{{ estudante.dataCriacao}}</span>
+            <span>{{ estudante.userid.dataCadastro}}</span>
         </div>
         <div class="col-12">
             <label>Status: </label>
-            <span>{{ estudante.status}}</span>
+            <span>{{ estudante.userid.statusPerfil}}</span>
         </div>
 
         <form [formGroup]="formResolucao">
@@ -85,19 +86,19 @@
                 <label for="aprovacao">Aprovação Estudante <em class="text-danger">*</em>
                 </label>
                 <ng-select [items]="validacoes" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
-                    (closeOnSelect)="(true)" formControlName="resolucaoChamado">
+                    (closeOnSelect)="(true)" formControlName="avaliacao">
                 </ng-select>
             </div>
-            <div class="col-8 form-group" *ngIf="formResolucao.get('resolucaoChamado').value == 2">
+            <div class="col-8 form-group" *ngIf="formResolucao.get('avaliacao').value == 2">
                 <label for="exampleFormControlTextarea1">Informe o motivo da reprovação</label>
-                <textarea class="form-control" id="mensagemReprovacao" rows="3" formControlName="motivo"></textarea>
+                <textarea class="form-control" id="mensagemReprovacao" rows="3" formControlName="comentario"></textarea>
             </div>
         </form>
         <div class="buttonsVagasCadastradas">
             <button class="btn btn-success" (click)="aprovar()" [disabled]="
-                  (formResolucao.get('resolucaoChamado').value == 2 &&
-                    formResolucao.get('motivo').value == null) ||
-                  formResolucao.get('resolucaoChamado').value == null
+                  (formResolucao.get('avaliacao').value == 2 &&
+                    formResolucao.get('comentario').value == null) ||
+                  formResolucao.get('avaliacao').value == null
                 ">
                 Finalizar avaliação
             </button>

@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DataService } from 'src/app/services/data.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Entidade } from 'src/app/models/entidade';
+import { Usuario } from 'src/app/models/usuario.model';
+import { Vaga } from 'src/app/models/vaga';
+import { AdministradorService } from 'src/app/services/administrador.service';
+import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,10 +16,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./detalhe-vaga-administrador.component.scss'],
 })
 export class DetalheVagaAdministradorComponent implements OnInit {
+  usuarioLogado: Usuario;
+  id: any;
+  vaga: Vaga;
+  entidade: Entidade;
+
   formResolucao = new FormGroup({
-    resolucaoChamado: new FormControl(null, Validators.required),
-    motivo: new FormControl(),
-    idVaga: new FormControl(null, Validators.required),
+    avaliacao: new FormControl(null, Validators.required),
+    comentario: new FormControl(),   
   });
 
   validacao: any;
@@ -24,61 +32,49 @@ export class DetalheVagaAdministradorComponent implements OnInit {
     { id: 2, nome: 'Reprovar' },
   ];
 
-  vaga: any;
-
   constructor(
-    private data: DataService,
-    private modalService: NgbModal,
     public dialog: MatDialog,
-    private router: Router
-  ) {
-    this.vaga = this.data.data;
-    this.formResolucao.get('idVaga').setValue(this.vaga.id);
+    private router: Router,
+    private route: ActivatedRoute,
+    private administradorService: AdministradorService,
+    private loginService: LoginService,
+    private toast: ToastrService
+  ) {}
+
+  ngOnInit(): void {
+    this.usuarioLogado = this.loginService.usuarioLogado;
+    this.getDetalheVaga();
+  }
+
+  getDetalheVaga() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.administradorService.detalhesVaga(this.id).subscribe({
+      next: (res: any) => {
+        this.vaga = res.vaga[0];
+        this.entidade = res.entidade;     
+      },
+    });
   }
 
   aprovar() {
-    Swal.fire({
-      icon: 'success',
-      title: 'Vaga avaliada com sucesso!!',
-      showConfirmButton: false,
-      timer: 1500,
+    this.administradorService.validarVaga(this.id, this.usuarioLogado._id, this.formResolucao.value).subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.router.navigate(['/Admin/validar-vagas']);
+      },
+      error: (erro: any) => {
+        this.toast.error(erro.error.message);        
+      },
     });
   }
+
 
   retornar() {
     this.router.navigate(['/Admin/validar-vagas']);
   }
-
-  exibirDetalhes() {
-    this.modalService.open(DetalheVagaAdministradorComponent, {
-      windowClass: 'width:90%; heigth: 50%;',
-      backdrop: 'static',
-      keyboard: false,
-      centered: true,
-    });
-  }
-
-  reprovar() {
-    Swal.fire({
-      title: 'Deseja realmente reprovar essa vaga?',
-      text: 'Ao confirmar, essa vaga será reprovada!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Confirmar',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Vaga reprovada com Sucesso!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
-  }
-
-  ngOnInit(): void {}
 }

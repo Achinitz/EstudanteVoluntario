@@ -32,10 +32,15 @@ export class Estudante extends Usuario {
       anoConclusao?: Date;
     },
     public comprovanteMatricula?: string,
+    public userid?: {
+      _id?: string;
+      login?: string;
+      dataCadastro?: string;
+      statusPerfil?: string;
+    },
     public dataAprovacao?: Date,
     public idAdmin?: string
-  ) 
-  {
+  ) {
     // super(id,nome,login,senha,perfil, imgPerfil, dataCadastro, perfilAtivo);
     super();
   }

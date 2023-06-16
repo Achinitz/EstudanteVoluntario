@@ -4,11 +4,14 @@
   </div>
 
   <section class="row vagasAprovacao">
-    <div *ngIf="!vagasAprovacao">
-      <span> No momento não existem vagas em aprovação. </span>
-    </div>
-    <section>
-      <div class="containerCard vagasAprovacao">
+    <ng-template #naoPossuiVagas>
+      <ngb-alert class="alerta" #alert type="warning">
+        No momento não existem vagas para aprovação
+      </ngb-alert>
+    </ng-template>
+
+    <section *ngIf="vagasAprovacao.length > 0 else naoPossuiVagas">
+      <div class="containerCard vagasAprovacao" >
         <ngb-alert #alert type="warning">
           Lembre-se de dar maior prioridade para as vagas que estão a mais tempo
           em espera!
@@ -25,15 +28,16 @@
         <div class="card" *ngFor="let vaga of vagasAprovacao; let i = index">
           <div class="card-content col-12">
             <div class="imgCard col-3">
-              <img src="{{ vaga.img }}" class="card-img-top" alt="..." />
+              <img src="{{ vaga.img }}" onError="this.src = 'assets/imagens/mulherGrandeCoracao.png'"
+              class="card-img-top" alt="..." />
             </div>
             <div class="content-card-vaga col-8">
-              <p><b>{{ vaga.nomeEntidade }} - {{ vaga.nomeVaga }}</b></p>
+              <p><b>{{ vaga.entidadeId.nome }} - {{ vaga.nomeVaga }}</b></p>
               <p><b>Detalhes:</b> {{ vaga.descricao }}</p>
               <p><b>Data de início do trabalho:</b> {{ vaga.dataInicioTrabalho }}</p>
             </div>
             <div class="col-1 content-card-icons">
-              <div class="first-icon" (click)="redirecionarDetalhes(vaga)">
+              <div class="first-icon" (click)="exibirDetalhes(vaga)">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right-square"
                   viewBox="0 0 16 16">
                   <path fill-rule="evenodd"
@@ -45,11 +49,11 @@
         </div>
       </div>
     </section>
-    <div class="row">
+    <!--  <div class="row">
       <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
         [collectionSize]="this.vagasAprovacao.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"
         [(page)]="paginaAtual" (pageChange)="mudancaPagina(paginaAtual)">
       </ngb-pagination>
-    </div>
+    </div> -->
   </section>
 </section>

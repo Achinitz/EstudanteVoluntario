@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import { Usuario } from 'src/app/models/usuario.model';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -8,10 +9,9 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
   @ViewChild('meuCanvas', { static: true }) elemento: ElementRef;
 
-  nomeAdmin: any = 'Admin Teste';
+  usuarioLogado: Usuario;
   vagasAprovacao: any = 10;
   entidadesAprovacao: any = 3;
   estudantesAprovacao: any = 2;
@@ -36,11 +36,10 @@ export class HomeComponent implements OnInit {
     { mes: 'Mai/23', count: 3 },
   ];
 
-  constructor(private loginService: LoginService) {
-    this.nomeAdmin = loginService.usuarioLogado;
-  }
+  constructor(private loginService: LoginService) {}
 
   ngOnInit() {
+    this.usuarioLogado = this.loginService.usuarioLogado;
     this.chart1 = document.getElementById('graficoEntidades');
     this.chart2 = document.getElementById('graficoEstudantes');
 

@@ -1,37 +1,38 @@
 <section class="content" *ngIf="vaga">
 
   <div class="topo">
-    <h1>Detalhes da Vaga</h1>
+    <h1>Detalhes da Vaga - {{vaga.nomeVaga}}</h1>
   </div>
 
   <main>
     <div class="col-12 d-flex imagem__vaga">
-      <img class="imagem__vaga" src="../../../../../assets/imagens/cadastroImagem.jpg">
+      <img src="{{ vaga.img }}" onError="this.src = 'assets/imagens/mulherGrandeCoracao.png'" class="card-img-top"
+        alt="..." />
     </div>
     <div class="col-12">
-      <label>Nome: </label>
-      <span>{{ vaga.nomeEntidade }}</span>
+      <label>Nome Fantasia: </label>
+      <span>{{ entidade.nomeFantasia }}</span>
     </div>
     <div class="col-12">
       <label>Razão Social: </label>
-      <span>{{ vaga.razaoSocial }}</span>
+      <span>{{ entidade.razaoSocial }}</span>
     </div>
     <div class="row">
       <div class="col-lg-4 col-sm-12">
         <label>E-mail: </label>
-        <span>{{ vaga.email }}</span>
+        <span>{{ entidade.email }}</span>
       </div>
       <div class="col-lg-4 col-sm-12">
         <label>Telefone: </label>
-        <span>{{ vaga.telefone | phone}}</span>
+        <span>{{ entidade.telefone | phone}}</span>
       </div>
 
     </div>
 
     <div class="col-12">
       <label>Endereço: </label>
-      <span>{{ vaga.endereco }}, {{ vaga.numero }} - {{ vaga.bairro }} -
-        {{ vaga.cidade }}/{{ vaga.estado }}</span>
+      <span>{{ vaga.endereco.logradouro }}, {{ vaga.endereco.numero }} - {{ vaga.endereco.bairro }} -
+        {{ vaga.endereco.cidade }}/{{ vaga.endereco.estado }}</span>
     </div>
     <div class="col-12">
       <label>Descrição da Vaga: </label>
@@ -50,17 +51,17 @@
       </div>
       <div class="col-lg-4 col-sm-12">
         <label>Data de término do trabalho: </label>
-        <span>{{ vaga.dataTerminoTrabalho}}</span>
+        <span>{{ vaga.dataEncerramentoTrabalho}}</span>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-4 col-sm-12">
         <label>Horário de início do trabalho: </label>
-        <span>{{ vaga.horarioInicio}}</span>
+        <span>{{ vaga.horarioInicioTrabalho}}</span>
       </div>
       <div class="col-lg-4 col-sm-12">
         <label>Horário de término do trabalho: </label>
-        <span>{{ vaga.horarioEncerramento}}</span>
+        <span>{{ vaga.horarioEncerramentoTrabalho}}</span>
       </div>
     </div>
 
@@ -68,19 +69,19 @@
       <div class="col-4">
         <label for="aprovacao">Aprovação da vaga <em class="text-danger">*</em></label>
         <ng-select [items]="validacoes" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
-          (closeOnSelect)="(true)" formControlName="resolucaoChamado">
+          (closeOnSelect)="(true)" formControlName="avaliacao">
         </ng-select>
       </div>
-      <div class="col-8 form-group" *ngIf="formResolucao.get('resolucaoChamado').value == 2">
+      <div class="col-8 form-group" *ngIf="formResolucao.get('avaliacao').value == 2">
         <label for="mensagemReprovacao">Informe o motivo da reprovação</label>
-        <textarea class="form-control" id="mensagemReprovacao" rows="3" formControlName="motivo"></textarea>
+        <textarea class="form-control" id="mensagemReprovacao" rows="3" formControlName="comentario"></textarea>
       </div>
     </form>
     <div class="buttonsVagasCadastradas">
       <button class="btn btn-success" (click)="aprovar()" [disabled]="
-      (formResolucao.get('resolucaoChamado').value == 2 &&
-        formResolucao.get('motivo').value == null) ||
-      formResolucao.get('resolucaoChamado').value == null
+      (formResolucao.get('avaliacao').value == 2 &&
+        formResolucao.get('comentario').value == null) ||
+      formResolucao.get('avaliacao').value == null
     ">
         Finalizar avaliação
       </button>

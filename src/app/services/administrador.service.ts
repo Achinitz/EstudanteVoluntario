@@ -3,7 +3,6 @@ import { Administrador } from '../models/administrador';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaderService } from './http-header.service';
 import { Observable } from 'rxjs';
-import { Usuario } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +18,7 @@ export class AdministradorService extends HttpHeaderService {
 
   public setPerfilAdmin(usuario: Administrador) {
     return this.http.patch(
-      this.baseUrl + `admin/${usuario.id}`,
+      this.baseUrl + `admin/${usuario._id}`,
       usuario,
       this.httpOptions
     );
@@ -39,23 +38,40 @@ export class AdministradorService extends HttpHeaderService {
   public validarEntidade(
     idEntidade: string,
     idAdmin: string,
-    statusCadastro: string,
-    comentario?: string
+    formResolucao: {
+      avaliacao: string;
+      comentario?: string;
+    }
   ): Observable<any> {
     return this.http.patch(
       this.baseUrl + `admin/${idEntidade}/${idAdmin}`,
-      { statusCadastro, comentario },
+      { formResolucao },
       this.httpOptions
     );
   }
 
   public listarEstudantes(): Observable<any> {
-    return this.http.get(this.baseUrl + 'admin/estudantes', this.httpOptions);
+    return this.http.get(this.baseUrl + 'admin/estudantes', this.httpOptions);  
   }
 
   public detalhesEstudante(idEstudante: string): Observable<any> {
     return this.http.get(
       this.baseUrl + `admin/estudantes/${idEstudante}`,
+      this.httpOptions
+    );
+  }
+
+  public validarEstudante(
+    idEstudante: string,
+    idAdmin: string,
+    formResolucao: {
+      avaliacao: string;
+      comentario?: string;
+    }
+  ): Observable<any> {
+    return this.http.patch(
+      this.baseUrl + `admin/estudantes/${idEstudante}/${idAdmin}`,
+      { formResolucao },
       this.httpOptions
     );
   }
@@ -71,13 +87,31 @@ export class AdministradorService extends HttpHeaderService {
     );
   }
 
+  //ok
   public listarVagas(): Observable<any> {
     return this.http.get(this.baseUrl + 'admin/vagas', this.httpOptions);
   }
 
+  //ok
   public detalhesVaga(idvaga: string): Observable<any> {
     return this.http.get(
       this.baseUrl + `admin/vagas/${idvaga}`,
+      this.httpOptions
+    );
+  }
+
+  //ok
+  public validarVaga(
+    idVaga: string,
+    idAdmin: string,
+    formResolucao: {
+      avaliacao: string;
+      comentario?: string;
+    }
+  ): Observable<any> {
+    return this.http.patch(
+      this.baseUrl + `admin/vagas/${idVaga}/${idAdmin}`,
+      { formResolucao },
       this.httpOptions
     );
   }

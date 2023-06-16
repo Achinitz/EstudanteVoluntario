@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Estudante } from 'src/app/models/estudante';
+import { Usuario } from 'src/app/models/usuario.model';
+import { AdministradorService } from 'src/app/services/administrador.service';
 import { DataService } from 'src/app/services/data.service';
+import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,10 +15,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./detalhe-estudante-administrador.component.scss'],
 })
 export class DetalheEstudanteAdministradorComponent implements OnInit {
+  usuarioLogado: Usuario;
+  id: any;
+  estudante: Estudante;
+
   formResolucao = new FormGroup({
-    resolucaoChamado: new FormControl(null, Validators.required),
-    motivo: new FormControl(),
-    cpf: new FormControl(null, Validators.required),
+    avaliacao: new FormControl(null, Validators.required),
+    comentario: new FormControl(),
   });
 
   validacao: any;
@@ -22,16 +30,28 @@ export class DetalheEstudanteAdministradorComponent implements OnInit {
     { id: 2, nome: 'Reprovar' },
   ];
 
-  estudante: any;
+  constructor(
+    private data: DataService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private administradorService: AdministradorService,
+    private loginService: LoginService,
+    private toast: ToastrService
+  ) {}
 
-  constructor(private data: DataService, private router: Router) {
-    this.estudante = this.data.data;
-    this.formResolucao.get('cpf').setValue(this.estudante.cpf);
+  ngOnInit(): void {
+    this.usuarioLogado = this.loginService.usuarioLogado;
+    this.getDetalhesEstudante();
+  }
 
-    if (this.estudante == null) {
-      this.router.navigate(['/Admin/validar-estudantes']);
-    }
-    console.log(this.estudante);
+  getDetalhesEstudante() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.administradorService.detalhesEstudante(this.id).subscribe({
+      next: (res: any) => {
+        this.estudante = res.estudante; 
+        console.log(this.estudante);   
+      },
+    });
   }
 
   retornar() {
@@ -39,35 +59,19 @@ export class DetalheEstudanteAdministradorComponent implements OnInit {
   }
 
   aprovar() {
-    Swal.fire({
-      icon: 'success',
-      title: 'Estudante aprovado com sucesso!!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  }
-
-  reprovar() {
-    Swal.fire({
-      title: 'Deseja realmente reprovar esse cadastro?',
-      text: 'Ao confirmar, esse cadastro será reprovado!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Confirmar',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
+    this.administradorService.validarEstudante(this.id, this.usuarioLogado._id, this.formResolucao.value).subscribe({
+      next: (res: any) => {
         Swal.fire({
-          title: 'Estudante aprovado com Sucesso!',
           icon: 'success',
+          title: res.message,
           showConfirmButton: false,
           timer: 1500,
         });
-      }
+        this.router.navigate(['/Admin/validar-estudantes']);
+      },
+      error: (erro: any) => {
+        this.toast.error(erro.error.message);        
+      },
     });
   }
-
-  ngOnInit(): void {}
 }

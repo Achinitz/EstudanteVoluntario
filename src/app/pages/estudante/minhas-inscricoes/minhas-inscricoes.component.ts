@@ -27,8 +27,7 @@ export class MinhasInscricoesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.usuarioLogado = this.loginService.usuarioLogado;
-    
+    this.usuarioLogado = this.loginService.usuarioLogado;    
     this.getInscricoes(this.usuarioLogado._id);
   }
 
