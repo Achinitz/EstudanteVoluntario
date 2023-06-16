@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Estudante } from 'src/app/models/estudante';
+import { Usuario } from 'src/app/models/usuario.model';
+import { EntidadeService } from 'src/app/services/entidade.service';
+import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,8 +14,18 @@ import Swal from 'sweetalert2';
 export class DetalheEstudanteComponent implements OnInit {
   @Input() inscrito: Estudante;
   @Input() statusInscricao: string;
+  @Input() inscritoId: string;
+  usuarioLogado: Usuario;
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(
+    public activeModal: NgbActiveModal,
+    private entidadeService: EntidadeService,
+    private loginService: LoginService
+  ) {}
+
+  ngOnInit(): void {
+    this.usuarioLogado = this.loginService.usuarioLogado;
+  }
 
   aprovarCandidato() {
     Swal.fire({
@@ -25,15 +38,27 @@ export class DetalheEstudanteComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Candidato aprovado com sucesso!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-        }).then(() => {
-          this.activeModal.close('Aprovado');
-        });
-      }
+      const idUsuario = this.usuarioLogado._id;
+      this.entidadeService
+        .aprovarInscrito(idUsuario, this.inscritoId)
+        .subscribe({
+          next: (res: any) => {
+            Swal.fire({
+              title: res.message,
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 1500,
+            }).finally(() => window.location.reload());;
+          },
+          error: (erro: any) => {
+            Swal.fire({
+              title: erro.error.message,
+              icon: 'error',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          },
+        }); }
     });
   }
 
@@ -48,17 +73,28 @@ export class DetalheEstudanteComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Candidato Reprovado com sucesso!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-        }).then(() => {
-          this.activeModal.close('Reprovado');
+        const idUsuario = this.usuarioLogado._id;
+      this.entidadeService
+        .reprovarInscrito(idUsuario, this.inscritoId)
+        .subscribe({
+          next: (res: any) => {
+            Swal.fire({
+              title: res.message,
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 1500,
+            }).finally(() => window.location.reload());;
+          },
+          error: (erro: any) => {
+            Swal.fire({
+              title: erro.error.message,
+              icon: 'error',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          },
         });
       }
     });
   }
-
-  ngOnInit(): void {}
 }

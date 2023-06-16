@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/models/usuario.model';
-import { DataService } from 'src/app/services/data.service';
+import { Vaga } from 'src/app/models/vaga';
 import { EntidadeService } from 'src/app/services/entidade.service';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -25,32 +25,8 @@ export class VagasAbertasComponent implements OnInit {
   public formData = new FormGroup({
     filtro: new FormControl(null, Validators.required),
   });
-
-  estadosVagas: any = [
-    {
-      id: 1,
-      nome: 'Aberto',
-    },
-    {
-      id: 2,
-      nome: 'Andamento',
-    },
-    {
-      id: 3,
-      nome: 'Aprovação',
-    },
-    {
-      id: 4,
-      nome: 'Encerrada',
-    },
-    {
-      id: 5,
-      nome: 'Cancelada',
-    },
-  ];
-
-  constructor(
-    private dataService: DataService,
+  
+  constructor(    
     private entidadeService: EntidadeService,
     private loginService: LoginService,
     public dialog: MatDialog,
@@ -69,20 +45,6 @@ export class VagasAbertasComponent implements OnInit {
     });
   }
 
-  //Variaveis para a paginação
-  paginaAtual = 1;
-  tamanhoPagina: number = this.vagasDisponiveis.length;
-  itemsPerPage = 6;
-  public vagas: any = this.vagasDisponiveis.slice(0, 6);
-
-  public mudancaPagina(pageNum: number): void {
-    this.tamanhoPagina = this.itemsPerPage * (pageNum - 1);
-    this.vagas = this.vagasDisponiveis.slice(
-      this.tamanhoPagina,
-      this.tamanhoPagina + 6
-    );
-  }
-
   getStatus(status: string) {
     if (status == 'APROVACAO') {
       return 'badge bg-warning';
@@ -99,9 +61,23 @@ export class VagasAbertasComponent implements OnInit {
     }
   }
 
-  //Vai exibir os detalhes da vaga antes de ele efetivar a inscrição
-  exibirDetalhes(value: any): void {
-    this.dataService.data = value;
-    this.router.navigate(['/Entidade/detalhe-vaga']);
+  exibirDetalhes(value: Vaga): void {
+    this.router.navigate(['/Entidade/detalhe-vaga', { id: value._id }]);
+    
   }
+  
+  //Variaveis para a paginação
+  paginaAtual = 1;
+  tamanhoPagina: number = this.vagasDisponiveis.length;
+  itemsPerPage = 6;
+  public vagas: any = this.vagasDisponiveis.slice(0, 6);
+
+  public mudancaPagina(pageNum: number): void {
+    this.tamanhoPagina = this.itemsPerPage * (pageNum - 1);
+    this.vagas = this.vagasDisponiveis.slice(
+      this.tamanhoPagina,
+      this.tamanhoPagina + 6
+    );
+  }
+
 }

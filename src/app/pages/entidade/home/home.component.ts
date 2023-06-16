@@ -17,11 +17,11 @@ export class HomeComponent implements OnInit {
   vagasAbertas: any = [];
   vagasAprovacao: any = [];
 
-  constructor(  
+  constructor(
     private router: Router,
     private loginService: LoginService,
     private entidadeService: EntidadeService,
-    private toast: ToastrService,    
+    private toast: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -30,26 +30,25 @@ export class HomeComponent implements OnInit {
     this.buscaVagasAprovacao(this.usuarioLogado._id);
   }
 
-  buscaVagasAbertas(idUsuario: string){
+  buscaVagasAbertas(idUsuario: string) {
     this.entidadeService.listarVagasAbertas(idUsuario).subscribe({
-      next: (res:any) => {
+      next: (res: any) => {
         this.vagasAbertas = res;
       },
-      error: (err:any) => {
+      error: (err: any) => {
         this.toast.error(err?.message);
-      }
+      },
     });
   }
 
-  buscaVagasAprovacao(idUsuario: string){
-    //arrumar funcao no back pra pegar as vagas
+  buscaVagasAprovacao(idUsuario: string) {
     this.entidadeService.listarVagasAprovacao(idUsuario).subscribe({
-      next: (res:any) => {     
+      next: (res: any) => {
         this.vagasAprovacao = res;
       },
-      error: (err:any) => {
+      error: (err: any) => {
         this.toast.error(err?.message);
-      }
+      },
     });
   }
 
@@ -69,9 +68,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
- //Vai exibir os detalhes da vaga
- exibirDetalhes(value: Vaga): void {
-  this.router.navigate(['/Entidade/detalhe-vaga', { id: value._id }]);
-}
-
+  //Vai exibir os detalhes da vaga
+  exibirDetalhes(value: Vaga): void {
+    this.router.navigate(['/Entidade/detalhe-vaga', { id: value._id }]);
+  }
 }
