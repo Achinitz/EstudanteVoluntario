@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Estudante } from 'src/app/models/estudante';
 import { Usuario } from 'src/app/models/usuario.model';
 import { AdministradorService } from 'src/app/services/administrador.service';
-import { DataService } from 'src/app/services/data.service';
 import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
 
@@ -30,8 +29,7 @@ export class DetalheEstudanteAdministradorComponent implements OnInit {
     { id: 2, nome: 'Reprovar' },
   ];
 
-  constructor(
-    private data: DataService,
+  constructor(    
     private router: Router,
     private route: ActivatedRoute,
     private administradorService: AdministradorService,
@@ -48,8 +46,7 @@ export class DetalheEstudanteAdministradorComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.administradorService.detalhesEstudante(this.id).subscribe({
       next: (res: any) => {
-        this.estudante = res.estudante; 
-        console.log(this.estudante);   
+        this.estudante = res.estudante;       
       },
     });
   }

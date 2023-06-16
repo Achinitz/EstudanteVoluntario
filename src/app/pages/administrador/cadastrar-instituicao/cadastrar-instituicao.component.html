@@ -32,8 +32,8 @@
                 <tr *ngFor="let instituicao of instituicoes; index as i">
                     <td class="col-1">{{ instituicao.sigla}}</td>
                     <td class="col-4">{{instituicao.nome}}</td>
-                    <td class="col-3">{{instituicao.cnpj}}</td>
-                    <td class="col-2 text-center">{{instituicao.uf}}</td>
+                    <td class="col-3">{{instituicao.cnpj | cnpj}}</td>
+                    <td class="col-2 text-center">{{instituicao.endereco.estado}}</td>
                     <td class="col-2 buttonsActions">
                         <button class="button-table" title="Visualizar" (click)="visualizarInstituicao(instituicao)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
+import { InstituicaoService } from 'src/app/services/instituicao.service';
+import { Instituicao } from 'src/app/models/instituicao';
 
 @Component({
   selector: 'app-cadastrar-instituicao',
@@ -10,176 +11,34 @@ import Swal from 'sweetalert2';
   styleUrls: ['./cadastrar-instituicao.component.scss'],
 })
 export class CadastrarInstituicaoComponent implements OnInit {
-  instituicoes: any = [
-    {
-      id: 1,
-      cnpj: 75054940000162,
-      sigla: 'UFPR',
-      nome: 'Universidade Federal do Paraná',
-      uf: 'Paraná',
-      cep: '82960-020',
-      logradouro: 'Casa',
-      numero: '1133',
-      bairro: 'Cajuru',
-      complemento: 'Casa Amarela',
-      estado: 1,
-      cidade: 2,
-      cursos: [
-        {
-          id: 1,
-          nome: 'ADMINISTRAÇÃO',
-          grauAcademico: 'Bacharelado',
-          instituicaoSigla: 'UFPR',
-          instituicaoNome: 'Universidade Federal do Paraná',
-          campus: 'CAMPUS JARDIM BOTÂNICO',
-          logradouro: 'Rua Prefeito Lothário Meissner',
-          numero: 632,
-          bairro: 'Jardim Botânico',
-          cidade: 'Curitiba',
-          uf: 'PR',
-        },
-        {
-          id: 2,
-          nome: 'ADMINISTRAÇÃO PÚBLICA',
-          grauAcademico: 'Bacharelado',
-          instituicaoSigla: 'UFPR',
-          instituicaoNome: 'Universidade Federal do Paraná',
-          campus: 'CAMPUS LITORAL',
-          logradouro: 'Rua Jaguariaíva',
-          numero: 512,
-          complemento: '',
-          bairro: 'Caiobá',
-          cidade: 'Matinhos',
-          uf: 'PR',
-        },
-        {
-          id: 3,
-          nome: 'AGROECOLOGIA',
-          grauAcademico: 'Tecnológico',
-          instituicaoSigla: 'UFPR',
-          instituicaoNome: 'Universidade Federal do Paraná',
-          campus: 'CAMPUS LITORAL',
-          logradouro: 'Rua Jaguariaíva',
-          numero: 512,
-          complemento: '',
-          bairro: 'Caiobá',
-          cidade: 'Matinhos',
-          uf: 'PR',
-        },
-      ],
-    },
-    {
-      id: 2,
-      cnpj: 75054940000162,
-      sigla: 'UTFPR',
-      nome: 'Universidade Tecnológica Federal do Paraná',
-      uf: 'Paraná',
-      cep: '82960-020',
-      logradouro: 'Casa',
-      numero: '1133',
-      bairro: 'Cajuru',
-      complemento: 'Casa Amarela',
-      estado: 1,
-      cidade: 2,
-    },
-    {
-      id: 3,
-      cnpj: 75054940000162,
-      sigla: 'PUCPR',
-      nome: 'Pontifícia Universidade Católica do Paraná',
-      uf: 'Paraná',
-      cep: '82960-020',
-      logradouro: 'Casa',
-      numero: '1133',
-      bairro: 'Cajuru',
-      complemento: 'Casa Amarela',
-      estado: 1,
-      cidade: 2,
-    },
-    {
-      id: 4,
-      cnpj: 75054940000162,
-      sigla: 'UNESPAR',
-      nome: 'Universidade Estadual do Paraná',
-      uf: 'Paraná',
-      cep: '82960-020',
-      logradouro: 'Casa',
-      numero: '1133',
-      bairro: 'Cajuru',
-      complemento: 'Casa Amarela',
-      estado: 1,
-      cidade: 2,
-    },
-    {
-      id: 5,
-      cnpj: 75054940000162,
-      sigla: 'UNILA',
-      nome: 'Universidade Federal da Integração Latino-América',
-      uf: 'Paraná',
-      cep: '82960-020',
-      logradouro: 'Casa',
-      numero: '1133',
-      bairro: 'Cajuru',
-      complemento: 'Casa Amarela',
-      estado: 1,
-      cidade: 2,
-    },
-    {
-      id: 6,
-      cnpj: 75054940000162,
-      sigla: 'UEPG',
-      nome: 'Universidade Estadual de Ponta Grossa',
-      uf: 'Paraná',
-      cep: '82960-020',
-      logradouro: 'Casa',
-      numero: '1133',
-      bairro: 'Cajuru',
-      complemento: 'Casa Amarela',
-      estado: 1,
-      cidade: 2,
-    },
-    {
-      id: 7,
-      cnpj: 75054940000162,
-      sigla: 'UEPG',
-      nome: 'Universidade Estadual de Ponta Grossa',
-      uf: 'Paraná',
-      cep: '82960-020',
-      logradouro: 'Casa',
-      numero: '1133',
-      bairro: 'Cajuru',
-      complemento: 'Casa Amarela',
-      estado: 1,
-      cidade: 2,
-    },
-  ];
+  instituicoes: Instituicao[] = [];
 
   constructor(
-    private modalService: NgbModal,
     private dataService: DataService,
-    private router: Router
+    private router: Router,
+    private instituicaoService: InstituicaoService
   ) {}
 
-  paginaAtual = 1;
-  tamanhoPagina: number = this.instituicoes.length;
-  itemsPerPage = 6;
-  tipoOrdenacao: any;
-  public ies: any = this.instituicoes.slice(0, 6);
-
-  public mudancaPagina(pageNum: number): void {
-    this.tamanhoPagina = this.itemsPerPage * (pageNum - 1);
-    this.ies = this.instituicoes.slice(
-      this.tamanhoPagina,
-      this.tamanhoPagina + 6
-    );
+  ngOnInit(): void {
+    this.getIes();
   }
 
-  visualizarInstituicao(Instituicao: any) {
-    this.dataService.data = Instituicao;
-    this.router.navigate(['/Administrador/detalhe-instituicao']);
+  getIes() {
+    this.instituicaoService.listarIes().subscribe({
+      next: (res: any) => {
+        this.instituicoes = res.instituicoes;
+      },
+    });
   }
 
-  editarInstituicao(Instituicao: any){
+  visualizarInstituicao(value: Instituicao): void {
+    this.router.navigate([
+      '/Administrador/detalhe-instituicao',
+      { id: value._id },
+    ]);
+  }
+
+  editarInstituicao(Instituicao: any) {
     this.dataService.data = Instituicao;
     this.router.navigate(['/Administrador/editar-instituicao']);
   }
@@ -206,5 +65,17 @@ export class CadastrarInstituicaoComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  paginaAtual = 1;
+  tamanhoPagina: number = this.instituicoes.length;
+  itemsPerPage = 6;
+  tipoOrdenacao: any;
+  public ies: any = this.instituicoes.slice(0, 6);
+
+  public mudancaPagina(pageNum: number): void {
+    this.tamanhoPagina = this.itemsPerPage * (pageNum - 1);
+    this.ies = this.instituicoes.slice(
+      this.tamanhoPagina,
+      this.tamanhoPagina + 6
+    );
+  }
 }

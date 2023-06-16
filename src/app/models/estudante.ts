@@ -39,7 +39,8 @@ export class Estudante extends Usuario {
       statusPerfil?: string;
     },
     public dataAprovacao?: Date,
-    public idAdmin?: string
+    public idAdmin?: string,
+    public comentario?: string
   ) {
     // super(id,nome,login,senha,perfil, imgPerfil, dataCadastro, perfilAtivo);
     super();

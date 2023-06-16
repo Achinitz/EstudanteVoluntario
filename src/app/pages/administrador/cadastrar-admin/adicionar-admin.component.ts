@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { Usuario } from 'src/app/models/usuario.model';
+import { AdministradorService } from 'src/app/services/administrador.service';
+import { LoginService } from 'src/app/services/login.service';
 import { genericAnimations } from 'src/app/shared/animations/animations';
 import Swal from 'sweetalert2';
 
@@ -10,73 +13,33 @@ import Swal from 'sweetalert2';
   animations: genericAnimations,
 })
 export class AdicionarAdminComponent implements OnInit {
+  administradores: any = [];
+  usuarioLogado: Usuario;
+  comentario: string;
 
-  instituicoes: any = [
-    {
-      id: 1,
-      cpf: 92345678915,
-      sigla: 'UFPR',
-      nome: 'Gustavo',
-      uf: 'Paraná',
-      perfil: 4,
-      status: 1
-    },
-    {
-      id: 2,
-      cpf: 62345678914,
-      sigla: 'UTFPR',
-      nome: 'Amanda',
-      uf: 'Paraná',
-      perfil: 3,
-      status: 1
-    },
-    {
-      id: 3,
-      cpf: 22345678913,
-      sigla: 'PUCPR',
-      nome: 'Eliaquim',
-      uf: 'Paraná',
-      perfil: 4,
-      status: 0
-    },
-  ];
+  constructor(
+    private loginService: LoginService,
+    private administradorService: AdministradorService,
+    private toast: ToastrService
+  ) {}
 
-  public formCadastro = new FormGroup({
-    cpf: new FormControl(null, [
-      Validators.required,
-      Validators.pattern('[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}'),
-    ]),
-    nomeCompleto: new FormControl(null, Validators.required),
-    nomeSocial: new FormControl(null),    
-    email: new FormControl(null, [Validators.required, Validators.email]),   
-  });
+  ngOnInit(): void {
+    this.usuarioLogado = this.loginService.usuarioLogado;
+    this.getAdmins();
+  }
 
-  constructor() { }
-
-  bloquearUsuario() {
-    Swal.fire({
-      title: 'Deseja bloquear esse usuário?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Confirmar',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Usuário bloqueado com sucesso!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
+  getAdmins() {
+    this.administradorService.listarAdmins().subscribe({
+      next: (res: any) => {
+        this.administradores = res.admins;
+      },
     });
   }
 
-  removerAdministradorGeral() {
-    Swal.fire({
-      title: 'Deseja retira a promoção deste Administrador geral?',
+  //ARRUMAR
+  async removerAdministradorGeral(idUsuarioAvaliado: string) {
+    const motivo: any = await Swal.fire({
+      title: 'Deseja retirar a promoção deste Administrador geral?',
       text: 'Informe o motivo:',
       icon: 'warning',
       showCancelButton: true,
@@ -86,21 +49,31 @@ export class AdicionarAdminComponent implements OnInit {
       cancelButtonText: 'Cancelar',
       input: 'text',
       inputAttributes: {
-        autocapitalize: 'off'
+        autocapitalize: 'off',
       },
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Cargo de administrador geral removido!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
     });
+    if (motivo.isConfirmed) {      
+      this.comentario = motivo.value;
+      console.log(this.comentario);
+      this.administradorService
+        .rebaixarAdministrador(idUsuarioAvaliado, this.comentario)
+        .subscribe({
+          next: (res: any) => {
+            Swal.fire({
+              title: 'success',
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          },
+          error: (erro: any) => {
+            this.toast.error(erro.error.message);        
+          },
+        });
+    }
   }
-
-  promoverAdministrador() {
+ 
+  promoverAdministrador(idUsuarioAvaliado: string) {
     Swal.fire({
       title: 'Deseja promover este Administrador geral?',
       text: 'Ao confirmar, ele terá acesso a aba de Cadastro dos Administradores!',
@@ -112,17 +85,24 @@ export class AdicionarAdminComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Administrador promovido com Sucesso!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        this.administradorService.promoverAdministrador(idUsuarioAvaliado).subscribe({
+          next: (res: any) => {
+            Swal.fire({
+              title: res.message,
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 1500,
+            }).finally(() => window.location.reload());;
+          },
+          error: (erro: any) => {
+            this.toast.error(erro.error.message);        
+          },
+
+        })
+      
       }
     });
   }
 
-  ngOnInit(): void {
-  }
-
+  bloquearUsuario() {}
 }

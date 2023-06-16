@@ -1,9 +1,14 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 import { ModalCursoComponent } from '../../cadastrar-curso/modal-curso/modal-curso.component';
+import { Instituicao } from 'src/app/models/instituicao';
+import { CursoService } from 'src/app/services/curso.service';
+import { InstituicaoService } from 'src/app/services/instituicao.service';
+import { Curso } from 'src/app/models/curso';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-detalhes-instituicao',
@@ -11,24 +16,38 @@ import { ModalCursoComponent } from '../../cadastrar-curso/modal-curso/modal-cur
   styleUrls: ['./detalhes-instituicao.component.scss'],
 })
 export class DetalhesInstituicaoComponent implements OnInit {
-  instituicao: any;
+  id: any;
+  instituicao: Instituicao;
+  cursos: Curso[] = [];
   modalReference: any;
 
   constructor(
-    private dataService: DataService,
-    private router: Router,
-    private modalService: NgbModal
-  ) {
-    this.instituicao = this.dataService.data;
-    if (this.dataService.data.nome == null) {
-      this.router.navigate(['/Administrador/cadastrar-instituicao']);
-    }
+    private modalService: NgbModal,
+    private route: ActivatedRoute,
+    private cursoService: CursoService,
+    private instituicaoService: InstituicaoService,
+    private toast: ToastrService
+  ) {}
+
+  ngOnInit(): void {
+    this.getDetalhesInstituicao();
   }
 
-  ngOnInit(): void {}
-
-  ngOnDestroy(): void {
-    this.dataService.data = this.instituicao;
+  getDetalhesInstituicao() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.instituicaoService.visualizarInstituicao(this.id).subscribe({
+      next: (res: any) => {    
+        this.instituicao = res.instituicao;
+        this.cursoService.listarCursos(this.id).subscribe({
+          next: (res: any) => {          
+            this.cursos = res;           
+          },
+          error: (err: any) => {
+            this.toast.error(err.message);
+          },
+        });
+      },
+    });
   }
 
   excluirInstituicao(Instituicao: any) {
@@ -62,7 +81,7 @@ export class DetalhesInstituicaoComponent implements OnInit {
     modalRef.componentInstance.cursoSelecionado = Curso;
   }
 
-  excluirCurso(Curso: any) {   
+  excluirCurso(Curso: any) {
     Swal.fire({
       title: `Deseja realmente excluir o curso ${Curso.nome}?`,
       text: 'Ao confirmar, o curso será excluído da base de dados',

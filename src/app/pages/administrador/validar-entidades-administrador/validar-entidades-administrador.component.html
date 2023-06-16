@@ -4,17 +4,20 @@
   </div>
 
   <section class="row entidadesAprovacao">
-    <div *ngIf="!entidadesAprovacao">
-      <span> No momento não existe vagas cadastradas! </span>
-    </div>
-    <section>
+    <ng-template #naoPossuiEntidades>
+      <ngb-alert class="alerta" #alert type="warning">
+        No momento não existem entidades para aprovação
+      </ngb-alert>
+    </ng-template>
+
+    <section *ngIf="entidadesAprovacao.length > 0 else naoPossuiEntidades">
       <div class="containerCard entidadesAprovacao">
         <ngb-alert #alert type="warning">
           Lembre-se de dar maior prioridade para as entidades que estão a mais tempo
           em espera!
         </ngb-alert>
         <div class="col-12 card-content-filtro">
-          <div class="col-9 p-1">{{tamanhoPagina}} vaga(s) pendente(s) para validação</div>
+          <div class="col-9 p-1">{{tamanhoPagina}} entidade(s) pendente(s) para validação</div>
           <div class="col-3 p-1">
             <ng-select
               [items]="listaOrdenacao"
@@ -38,10 +41,10 @@
             <div class="content-card-vaga col-11">
               <p><b>{{ entidade.nomeFantasia }}</b></p>
               <p><b>Razão Social:</b> {{entidade.razaoSocial }}</p>
-              <p><b>Cidade:</b> {{ entidade.cidade }} / {{ entidade.estado }}</p>
+              <p><b>Cidade:</b> {{ entidade.endereco.cidade }} / {{ entidade.endereco.estado }}</p>
             </div>
             <div class="col-1 content-card-icons">
-              <div class="first-icon" (click)="redirecionarDetalhes(entidade)">
+              <div class="first-icon" (click)="exibirDetalhes(entidade)">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -60,7 +63,7 @@
       </div>
     </section>
 
-    <div class="row">
+    <!-- <div class="row">
       <ngb-pagination
         class="pagination pull-right"
         [rotate]="true"
@@ -73,6 +76,6 @@
         (pageChange)="mudancaPagina(paginaAtual)"
       >
       </ngb-pagination>
-    </div>
+    </div> -->
   </section>
 </section>

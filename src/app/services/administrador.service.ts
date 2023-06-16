@@ -44,15 +44,14 @@ export class AdministradorService extends HttpHeaderService {
     }
   ): Observable<any> {
     return this.http.patch(
-      this.baseUrl + `admin/${idEntidade}/${idAdmin}`,
+      this.baseUrl + `admin/entidades/${idEntidade}/${idAdmin}`,
       { formResolucao },
       this.httpOptions
     );
   }
 
-  //arrumar no back
   public listarEstudantes(): Observable<any> {
-    return this.http.get(this.baseUrl + 'admin/estudantes', this.httpOptions);  
+    return this.http.get(this.baseUrl + 'admin/estudantes', this.httpOptions);
   }
 
   public detalhesEstudante(idEstudante: string): Observable<any> {
@@ -77,23 +76,10 @@ export class AdministradorService extends HttpHeaderService {
     );
   }
 
-  public listarAdmins(): Observable<any> {
-    return this.http.get(this.baseUrl + 'admin/admins', this.httpOptions);
-  }
-
-  public detalhesAdmin(idAdmin: string): Observable<any> {
-    return this.http.get(
-      this.baseUrl + `admin/admins/${idAdmin}`,
-      this.httpOptions
-    );
-  }
-
-  //ok
   public listarVagas(): Observable<any> {
     return this.http.get(this.baseUrl + 'admin/vagas', this.httpOptions);
   }
 
-  //ok
   public detalhesVaga(idvaga: string): Observable<any> {
     return this.http.get(
       this.baseUrl + `admin/vagas/${idvaga}`,
@@ -101,7 +87,6 @@ export class AdministradorService extends HttpHeaderService {
     );
   }
 
-  //ok
   public validarVaga(
     idVaga: string,
     idAdmin: string,
@@ -117,9 +102,24 @@ export class AdministradorService extends HttpHeaderService {
     );
   }
 
-  public editarDadosAdministrador(administrador: Administrador): void {}
+  public listarAdmins(): Observable<any> {
+    return this.http.get(this.baseUrl + 'admin/admins', this.httpOptions);
+  }
 
-  public cadastrarAdministrador(administrador: Administrador): void {}
+  /* NÃO PRECISOU  
+ public detalhesAdmin(idAdmin: string): Observable<any> {
+    return this.http.get(
+      this.baseUrl + `admin/admins/${idAdmin}`,
+      this.httpOptions
+    );
+  } */
 
-  public bloquearAdministrador(cpfUsuario: string): void {}
+  public promoverAdministrador(idUsuarioAvaliado: string): Observable<any> {
+    return this.http.patch(this.baseUrl + `admin/${idUsuarioAvaliado}/promover`, this.httpOptions);
+  }
+
+  public rebaixarAdministrador(idUsuarioAvaliado: string, comentario: string): Observable<any> {
+    return this.http.patch(this.baseUrl + `admin/${idUsuarioAvaliado}/rebaixar`, comentario, this.httpOptions);
+  }
+ 
 }

@@ -15,7 +15,7 @@
     </div>
     <div class="col-12">
       <label>CNPJ: </label>
-      <span>{{ entidade.cnpj | cnpj }}</span>
+      <span>{{ entidade.userid.login | cnpj }}</span>
     </div>
     <div class="col-12">
       <label>Nome do(a) responsável: </label>
@@ -31,16 +31,16 @@
     </div>
     <div class="col-12">
       <label>Endereço: </label>
-      <span>{{ entidade.logradouro }}, {{ entidade.numero }}, {{ entidade.bairro }} -
-        {{ entidade.cep }} - {{ entidade.cidade }}/{{entidade.estado }}</span>
+      <span>{{ entidade.endereco.logradouro }}, {{ entidade.endereco.numero }}, {{ entidade.endereco.bairro }} -
+        {{ entidade.endereco.cep }} - {{ entidade.endereco.cidade }}/{{entidade.endereco.estado }}</span>
     </div>
     <div class="col-12">
       <label>Data do cadastro: </label>
-      <span>{{ entidade.dataCriacao}}</span>
+      <span>{{ entidade.userid.dataCadastro}}</span>
     </div>
     <div class="col-12">
       <label>Status: </label>
-      <span>{{ entidade.status}}</span>
+      <span>{{ entidade.userid.statusPerfil}}</span>
     </div>
 
     <form [formGroup]="formResolucao">
@@ -48,19 +48,19 @@
         <label for="aprovacao">Aprovação da Entidade <em class="text-danger">*</em>
         </label>        
         <ng-select [items]="validacoes" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
-          (closeOnSelect)="(true)" formControlName="resolucaoChamado">
+          (closeOnSelect)="(true)" formControlName="avaliacao">
         </ng-select>
       </div>
-      <div class="col-8 form-group" *ngIf="formResolucao.get('resolucaoChamado').value == 2">
+      <div class="col-8 form-group" *ngIf="formResolucao.get('avaliacao').value == 2">
         <label for="exampleFormControlTextarea1">Informe o motivo da reprovação</label>
-        <textarea class="form-control" id="mensagemReprovacao" rows="3" formControlName="motivo"></textarea>
+        <textarea class="form-control" id="mensagemReprovacao" rows="3" formControlName="comentario"></textarea>
       </div>
     </form>
     <div class="buttonsVagasCadastradas">
       <button class="btn btn-success" (click)="aprovar()" [disabled]="
-              (formResolucao.get('resolucaoChamado').value == 2 &&
-                formResolucao.get('motivo').value == null) ||
-              formResolucao.get('resolucaoChamado').value == null
+              (formResolucao.get('avaliacao').value == 2 &&
+                formResolucao.get('comentario').value == null) ||
+              formResolucao.get('avaliacao').value == null
             ">
         Finalizar avaliação
       </button>
