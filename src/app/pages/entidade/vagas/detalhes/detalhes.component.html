@@ -41,22 +41,22 @@
     <div class="row col-12">
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Data início</span>
-        <p *ngIf="vaga.dataInicioTrabalho">{{vaga.dataInicioTrabalho}}</p>
+        <p *ngIf="vaga.dataInicioTrabalho">{{vaga.dataInicioTrabalho | localDate}}</p>
         <p class="" *ngIf="!vaga.dataInicioTrabalho"> - </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Data fim</span>
-        <p *ngIf="vaga.dataEncerramentoTrabalho">{{vaga.dataEncerramentoTrabalho}}</p>
+        <p *ngIf="vaga.dataEncerramentoTrabalho">{{vaga.dataEncerramentoTrabalho | localDate}}</p>
         <p class="" *ngIf="!vaga.dataEncerramentoTrabalho"> - </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Horário início</span>
-        <p *ngIf="vaga.horarioInicioTrabalho">{{vaga.horarioInicioTrabalho}}</p>
+        <p *ngIf="vaga.horarioInicioTrabalho">{{vaga.horarioInicioTrabalho | localHour}}</p>
         <p class="" *ngIf="!vaga.horarioInicioTrabalho"> - </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Horário fim</span>
-        <p *ngIf="vaga.horarioEncerramentoTrabalho">{{vaga.horarioEncerramentoTrabalho}}</p>
+        <p *ngIf="vaga.horarioEncerramentoTrabalho">{{vaga.horarioEncerramentoTrabalho | localHour}}</p>
         <p class="" *ngIf="!vaga.horarioEncerramentoTrabalho"> - </p>
       </div>
     </div>
@@ -87,7 +87,7 @@
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Encerramento da inscrição</span>
-        <p *ngIf="vaga.dataFinalizacaoVaga">{{vaga.dataFinalizacaoVaga}}</p>
+        <p *ngIf="vaga.dataFinalizacaoVaga">{{vaga.dataFinalizacaoVaga | localDate}}</p>
         <p class="" *ngIf="!vaga.dataFinalizacaoVaga"> Vaga em aprovação </p>
       </div>
     </div>
@@ -108,7 +108,7 @@
         Essa vaga ainda não possui inscritos
       </ng-template>
 
-      <table class="table table-striped" *ngIf="vaga.inscricoes else naoPossuiInscritos">
+      <table class="table table-striped" *ngIf="vaga.inscricoes.length > 0 else naoPossuiInscritos">
         <thead>
           <tr>
             <th class="col-3" scope="col">Nome</th>

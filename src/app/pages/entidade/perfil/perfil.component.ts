@@ -83,8 +83,9 @@ export class PerfilComponent implements OnInit {
     this.entidadeService.getPerfilEntidade(idUsuario).subscribe({
       next: (res:any) =>{
         this.usuario = res;  
-         this.formCadastro.setValue( Object.assign({}, res.entidade, res.usuario) );
-      },
+        console.log( Object.assign({}, res.entidade, res.usuario) );
+        this.formCadastro.setValue( Object.assign({}, res.entidade, res.usuario) );
+         },
       error: (err:any) => {
         this.toast.error(err?.message);
       }

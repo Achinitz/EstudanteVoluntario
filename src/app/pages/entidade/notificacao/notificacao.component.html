@@ -1,14 +1,13 @@
 <div>
     <h1>Minhas Notificações</h1>
-    <ngb-alert #alert type="primary" *ngIf="!notificacoes">
+    <ngb-alert #alert type="primary" *ngIf="notificacoes.length == 0">
       Você não possui nenhuma notificação.
     </ngb-alert>
   
-    <div *ngIf="notificacoes">
+    <div *ngIf="notificacoes.length > 0">
       <ngb-alert #alert type="warning">
         Aqui você pode verificar as notificações recebidas dos(as) administradores.
       </ngb-alert>
-     </div>
   
      <table class="table table-striped">
        <thead>
@@ -52,5 +51,7 @@
          </tr>
        </tbody>
      </table>
+    </div>
+
    </div>
   

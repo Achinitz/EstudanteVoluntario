@@ -3,9 +3,9 @@
     <h1>Vagas em Andamento</h1>
   </div>
 
-  <div *ngIf="vagasAndamento.length == 0">
+  <ngb-alert #alert type="warning" *ngIf="vagasAndamento.length == 0">
     <span> No momento não existem Vagas em Andamento. </span>
-  </div>
+  </ngb-alert>
 
   <section class="m-1" *ngIf="vagasAndamento.length > 0">
     <div class="col-12 card-content-filtro">
