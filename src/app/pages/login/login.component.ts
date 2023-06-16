@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
             } else if (usuario.user.perfil == 'ENTIDADE') {
               this.toast.success(usuario.message);
               this.router.navigate(['/Entidade']);
-            } else if (usuario.perfil == 'ADMINISTRADOR') {
+            } else if (usuario.user.perfil == 'ADMINISTRADOR') {
               this.toast.success(usuario.message);
               this.router.navigate(['/Admin']);
             }
