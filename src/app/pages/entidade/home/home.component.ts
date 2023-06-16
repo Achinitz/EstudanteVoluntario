@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/models/usuario.model';
 import { Vaga } from 'src/app/models/vaga';
-import { DataService } from 'src/app/services/data.service';
 import { EntidadeService } from 'src/app/services/entidade.service';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -53,7 +52,7 @@ export class HomeComponent implements OnInit {
   }
 
   getStatus(status: string) {
-    if (status == 'APROVAÇÃO') {
+    if (status == 'APROVACAO') {
       return 'bg-warning';
     } else if (status == 'ABERTA') {
       return 'bg-success text-white';

@@ -15,7 +15,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class NotificacoesComponent implements OnInit {
   usuarioLogado: Usuario;
-  notificacoes: Notificacao[] = []; 
+  notificacoes: Notificacao[] = [];
 
   constructor(
     private modalService: NgbModal,
@@ -26,17 +26,16 @@ export class NotificacoesComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuarioLogado = this.loginService.usuarioLogado;
-    this.getNotificacoes(this.usuarioLogado._id);   
+    this.getNotificacoes(this.usuarioLogado._id);
   }
 
   getNotificacoes(idUsuario: string) {
     this.notificacaoService.listarNotificacoes(idUsuario).subscribe({
       next: (res: any) => {
-        this.notificacoes = res;    
+        this.notificacoes = res;
       },
     });
-      }
-
+  }
 
   visualizarNotificacao(Notificacao: Notificacao) {
     const modalRef = this.modalService.open(ModalNotificacaoComponent, {

@@ -38,7 +38,7 @@ export class BuscarVagasComponent implements OnInit {
   }
 
   getStatus(status: string) {
-    if (status == 'APROVAÇÃO') {
+    if (status == 'APROVACAO') {
       return 'bg-warning';
     } else if (status == 'ABERTA') {
       return 'bg-success text-white';
