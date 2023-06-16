@@ -35,7 +35,6 @@ export class PerfilComponent implements OnInit {
       { value: this.cnpj, disabled: true },
       Validators.required
     ),
-    imgPerfil: new FormControl(null, Validators.required),
     missao: new FormControl(null, Validators.required),
     perfilVoluntario: new FormControl(null, Validators.required),
     razaoSocial: new FormControl(
@@ -43,7 +42,7 @@ export class PerfilComponent implements OnInit {
       Validators.required
     ),
     nomeFantasia: new FormControl(
-      { value: this.nomeFantasia, disabled: true },
+      { value: this.nomeFantasia, disabled: true }, 
       Validators.required
     ),
     nomeResponsavelCadastro: new FormControl(null, Validators.required),
@@ -83,8 +82,7 @@ export class PerfilComponent implements OnInit {
     });
     this.entidadeService.getPerfilEntidade(idUsuario).subscribe({
       next: (res:any) =>{
-        this.usuario = res;
-        console.log(Object.assign({}, res.entidade, res.usuario));
+        this.usuario = res;  
          this.formCadastro.setValue( Object.assign({}, res.entidade, res.usuario) );
       },
       error: (err:any) => {

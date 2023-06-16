@@ -28,8 +28,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { CnpjPipe } from 'src/app/shared/pipe/cnpj.pipe';
-import { PhonePipe } from 'src/app/shared/pipe/phone.pipe';
 import { DataService } from 'src/app/services/data.service';
 import { DetalhesInstituicaoComponent } from './cadastrar-instituicao/detalhes-instituicao/detalhes-instituicao.component';
 import { ModalCursoComponent } from './cadastrar-curso/modal-curso/modal-curso.component';
@@ -38,7 +36,7 @@ import { DetalheEntidadeAdministradorComponent } from './validar-entidades-admin
 import { EditarInstituicaoComponent } from './cadastrar-instituicao/editar-instituicao/editar-instituicao.component';
 import { EditarCadastroComponent } from './cadastrar-curso/editar-cadastro/editar-cadastro.component';
 import { AuthGuard } from 'src/app/guards/auth-guard';
-import { CpfPipe } from 'src/app/shared/pipe/cpf.pipe';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -58,9 +56,6 @@ import { CpfPipe } from 'src/app/shared/pipe/cpf.pipe';
     AdministradorComponent,
     AdicionarCursoComponent,
     AdicionarAdminComponent,    
-    CnpjPipe,
-    CpfPipe,
-    PhonePipe,
     DetalhesInstituicaoComponent,
     AdicionarAdministradorComponent,
     EditarInstituicaoComponent,
@@ -84,7 +79,8 @@ import { CpfPipe } from 'src/app/shared/pipe/cpf.pipe';
     MatIconModule,
     MatDividerModule,
     MatListModule,
+    SharedModule
   ],
-  providers: [CnpjPipe, PhonePipe, CpfPipe, DataService],
+  providers: [DataService, SharedModule],
 })
 export class AdministradorModule {}

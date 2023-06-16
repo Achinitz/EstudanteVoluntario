@@ -27,8 +27,7 @@ import { ModalNotificacaoComponent } from './notificacoes/modal-notificacao/moda
 import { ModalTermoComponent } from './minhas-inscricoes/modal-termo/modal-termo.component';
 import { EstudanteService } from 'src/app/services/estudante.service';
 import { HttpHeaderService } from 'src/app/services/http-header.service';
-import { LocalDatePipe } from 'src/app/shared/pipe/local-date.pipe';
-import { LocalHourPipe } from 'src/app/shared/pipe/local-hour.pipe';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -46,8 +45,6 @@ import { LocalHourPipe } from 'src/app/shared/pipe/local-hour.pipe';
     NotificacoesComponent,
     ModalNotificacaoComponent,
     ModalTermoComponent,
-    LocalDatePipe,
-    LocalHourPipe,
   ],
   imports: [
     CommonModule,
@@ -63,7 +60,7 @@ import { LocalHourPipe } from 'src/app/shared/pipe/local-hour.pipe';
     MatFormFieldModule,
     MatListModule,
     MatBadgeModule,
-   
+    SharedModule
    
   ],
   providers: [DataService, EstudanteService,HttpHeaderService],

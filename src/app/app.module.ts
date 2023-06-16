@@ -40,10 +40,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { Pagina404Component } from './pages/pagina404/pagina404.component';
 import { AuthGuard } from './guards/auth-guard';
 import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.component';
-import { NomeUsuarioPipe } from './shared/pipe/nome-usuario.pipe';
 import { LoginService } from './services/login.service';
 import { CommonModule } from '@angular/common';
 import { TokenInterceptor } from './helpers/token.interceptor';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -61,8 +61,7 @@ import { TokenInterceptor } from './helpers/token.interceptor';
     SobreNosComponent,
     Pagina404Component,
     EsqueciSenhaComponent,
-    NomeUsuarioPipe,
-    
+       
 
   ],
   exports: [
@@ -70,8 +69,7 @@ import { TokenInterceptor } from './helpers/token.interceptor';
     MatFormFieldModule,
     MatNativeDateModule,
     NgSelectModule,
-    ToastrModule,
-   
+    ToastrModule,    
   ],
   imports: [
     AppRoutingModule,
@@ -89,19 +87,19 @@ import { TokenInterceptor } from './helpers/token.interceptor';
     MatSidenavModule,
     MatTabsModule,
     MatListModule,
-    //  MatToolbar,
     NgbModule,
     NgSelectModule,
     NgxMaskModule.forRoot(),
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [
     DataService, 
     CookieService, 
-    LoginService,
+    LoginService,    
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
   ],
   bootstrap: [

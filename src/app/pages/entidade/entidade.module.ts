@@ -31,6 +31,7 @@ import { NotificacaoComponent } from './notificacao/notificacao.component';
 import { ModalNotificacaoComponent } from './notificacao/modal-notificacao/modal-notificacao.component';
 import { VagasAbertasComponent } from './vagas-abertas/vagas-abertas.component';
 import { VagasAndamentoComponent } from './vagas-andamento/vagas-andamento.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,7 @@ import { VagasAndamentoComponent } from './vagas-andamento/vagas-andamento.compo
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
-    
+    SharedModule
   ],
   providers: [DataService],
 })
