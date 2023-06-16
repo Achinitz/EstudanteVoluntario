@@ -20,6 +20,6 @@ export class UsuarioService {
   }
 
   // todas() {
-  //   return this.http.get(this.API_URL + '/admin/usuarios');
+  //   return this.http.get(this.API_URL + '/Administrador/usuarios');
   // }
 }

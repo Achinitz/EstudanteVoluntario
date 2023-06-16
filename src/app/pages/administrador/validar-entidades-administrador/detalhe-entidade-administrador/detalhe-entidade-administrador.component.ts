@@ -35,7 +35,7 @@ export class DetalheEntidadeAdministradorComponent implements OnInit {
     this.formResolucao.get('cnpj').setValue(this.entidade.cnpj);
 
     if (this.entidade == null) {
-      this.router.navigate(['/Admin/validar-entidades']);
+      this.router.navigate(['/Administrador/validar-entidades']);
     }
     console.log(this.entidade);
   }
@@ -50,7 +50,7 @@ export class DetalheEntidadeAdministradorComponent implements OnInit {
   }
 
   retornar() {
-    this.router.navigate(['/Admin/validar-entidades']);
+    this.router.navigate(['/Administrador/validar-entidades']);
   }
 
   reprovar() {

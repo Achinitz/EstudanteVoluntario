@@ -21,7 +21,7 @@ export class DetalhesInstituicaoComponent implements OnInit {
   ) {
     this.instituicao = this.dataService.data;
     if (this.dataService.data.nome == null) {
-      this.router.navigate(['/Admin/cadastrar-instituicao']);
+      this.router.navigate(['/Administrador/cadastrar-instituicao']);
     }
   }
 

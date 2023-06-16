@@ -137,7 +137,7 @@ export class CadastrarCursoComponent implements OnInit {
   }
 
   editarCurso(curso:any){
-    this.router.navigate(['/Admin/editar-curso']);
+    this.router.navigate(['/Administrador/editar-curso']);
   }
 
   excluirCurso(Curso: any) {   

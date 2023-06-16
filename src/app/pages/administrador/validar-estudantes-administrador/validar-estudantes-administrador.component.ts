@@ -44,7 +44,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
   }
 
   exibirDetalhes(value: Estudante): void {
-    this.router.navigate(['/Admin/validar-estudante', { id: value._id }]);
+    this.router.navigate(['/Administrador/validar-estudante', { id: value._id }]);
   }
 
   ordenarLista() {

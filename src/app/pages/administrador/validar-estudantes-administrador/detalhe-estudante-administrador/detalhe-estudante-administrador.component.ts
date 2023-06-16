@@ -55,7 +55,7 @@ export class DetalheEstudanteAdministradorComponent implements OnInit {
   }
 
   retornar() {
-    this.router.navigate(['/Admin/validar-estudantes']);
+    this.router.navigate(['/Administrador/validar-estudantes']);
   }
 
   aprovar() {
@@ -67,7 +67,7 @@ export class DetalheEstudanteAdministradorComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
-        this.router.navigate(['/Admin/validar-estudantes']);
+        this.router.navigate(['/Administrador/validar-estudantes']);
       },
       error: (erro: any) => {
         this.toast.error(erro.error.message);        

@@ -19,7 +19,7 @@ export class ModalCursoComponent implements OnInit, OnDestroy {
   ) {}
 
   retornar() {
-    this.router.navigate(['/Admin/cadastrar-curso']);
+    this.router.navigate(['/Administrador/cadastrar-curso']);
   }
 
   ngOnInit(): void {}

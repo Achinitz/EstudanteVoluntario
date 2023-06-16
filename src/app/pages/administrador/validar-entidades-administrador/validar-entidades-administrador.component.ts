@@ -72,7 +72,7 @@ export class ValidarEntidadesAdministradorComponent implements OnInit {
 
   redirecionarDetalhes(value: any) {
     this.data.data = value;
-    this.router.navigate(['/Admin/validar-entidade']);
+    this.router.navigate(['/Administrador/validar-entidade']);
   }
 
   ordenarLista() {

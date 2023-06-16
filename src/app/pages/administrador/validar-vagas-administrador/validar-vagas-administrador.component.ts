@@ -44,7 +44,7 @@ export class ValidarVagasAdministradorComponent implements OnInit {
   }
 
   exibirDetalhes(value: Vaga): void {
-    this.router.navigate(['/Admin/detalhe-vaga', { id: value._id }]);
+    this.router.navigate(['/Administrador/detalhe-vaga', { id: value._id }]);
   }
 
   ordenarLista() {

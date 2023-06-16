@@ -176,12 +176,12 @@ export class CadastrarInstituicaoComponent implements OnInit {
 
   visualizarInstituicao(Instituicao: any) {
     this.dataService.data = Instituicao;
-    this.router.navigate(['/Admin/detalhe-instituicao']);
+    this.router.navigate(['/Administrador/detalhe-instituicao']);
   }
 
   editarInstituicao(Instituicao: any){
     this.dataService.data = Instituicao;
-    this.router.navigate(['/Admin/editar-instituicao']);
+    this.router.navigate(['/Administrador/editar-instituicao']);
   }
 
   excluirInstituicao(Instituicao: any) {

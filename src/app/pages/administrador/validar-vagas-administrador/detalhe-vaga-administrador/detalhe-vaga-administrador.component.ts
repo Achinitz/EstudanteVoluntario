@@ -65,7 +65,7 @@ export class DetalheVagaAdministradorComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
-        this.router.navigate(['/Admin/validar-vagas']);
+        this.router.navigate(['/Administrador/validar-vagas']);
       },
       error: (erro: any) => {
         this.toast.error(erro.error.message);        
@@ -75,6 +75,6 @@ export class DetalheVagaAdministradorComponent implements OnInit {
 
 
   retornar() {
-    this.router.navigate(['/Admin/validar-vagas']);
+    this.router.navigate(['/Administrador/validar-vagas']);
   }
 }
