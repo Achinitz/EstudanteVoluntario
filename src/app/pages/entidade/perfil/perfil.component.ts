@@ -31,7 +31,7 @@ export class PerfilComponent implements OnInit {
   estados: any = [];
 
   public formCadastro = new FormGroup({
-    cnpj: new FormControl(
+    login: new FormControl(
       { value: this.cnpj, disabled: true },
       Validators.required
     ),
@@ -49,13 +49,15 @@ export class PerfilComponent implements OnInit {
     nomeResponsavelCadastro: new FormControl(null, Validators.required),
     email: new FormControl(null, [Validators.required, Validators.email]),
     telefone: new FormControl(null, Validators.required),
-    cep: new FormControl(null, Validators.required),
-    logradouro: new FormControl(null, Validators.required),
-    numero: new FormControl(null, Validators.required),
-    bairro: new FormControl(null, Validators.required),
-    complemento: new FormControl(null, Validators.required),
-    estado: new FormControl(null, Validators.required),
-    cidade: new FormControl(null, Validators.required),
+    endereco: new FormGroup({
+      cep: new FormControl(null, Validators.required),
+      logradouro: new FormControl(null, Validators.required),
+      numero: new FormControl(null, Validators.required),
+      bairro: new FormControl(null, Validators.required),
+      complemento: new FormControl(null, Validators.required),
+      estado: new FormControl(null, Validators.required),
+      cidade: new FormControl(null, Validators.required),
+    }),
     senha: new FormControl(null, Validators.required),
     novaSenha: new FormControl(null),
     confirmarSenha: new FormControl(null, Validators.required),
@@ -82,6 +84,8 @@ export class PerfilComponent implements OnInit {
     this.entidadeService.getPerfilEntidade(idUsuario).subscribe({
       next: (res:any) =>{
         this.usuario = res;
+        console.log(res);
+         this.formCadastro.setValue(res.entidade);
       },
       error: (err:any) => {
         this.toast.error(err?.message);
