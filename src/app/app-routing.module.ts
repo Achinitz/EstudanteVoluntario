@@ -29,7 +29,7 @@ const routes: Routes = [
     component: EsqueciSenhaComponent,
   },
   {
-    path: 'Admin',
+    path: 'Administrador',
     loadChildren: () =>
       import('./pages/administrador/administrador.module').then(
         (m) => m.AdministradorModule

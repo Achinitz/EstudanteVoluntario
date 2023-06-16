@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/Entidade']);
             } else if (usuario.user.perfil == 'ADMINISTRADOR') {
               this.toast.success(usuario.message);
-              this.router.navigate(['/Admin']);
+              this.router.navigate(['/Administrador']);
             }
           } else {
             this.loading = false;
