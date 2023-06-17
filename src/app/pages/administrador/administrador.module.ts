@@ -11,10 +11,9 @@ import { ValidarEntidadesAdministradorComponent } from './validar-entidades-admi
 import { DetalheVagaAdministradorComponent } from './validar-vagas-administrador/detalhe-vaga-administrador/detalhe-vaga-administrador.component';
 import { DetalheEstudanteAdministradorComponent } from './validar-estudantes-administrador/detalhe-estudante-administrador/detalhe-estudante-administrador.component';
 import { CadastrarInstituicaoComponent } from './cadastrar-instituicao/cadastrar-instituicao.component';
-import { CadastrarCursoComponent } from './cadastrar-curso/cadastrar-curso.component';
 import { AdicionarInstituicaoComponent } from './cadastrar-instituicao/adicionar-instituicao/adicionar-instituicao.component';
 import { AdministradorComponent } from './administrador.component';
-import { AdicionarCursoComponent } from './cadastrar-curso/adicionar-curso/adicionar-curso.component';
+import { AdicionarCursoComponent } from './cadastrar-instituicao/adicionar-curso/adicionar-curso.component';
 import { AdicionarAdminComponent } from './cadastrar-admin/adicionar-admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
@@ -30,11 +29,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { DataService } from 'src/app/services/data.service';
 import { DetalhesInstituicaoComponent } from './cadastrar-instituicao/detalhes-instituicao/detalhes-instituicao.component';
-import { ModalCursoComponent } from './cadastrar-curso/modal-curso/modal-curso.component';
 import { AdicionarAdministradorComponent } from './cadastrar-admin/adicionar-administrador/adicionar-administrador.component';
 import { DetalheEntidadeAdministradorComponent } from './validar-entidades-administrador/detalhe-entidade-administrador/detalhe-entidade-administrador.component';
 import { EditarInstituicaoComponent } from './cadastrar-instituicao/editar-instituicao/editar-instituicao.component';
-import { EditarCadastroComponent } from './cadastrar-curso/editar-cadastro/editar-cadastro.component';
 import { AuthGuard } from 'src/app/guards/auth-guard';
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -49,9 +46,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     DetalheVagaAdministradorComponent,
     DetalheEstudanteAdministradorComponent,
     DetalheEntidadeAdministradorComponent,
-    CadastrarInstituicaoComponent,
-    CadastrarCursoComponent,
-    ModalCursoComponent,
+    CadastrarInstituicaoComponent,       
     AdicionarInstituicaoComponent,
     AdministradorComponent,
     AdicionarCursoComponent,
@@ -59,7 +54,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     DetalhesInstituicaoComponent,
     AdicionarAdministradorComponent,
     EditarInstituicaoComponent,
-    EditarCadastroComponent,
+    
   ],
   imports: [
     MatIconModule,

@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdicionarAdminComponent } from './cadastrar-admin/adicionar-admin.component';
 import { AdministradorComponent } from './administrador.component';
-import { AdicionarCursoComponent } from './cadastrar-curso/adicionar-curso/adicionar-curso.component';
-import { CadastrarCursoComponent } from './cadastrar-curso/cadastrar-curso.component';
+import { AdicionarCursoComponent } from './cadastrar-instituicao/adicionar-curso/adicionar-curso.component';
 import { AdicionarInstituicaoComponent } from './cadastrar-instituicao/adicionar-instituicao/adicionar-instituicao.component';
 import { CadastrarInstituicaoComponent } from './cadastrar-instituicao/cadastrar-instituicao.component';
 import { DetalhesInstituicaoComponent } from './cadastrar-instituicao/detalhes-instituicao/detalhes-instituicao.component';
@@ -17,7 +16,7 @@ import { ValidarVagasAdministradorComponent } from './validar-vagas-administrado
 import { AdicionarAdministradorComponent } from './cadastrar-admin/adicionar-administrador/adicionar-administrador.component';
 import { DetalheEstudanteAdministradorComponent } from './validar-estudantes-administrador/detalhe-estudante-administrador/detalhe-estudante-administrador.component';
 import { EditarInstituicaoComponent } from './cadastrar-instituicao/editar-instituicao/editar-instituicao.component';
-import { EditarCadastroComponent } from './cadastrar-curso/editar-cadastro/editar-cadastro.component';
+
 import { AuthGuard } from 'src/app/guards/auth-guard';
 
 
@@ -68,12 +67,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         data: {role: 'ADMINISTRADOR'},
       },
-      {
-        path: 'cadastrar-curso',
-        component: CadastrarCursoComponent,
-        canActivate: [AuthGuard],
-        data: {role: 'ADMINISTRADOR'},
-      },
+
       {
         path: 'adicionar-instituicao',
         component: AdicionarInstituicaoComponent,
@@ -122,12 +116,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         data: {role: 'ADMINISTRADOR'},
       },
-      {
-        path: 'editar-curso',
-        component: EditarCadastroComponent,
-        canActivate: [AuthGuard],
-        data: {role: 'ADMINISTRADOR'},
-      },
+    
       {
         path: '**',
         redirectTo: '',
