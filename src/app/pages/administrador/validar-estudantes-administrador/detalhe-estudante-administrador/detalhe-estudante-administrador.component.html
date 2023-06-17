@@ -19,7 +19,7 @@
             </div>
             <div class="col-lg-4 col-sm-12">
                 <label>Data de Nascimento: </label>
-                <span>{{ estudante.dataNascimento }}</span>
+                <span>{{ estudante.dataNascimento | localDate}}</span>
             </div>
         </div>
         <div class="row">
@@ -61,11 +61,11 @@
         <div class="row">
             <div class="col-lg-4 col-sm-12">
                 <label>Ano início: </label>
-                <span>{{ estudante.curso.anoInicio}}</span>
+                <span>{{ estudante.curso.anoInicio | localDate }}</span>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <label>Ano conclusão: </label>
-                <span>{{ estudante.curso.anoConclusao}}</span>
+                <span>{{ estudante.curso.anoConclusao | localDate }}</span>
             </div>
         </div>
         <div class="col-12">
@@ -74,7 +74,7 @@
         </div>
         <div class="col-12">
             <label>Data do cadastro: </label>
-            <span>{{ estudante.userid.dataCadastro}}</span>
+            <span>{{ estudante.userid.dataCadastro | localDate}}</span>
         </div>
         <div class="col-12">
             <label>Status: </label>

@@ -22,13 +22,17 @@
   padding-bottom: 1em;
 }
 
-.buttonForm {
-  margin-bottom: 1rem;
-}
-
-.btn {
+.buttonsVagasCadastradas {
+  display: flex;
+  align-items: center;
   margin: 1rem;
-  &:hover {
-    opacity: 0.9;
+
+  button:first-child {
+    margin-right: 0.5rem;
   }
 }
+
+.voltar{
+  display:flex;   
+  justify-content: flex-end;
+} 

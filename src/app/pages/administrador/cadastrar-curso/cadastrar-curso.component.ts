@@ -140,6 +140,8 @@ export class CadastrarCursoComponent implements OnInit {
     this.router.navigate(['/Administrador/editar-curso']);
   }
 
+
+  
   excluirCurso(Curso: any) {   
     Swal.fire({
       title: `Deseja realmente excluir o curso ${Curso.nome}?`,

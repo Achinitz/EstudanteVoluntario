@@ -34,7 +34,7 @@
             <div class="content-card-vaga col-8">
               <p><b>{{ vaga.entidadeId.nome }} - {{ vaga.nomeVaga }}</b></p>
               <p><b>Detalhes:</b> {{ vaga.descricao }}</p>
-              <p><b>Data de início do trabalho:</b> {{ vaga.dataInicioTrabalho }}</p>
+              <p><b>Data de início do trabalho:</b> {{ vaga.dataInicioTrabalho | localDate }}</p>
             </div>
             <div class="col-1 content-card-icons">
               <div class="first-icon" (click)="exibirDetalhes(vaga)">

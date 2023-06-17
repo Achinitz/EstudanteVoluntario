@@ -27,6 +27,13 @@ export class InstituicaoService extends HttpHeaderService {
     );
   }
 
+  public excluirInstituicao(idInstituicao: string) {
+    return this.http.delete(
+      this.baseUrl + `ies/${idInstituicao}`,  
+      this.httpOptions
+    );
+  } 
+
   /*  ARRUMAR NO BACK   
   public editarInstituicao(idInstituicao: string, instituicao: Instituicao) {
     return this.http.patch(
@@ -36,11 +43,5 @@ export class InstituicaoService extends HttpHeaderService {
     );
   } */
 
-  /* ARRUMAR NO BACK
-  public excluirInstituicao(idInstituicao: string) {
-    return this.http.delete(
-      this.baseUrl + `ies/${idInstituicao}`,
-      this.httpOptions
-    );
-  } */
+ 
 }

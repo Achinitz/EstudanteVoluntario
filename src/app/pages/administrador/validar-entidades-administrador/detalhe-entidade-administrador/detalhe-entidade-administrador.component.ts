@@ -49,8 +49,7 @@ export class DetalheEntidadeAdministradorComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.administradorService.detalhesEntidade(this.id).subscribe({
       next: (res: any) => {
-        this.entidade = res.entidade;
-        console.log(this.entidade);
+        this.entidade = res.entidade;     
       },
     });
   }

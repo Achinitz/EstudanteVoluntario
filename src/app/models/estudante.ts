@@ -8,7 +8,7 @@ export class Estudante extends Usuario {
     public confirmaNomeSocial?: boolean,
     public identificacaoGenero?: string,
     public estadoCivil?: string,
-    public dataNascimento?: Date,
+    public dataNascimento?: string,
     public rg?: string,
     public rgEmissor?: string,
     public email?: string,
@@ -28,8 +28,8 @@ export class Estudante extends Usuario {
       nomeCurso?: string;
       instituicao?: string;
       grau?: string;
-      anoInicio?: Date;
-      anoConclusao?: Date;
+      anoInicio?: string;
+      anoConclusao?: string;
     },
     public comprovanteMatricula?: string,
     public userid?: {
@@ -38,7 +38,7 @@ export class Estudante extends Usuario {
       dataCadastro?: string;
       statusPerfil?: string;
     },
-    public dataAprovacao?: Date,
+    public dataAprovacao?: string,
     public idAdmin?: string,
     public comentario?: string
   ) {

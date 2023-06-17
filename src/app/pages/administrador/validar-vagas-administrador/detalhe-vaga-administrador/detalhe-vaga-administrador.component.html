@@ -47,21 +47,21 @@
     <div class="row">
       <div class="col-lg-4 col-sm-12">
         <label>Data de início do trabalho: </label>
-        <span>{{ vaga.dataInicioTrabalho}}</span>
+        <span>{{ vaga.dataInicioTrabalho | localDate}}</span>
       </div>
       <div class="col-lg-4 col-sm-12">
         <label>Data de término do trabalho: </label>
-        <span>{{ vaga.dataEncerramentoTrabalho}}</span>
+        <span>{{ vaga.dataEncerramentoTrabalho | localDate}}</span>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-4 col-sm-12">
         <label>Horário de início do trabalho: </label>
-        <span>{{ vaga.horarioInicioTrabalho}}</span>
+        <span>{{ vaga.horarioInicioTrabalho | localHour}}</span>
       </div>
       <div class="col-lg-4 col-sm-12">
         <label>Horário de término do trabalho: </label>
-        <span>{{ vaga.horarioEncerramentoTrabalho}}</span>
+        <span>{{ vaga.horarioEncerramentoTrabalho | localHour}}</span>
       </div>
     </div>
 

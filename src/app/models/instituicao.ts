@@ -2,7 +2,7 @@ export class Instituicao {
     constructor(
         public _id?: string,
         public cnpj?: string,
-        public nome?: boolean,
+        public nome?: string,
         public sigla?: string,
         public endereco?: {
             cep?: string;

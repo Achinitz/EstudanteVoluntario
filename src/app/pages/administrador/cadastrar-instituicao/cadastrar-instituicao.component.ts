@@ -38,14 +38,9 @@ export class CadastrarInstituicaoComponent implements OnInit {
     ]);
   }
 
-  editarInstituicao(Instituicao: any) {
-    this.dataService.data = Instituicao;
-    this.router.navigate(['/Administrador/editar-instituicao']);
-  }
-
-  excluirInstituicao(Instituicao: any) {
+  excluirInstituicao(instituicao: Instituicao) {
     Swal.fire({
-      title: `Deseja realmente excluir a instituição ${Instituicao.nome}?`,
+      title: `Deseja realmente excluir a instituição ${instituicao.nome}?`,
       text: 'Ao confirmar, a instituição será excluída da base de dados',
       icon: 'warning',
       showCancelButton: true,
@@ -55,15 +50,28 @@ export class CadastrarInstituicaoComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: `Instituição ${Instituicao.nome} excluída com sucesso!`,
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        this.instituicaoService.excluirInstituicao(instituicao._id).subscribe({
+          next: (res: any) => {
+            Swal.fire({
+              title: res.message,
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 1500,
+            }).finally(() => window.location.reload());
+            this.router.navigate(['/Administrador/cadastrar-instituicao']);
+          }
+        })
+        
       }
     });
   }
+  
+  editarInstituicao(Instituicao: any) {
+    this.dataService.data = Instituicao;
+    this.router.navigate(['/Administrador/editar-instituicao']);
+  }
+
+  
 
   paginaAtual = 1;
   tamanhoPagina: number = this.instituicoes.length;

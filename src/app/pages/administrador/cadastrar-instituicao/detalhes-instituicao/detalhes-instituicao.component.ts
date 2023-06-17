@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
-import { ModalCursoComponent } from '../../cadastrar-curso/modal-curso/modal-curso.component';
 import { Instituicao } from 'src/app/models/instituicao';
 import { CursoService } from 'src/app/services/curso.service';
 import { InstituicaoService } from 'src/app/services/instituicao.service';
@@ -19,14 +17,13 @@ export class DetalhesInstituicaoComponent implements OnInit {
   id: any;
   instituicao: Instituicao;
   cursos: Curso[] = [];
-  modalReference: any;
 
   constructor(
-    private modalService: NgbModal,
     private route: ActivatedRoute,
     private cursoService: CursoService,
     private instituicaoService: InstituicaoService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -36,11 +33,12 @@ export class DetalhesInstituicaoComponent implements OnInit {
   getDetalhesInstituicao() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.instituicaoService.visualizarInstituicao(this.id).subscribe({
-      next: (res: any) => {    
+      next: (res: any) => {
         this.instituicao = res.instituicao;
+        console.log(this.instituicao);
         this.cursoService.listarCursos(this.id).subscribe({
-          next: (res: any) => {          
-            this.cursos = res;           
+          next: (res: any) => {
+            this.cursos = res;
           },
           error: (err: any) => {
             this.toast.error(err.message);
@@ -50,40 +48,16 @@ export class DetalhesInstituicaoComponent implements OnInit {
     });
   }
 
-  excluirInstituicao(Instituicao: any) {
-    Swal.fire({
-      title: `Deseja realmente excluir a instituição ${Instituicao.nome}?`,
-      text: 'Ao confirmar, a instituição será excluída da base de dados',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Confirmar',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: `Instituição ${Instituicao.nome} excluída com sucesso!`,
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
+  adicionarCurso() {
+    this.router.navigate([
+      '/Administrador/adicionar-curso',
+      { id: this.instituicao._id },
+    ]);
   }
 
-  visualizarCurso(Curso: any) {
-    const modalRef = this.modalService.open(ModalCursoComponent, {
-      windowClass: 'auto',
-      backdrop: 'static',
-      centered: true,
-    });
-    modalRef.componentInstance.cursoSelecionado = Curso;
-  }
-
-  excluirCurso(Curso: any) {
+  excluirCurso(curso: Curso) {
     Swal.fire({
-      title: `Deseja realmente excluir o curso ${Curso.nome}?`,
+      title: `Deseja realmente excluir o curso ${curso.nomeCurso}?`,
       text: 'Ao confirmar, o curso será excluído da base de dados',
       icon: 'warning',
       showCancelButton: true,
@@ -93,12 +67,44 @@ export class DetalhesInstituicaoComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: `Curso ${Curso.nome} excluído com sucesso!`,
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
+        this.cursoService.excluirCurso(curso._id).subscribe({
+          next: (res: any) => {
+            Swal.fire({
+              title: `Curso ${curso.nomeCurso} excluído com sucesso!`,
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 1500,
+            }).finally(() => window.location.reload());
+          },
         });
+      }
+    });
+  }
+
+  excluirInstituicao(instituicao: Instituicao) {
+    Swal.fire({
+      title: `Deseja realmente excluir a instituição ${instituicao.nome}?`,
+      text: 'Ao confirmar, a instituição será excluída da base de dados',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.instituicaoService.excluirInstituicao(instituicao._id).subscribe({
+          next: (res: any) => {
+            Swal.fire({
+              title: res.message,
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            this.router.navigate(['/Administrador/cadastrar-instituicao']);
+          }
+        })
+        
       }
     });
   }

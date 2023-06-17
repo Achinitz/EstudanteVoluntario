@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
           ) {
             this.loginService.usuarioLogado = usuario.user;
             this.storageService.setData('token', usuario.token);
+            this.storageService.setData('refresh', usuario.refresh);
             this.loading = true;
             if (usuario.user.perfil == 'ESTUDANTE') {
               this.toast.success(usuario.message);
@@ -54,7 +55,7 @@ export class LoginComponent implements OnInit {
             } else if (usuario.user.perfil == 'ENTIDADE') {
               this.toast.success(usuario.message);
               this.router.navigate(['/Entidade']);
-            } else if (usuario.user.perfil == 'ADMINISTRADOR') {
+            } else if (usuario.user.perfil == 'ADMINISTRADOR' || 'ADMINISTRADORGERAL') {
               this.toast.success(usuario.message);
               this.router.navigate(['/Administrador']);
             }

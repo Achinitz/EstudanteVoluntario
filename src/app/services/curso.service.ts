@@ -21,32 +21,17 @@ export class CursoService extends HttpHeaderService {
 
   public cadastrarCurso(idInstituicao: string, curso: Curso) {
     return this.http.post(
-      this.baseUrl + `ies/${idInstituicao}`,
+      this.baseUrl + `ies/${idInstituicao}/cadastrarcurso`,
       curso,
       this.httpOptions
     );
   }
 
-  public visualizarCurso(idCurso: string): Observable<any> {
-    return this.http.get(
-      this.baseUrl + `ies/curso/${idCurso}`,
-      this.httpOptions
-    );
-  }
-
-  /*  ARRUMAR NO BACK
-  public editarCurso(idCurso: string) {
-    return this.http.patch(
-      this.baseUrl + `ies/curso/${idCurso}`,
-      this.httpOptions
-    );
-  } */
-
-/*  ARRUMAR NO BACK
   public excluirCurso(idCurso: string) {
     return this.http.delete(
       this.baseUrl + `ies/curso/${idCurso}`,
       this.httpOptions
     );
-  } */
+  }
+  
 }
