@@ -1,11 +1,9 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Entidade } from 'src/app/models/entidade';
 import { Estudante } from 'src/app/models/estudante';
-import { Inscricao } from 'src/app/models/inscricao';
-import { Termoadesao } from 'src/app/models/termoadesao';
 import { Vaga } from 'src/app/models/vaga';
+import { TermoadesaoService } from 'src/app/services/termoadesao.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,24 +12,23 @@ import Swal from 'sweetalert2';
   styleUrls: ['./modal-termo.component.scss'],
 })
 export class ModalTermoComponent implements OnInit {
-  @Input() termo: Termoadesao;
   @Input() estudante: Estudante;
+  @Input() termo: any;
   @Input() entidade: Entidade;
   @Input() vaga: Vaga;
-  @Input() inscricao: Inscricao;
-
 
   public dia = new Date().getDate();
-  public mes = new Date().toLocaleString('default', { month: 'long' });  
+  public mes = new Date().toLocaleString('default', { month: 'long' });
   public ano = new Date().getFullYear();
+  private _location: any;
 
-  constructor(    
-    private router: Router,
-    public activeModal: NgbActiveModal
-  ) {    
-  }
+  constructor(
+    public activeModal: NgbActiveModal,
+    private termoAdesaoService: TermoadesaoService
+  ) {}
 
- 
+  ngOnInit(): void {}
+
   aceitarTermo() {
     Swal.fire({
       title: 'Deseja realmente aceitar o Termo de Adesão?',
@@ -44,15 +41,25 @@ export class ModalTermoComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
+        this.termoAdesaoService
+          .aceitarTermo(this.estudante.userid._id, this.termo._id)
+          .subscribe({
+            next: (res: any) => {
+              console.log(res.message);
+            },
+          });
         Swal.fire({
           title: 'O Termo de Adesão foi aceito com sucesso!',
           icon: 'success',
           showConfirmButton: false,
           timer: 1500,
         });
+        this.activeModal.close(window.location.reload());
       }
     });
-  
   }
-  ngOnInit(): void {}
+
+  backClicked() {
+    this._location.back();
+  }
 }

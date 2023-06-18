@@ -10,10 +10,10 @@
     </div>
     <div class="row col-12">
       <div class="col-6">
-        <p><label>RG: </label>{{ estudante.rg }} </p>
+        <p><label>RG: </label>{{ estudante.rg }} - {{ estudante.rgEmissor }} </p>
       </div>
       <div class="col-6">
-        <p><label>CPF: </label> {{ estudante.userid.login }} </p>
+        <p><label>CPF: </label> {{ estudante.userid.login | cpf }} </p>
       </div>
     </div>
     <div class="row col-12">
@@ -28,7 +28,8 @@
       <p><label>E-mail: </label> {{ estudante.email }} </p>
     </div>
     <div class="col-12">
-      <span><label>Endereço: </label> {{ estudante.endereco.logradouro }}, {{ estudante.endereco.numero }}, {{ estudante.endereco.bairro }} -
+      <span><label>Endereço: </label> {{ estudante.endereco.logradouro }}, {{ estudante.endereco.numero }}, {{
+        estudante.endereco.bairro }} -
         {{ estudante.endereco.cep }} - {{ estudante.endereco.cidade }}/{{estudante.endereco.estado }}</span>
     </div>
   </section>
@@ -40,17 +41,18 @@
       <p><label>Razão Social: </label> {{ entidade.razaoSocial }} </p>
     </div>
     <div class="col-12">
-      <p><label>CNPJ: </label> {{ entidade.userid.login }} </p>
+      <p><label>CNPJ: </label> {{ entidade.userid.login | cnpj }} </p>
     </div>
     <div class="col-12">
-      <p><label>Telefone: </label> {{ entidade.telefone }} </p>
+      <p><label>Telefone: </label> {{ entidade.telefone | phone }} </p>
     </div>
     <div class="col-12">
       <p><label>E-mail: </label> {{ entidade.email }} </p>
     </div>
     <div class="col-12">
-      <span><label>Endereço: </label> {{ entidade.endereco.logradouro }}, {{  entidade.endereco.numero }}, {{  entidade.endereco.bairro }} -
-        {{  entidade.endereco.cep }} - {{  entidade.endereco.cidade }}/{{ entidade.endereco.estado }}</span>
+      <span><label>Endereço: </label> {{ entidade.endereco.logradouro }}, {{ entidade.endereco.numero }}, {{
+        entidade.endereco.bairro }} -
+        {{ entidade.endereco.cep }} - {{ entidade.endereco.cidade }}/{{ entidade.endereco.estado }}</span>
     </div>
   </section>
   <hr />
@@ -75,11 +77,12 @@
       <p *ngIf="!vaga.auxilio"><label>Auxílio ofertado: </label> Não há</p>
     </div>
     <div class="col-12">
-      <p><label>Período do trabalho: </label> {{ vaga.dataInicioTrabalho }} - {{
-        vaga.dataEncerramentoTrabalho }}</p>
+      <p><label>Período do trabalho: </label> {{ vaga.dataInicioTrabalho | localDate}} - {{
+        vaga.dataEncerramentoTrabalho | localDate }}</p>
     </div>
     <div class="col-12">
-      <p><label>Horário: </label> {{ vaga.horarioInicioTrabalho }} - {{ vaga.horarioEncerramentoTrabalho }}</p>
+      <p><label>Horário: </label> {{ vaga.horarioInicioTrabalho | localHour }} - {{ vaga.horarioEncerramentoTrabalho |
+        localHour }}</p>
     </div>
   </section>
   <hr />
@@ -96,13 +99,13 @@
 
     <br />
 
-    <p *ngIf="!inscricao.termoAdesao">Curitiba, {{dia}} de {{mes}} de {{ano}}.</p>
-    <div *ngIf="inscricao.termoAdesao">
-      <p>Termo de Adesão aceito em: {{termo.aceiteTermo}}.</p>
+    <p *ngIf="!termo.idInscricao.termoAdesao">Curitiba, {{dia}} de {{mes}} de {{ano}}.</p>
+    <div *ngIf="termo.idInscricao.termoAdesao">
+      <p>Termo de Adesão aceito em: {{termo.aceiteTermo | localDate }}.</p>
     </div>
-  
+
     <div *ngIf="termo.rescisaoTermo">
-      <p>Termo Rescindido em: {{termo.rescisaoTermo}}.</p>
+      <p>Termo Rescindido em: {{termo.rescisaoTermo | localDate }}.</p>
     </div>
 
   </section>
@@ -110,6 +113,7 @@
 </section>
 
 <section class="modal-footer">
-  <button *ngIf="!inscricao.termoAdesao" type="button" class="btn btn-primary" (click)="aceitarTermo()">Aceitar</button>
+  <button *ngIf="!termo.idInscricao.termoAdesao" type="button" class="btn btn-primary"
+    (click)="aceitarTermo()">Aceitar</button>
   <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Voltar</button>
 </section>
