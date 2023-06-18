@@ -13,7 +13,7 @@
         <p><label>RG: </label>{{ estudante.rg }} </p>
       </div>
       <div class="col-6">
-        <p><label>CPF: </label> {{ estudante.cpf }} </p>
+        <p><label>CPF: </label> {{ estudante.userid.login }} </p>
       </div>
     </div>
     <div class="row col-12">
@@ -28,8 +28,8 @@
       <p><label>E-mail: </label> {{ estudante.email }} </p>
     </div>
     <div class="col-12">
-      <span><label>Endereço: </label> {{ estudante.logradouro }}, {{ estudante.numero }}, {{ estudante.bairro }} -
-        {{ estudante.cep }} - {{ estudante.cidade }}/{{estudante.estado }}</span>
+      <span><label>Endereço: </label> {{ estudante.endereco.logradouro }}, {{ estudante.endereco.numero }}, {{ estudante.endereco.bairro }} -
+        {{ estudante.endereco.cep }} - {{ estudante.endereco.cidade }}/{{estudante.endereco.estado }}</span>
     </div>
   </section>
   <hr />
@@ -40,7 +40,7 @@
       <p><label>Razão Social: </label> {{ entidade.razaoSocial }} </p>
     </div>
     <div class="col-12">
-      <p><label>CNPJ: </label> {{ entidade.cnpj }} </p>
+      <p><label>CNPJ: </label> {{ entidade.userid.login }} </p>
     </div>
     <div class="col-12">
       <p><label>Telefone: </label> {{ entidade.telefone }} </p>
@@ -49,8 +49,8 @@
       <p><label>E-mail: </label> {{ entidade.email }} </p>
     </div>
     <div class="col-12">
-      <span><label>Endereço: </label> {{ entidade.logradouro }}, {{ entidade.numero }}, {{ entidade.bairro }} -
-        {{ entidade.cep }} - {{ entidade.cidade }}/{{entidade.estado }}</span>
+      <span><label>Endereço: </label> {{ entidade.endereco.logradouro }}, {{  entidade.endereco.numero }}, {{  entidade.endereco.bairro }} -
+        {{  entidade.endereco.cep }} - {{  entidade.endereco.cidade }}/{{ entidade.endereco.estado }}</span>
     </div>
   </section>
   <hr />
@@ -58,28 +58,28 @@
     <h3>Informações da Atividade</h3>
     <div class="row col-12">
       <div class="col-6">
-        <p><label>Vaga: </label> {{ vagaSelecionada.nomeVaga }}</p>
+        <p><label>Vaga: </label> {{ vaga.nomeVaga }}</p>
       </div>
       <div class="col-6">
-        <p><label>Entidade: </label> {{ vagaSelecionada.nomeEntidade }}</p>
+        <p><label>Entidade: </label> {{ entidade.nomeFantasia }}</p>
       </div>
     </div>
     <div class="col-12">
-      <p><label>Descrição da vaga: </label> {{ vagaSelecionada.descricao }}</p>
+      <p><label>Descrição da vaga: </label> {{ vaga.descricao }}</p>
     </div>
     <div class="col-12">
-      <p><label>Requisitos: </label> {{ vagaSelecionada.requisitos }}</p>
+      <p><label>Requisitos: </label> {{ vaga.requisitos }}</p>
     </div>
     <div class="col-12">
-      <p *ngIf="vagaSelecionada.auxilio"><label>Auxílio ofertado: </label> {{ vagaSelecionada.auxilio }}</p>
-      <p *ngIf="!vagaSelecionada.auxilio"><label>Auxílio ofertado: </label> Não há</p>
+      <p *ngIf="vaga.auxilio"><label>Auxílio ofertado: </label> {{ vaga.auxilio }}</p>
+      <p *ngIf="!vaga.auxilio"><label>Auxílio ofertado: </label> Não há</p>
     </div>
     <div class="col-12">
-      <p><label>Período do trabalho: </label> {{ vagaSelecionada.dataInicioTrabalho }} - {{
-        vagaSelecionada.dataTerminoTrabalho }}</p>
+      <p><label>Período do trabalho: </label> {{ vaga.dataInicioTrabalho }} - {{
+        vaga.dataEncerramentoTrabalho }}</p>
     </div>
     <div class="col-12">
-      <p><label>Horário: </label> {{ vagaSelecionada.horarioInicio }} - {{ vagaSelecionada.horarioEncerramento }}</p>
+      <p><label>Horário: </label> {{ vaga.horarioInicioTrabalho }} - {{ vaga.horarioEncerramentoTrabalho }}</p>
     </div>
   </section>
   <hr />
@@ -96,13 +96,13 @@
 
     <br />
 
-    <p *ngIf="!vagaSelecionada.termo">Curitiba, {{dia}} de {{mes}} de {{ano}}.</p>
-    <div *ngIf="vagaSelecionada.termo">
-      <p>Termo de Adesão aceito em: {{vagaSelecionada.aceiteTermo}}.</p>
+    <p *ngIf="!inscricao.termoAdesao">Curitiba, {{dia}} de {{mes}} de {{ano}}.</p>
+    <div *ngIf="inscricao.termoAdesao">
+      <p>Termo de Adesão aceito em: {{termo.aceiteTermo}}.</p>
     </div>
   
-    <div *ngIf="vagaSelecionada.rescisaoTermo">
-      <p>Termo Rescindido em: {{vagaSelecionada.rescisaoTermo}}.</p>
+    <div *ngIf="termo.rescisaoTermo">
+      <p>Termo Rescindido em: {{termo.rescisaoTermo}}.</p>
     </div>
 
   </section>
@@ -110,6 +110,6 @@
 </section>
 
 <section class="modal-footer">
-  <button *ngIf="!vagaSelecionada.termo" type="button" class="btn btn-primary" (click)="aceitarTermo()">Aceitar</button>
+  <button *ngIf="!inscricao.termoAdesao" type="button" class="btn btn-primary" (click)="aceitarTermo()">Aceitar</button>
   <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Voltar</button>
 </section>

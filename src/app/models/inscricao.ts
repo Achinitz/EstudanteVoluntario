@@ -33,6 +33,7 @@ export class Inscricao {
     },
     public dataInscricao?: Date,
     public statusInscricao?: StatusInscricao,
-    public termoAdesao?: boolean
+    public termoAdesao?: boolean,
+    public termoAdesaoId?: string
   ) {}
 }

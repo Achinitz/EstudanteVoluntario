@@ -16,7 +16,7 @@
     <div class="row col-12">
         <div class="col-xl-6 col-md-12 col-sm-12">
             <span class="title__data">Data de nascimento</span>
-            <p>{{inscrito.dataNascimento}}</p>
+            <p>{{inscrito.dataNascimento | localDate}}</p>
         </div>
         <div class="col-xl-6 col-md-12 col-sm-12">
             <span class="title__data">Gênero</span>
@@ -54,12 +54,12 @@
     <div class="row col-12">
         <div class="col-xl-6 col-md-12 col-sm-12">
             <span class="title__data">Ano início</span>
-            <p>{{ inscrito.curso.anoInicio}}</p>
+            <p>{{ inscrito.curso.anoInicio | localDate }}</p>
         </div>
 
         <div class="col-xl-6 col-md-12 col-sm-12">
             <span class="title__data">Ano conclusão</span>
-            <p>{{ inscrito.curso.anoConclusao}}</p>
+            <p>{{ inscrito.curso.anoConclusao | localDate }}</p>
         </div>
     </div>
     <div class="row col-12">

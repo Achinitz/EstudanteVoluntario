@@ -4,6 +4,7 @@ import { Estudante } from 'src/app/models/estudante';
 import { Usuario } from 'src/app/models/usuario.model';
 import { EntidadeService } from 'src/app/services/entidade.service';
 import { LoginService } from 'src/app/services/login.service';
+import { TermoadesaoService } from 'src/app/services/termoadesao.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,7 +21,8 @@ export class DetalheEstudanteComponent implements OnInit {
   constructor(
     public activeModal: NgbActiveModal,
     private entidadeService: EntidadeService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private termoAdesaoService: TermoadesaoService
   ) {}
 
   ngOnInit(): void {
@@ -38,27 +40,31 @@ export class DetalheEstudanteComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-      const idUsuario = this.usuarioLogado._id;
-      this.entidadeService
-        .aprovarInscrito(idUsuario, this.inscritoId)
-        .subscribe({
-          next: (res: any) => {
-            Swal.fire({
-              title: res.message,
-              icon: 'success',
-              showConfirmButton: false,
-              timer: 1500,
-            }).finally(() => window.location.reload());;
-          },
-          error: (erro: any) => {
-            Swal.fire({
-              title: erro.error.message,
-              icon: 'error',
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          },
-        }); }
+        const idUsuario = this.usuarioLogado._id;
+        this.entidadeService
+          .aprovarInscrito(idUsuario, this.inscritoId)
+          .subscribe({
+            next: (res: any) => {
+              Swal.fire({
+                title: res.message,
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              this.gerarTermo();
+              window.setTimeout(window.location.reload, 2000);
+            },
+            error: (erro: any) => {
+              Swal.fire({
+                title: erro.error.message,
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              window.setTimeout(window.location.reload, 2000);
+            },
+          });
+      }
     });
   }
 
@@ -74,27 +80,37 @@ export class DetalheEstudanteComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         const idUsuario = this.usuarioLogado._id;
-      this.entidadeService
-        .reprovarInscrito(idUsuario, this.inscritoId)
-        .subscribe({
-          next: (res: any) => {
-            Swal.fire({
-              title: res.message,
-              icon: 'success',
-              showConfirmButton: false,
-              timer: 1500,
-            }).finally(() => window.location.reload());;
-          },
-          error: (erro: any) => {
-            Swal.fire({
-              title: erro.error.message,
-              icon: 'error',
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          },
-        });
+        this.entidadeService
+          .reprovarInscrito(idUsuario, this.inscritoId)
+          .subscribe({
+            next: (res: any) => {
+              Swal.fire({
+                title: res.message,
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            },
+            error: (erro: any) => {
+              Swal.fire({
+                title: erro.error.message,
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            },
+          });
       }
     });
+  }
+
+  gerarTermo() {
+    this.termoAdesaoService
+      .gerarTermoAdesao(this.usuarioLogado._id, this.inscritoId)
+      .subscribe({
+        next(res: any) {
+          console.log(res);
+        },
+      });
   }
 }

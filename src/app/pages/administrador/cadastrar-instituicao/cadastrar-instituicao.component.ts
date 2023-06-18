@@ -57,7 +57,7 @@ export class CadastrarInstituicaoComponent implements OnInit {
               icon: 'success',
               showConfirmButton: false,
               timer: 1500,
-            }).finally(() => window.location.reload());
+            });            
             this.router.navigate(['/Administrador/cadastrar-instituicao']);
           }
         })

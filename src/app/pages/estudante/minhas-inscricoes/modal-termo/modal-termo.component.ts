@@ -1,7 +1,11 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { DataService } from 'src/app/services/data.service';
+import { Entidade } from 'src/app/models/entidade';
+import { Estudante } from 'src/app/models/estudante';
+import { Inscricao } from 'src/app/models/inscricao';
+import { Termoadesao } from 'src/app/models/termoadesao';
+import { Vaga } from 'src/app/models/vaga';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,19 +14,22 @@ import Swal from 'sweetalert2';
   styleUrls: ['./modal-termo.component.scss'],
 })
 export class ModalTermoComponent implements OnInit {
-  @Input() vagaSelecionada: any;
-  @Input() estudante: any;
-  @Input() entidade: any;
+  @Input() termo: Termoadesao;
+  @Input() estudante: Estudante;
+  @Input() entidade: Entidade;
+  @Input() vaga: Vaga;
+  @Input() inscricao: Inscricao;
+
 
   public dia = new Date().getDate();
   public mes = new Date().toLocaleString('default', { month: 'long' });  
   public ano = new Date().getFullYear();
 
-  constructor(
-    private data: DataService,
+  constructor(    
     private router: Router,
     public activeModal: NgbActiveModal
-  ) {}
+  ) {    
+  }
 
  
   aceitarTermo() {

@@ -9,6 +9,8 @@ import { Usuario } from 'src/app/models/usuario.model';
 import { Vaga } from 'src/app/models/vaga';
 import { Inscricao } from 'src/app/models/inscricao';
 import { LoginService } from 'src/app/services/login.service';
+import { TermoadesaoService } from 'src/app/services/termoadesao.service';
+import { Termoadesao } from 'src/app/models/termoadesao';
 
 @Component({
   selector: 'app-minhas-inscricoes',
@@ -18,12 +20,14 @@ import { LoginService } from 'src/app/services/login.service';
 export class MinhasInscricoesComponent implements OnInit {
   inscricoes: any = [];
   usuarioLogado: Usuario;
+  dadosTermo: Termoadesao;
 
   constructor(
     private modalService: NgbModal,
     public dialog: MatDialog,
     private estudanteService: EstudanteService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private termoAdesaoService: TermoadesaoService
   ) {}
 
   ngOnInit(): void {
@@ -84,20 +88,31 @@ export class MinhasInscricoesComponent implements OnInit {
     });
   }
 
-  //ARRUMAR TERMO DE ADESÃO getTermoAdesao
 
-  aceitarTermo(vaga: Vaga) {
-    //buscar dados do estudante e da entidade
-    const entidade = null;
+  aceitarTermo(inscricao: Inscricao) {
+
+    this.termoAdesaoService.getTermoAdesao(this.usuarioLogado._id, inscricao.termoAdesaoId).subscribe({
+      next: (res: any) =>{
+        this.dadosTermo = res;      
+      },
+    })
+   
     const modalRef = this.modalService.open(ModalTermoComponent, {
       windowClass: 'auto',
       backdrop: 'static',
       scrollable: true,
       centered: true,
     });
-    modalRef.componentInstance.vagaSelecionada = vaga;
+
+   /*  modalRef.componentInstance.vagaSelecionada = vaga;
     modalRef.componentInstance.estudante = this.usuarioLogado;
     modalRef.componentInstance.entidade = entidade;
+     */
+    modalRef.componentInstance.termo = this.dadosTermo;
+    modalRef.componentInstance.estudante = this.dadosTermo.idEstudante;
+    modalRef.componentInstance.entidade = this.dadosTermo.idEntidade;
+    modalRef.componentInstance.vaga = this.dadosTermo.idVaga;
+    modalRef.componentInstance.inscricao = inscricao;
   }
 
   rescindirTermo() {

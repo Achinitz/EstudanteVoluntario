@@ -82,7 +82,7 @@
     <div class="row col-12">
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Abertura da inscrição</span>
-        <p *ngIf="vaga.dataAberturaVaga">{{vaga.dataAberturaVaga}}</p>
+        <p *ngIf="vaga.dataAberturaVaga">{{vaga.dataAberturaVaga | localDate}}</p>
         <p class="" *ngIf="!vaga.dataAberturaVaga"> Vaga em aprovação </p>
       </div>
       <div class="col-lg-3 col-sm-12">
@@ -108,7 +108,7 @@
         Essa vaga ainda não possui inscritos
       </ng-template>
 
-      <table class="table table-striped" *ngIf="vaga.inscricoes.length > 0 else naoPossuiInscritos">
+      <table class="table table-striped" *ngIf="vaga.inscricoes else naoPossuiInscritos">
         <thead>
           <tr>
             <th class="col-3" scope="col">Nome</th>
@@ -123,7 +123,7 @@
             <td class="col-3">
               {{ inscrito.estudanteId.nomeCompleto }}
             </td>
-            <td class="col-2 col-sm-none text-center">{{ inscrito.dataInscricao }}</td>
+            <td class="col-2 col-sm-none text-center">{{ inscrito.dataInscricao | localDate }}</td>
             <td class="col-2 text-center">
               <span class="ball__aviso"></span>
               {{ inscrito.statusInscricao }}
