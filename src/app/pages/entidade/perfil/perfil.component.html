@@ -8,14 +8,20 @@
       </ngb-alert>
 
   <section>
-    <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">
+    <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro" (ngSubmit)="finalizarEdicao()" enctype="multipart/form-data"> 
 
       <div class="row userImg">
-        <img id="imgUser" src="../../../../assets/imagens/cadastroImagem.jpg" class="float-center" alt="..." />
+        <img id="imgUser" [src]="imagem" class="float-center" alt="..." />
       </div>
       <div class="form-group inputFile">  
         <label for="imgPerfil">Imagem de Perfil </label>
-        <input type="file" class="form-control-file" id="inputFile" accept="image/png, image/jpeg"  />
+        <input 
+          type="file" 
+          class="form-control-file" 
+          id="inputFile" 
+          accept="image/png, image/jpeg"  
+          (change)="inputFileChange($event)" 
+          />
       </div>
 
       <div class="form-group">
@@ -30,8 +36,8 @@
       </div>
 
       <div class="form-group">
-        <label for="perfilVonluntario">Perfil de Voluntários Procurados</label>
-        <textarea class="form-control" id="perfilVonluntario" rows="3" formControlName="perfilVonluntario"></textarea>
+        <label for="perfilVoluntario">Perfil de Voluntários Procurados</label>
+        <textarea class="form-control" id="perfilVoluntario" rows="3" formControlName="perfilVoluntario"></textarea>
       </div>
 
       <div class="form-group">
@@ -155,27 +161,21 @@
     
         </div>
 
-
-      <div class="form-group">
-        <label for="inputPassword5">Senha atual </label>
-        <input type="password" id="senha" class="form-control" placeholder="Digite a sua senha atual"
-          formControlName="senha" />
-      </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="inputPassword5">Nova senha </label>
         <input type="password" id="novaSenha" class="form-control" placeholder="Digite a sua nova senha"
-          formControlName="novaSenha" />
+        ng-model="novaSenha"/>
           <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
           formCadastro.controls.confirmarSenha.touched &&
           formCadastro.controls.confirmarSenha.value?.length > 0
         " [@fadeInOut]>
             O campo Confirmar Senha é obrigatório!
-          </small>
-      </div>
-      <div class="form-group">
+          </small> 
+      </div> -->
+      <!-- <div class="form-group">
         <label for="inputPassword5">Confirmar Senha </label>
         <input type="password" id="confirmarSenha" class="form-control" placeholder="Confirme a sua nova senha"
-          formControlName="confirmarSenha" />
+        ng-model="confirmarSenha"/>
           <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
           formCadastro.controls.confirmarSenha.touched && 
           formCadastro.controls.novaSenha.value.length > 0 && 
@@ -190,10 +190,10 @@
         " [@fadeInOut]>
             As senhas informadas não são iguais!
           </small>
-      </div>
+      </div> -->
 
       <div class="buttonForm">
-        <button type="submit" class="btn btn-success" (click)="mostrarValores()">
+        <button type="submit" class="btn btn-success">
           Atualizar
         </button>
         <button type="reset" class="btn btn-warning">

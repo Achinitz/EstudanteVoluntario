@@ -28,9 +28,16 @@ export class EntidadeService extends HttpHeaderService {
     );
   }
 
-  public settPerfilEntidade(usuario: Entidade) {
+  public alterarFotoPerfil(idUsuario: string,foto: string){
     return this.http.patch(
-      this.baseUrl + `entidade/${usuario._id}`,
+      this.baseUrl + `entidade/${idUsuario}`, { file: foto, contentType: 'image/png' }
+    );
+  }
+
+  public setPerfilEntidade(idUsuario: string, entidade: any) {
+    console.log('chegou aqui')
+    return this.http.patch(
+      this.baseUrl + `entidade/${idUsuario}`, entidade,
       this.httpOptions
     );
   }

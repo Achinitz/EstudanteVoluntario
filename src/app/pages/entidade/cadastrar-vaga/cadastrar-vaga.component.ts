@@ -15,6 +15,10 @@ import { VagaService } from 'src/app/services/vaga.service';
   animations: genericAnimations,
 })
 export class CadastrarVagaComponent implements OnInit {
+
+  toppings = new FormControl('');
+  listaDiasTrabalho: string[] = [];
+
   usuario: any;
   submitted = false;
   utilizarEnderecoEntidade: boolean = false;
@@ -38,6 +42,7 @@ export class CadastrarVagaComponent implements OnInit {
     nomeVaga: new FormControl(null, Validators.required),
     descricao: new FormControl(null, Validators.required),
     requisitos: new FormControl(null),
+    diasTrabalho: new FormControl(null),
     auxilio: new FormControl(false),
     descricaoAuxilio: new FormControl(null),
     numeroVagas: new FormControl(0, Validators.required),
@@ -94,8 +99,22 @@ export class CadastrarVagaComponent implements OnInit {
     //   (this.formCadastro.value));
   }
 
+  checkboxListChange(value:string){
+    if(this.listaDiasTrabalho.indexOf(value) != -1){
+
+       this.listaDiasTrabalho = this.listaDiasTrabalho.filter( (val:any) => {
+         return val != value;
+       });
+
+    }else{
+      this.listaDiasTrabalho.push(value);
+    } 
+    this.formCadastro.get('diasTrabalho').setValue(this.listaDiasTrabalho);
+  }
+
   mostrarValores() {
     console.log('Formulário enviado');
+    console.log(this.formCadastro.value);
   }
 
   setAuxilio() {
@@ -175,8 +194,6 @@ export class CadastrarVagaComponent implements OnInit {
               this.formCadastro.get('endereco.estado')?.setValue(element.id);
             }
           });
-          console.log('chegou no SET TIME OUT');
-          console.log()
           setTimeout(() => {
             this.cidades.forEach((element: any) => {
               if (element.nome === data.localidade) {

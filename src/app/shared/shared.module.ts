@@ -6,6 +6,10 @@ import { CpfPipe } from './pipe/cpf.pipe';
 import { NomeUsuarioPipe } from './pipe/nome-usuario.pipe';
 import { LocalHourPipe } from './pipe/local-hour.pipe';
 import { LocalDatePipe } from './pipe/local-date.pipe';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +23,7 @@ import { LocalDatePipe } from './pipe/local-date.pipe';
     LocalDatePipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     CnpjPipe, 

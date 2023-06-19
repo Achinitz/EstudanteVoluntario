@@ -6,6 +6,7 @@ import { genericAnimations } from 'src/app/shared/animations/animations';
 import { ToastrService } from 'ngx-toastr';
 import { EntidadeService } from 'src/app/services/entidade.service';
 import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -19,7 +20,10 @@ export class PerfilComponent implements OnInit {
   cnpj = '00000000000000';
   razaoSocial = 'Razão Social';
   nomeFantasia = 'Nome Fantasia';
-
+  imgPadrao = '../../../../assets/imagens/cadastroImagem.jpg';
+  imagem: string = '';
+  novaSenha: string = '';
+  confirmarSenha: string = '';
   usuario: any;
 
   estado: any;
@@ -31,6 +35,9 @@ export class PerfilComponent implements OnInit {
   estados: any = [];
 
   public formCadastro = new FormGroup({
+    imgPerfil: new FormGroup({
+     file: new FormControl(null),
+    }),
     login: new FormControl(
       { value: this.cnpj, disabled: true },
       Validators.required
@@ -56,24 +63,19 @@ export class PerfilComponent implements OnInit {
       complemento: new FormControl(null, Validators.required),
       estado: new FormControl(null, Validators.required),
       cidade: new FormControl(null, Validators.required),
-    }),
-    senha: new FormControl(null, Validators.required),
-    novaSenha: new FormControl(null),
-    confirmarSenha: new FormControl(null, Validators.required),
+    }), 
   });
-
-  mostrarValores() {
-    console.log('Formulário enviado');
-  }
 
   constructor(
     private consultaCepService: ConsultaCepService,
     private enderecoService: EnderecoService,
     private entidadeService: EntidadeService,
     private loginService: LoginService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private router: Router
   ) {
-    this.inicializaFormulario(this.loginService.usuarioLogado._id);
+
+    this.inicializaFormulario(this.loginService.usuarioLogado?._id);
   }
 
   inicializaFormulario(idUsuario: string) {
@@ -82,9 +84,21 @@ export class PerfilComponent implements OnInit {
     });
     this.entidadeService.getPerfilEntidade(idUsuario).subscribe({
       next: (res:any) =>{
-        this.usuario = res;  
-        console.log( Object.assign({}, res.entidade, res.usuario) );
-        this.formCadastro.setValue( Object.assign({}, res.entidade, res.usuario) );
+        //Transformando 
+        this.usuario = Object.assign({}, res.entidade, res.usuario);  
+        //Removendo objetos do JSON
+        delete this.usuario.userid;
+        delete this.usuario.__v;
+        delete this.usuario.nome;
+        delete this.usuario.perfil;
+        delete this.usuario.dataCadastro;
+        delete this.usuario.statusPerfil;
+        delete this.usuario.perfilAtivo;
+        delete this.usuario._id;
+                 
+        this.formCadastro.setValue( this.usuario );
+        this.imagem = this.formCadastro.get('imgPerfil.file').value != '' ? this.formCadastro.get('imgPerfil.file').value : this.imgPadrao;
+        this.validaCep();
          },
       error: (err:any) => {
         this.toast.error(err?.message);
@@ -94,7 +108,7 @@ export class PerfilComponent implements OnInit {
 
   onAddCidade() {
     this.enderecoService
-      .getCidades(this.formCadastro.get('estado')?.value)
+      .getCidades(this.formCadastro.get('endereco.estado')?.value)
       .subscribe((data: any) => {
         this.cidades = data;
       });
@@ -106,28 +120,45 @@ export class PerfilComponent implements OnInit {
     //console.log('Fim cidade selecionado');
   }
 
+  async inputFileChange(event){
+    if(event.target.files && event.target.files[0]){
+      let file = event.target.files[0];       
+
+      let base64 = await toBase64(file);
+       this.imagem = 'data:' + file.type + ';base64,' + base64.toString().split(",")[1];
+       this.imagem = this.imagem.toString();
+
+      const reader = new FileReader();
+
+      reader.addEventListener("load", () => {
+        reader.readAsDataURL(event.target.files[0]);
+      });
+
+      this.formCadastro.get('imgPerfil.file').setValue(this.imagem);
+    }
+  }
+
   validaCep() {
-    if (this.formCadastro.get('cep')?.value.length === 8) {
-      let cep = this.formCadastro.get('cep')?.value;
+    if (this.formCadastro.get('endereco.cep')?.value != null && this.formCadastro.get('endereco.cep')?.value.length === 8) {
+      let cep = this.formCadastro.get('endereco.cep')?.value;
       this.consultaCepService.getDataCep(cep.replace('-', '')).subscribe(
         (data: any) => {
           if (data.erro === true) {
             this.toast.error('CEP Inválido!');
           }
           this.resultadoCep = data;
-          //  console.log(data);
           this.estados.forEach((element: any) => {
             if (element.sigla === data.uf) {
-              this.formCadastro.get('estado')?.setValue(element.id);
+              this.formCadastro.get('endereco.estado')?.setValue(element.id);
             }
           });
 
           setTimeout(() => {
             this.cidades.forEach((element: any) => {
               if (element.nome === data.localidade) {
-                this.formCadastro.get('cidade')?.setValue(element.id);
-                this.formCadastro.get('logradouro')?.setValue(data.logradouro);
-                this.formCadastro.get('bairro')?.setValue(data.bairro);
+                this.formCadastro.get('endereco.cidade')?.setValue(element.id);
+                this.formCadastro.get('endereco.logradouro')?.setValue(data.logradouro);
+                this.formCadastro.get('endereco.bairro')?.setValue(data.bairro);
               }
             });
           }, 1500);
@@ -136,7 +167,6 @@ export class PerfilComponent implements OnInit {
           console.log('Ocorreu um erro');
         }
       );
-      console.log('CEP ok');
     }
   }
 
@@ -152,9 +182,36 @@ export class PerfilComponent implements OnInit {
     }
   }
 
+
     desativarConta(){
     
   }
 
+  finalizarEdicao(){
+     this.entidadeService.setPerfilEntidade(this.loginService.usuarioLogado?._id.toString(), this.formCadastro.value).subscribe({
+       next: (res:any) => {
+         this.toast.success(res.message);
+         this.router.navigate(['/Entidade']);
+       },
+       error: (err:any) => {
+        this.toast.error(err.message);
+       }
+     });
+  }
+
   ngOnInit(): void {}
 }
+
+const toBase64 = file => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => resolve(reader.result);
+  reader.onerror = reject;
+});
+
+const toByteArray = file => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsArrayBuffer(file);
+  reader.onload = () => resolve(new Uint8Array(reader.result as ArrayBuffer));
+  reader.onerror = error => reject(error);
+});
