@@ -1,110 +1,101 @@
 <section class="content">
+  <div class="topo">
+    <h1>Adicionar Administrador</h1>
+  </div>
 
-    <div class="topo">
-        <h1>Adicionar Administrador</h1>
-    </div>
+  <section class="contentDetails">
+    <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro" (ngSubmit)="cadastrarAdmin()">
 
-    <section class="contentDetails">
-        <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">
-    
-          <div class="row userImg">
-            <img id="imgUser" src="../../../../assets/imagens/cadastroImagem.jpg" class="float-center" alt="..." />
-          </div>
-          <div class="form-group inputFile">
-            <label for="imgPerfil">Imagem de Perfil </label>
-            <input type="file" class="form-control-file" id="inputFile" formControlName="imgPerfil" />
-          </div>      
-    
-          <div class="form-group">
-            <label for="nomeCompleto">Nome Completo <em>*</em> </label>
-            <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo"
-              formControlName="nomeCompleto" />
-            <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+      <div class="row userImg">
+        <img id="imgUser" src="../../../../assets/imagens/cadastroImagem.jpg" class="float-center" alt="..." />
+      </div>
+      <div class="form-group inputFile">
+        <label for="imgPerfil">Imagem de Perfil </label>
+        <input type="file" class="form-control-file" id="inputFile" formControlName="imgPerfil" />
+      </div>
+
+      <div class="form-group">
+        <label for="nomeCompleto">Nome Completo <em>*</em> </label>
+        <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo"
+          formControlName="nomeCompleto" />
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
               formCadastro.controls.nomeCompleto.touched &&
               formCadastro.controls.nomeCompleto.invalid
             " [@fadeInOut]>
-              O campo Nome Completo é obrigatório!
-            </small>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="confirmaNomeSocial"
-            formControlName="confirmaNomeSocial" />
-            <label class="form-check-label" for="confirmaNomeSocial">Desejo usar meu nome social</label>
-          </div>
-          <div class="form-group">
-            <label for="nomeSocial">Nome Social</label>
-            <input type="text" class="form-control" id="nomeSocial" placeholder="Nome Social" 
-            formControlName="nomeSocial"/>
-          </div>
-          <div class="form-group">
-            <label for="cpf">CPF <em>*</em> </label>
-            <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" 
-            mask="000.000.000-00" formControlName="cpf"/>
-          </div>
-          <div class="form-group">
-            <label for="email">Email <em>*</em> </label>
-            <input type="email" class="form-control" id="email" placeholder="name@email.com" formControlName="email" />
-            <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          O campo Nome Completo é obrigatório!
+        </small>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="confirmaNomeSocial" formControlName="confirmaNomeSocial" />
+        <label class="form-check-label" for="confirmaNomeSocial">Desejo usar meu nome social</label>
+      </div>
+      <div class="form-group">
+        <label for="nomeSocial">Nome Social</label>
+        <input type="text" class="form-control" id="nomeSocial" placeholder="Nome Social"
+          formControlName="nomeSocial" />
+      </div>
+      <div class="form-group">
+        <label for="login">CPF <em>*</em> </label>
+        <input type="text" class="form-control" id="login" placeholder="XXX.XXX.XXX-XX" mask="000.000.000-00"
+          formControlName="login" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email <em>*</em> </label>
+        <input type="email" class="form-control" id="email" placeholder="name@email.com" formControlName="email" />
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
               formCadastro.controls.email.touched &&
               formCadastro.controls.email.invalid
             " [@fadeInOut]>
-              O campo E-mail é obrigatório!
-            </small>
-          </div>
-          <div class="row duplo">
-            <div class="col">
-              <label for="identificacaoGenero">Identificação de Gênero </label>
-              <input type="text" class="form-control" id="identificacaoGenero" placeholder="Ex: Masculino" />
-            </div>
-            <div class="col">
-              <label for="dataNascimento">Data de Nascimento <em>*</em> </label>
-              <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="dataNascimento"
-                formControlName="dataNascimento" />
-              <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
+          O campo E-mail é obrigatório!
+        </small>
+      </div>
+      <div class="row duplo">
+        <div class="col">
+          <label for="identificacaoGenero">Identificação de Gênero </label>
+          <input type="text" class="form-control" id="identificacaoGenero" formControlName="identificacaoGenero"
+            placeholder="Ex: Masculino" />
+        </div>
+        <div class="col">
+          <label for="dataNascimento">Data de Nascimento <em>*</em> </label>
+          <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="dataNascimento"
+            formControlName="dataNascimento" />
+          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
                 formCadastro.controls.dataNascimento.touched &&
                 formCadastro.controls.dataNascimento.invalid
               " [@fadeInOut]>
-                O campo Data de Nascimento é obrigatório!
-              </small>
-            </div>
-          </div>
-    
-          <div class="form-group">
-            <label for="telefone">Telefone <em>*</em> </label>
-            <input type="text" class="form-control" id="telefone" placeholder="(XX) 9XXXX-XXXX" formControlName="telefone"
-              mask="(00) 00000-0000 || (00) 0000-0000" />
-            <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.telefone.touched &&
+            O campo Data de Nascimento é obrigatório!
+          </small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="telefone">Telefone <em>*</em> </label>
+        <input type="text" class="form-control" id="telefone" placeholder="(XX) 9XXXX-XXXX" formControlName="telefone"
+          mask="(00) 00000-0000 || (00) 0000-0000" />
+        <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="formCadastro.controls.telefone.touched &&
             formCadastro.controls.telefone.invalid" [@fadeInOut]>
-              O campo Telefone é obrigatório!
-            </small>
-          </div>
-              
-    
-          <div class="form-group">
-            <label for="inputPassword5">Senha atual </label>
-            <input type="password" id="senha" class="form-control" placeholder="Digite a sua senha atual"
-              formControlName="senha" />
-          </div>
-          <div class="form-group">
-            <label for="inputPassword5">Nova senha </label>
-            <input type="password" id="novaSenha" class="form-control" placeholder="Digite a sua nova senha"
-              formControlName="novaSenha" />
-          </div>
-          <div class="form-group">
-            <label for="inputPassword5">Confirmar Senha </label>
-            <input type="password" id="confirmarSenha" class="form-control" placeholder="Confirme a sua nova senha"
-              formControlName="confirmarSenha" />
-          </div>
-    
-          <div class="buttonForm">
-            <button type="submit" class="btn btn-success" (click)="mostrarValores()">
-              Adicionar
-            </button>
-            <button type="reset" class="btn btn-warning">
-              Desfazer alterações
-            </button>
-          </div>
-        </form>
-      </section>
+          O campo Telefone é obrigatório!
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword5">Senha provisória <em>*</em></label>
+        <input type="password" id="senha" class="form-control" placeholder="Digite a a senha" formControlName="senha" />
+      </div>
+      <div class="form-group">
+        <label for="inputPassword5">Confirmar Senha <em>*</em> provisória</label>
+        <input type="password" id="confirmarSenha" class="form-control" placeholder="Confirme a senha"
+          formControlName="confirmarSenha" />
+      </div>
+
+      <div class="buttonForm">
+        <button type="submit" class="btn btn-success">
+          Adicionar
+        </button>
+        <button type="reset" class="btn btn-warning">
+          Desfazer alterações
+        </button>
+      </div>
+    </form>
+  </section>
 
 </section>

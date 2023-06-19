@@ -16,9 +16,9 @@ export class AdministradorService extends HttpHeaderService {
     return this.http.get(this.baseUrl + `admin/${idUsuario}`, this.httpOptions);
   }
 
-  public setPerfilAdmin(usuario: Administrador) {
+  public setPerfilAdmin(idUsuario: string, usuario: Administrador) {
     return this.http.patch(
-      this.baseUrl + `admin/${usuario._id}`,
+      this.baseUrl + `admin/${idUsuario}`,
       usuario,
       this.httpOptions
     );
@@ -106,13 +106,13 @@ export class AdministradorService extends HttpHeaderService {
     return this.http.get(this.baseUrl + 'admin/admins', this.httpOptions);
   }
 
-  /* NÃO PRECISOU  
- public detalhesAdmin(idAdmin: string): Observable<any> {
-    return this.http.get(
-      this.baseUrl + `admin/admins/${idAdmin}`,
+  public cadastrarAdministrador(cadastro: Administrador) {
+    return this.http.post(
+      this.baseUrl + 'admin/cadastro',
+      cadastro,
       this.httpOptions
     );
-  } */
+  }
 
   public promoverAdministrador(idUsuarioAvaliado: string): Observable<any> {
     return this.http.patch(this.baseUrl + `admin/${idUsuarioAvaliado}/promover`, this.httpOptions);

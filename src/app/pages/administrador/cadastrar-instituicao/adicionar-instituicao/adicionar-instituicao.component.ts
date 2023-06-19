@@ -14,7 +14,6 @@ import { genericAnimations } from 'src/app/shared/animations/animations';
   animations: genericAnimations,
 })
 export class AdicionarInstituicaoComponent implements OnInit {
-  loginInvalido: boolean = false;
   submitted = false;
   estado: any;
   estadoNome: any;
@@ -62,7 +61,7 @@ export class AdicionarInstituicaoComponent implements OnInit {
   }
 
   cadastrarInstituicao() {
-    this.submitted = true; 
+    this.submitted = true;
     if (this.formCadastro.valid) {
       this.formCadastro.get('endereco.estado')?.setValue(this.estadoNome);
       this.formCadastro.get('endereco.cidade')?.setValue(this.cidadeNome);
@@ -73,7 +72,7 @@ export class AdicionarInstituicaoComponent implements OnInit {
             this.toast.success(res.message);
             this.router.navigate(['/Administrador/cadastrar-instituicao']);
           },
-          error: (err: any) => {               
+          error: (err: any) => {
             this.toast.error(err.error.message);
           },
         });
@@ -101,7 +100,7 @@ export class AdicionarInstituicaoComponent implements OnInit {
             this.toast.error('CEP Inválido!');
           }
           this.resultadoCep = data;
-          this.estados.forEach((element: any) => {     
+          this.estados.forEach((element: any) => {
             if (element.sigla === data.uf) {
               this.formCadastro.get('endereco.estado')?.setValue(element.id);
               this.estadoNome = element.nome;
@@ -116,11 +115,10 @@ export class AdicionarInstituicaoComponent implements OnInit {
                   .get('endereco.logradouro')
                   ?.setValue(data.logradouro);
                 this.formCadastro.get('endereco.bairro')?.setValue(data.bairro);
-                this.cidadeNome = element.nome;                
+                this.cidadeNome = element.nome;
               }
             });
           }, 1500);
-         
         },
         (error) => {
           console.log('Ocorreu um erro');
@@ -128,5 +126,4 @@ export class AdicionarInstituicaoComponent implements OnInit {
       );
     }
   }
- 
 }

@@ -4,7 +4,7 @@
   </div>
 
   <section class="contentDetails">
-    <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro">
+    <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro" (ngSubmit)="setPerfilAdmin()">
 
       <div class="row userImg">
         <img id="imgUser" src="../../../../assets/imagens/cadastroImagem.jpg" class="float-center" alt="..." />
@@ -12,7 +12,7 @@
       <div class="form-group inputFile">
         <label for="imgPerfil">Imagem de Perfil </label>
         <input type="file" class="form-control-file" id="inputFile" formControlName="imgPerfil" />
-      </div>      
+      </div>
 
       <div class="form-group">
         <label for="nomeCompleto">Nome Completo <em>*</em> </label>
@@ -26,19 +26,18 @@
         </small>
       </div>
       <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="confirmaNomeSocial"
-        formControlName="confirmaNomeSocial" />
+        <input type="checkbox" class="form-check-input" id="confirmaNomeSocial" formControlName="confirmaNomeSocial" />
         <label class="form-check-label" for="confirmaNomeSocial">Desejo usar meu nome social</label>
       </div>
       <div class="form-group">
         <label for="nomeSocial">Nome Social</label>
-        <input type="text" class="form-control" id="nomeSocial" placeholder="Nome Social" 
-        formControlName="nomeSocial"/>
+        <input type="text" class="form-control" id="nomeSocial" placeholder="Nome Social"
+          formControlName="nomeSocial" />
       </div>
       <div class="form-group">
         <label for="cpf">CPF <em>*</em> </label>
-        <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX" 
-        mask="000.000.000-00" formControlName="cpf"/>
+        <input type="text" class="form-control" id="login" placeholder="XXX.XXX.XXX-XX" mask="000.000.000-00"
+          formControlName="login" />
       </div>
       <div class="form-group">
         <label for="email">Email <em>*</em> </label>
@@ -53,7 +52,8 @@
       <div class="row duplo">
         <div class="col">
           <label for="identificacaoGenero">Identificação de Gênero </label>
-          <input type="text" class="form-control" id="identificacaoGenero" placeholder="Ex: Masculino" />
+          <input type="text" class="form-control" id="identificacaoGenero" placeholder="Ex: Masculino" 
+          formControlName="identificacaoGenero" />
         </div>
         <div class="col">
           <label for="dataNascimento">Data de Nascimento <em>*</em> </label>
@@ -77,7 +77,7 @@
           O campo Telefone é obrigatório!
         </small>
       </div>
-          
+
 
       <div class="form-group">
         <label for="inputPassword5">Senha atual </label>
@@ -96,7 +96,7 @@
       </div>
 
       <div class="buttonForm">
-        <button type="submit" class="btn btn-success" (click)="mostrarValores()">
+        <button type="submit" class="btn btn-success">
           Atualizar
         </button>
         <button type="reset" class="btn btn-warning">
