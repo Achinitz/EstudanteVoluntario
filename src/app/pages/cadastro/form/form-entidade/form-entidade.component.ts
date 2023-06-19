@@ -18,7 +18,9 @@ export class FormEntidadeComponent implements OnInit {
   loginInvalido: boolean = false;
   submitted = false;
   estado: any;
+  estadoNome: any;
   cidade: any;
+  cidadeNome: any;
   bairro: any;
   resultadoCep: any;
   cidades: any = [];
@@ -39,7 +41,7 @@ export class FormEntidadeComponent implements OnInit {
       logradouro: new FormControl(null, Validators.required),
       numero: new FormControl(null, Validators.required),
       bairro: new FormControl(null, Validators.required),
-      complemento: new FormControl(null, Validators.required),
+      complemento: new FormControl(null),
       estado: new FormControl(null, Validators.required),
       cidade: new FormControl(null, Validators.required),
     }),
@@ -63,6 +65,8 @@ export class FormEntidadeComponent implements OnInit {
     this.inicializaFormulario();
   }
 
+  ngOnInit(): void {}
+
   verificaCnpjExistente() {
     if (this.formCadastro.get('login')?.value.length === 14) {
       var cnpj = this.formCadastro.get('login').value;
@@ -72,7 +76,7 @@ export class FormEntidadeComponent implements OnInit {
       }
 
       //não está passando o dado pro back
-    /*   
+      /*   
       this.loginService
         .verificarLogin(this.formCadastro.get('login').value)
         .subscribe({
@@ -90,27 +94,15 @@ export class FormEntidadeComponent implements OnInit {
   inicializaFormulario() {
     this.enderecoService.getEstados().subscribe((data: any) => {
       this.estados = data;
-      //console.log('Inicio estados');
-      //console.log(data);
-      //console.log('Fim estados');
     });
   }
 
   onAddCidade() {
-    // if(this.formCadastro.get("estado")?.value === null && ){
-    //   this.formCadastro.get('cidade')?.setValue(null)
-    // }
     this.enderecoService
       .getCidades(this.formCadastro.get('endereco.estado')?.value)
       .subscribe((data: any) => {
         this.cidades = data;
       });
-  }
-
-  onAddBairro() {
-    console.log('Inicio cidade selecionado');
-    console.log(this.formCadastro.get('endereco.cidade')?.value);
-    console.log('Fim cidade selecionado');
   }
 
   validaCep() {
@@ -125,15 +117,19 @@ export class FormEntidadeComponent implements OnInit {
           this.estados.forEach((element: any) => {
             if (element.sigla === data.uf) {
               this.formCadastro.get('endereco.estado')?.setValue(element.id);
+              this.estadoNome = element.nome;
             }
           });
 
           setTimeout(() => {
             this.cidades.forEach((element: any) => {
               if (element.nome === data.localidade) {
-                this.formCadastro.get('cidade')?.setValue(element.id);
-                this.formCadastro.get('logradouro')?.setValue(data.logradouro);
-                this.formCadastro.get('bairro')?.setValue(data.bairro);
+                this.formCadastro.get('endereco.cidade')?.setValue(element.id);
+                this.formCadastro
+                  .get('endereco.logradouro')
+                  ?.setValue(data.logradouro);
+                this.formCadastro.get('endereco.bairro')?.setValue(data.bairro);
+                this.cidadeNome = element.nome;
               }
             });
           }, 1500);
@@ -142,7 +138,6 @@ export class FormEntidadeComponent implements OnInit {
           console.log('Ocorreu um erro');
         }
       );
-      console.log('saiu na api');
     }
   }
 
@@ -159,8 +154,6 @@ export class FormEntidadeComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
-
   cadastrarEntidade() {
     this.formCadastro
       .get('nome')
@@ -168,6 +161,8 @@ export class FormEntidadeComponent implements OnInit {
 
     this.submitted = true;
     if (this.formCadastro.valid) {
+      this.formCadastro.get('endereco.estado')?.setValue(this.estadoNome);
+      this.formCadastro.get('endereco.cidade')?.setValue(this.cidadeNome);
       this.entidadeService
         .cadastrarEntidade(this.formCadastro.value)
         .subscribe({
@@ -176,7 +171,7 @@ export class FormEntidadeComponent implements OnInit {
             this.router.navigate(['/login']);
           },
           error: (erro: any) => {
-            console.log(erro);
+            console.log(erro.error.message);
           },
         });
     } else {

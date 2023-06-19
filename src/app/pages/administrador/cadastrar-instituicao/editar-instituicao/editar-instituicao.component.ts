@@ -1,79 +1,81 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { DataService } from 'src/app/services/data.service';
-import { EnderecoService } from 'src/app/services/endereco.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Instituicao } from 'src/app/models/instituicao';
+import { InstituicaoService } from 'src/app/services/instituicao.service';
+import { genericAnimations } from 'src/app/shared/animations/animations';
 
 @Component({
   selector: 'app-editar-instituicao',
   templateUrl: './editar-instituicao.component.html',
-  styleUrls: ['./editar-instituicao.component.scss']
+  styleUrls: ['./editar-instituicao.component.scss'],
+  animations: genericAnimations,
 })
 export class EditarInstituicaoComponent implements OnInit {
-  estado: any;
-  estados: any = [];
-  cidades: any = [];
+  id: any;
+  instituicao: Instituicao;
+  submitted = false;
 
   public formCadastro = new FormGroup({
-    id: new FormControl(null),
-    cnpj: new FormControl(null, [
-      Validators.required,
-      Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$'),
-    ]),
+    cnpj: new FormControl(null, Validators.required),
     nome: new FormControl(null, Validators.required),
     sigla: new FormControl(null, Validators.required),
-    uf:  new FormControl(null, Validators.required),
-    cep: new FormControl(null, Validators.required),
-    logradouro: new FormControl(null, Validators.required),
-    numero: new FormControl(null, Validators.required),
-    bairro: new FormControl(null, Validators.required),
-    complemento: new FormControl(null, Validators.required),
-    estado: new FormControl(null, Validators.required),
-    cidade: new FormControl(null, Validators.required),
-    cursos: new FormControl(null, Validators.required),
+    telefone: new FormControl(null, Validators.required),
+    email: new FormControl(null, [Validators.required, Validators.email]),
+    endereco: new FormGroup({
+      cep: new FormControl(null, Validators.required),
+      logradouro: new FormControl(null, Validators.required),
+      numero: new FormControl(null, Validators.required),
+      bairro: new FormControl(null, Validators.required),
+      complemento: new FormControl(null),
+      estado: new FormControl(null, Validators.required),
+      cidade: new FormControl(null, Validators.required),
+    }),
   });
 
-  constructor( private enderecoService: EnderecoService,
-    private dataService: DataService,
-    private router: Router) { 
-      this.formCadastro.setValue(this.dataService.data);
-      
-      // console.log('Editar Instituição');
-      // console.log(this.dataService.data);
-      
-      // this.formCadastro.setValue(this.dataService.data);
-      // console.log('valor do formulário');
-      // console.log(this.formCadastro.value);
-
-    this.inicializaFormulario();
-  }
+  constructor(
+    private toast: ToastrService,
+    private instituicaoService: InstituicaoService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.getDetalhesInstituicao();
   }
 
-  
-  inicializaFormulario() {
-    this.enderecoService.getEstados().subscribe((data: any) => {
-      this.estados = data;      
+  getDetalhesInstituicao() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.instituicaoService.visualizarInstituicao(this.id).subscribe({
+      next: (res: any) => {
+        this.instituicao = res.instituicao;
+        this.formCadastro.patchValue(this.instituicao);
+      },
+      error: (err: any) => {
+        this.toast.error(err.message);
+      },
     });
   }
 
-  onAddCidade() {
-    console.log('estadooooooooooooooooo');
-    console.log(this.formCadastro.get('estado').value)
-    console.log('fim estadooooooooooooooooo');
-    this.formCadastro.get('cidade')?.value == null;
-    this.enderecoService
-      .getCidades(this.formCadastro.get('estado')?.value)
-      .subscribe((data: any) => {
-        this.cidades = data;
-      });
+  editarInstituicao() {
+    this.submitted = true;
+    if (this.formCadastro.valid) {  
+      this.instituicaoService
+        .editarInstituicao(this.id, this.formCadastro.value)
+        .subscribe({
+          next: (res: any) => {
+            this.toast.success(res.message);
+            this.router.navigate(['/Administrador/cadastrar-instituicao']);
+          },
+          error: (err: any) => {
+            this.toast.error(err.error.message);
+          },
+        });
+    } else {
+      this.toast.error(
+        'Não foi possível prosseguir, verifique os campos do formulário!'
+      );
+    }
   }
-
-  onAddBairro() {
-    // console.log('Inicio cidade selecionado');
-    // console.log(this.formCadastro.get('cidade')?.value);
-    //console.log('Fim cidade selecionado');
-  }
-
 }

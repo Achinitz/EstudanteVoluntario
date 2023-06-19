@@ -5,7 +5,6 @@ import { Usuario } from 'src/app/models/usuario.model';
 import { Vaga } from 'src/app/models/vaga';
 import { EstudanteService } from 'src/app/services/estudante.service';
 import { LoginService } from 'src/app/services/login.service';
-import { StorageService } from 'src/app/services/storage.service';
 
 
 @Component({

@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
 import { EnderecoService } from 'src/app/services/endereco.service';
 import { InstituicaoService } from 'src/app/services/instituicao.service';
-
 import { genericAnimations } from 'src/app/shared/animations/animations';
 
 @Component({

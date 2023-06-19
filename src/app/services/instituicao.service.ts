@@ -34,14 +34,13 @@ export class InstituicaoService extends HttpHeaderService {
     );
   } 
 
-  /*  ARRUMAR NO BACK   
   public editarInstituicao(idInstituicao: string, instituicao: Instituicao) {
     return this.http.patch(
       this.baseUrl + `ies/${idInstituicao}`,
       instituicao,
       this.httpOptions
     );
-  } */
+  } 
 
  
 }

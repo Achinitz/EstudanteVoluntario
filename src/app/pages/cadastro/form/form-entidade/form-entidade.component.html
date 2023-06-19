@@ -99,7 +99,7 @@
       <div class="col">
         <label for="exampleFormControlInput1">Cidade <em>*</em> </label>
         <ng-select [items]="cidades" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
-          formControlName="cidade" (ngModelChange)="onAddBairro()" (closeOnSelect)="(true)">
+          formControlName="cidade" (closeOnSelect)="(true)">
         </ng-select>
         <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="" [@fadeInOut]>
           O campo Cidade é obrigatório!

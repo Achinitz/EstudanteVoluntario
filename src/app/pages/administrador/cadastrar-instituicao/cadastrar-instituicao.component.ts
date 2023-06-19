@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 import { InstituicaoService } from 'src/app/services/instituicao.service';
 import { Instituicao } from 'src/app/models/instituicao';
+import { genericAnimations } from 'src/app/shared/animations/animations';
 
 @Component({
   selector: 'app-cadastrar-instituicao',
   templateUrl: './cadastrar-instituicao.component.html',
   styleUrls: ['./cadastrar-instituicao.component.scss'],
+  animations: genericAnimations,
 })
 export class CadastrarInstituicaoComponent implements OnInit {
   instituicoes: Instituicao[] = [];
 
   constructor(
-    private dataService: DataService,
     private router: Router,
     private instituicaoService: InstituicaoService
   ) {}
@@ -38,6 +38,13 @@ export class CadastrarInstituicaoComponent implements OnInit {
     ]);
   }
 
+  editarInstituicao(value: Instituicao) {
+    this.router.navigate([
+      '/Administrador/editar-instituicao',
+      { id: value._id },
+    ]);
+  }
+
   excluirInstituicao(instituicao: Instituicao) {
     Swal.fire({
       title: `Deseja realmente excluir a instituição ${instituicao.nome}?`,
@@ -57,21 +64,13 @@ export class CadastrarInstituicaoComponent implements OnInit {
               icon: 'success',
               showConfirmButton: false,
               timer: 1500,
-            });            
+            });
             this.router.navigate(['/Administrador/cadastrar-instituicao']);
-          }
-        })
-        
+          },
+        });
       }
     });
   }
-  
-  editarInstituicao(Instituicao: any) {
-    this.dataService.data = Instituicao;
-    this.router.navigate(['/Administrador/editar-instituicao']);
-  }
-
-  
 
   paginaAtual = 1;
   tamanhoPagina: number = this.instituicoes.length;

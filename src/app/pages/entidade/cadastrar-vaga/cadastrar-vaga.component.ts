@@ -7,7 +7,6 @@ import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/services/login.service';
 import { VagaService } from 'src/app/services/vaga.service';
 
-
 @Component({
   selector: 'app-cadastrar-vaga',
   templateUrl: './cadastrar-vaga.component.html',
@@ -15,7 +14,6 @@ import { VagaService } from 'src/app/services/vaga.service';
   animations: genericAnimations,
 })
 export class CadastrarVagaComponent implements OnInit {
-
   toppings = new FormControl('');
   listaDiasTrabalho: string[] = [];
 
@@ -30,7 +28,9 @@ export class CadastrarVagaComponent implements OnInit {
   hoje: Date = new Date();
   dataMaxFimInscricao: any;
   estado: any;
+  estadoNome: any;
   cidade: any;
+  cidadeNome: any;
   bairro: any;
   resultadoCep: any;
   cidades: any = [];
@@ -46,7 +46,7 @@ export class CadastrarVagaComponent implements OnInit {
     auxilio: new FormControl(false),
     descricaoAuxilio: new FormControl(null),
     numeroVagas: new FormControl(0, Validators.required),
-    dataAbertudaVaga: new FormControl(null),                              
+    dataAbertudaVaga: new FormControl(null),
     dataFinalizacaoVaga: new FormControl(null, Validators.required),
     dataInicioTrabalho: new FormControl(null, Validators.required),
     dataTerminoTrabalho: new FormControl(null, Validators.required),
@@ -77,20 +77,22 @@ export class CadastrarVagaComponent implements OnInit {
     this.dataMinima();
   }
 
-  cadastrarVaga(){
-    
-    console.log(this.formCadastro.get('imagemVaga').value)      
+  cadastrarVaga() {
+    console.log(this.formCadastro.get('imagemVaga').value);
+    this.formCadastro.get('endereco.estado')?.setValue(this.estadoNome);
+    this.formCadastro.get('endereco.cidade')?.setValue(this.cidadeNome);
+    this.vagaService
+      .cadastrarVaga(this.formCadastro.value, this.usuario._id)
+      .subscribe({
+        next: (res: any) => {
+          this.toast.success('Cadastrado com Sucesso');
+        },
+        error: (err: any) => {
+          this.toast.error('Ocorre um erro');
+        },
+      });
 
-    this.vagaService.cadastrarVaga(this.formCadastro.value, this.usuario._id).subscribe({
-      next: (res:any) => {
-        this.toast.success('Cadastrado com Sucesso');
-      },
-      error: (err:any) => {
-        this.toast.error('Ocorre um erro');
-      }
-    });
-
-    if(this.formCadastro.invalid){
+    if (this.formCadastro.invalid) {
       this.toast.error('Verifique os campos Requeridos!');
       this.formCadastro.errors;
     }
@@ -99,16 +101,14 @@ export class CadastrarVagaComponent implements OnInit {
     //   (this.formCadastro.value));
   }
 
-  checkboxListChange(value:string){
-    if(this.listaDiasTrabalho.indexOf(value) != -1){
-
-       this.listaDiasTrabalho = this.listaDiasTrabalho.filter( (val:any) => {
-         return val != value;
-       });
-
-    }else{
+  checkboxListChange(value: string) {
+    if (this.listaDiasTrabalho.indexOf(value) != -1) {
+      this.listaDiasTrabalho = this.listaDiasTrabalho.filter((val: any) => {
+        return val != value;
+      });
+    } else {
       this.listaDiasTrabalho.push(value);
-    } 
+    }
     this.formCadastro.get('diasTrabalho').setValue(this.listaDiasTrabalho);
   }
 
@@ -131,22 +131,28 @@ export class CadastrarVagaComponent implements OnInit {
     this.termosCondicao = this.termosCondicao ? false : true;
   }
 
-  async inputFileChange(event){    
-    if(event.target.files && event.target.files[0]){
-      let file = event.target.files[0];       
+  async inputFileChange(event) {
+    if (event.target.files && event.target.files[0]) {
+      let file = event.target.files[0];
       let byteArrray = await toByteArray(file);
       let base64 = await toBase64(file);
-      
-      this.formCadastro.get('imagemVaga').setValue({ file: base64.toString().split(",")[1], fileName: file.name, contentType: file.type });
+
+      this.formCadastro
+        .get('imagemVaga')
+        .setValue({
+          file: base64.toString().split(',')[1],
+          fileName: file.name,
+          contentType: file.type,
+        });
     }
   }
 
-  fimInscricao() {   
-    const inicio = new Date (this.formCadastro.get('dataInicioTrabalho').value);
+  fimInscricao() {
+    const inicio = new Date(this.formCadastro.get('dataInicioTrabalho').value);
     var year = inicio.getFullYear();
     var month = inicio.getMonth();
     var day = inicio.getDate();
-    this.dataMaxFimInscricao = new Date(year,month,day-1);  
+    this.dataMaxFimInscricao = new Date(year, month, day - 1);
   }
 
   dataMinima() {
@@ -154,7 +160,7 @@ export class CadastrarVagaComponent implements OnInit {
     var month = this.hoje.getMonth();
     var day = this.hoje.getDate();
 
-    this.dataMin = new Date(year,month,day+5);    
+    this.dataMin = new Date(year, month, day + 5);
   }
 
   inicializaFormulario() {
@@ -192,14 +198,18 @@ export class CadastrarVagaComponent implements OnInit {
           this.estados.forEach((element: any) => {
             if (element.sigla === data.uf) {
               this.formCadastro.get('endereco.estado')?.setValue(element.id);
+              this.estadoNome = element.nome;
             }
           });
           setTimeout(() => {
             this.cidades.forEach((element: any) => {
               if (element.nome === data.localidade) {
                 this.formCadastro.get('endereco.cidade')?.setValue(element.id);
-                this.formCadastro.get('endereco.logradouro')?.setValue(data.logradouro);
+                this.formCadastro
+                  .get('endereco.logradouro')
+                  ?.setValue(data.logradouro);
                 this.formCadastro.get('endereco.bairro')?.setValue(data.bairro);
+                this.cidadeNome = element.nome;
               }
             });
           }, 1500);
@@ -215,16 +225,18 @@ export class CadastrarVagaComponent implements OnInit {
   ngOnInit(): void {}
 }
 
-const toBase64 = file => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = () => resolve(reader.result);
-  reader.onerror = reject;
-});
+const toBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+  });
 
-const toByteArray = file => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-  reader.readAsArrayBuffer(file);
-  reader.onload = () => resolve(new Uint8Array(reader.result as ArrayBuffer));
-  reader.onerror = error => reject(error);
-});
+const toByteArray = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsArrayBuffer(file);
+    reader.onload = () => resolve(new Uint8Array(reader.result as ArrayBuffer));
+    reader.onerror = (error) => reject(error);
+  });
