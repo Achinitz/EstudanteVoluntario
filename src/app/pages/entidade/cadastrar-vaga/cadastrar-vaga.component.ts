@@ -6,6 +6,7 @@ import { genericAnimations } from 'src/app/shared/animations/animations';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/services/login.service';
 import { VagaService } from 'src/app/services/vaga.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-vaga',
@@ -16,6 +17,8 @@ import { VagaService } from 'src/app/services/vaga.service';
 export class CadastrarVagaComponent implements OnInit {
   toppings = new FormControl('');
   listaDiasTrabalho: string[] = [];
+
+  imagem: string = '../../../../assets/imagens/cadastroImagem.jpg';
 
   usuario: any;
   submitted = false;
@@ -38,7 +41,9 @@ export class CadastrarVagaComponent implements OnInit {
   estados: any = [];
 
   public formCadastro = new FormGroup({
-    imagemVaga: new FormControl(null),
+    imgVaga:new FormGroup({
+      file: new FormControl(null),
+    }),
     nomeVaga: new FormControl(null, Validators.required),
     descricao: new FormControl(null, Validators.required),
     requisitos: new FormControl(null),
@@ -70,7 +75,8 @@ export class CadastrarVagaComponent implements OnInit {
     private enderecoService: EnderecoService,
     private loginService: LoginService,
     private vagaService: VagaService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private router: Router
   ) {
     this.usuario = this.loginService.usuarioLogado;
     this.inicializaFormulario();
@@ -78,7 +84,6 @@ export class CadastrarVagaComponent implements OnInit {
   }
 
   cadastrarVaga() {
-    console.log(this.formCadastro.get('imagemVaga').value);
     this.formCadastro.get('endereco.estado')?.setValue(this.estadoNome);
     this.formCadastro.get('endereco.cidade')?.setValue(this.cidadeNome);
     this.vagaService
@@ -86,6 +91,7 @@ export class CadastrarVagaComponent implements OnInit {
       .subscribe({
         next: (res: any) => {
           this.toast.success('Cadastrado com Sucesso');
+          this.router.navigate(['/Entidade']);
         },
         error: (err: any) => {
           this.toast.error('Ocorre um erro');
@@ -96,9 +102,6 @@ export class CadastrarVagaComponent implements OnInit {
       this.toast.error('Verifique os campos Requeridos!');
       this.formCadastro.errors;
     }
-    // console.log(this.usuario);
-    // console.log(JSON.stringify
-    //   (this.formCadastro.value));
   }
 
   checkboxListChange(value: string) {
@@ -132,18 +135,20 @@ export class CadastrarVagaComponent implements OnInit {
   }
 
   async inputFileChange(event) {
-    if (event.target.files && event.target.files[0]) {
-      let file = event.target.files[0];
-      let byteArrray = await toByteArray(file);
-      let base64 = await toBase64(file);
+    if(event.target.files && event.target.files[0]){
+      let file = event.target.files[0];       
 
-      this.formCadastro
-        .get('imagemVaga')
-        .setValue({
-          file: base64.toString().split(',')[1],
-          fileName: file.name,
-          contentType: file.type,
-        });
+      let base64 = await toBase64(file);
+       this.imagem = 'data:' + file.type + ';base64,' + base64.toString().split(",")[1];
+       this.imagem = this.imagem.toString();
+
+      const reader = new FileReader();
+
+      reader.addEventListener("load", () => {
+        reader.readAsDataURL(event.target.files[0]);
+      });
+
+      this.formCadastro.get('imgVaga.file').setValue(this.imagem);
     }
   }
 
@@ -173,16 +178,11 @@ export class CadastrarVagaComponent implements OnInit {
     this.enderecoService
       .getCidades(this.formCadastro.get('endereco.estado')?.value)
       .subscribe((data: any) => {
-        console.log('Chegou em cidades');
-        console.log(data);
         this.cidades = data;
       });
   }
 
   onAddBairro() {
-    /* console.log('Inicio cidade selecionado');
-    console.log(this.formCadastro.get('cidade')?.value);
-    console.log('Fim cidade selecionado'); */
   }
 
   validaCep() {

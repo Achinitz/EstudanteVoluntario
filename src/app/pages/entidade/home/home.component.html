@@ -66,7 +66,7 @@
         <div class="card col-12" *ngFor="let vaga of vagasAbertas; let i = index">
 
           <div class="imgCard col-3">
-            <img src="{{ vaga.img }}" onError="this.src = 'assets/imagens/mulherGrandeCoracao.png'" class="card-img-top"
+            <img [src]="vaga.imgVaga?.file" onError="this.src = 'assets/imagens/mulherGrandeCoracao.png'" class="card-img-top"
               alt="..." />
           </div>
           <section class="card__content col-9">
@@ -112,7 +112,7 @@
           <div class="card col-12" *ngFor="let vaga of vagasAprovacao; let i = index">
 
             <div class="imgCard col-3">
-              <img src="{{ vaga.img }}" onError="this.src = 'assets/imagens/mulherGrandeCoracao.png'"
+              <img [src]="vaga.imgVaga?.file" onError="this.src = 'assets/imagens/mulherGrandeCoracao.png'"
                 class="card-img-top" alt="..." />
             </div>
             <section class="card__content col-9">

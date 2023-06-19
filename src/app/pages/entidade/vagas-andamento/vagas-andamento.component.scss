@@ -3,6 +3,20 @@
   align-items: center;
 }
 
+.imgCard{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  background: #f2f2f2;
+}
+
+.imgCard > img {
+  border-radius: 0.5rem;
+}
+
 .content-card-vaga {
   line-height: 1.5rem;
   padding: 5px;
@@ -76,11 +90,11 @@
   padding: 0 0.5rem 0 0.5rem;
 }
 
-.imgCard {
-  width: 25%;
-  padding: 5px;
-  border-radius: 10px;
-}
+// .imgCard {
+//   width: 25%;
+//   padding: 5px;
+//   border-radius: 10px;
+// }
 
 .badge{
   font-size: 14px !important;

@@ -9,16 +9,16 @@
 
   <section class="contentDetails">
     <div class="cadastro">
-      <form [formGroup]="formCadastro" (ngSubmit)="mostrarValores()">
+      <form [formGroup]="formCadastro" (ngSubmit)="cadastrarVaga()">
         <label> <em>*</em><i> Campos de preenchimento obrigatório</i> </label>
 
         <div class="row userImg">
-          <img id="imgUser" src="../../../../assets/imagens/cadastroImagem.jpg" class="float-center" alt="..." />
+          <img id="imgUser" [src]="imagem" class="float-center" alt="..." />
         </div>
         <div class="form-group inputFile">
           <label for="imgPerfil">Imagem de Perfil </label>
           <br>
-          <input type="file" class="form-control-file" id="inputFile" (change)="inputFileChange($event)" />
+          <input type="file" class="form-control-file" accept="image/png, image/jpeg" id="inputFile" (change)="inputFileChange($event)" />
         </div>
 
         <div class="form-group">

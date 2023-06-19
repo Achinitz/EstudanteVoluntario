@@ -3,6 +3,10 @@
   align-items: center;
 }
 
+.userImg{
+  justify-content: center;
+}
+
 .cadastro {
   margin-top: 0.5em;
 }
@@ -24,10 +28,6 @@ label {
 }
 
 .contentDetails {
-  display: flex;
-  flex-direction: initial;
-  flex-wrap: wrap;
-  justify-content: initial;
 }
 
 .buttonForm {

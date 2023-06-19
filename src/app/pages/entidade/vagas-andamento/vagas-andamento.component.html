@@ -9,8 +9,8 @@
 
   <section class="m-1" *ngIf="vagasAndamento.length > 0">
     <div class="col-12 card-content-filtro">
-      <div class="col-9 p-1">
-        <form [formGroup]="formData" class="content-pesquisa d-flex col-xl-6 mb-2">
+      <div class="col-9">
+        <form [formGroup]="formData" class="content-pesquisa d-flex col-xl-6">
           <input type="text" class="form-control" placeholder="Filtre por nome a vaga" formControlName="filtro">
 
           <button class="btn btn-primary btn-pesquisa">
@@ -29,7 +29,7 @@
         <div class="card" *ngFor="let vaga of vagasAndamento; let i = index">
           <div class="card-content col-12">
             <div class="imgCard col-3">
-              <img src="{{ vaga.img }}" onError="this.src = 'assets/imagens/mulherGrandeCoracao.png'"
+              <img [src]="vaga.imgVaga?.file" onError="this.src = 'assets/imagens/mulherGrandeCoracao.png'"
               class="card-img-top" alt="..." />
             </div>
             <div class="content-card-vaga col-8">
