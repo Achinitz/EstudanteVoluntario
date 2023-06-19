@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Estudante } from '../models/estudante';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { HttpHeaderService } from './http-header.service';
 import { Observable } from 'rxjs';
 import { Vaga } from '../models/vaga';
@@ -72,20 +72,12 @@ export class EstudanteService extends HttpHeaderService {
     );
   }
 
-  /*  ARRUMAR FUNCAO NO BACK
+  /*  ARRUMAR FUNCAO NO BACK - ver se precisa
 public getDetalheInscricao(idUsuario: string, idInscricao: string): Observable<any>{
   return this.http.get(this.baseUrl + `estudante/${idUsuario}/${idInscricao}`, this.httpOptions);   
 } */
 
-  /*  ARRUMAR FUNCAO NO BACK
-public aceitarTermo(idInscricao: string): Observable<any>{
-  return this.http.patch(this.baseUrl + `estudante/${idInscricao}/aceitar`, this.httpOptions);   
-} */
 
-  /*  ARRUMAR FUNCAO NO BACK
-public rescindirTermo(idInscricao: string): Observable<any>{
-  return this.http.patch(this.baseUrl + `estudante/${idInscricao}/rescindir`, this.httpOptions);   
-} */
 } /*  ARRUMAR FUNCAO NO BACK
 public listarCertificados(idUsuario: string): Observable<any>{
   return this.http.get(this.baseUrl + `estudante/${idUsuario}/certificados`, this.httpOptions);   

@@ -53,7 +53,7 @@
     <b class="">Horário</b>
     <p class="">{{ vagaSelecionada.horarioInicioTrabalho | localHour}} - {{ vagaSelecionada.horarioEncerramentoTrabalho | localHour }}</p>
   </div>
-  <div class="row col-12">
+  <div class="row col-12"  *ngIf="vagaSelecionada.statusVaga.toString() == 'ABERTA'">
     <b class="">Período de inscrição</b>
     <p class="">Até {{ vagaSelecionada.dataFinalizacaoVaga |localDate }}</p>
   </div>

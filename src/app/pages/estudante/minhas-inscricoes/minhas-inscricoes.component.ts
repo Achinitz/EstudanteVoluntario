@@ -10,7 +10,6 @@ import { Vaga } from 'src/app/models/vaga';
 import { Inscricao } from 'src/app/models/inscricao';
 import { LoginService } from 'src/app/services/login.service';
 import { TermoadesaoService } from 'src/app/services/termoadesao.service';
-import { Termoadesao } from 'src/app/models/termoadesao';
 
 @Component({
   selector: 'app-minhas-inscricoes',
@@ -20,7 +19,10 @@ import { Termoadesao } from 'src/app/models/termoadesao';
 export class MinhasInscricoesComponent implements OnInit {
   inscricoes: any = [];
   usuarioLogado: Usuario;
-  dadosTermo: Termoadesao;
+  termo: any;
+  estudante: any;
+  entidade: any;
+  vaga: any;
 
   constructor(
     private modalService: NgbModal,
@@ -31,7 +33,7 @@ export class MinhasInscricoesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.usuarioLogado = this.loginService.usuarioLogado;    
+    this.usuarioLogado = this.loginService.usuarioLogado;
     this.getInscricoes(this.usuarioLogado._id);
   }
 
@@ -43,7 +45,6 @@ export class MinhasInscricoesComponent implements OnInit {
     });
   }
 
-  //modal para visualizar os dados
   visualizarInscricao(vaga: Vaga, statusInscricao: string) {
     const modalRef = this.modalService.open(ModalVagaComponent, {
       windowClass: 'auto',
@@ -54,6 +55,63 @@ export class MinhasInscricoesComponent implements OnInit {
     modalRef.componentInstance.statusInscricao = statusInscricao;
   }
 
+  visualizarTermo(inscricao: string) {
+    this.termoAdesaoService
+      .getTermoAdesao(this.usuarioLogado._id, inscricao)
+      .subscribe({
+        next: (res: any) => {
+          this.termo = res.termo;
+          this.estudante = res.estudante;
+          this.entidade = res.entidade;
+          this.vaga = res.vaga;
+
+          const modalRef = this.modalService.open(ModalTermoComponent, {
+            windowClass: 'auto',
+            backdrop: 'static',
+            scrollable: true,
+            centered: true,
+          });
+          modalRef.componentInstance.estudante = this.estudante;
+          modalRef.componentInstance.termo = this.termo;
+          modalRef.componentInstance.entidade = this.entidade;
+          modalRef.componentInstance.vaga = this.vaga;
+        },
+        error: (err: any) => {
+          console.log(err.error.message);
+        },
+      });
+  }
+
+  rescindirTermo(idTermo: string) {
+    Swal.fire({
+      title: 'Deseja realmente rescindir o seu Termo de Adesão nesta vaga?',
+      text: 'Ao confirmar, o seu termo será rescindido!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.termoAdesaoService
+          .rescindirTermo(this.usuarioLogado._id, idTermo)
+          .subscribe({
+            next: (res: any) => {
+              Swal.fire({
+                title:
+                  'Termo rescindido com sucesso! Em breve o certificado estará disponível.',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              window.location.reload();
+            },
+          });
+      }
+    });
+  }
+  
   cancelarInscricao(inscricao: Inscricao) {
     Swal.fire({
       title: 'Deseja realmente cancelar a sua inscrição nessa vaga?',
@@ -83,55 +141,6 @@ export class MinhasInscricoesComponent implements OnInit {
               timer: 1500,
             });
           },
-        });
-      }
-    });
-  }
-
-
-  aceitarTermo(inscricao: Inscricao) {
-
-    this.termoAdesaoService.getTermoAdesao(this.usuarioLogado._id, inscricao.termoAdesaoId).subscribe({
-      next: (res: any) =>{
-        this.dadosTermo = res;      
-      },
-    })
-   
-    const modalRef = this.modalService.open(ModalTermoComponent, {
-      windowClass: 'auto',
-      backdrop: 'static',
-      scrollable: true,
-      centered: true,
-    });
-
-   /*  modalRef.componentInstance.vagaSelecionada = vaga;
-    modalRef.componentInstance.estudante = this.usuarioLogado;
-    modalRef.componentInstance.entidade = entidade;
-     */
-    modalRef.componentInstance.termo = this.dadosTermo;
-    modalRef.componentInstance.estudante = this.dadosTermo.idEstudante;
-    modalRef.componentInstance.entidade = this.dadosTermo.idEntidade;
-    modalRef.componentInstance.vaga = this.dadosTermo.idVaga;
-    modalRef.componentInstance.inscricao = inscricao;
-  }
-
-  rescindirTermo() {
-    Swal.fire({
-      title: 'Deseja realmente rescindir o seu Termo de Adesão nesta vaga?',
-      text: 'Ao confirmar, o seu termo será rescindido!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Confirmar',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Termo rescindido com sucesso!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
         });
       }
     });

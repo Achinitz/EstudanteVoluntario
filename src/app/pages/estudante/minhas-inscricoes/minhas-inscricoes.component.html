@@ -28,10 +28,13 @@
         </td>
         <td class="col-3">{{inscricao.vagaId.entidadeId.nome}}</td>
         <td class="col-1 text-center">{{inscricao.statusInscricao }}</td>
-        <td class="col-2 text-center">{{inscricao.vagaId.dataInicioTrabalho | localDate}}  - {{inscricao.vagaId.dataTerminoTrabalho | localDate}}  </td>
-        <td class="col-1 text-center">{{inscricao.vagaId.horarioInicio | localHour}}  - {{inscricao.vagaId.horarioEncerramento | localHour}}   </td>
+        <td class="col-2 text-center">{{inscricao.vagaId.dataInicioTrabalho | localDate}} -
+          {{inscricao.vagaId.dataTerminoTrabalho | localDate}} </td>
+        <td class="col-1 text-center">{{inscricao.vagaId.horarioInicio | localHour}} -
+          {{inscricao.vagaId.horarioEncerramento | localHour}} </td>
         <td class="col-2 buttonsActions">
-          <button class="button-table" title="Visualizar" (click)="visualizarInscricao(inscricao.vagaId, inscricao.statusInscricao)">
+          <button class="button-table" title="Visualizar vaga"
+            (click)="visualizarInscricao(inscricao.vagaId, inscricao.statusInscricao)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
               viewBox="0 0 16 16">
               <path
@@ -40,30 +43,41 @@
             </svg>
           </button>
           <!--Se estiver inscrito aparece a opção para cancelar, se estiver aprovado sem termo aparece o termo para concordar-->
-          <button *ngIf="inscricao.statusInscricao == 'INSCRITO'" class="button-table bg-danger" title="Cancelar Inscrição" (click)="cancelarInscricao(inscricao)">
+          <button *ngIf="inscricao.statusInscricao == 'INSCRITO'" class="button-table bg-danger"
+            title="Cancelar Inscrição" (click)="cancelarInscricao(inscricao)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
               viewBox="0 0 16 16">
               <path
                 d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </button>
-          <button *ngIf="inscricao.statusInscricao == 'APROVADO' && !inscricao.termoAdesao" class="button-table bg-danger" title="Aceitar Termo" (click)="aceitarTermo(inscricao.termoAdesaoId)">
+          <button *ngIf="inscricao.statusInscricao == 'APROVADO' && !inscricao.termoAdesao"
+            class="button-table bg-danger" title="Aceitar Termo" (click)="visualizarTermo(inscricao.termoAdesaoId)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-file-earmark-fill" viewBox="0 0 16 16">
               <path
                 d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z" />
             </svg>
           </button>
-          <button *ngIf="inscricao.statusInscricao == 'APROVADO' && inscricao.termoAdesao || inscricao.statusInscricao == 'ENCERRADO'" class="button-table bg-success" title="Visualizar Termo" (click)="aceitarTermo(inscricao)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
-              <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
-              <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+          <button
+            *ngIf="inscricao.statusInscricao == 'APROVADO' && inscricao.termoAdesao || inscricao.statusInscricao == 'ENCERRADO'"
+            class="button-table bg-success" title="Visualizar Termo" (click)="visualizarTermo(inscricao.termoAdesaoId)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-file-earmark-check" viewBox="0 0 16 16">
+              <path
+                d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+              <path
+                d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
             </svg>
           </button>
-          <button *ngIf="inscricao.statusInscricao == 'APROVADO' && inscricao.termoAdesao" class="button-table bg-danger" title="Rescindir Termo" (click)="rescindirTermo()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-excel" viewBox="0 0 16 16">
-              <path d="M5.884 6.68a.5.5 0 1 0-.768.64L7.349 10l-2.233 2.68a.5.5 0 0 0 .768.64L8 10.781l2.116 2.54a.5.5 0 0 0 .768-.641L8.651 10l2.233-2.68a.5.5 0 0 0-.768-.64L8 9.219l-2.116-2.54z"/>
-              <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+          <button *ngIf="inscricao.statusInscricao == 'APROVADO' && inscricao.termoAdesao"
+            class="button-table bg-danger" title="Rescindir Termo" (click)="rescindirTermo(inscricao.termoAdesaoId)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-file-earmark-excel" viewBox="0 0 16 16">
+              <path
+                d="M5.884 6.68a.5.5 0 1 0-.768.64L7.349 10l-2.233 2.68a.5.5 0 0 0 .768.64L8 10.781l2.116 2.54a.5.5 0 0 0 .768-.641L8.651 10l2.233-2.68a.5.5 0 0 0-.768-.64L8 9.219l-2.116-2.54z" />
+              <path
+                d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
             </svg>
           </button>
 
