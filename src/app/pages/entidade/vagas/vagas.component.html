@@ -8,10 +8,10 @@
   </div>
 
   <section class="m-1" *ngIf="vagasDisponiveis.length > 0">
-    <div class="col-12 card-content-filtro">
+    <!-- <div class="col-12 card-content-filtro">
       <div class="col-9 p-1">
         <form [formGroup]="formData" class="content-pesquisa d-flex col-xl-6 mb-2">
-          <input type="text" class="form-control" placeholder="Filtre por nome a vaga" formControlName="filtro">
+          <input type="text" class="form-control" placeholder="Filtre por nome a vaga" formControlName="filtro" (ngSubmit)="filtrarDadosVaga()">
 
           <button class="btn btn-primary btn-pesquisa">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
@@ -22,12 +22,12 @@
           </button>
         </form>
       </div>
-      <div class="col-3 p-1">
+       <div class="col-3 p-1">
         <ng-select [items]="estadosVagas" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
           (closeOnSelect)="(true)">
         </ng-select>
-      </div>
-    </div>
+      </div> 
+    </div> -->
 
 
 
@@ -64,9 +64,9 @@
         </div>
       </section>
       <div class="row">
-        <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
-          [collectionSize]="this.vagasDisponiveis.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"
-          [(page)]="paginaAtual" (pageChange)="mudancaPagina(paginaAtual)">
+        <ngb-pagination class="pagination pull-right" [rotate]="true"
+          [collectionSize]="tamanhoArray" [pageSize]="itemsPerPage" 
+          [(page)]="paginaAtual" (pageChange)="mudancaPagina()">
         </ngb-pagination>
       </div>
     </section>

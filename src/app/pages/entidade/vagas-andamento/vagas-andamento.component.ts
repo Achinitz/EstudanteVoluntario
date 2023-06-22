@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Vaga } from 'src/app/models/vaga';
 import { DataService } from 'src/app/services/data.service';
 import { EntidadeService } from 'src/app/services/entidade.service';
 import { LoginService } from 'src/app/services/login.service';
@@ -18,6 +19,10 @@ export class VagasAndamentoComponent implements OnInit {
     filtro: new FormControl(null, Validators.required),
   });
 
+  paginaAtual = 1;
+  itemsPerPage = 5;
+  tamanhoArray;
+  idUsuario: string;
   vagasAndamento: any = [];
 
   estadosVagas: any = [
@@ -46,13 +51,16 @@ export class VagasAndamentoComponent implements OnInit {
     public dialog: MatDialog,        
     private router: Router
   ) {
+    this.idUsuario = this.loginService.usuarioLogado._id;
     this.listarVagasAndamento(this.loginService.usuarioLogado._id);
   }
 
   listarVagasAndamento(idUsuario: string){
-    this.entidadeService.listarVagasAndamento(idUsuario).subscribe({
+    let page = this.paginaAtual ;
+    this.entidadeService.listarVagasAndamento(idUsuario,page).subscribe({
       next: (res:any) => {
-        this.vagasAndamento = res;
+        this.vagasAndamento = res.vagas;
+        this.tamanhoArray = res.total;
       },
       error: (err:any) => {
         this.toast.error(err?.message);
@@ -61,17 +69,9 @@ export class VagasAndamentoComponent implements OnInit {
   }
 
   //Variaveis para a paginação
-  paginaAtual = 1;
-  tamanhoPagina: number = this.vagasAndamento.length;
-  itemsPerPage = 6;
-  public vagas: any = this.vagasAndamento.slice(0, 6);
 
-  public mudancaPagina(pageNum: number): void {
-    this.tamanhoPagina = this.itemsPerPage * (pageNum - 1);
-    this.vagas = this.vagasAndamento.slice(
-      this.tamanhoPagina,
-      this.tamanhoPagina + 6
-    );
+  public mudancaPagina(): void {
+    this.listarVagasAndamento(this.idUsuario);
   }
 
   getStatus(status: string) {
@@ -91,17 +91,8 @@ export class VagasAndamentoComponent implements OnInit {
   }
 
   //Vai exibir os detalhes da vaga antes de ele efetivar a inscrição
-  exibirDetalhes(value: any): void {
-    this.dataService.data = value;
-    // const dialogRef = this.dialog.open(DetalheVagaEntidadeComponent, {
-    //   width: "auto",
-    //   data: this.vagasAndamento[value],
-    // });
-
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   console.log("The dialog was closed");
-    // });
-    this.router.navigate(['/Entidade/detalhe-vaga']);
+  exibirDetalhes(value: Vaga): void {
+    this.router.navigate(['/Entidade/detalhe-vaga', { id: value._id }]);
   }
 
   ngOnInit(): void {}

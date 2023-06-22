@@ -27,7 +27,8 @@ export class DetalhesComponent implements OnInit {
     private loginService: LoginService,
     private entidadeService: EntidadeService,
     private _location: Location
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.usuarioLogado = this.loginService.usuarioLogado;
@@ -45,6 +46,7 @@ export class DetalhesComponent implements OnInit {
       .subscribe({
         next: (res: any) => {
           this.vaga = res;
+          console.log(res);
         },
       });
   }

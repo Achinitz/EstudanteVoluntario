@@ -8,7 +8,7 @@
   </div>
 
   <section class="m-1" *ngIf="vagasDisponiveis.length > 0">
-    <div class="col-12 card-content-filtro">
+    <!-- <div class="col-12 card-content-filtro">
       <div class="col-9 p-1">
         <form [formGroup]="formData" class="content-pesquisa d-flex col-xl-6 mb-2">
           <input type="text" class="form-control" placeholder="Filtre por nome a vaga" formControlName="filtro">
@@ -22,7 +22,7 @@
           </button>
         </form>
       </div>
-    </div>
+    </div> -->
 
 
     <section class="row card__vaga">
@@ -56,9 +56,9 @@
       </div>
     </section>
     <div class="row">
-      <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
-        [collectionSize]="this.vagasDisponiveis.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"
-        [(page)]="paginaAtual" (pageChange)="mudancaPagina(paginaAtual)">
+      <ngb-pagination class="pagination pull-right" [rotate]="true"
+        [collectionSize]="tamanhoArray" [pageSize]="itemsPerPage" 
+        [(page)]="paginaAtual" (pageChange)="mudancaPagina()">
       </ngb-pagination>
     </div>
 

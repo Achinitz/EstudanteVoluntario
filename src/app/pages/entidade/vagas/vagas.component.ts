@@ -13,9 +13,14 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./vagas.component.scss'],
 })
 export class VagasComponent implements OnInit {
+  //Variaveis para a paginação
+  paginaAtual = 1;
+  itemsPerPage = 5;
+  tamanhoArray;
+  idUsuario: string;
   public formData = new FormGroup({
     filtro: new FormControl(null, Validators.required),
-    estado: new FormControl(null, Validators.required),
+    // estado: new FormControl(null, Validators.required),
   });
 
   vagasDisponiveis: any = [];
@@ -49,10 +54,12 @@ export class VagasComponent implements OnInit {
     private loginService: LoginService,
     private toast: ToastrService,
     private router: Router
-  ) {}
+  ) {
+    this.idUsuario = this.loginService.usuarioLogado._id;
+  }
 
   ngOnInit(): void {
-    this.listarVagas(this.loginService.usuarioLogado._id);
+    this.listarVagas(this.idUsuario);
   }
 
   getStatus(status: string) {
@@ -71,10 +78,17 @@ export class VagasComponent implements OnInit {
     }
   }
 
+  filtrarDadosVaga(){
+    
+  }
+
   listarVagas(idUsuario: string) {
-    this.entidadeService.listarVagas(idUsuario).subscribe({
+    let page = this.paginaAtual ;
+    this.entidadeService.listarVagas(idUsuario, page).subscribe({
       next: (res: any) => {
-        this.vagasDisponiveis = res;
+        this.vagasDisponiveis = res.vagas;
+        this.tamanhoArray = res.total;
+        console.log(res.total);
       },
       error: (err: any) => {
         this.toast.error(err?.message);
@@ -86,17 +100,8 @@ export class VagasComponent implements OnInit {
     this.router.navigate(['/Entidade/detalhe-vaga', { id: value._id }]);
   }
 
-  //Variaveis para a paginação
-  paginaAtual = 1;
-  tamanhoPagina: number = this.vagasDisponiveis.length;
-  itemsPerPage = 6;
-  public vagas: any = this.vagasDisponiveis.slice(0, 6);
-
-  public mudancaPagina(pageNum: number): void {
-    this.tamanhoPagina = this.itemsPerPage * (pageNum - 1);
-    this.vagas = this.vagasDisponiveis.slice(
-      this.tamanhoPagina,
-      this.tamanhoPagina + 6
-    );
+  public mudancaPagina(): void {
+    this.listarVagas(this.idUsuario);
+    console.log(this.paginaAtual);
   }
 }

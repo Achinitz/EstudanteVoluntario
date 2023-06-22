@@ -14,6 +14,11 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./vagas-abertas.component.scss'],
 })
 export class VagasAbertasComponent implements OnInit {
+
+  paginaAtual = 1;
+  itemsPerPage = 5;
+  tamanhoArray;
+  idUsuario: string;
   usuarioLogado: Usuario;
   vagasDisponiveis: any = [];  
 
@@ -32,12 +37,16 @@ export class VagasAbertasComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private toast: ToastrService
-  ) {}
+  ) {
+    this.idUsuario = this.loginService.usuarioLogado._id;
+  }
 
-  buscaVagasAbertas(idUsuario: string) {
-    this.entidadeService.listarVagasAbertas(idUsuario).subscribe({
+  buscaVagasAbertas(idUsuar: string) {
+    let page = this.paginaAtual;
+    this.entidadeService.listarVagasAbertas(idUsuar,page).subscribe({
       next: (res: any) => {
-        this.vagasDisponiveis = res;
+        this.vagasDisponiveis = res.vagas;
+        this.tamanhoArray = res.total;
       },
       error: (err: any) => {
         this.toast.error(err?.message);
@@ -67,17 +76,9 @@ export class VagasAbertasComponent implements OnInit {
   }
   
   //Variaveis para a paginação
-  paginaAtual = 1;
-  tamanhoPagina: number = this.vagasDisponiveis.length;
-  itemsPerPage = 6;
-  public vagas: any = this.vagasDisponiveis.slice(0, 6);
 
-  public mudancaPagina(pageNum: number): void {
-    this.tamanhoPagina = this.itemsPerPage * (pageNum - 1);
-    this.vagas = this.vagasDisponiveis.slice(
-      this.tamanhoPagina,
-      this.tamanhoPagina + 6
-    );
+  public mudancaPagina(): void {
+    this.buscaVagasAbertas(this.idUsuario);
   }
 
 }

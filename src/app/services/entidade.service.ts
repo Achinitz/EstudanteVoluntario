@@ -35,7 +35,6 @@ export class EntidadeService extends HttpHeaderService {
   }
 
   public setPerfilEntidade(idUsuario: string, entidade: any) {
-    console.log('chegou aqui')
     return this.http.patch(
       this.baseUrl + `entidade/${idUsuario}`, entidade,
       this.httpOptions
@@ -50,30 +49,37 @@ export class EntidadeService extends HttpHeaderService {
     );
   }
 
-  public listarVagas(idUsuario: string): Observable<any> {
+  public listarVagas(idUsuario: string, pagina: number): Observable<any> {
     return this.http.get(
-      this.baseUrl + `entidade/${idUsuario}/vagas`,
+      this.baseUrl + `entidade/${idUsuario}/${pagina}/vagas`,
       this.httpOptions
     );
   }
 
-  public listarVagasAbertas(idUsuario: string): Observable<any> {
+  public listarVagasCanceladas(idUsuario: string): Observable<any> {
     return this.http.get(
-      this.baseUrl + `entidade/${idUsuario}/vagas-abertas`,
+      this.baseUrl + `entidade/${idUsuario}/vagas-cancelada`,
       this.httpOptions
     );
   }
 
-  public listarVagasAndamento(idUsuario: string): Observable<any> {
+  public listarVagasAbertas(idUsuario: string, pagina: number): Observable<any> {
     return this.http.get(
-      this.baseUrl + `entidade/${idUsuario}/vagas-andamento`,
+      this.baseUrl + `entidade/${idUsuario}/${pagina}/vagas-abertas`,
       this.httpOptions
     );
   }
 
-  public listarVagasAprovacao(idUsuario: string): Observable<any> {
+  public listarVagasAndamento(idUsuario: string, pagina: number): Observable<any> {
     return this.http.get(
-      this.baseUrl + `entidade/${idUsuario}/vagas-aprovacao`,
+      this.baseUrl + `entidade/${idUsuario}/${pagina}/vagas-andamento`,
+      this.httpOptions
+    );
+  }
+
+  public listarVagasAprovacao(idUsuario: string, pagina: number): Observable<any> {
+    return this.http.get(
+      this.baseUrl + `entidade/${idUsuario}/${pagina}/vagas-aprovacao`,
       this.httpOptions
     );
   }

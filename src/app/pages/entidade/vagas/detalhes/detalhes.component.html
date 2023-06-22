@@ -1,7 +1,7 @@
 <section class="content" *ngIf="vaga">
 
   <div class="topo">
-    <h1>Detalhes - {{vaga.nomeVaga}}</h1>
+    <h1>Detalhes  {{- vaga.nomeVaga}}</h1>
   </div>
 
   <ngb-alert #alert type="warning">
@@ -108,7 +108,7 @@
         Essa vaga ainda não possui inscritos
       </ng-template>
 
-      <table class="table table-striped" *ngIf="vaga.inscricoes.length > 0 else naoPossuiInscritos">
+      <table class="table table-striped" *ngIf="vaga?.inscricoes?.length > 0 else naoPossuiInscritos">
         <thead>
           <tr>
             <th class="col-3" scope="col">Nome</th>

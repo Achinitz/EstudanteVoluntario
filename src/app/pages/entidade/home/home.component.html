@@ -14,7 +14,7 @@
           </svg>
         </span>
         <div class="col-8 dados">
-          <p class="quantidade-chamados">4</p>
+          <p class="quantidade-chamados">{{vagasAbertas.length}}</p>
           <span class="title-index"> Vagas Abertas </span>
         </div>
       </div>      
@@ -31,7 +31,7 @@
           </svg>
         </span>
         <div class="col-8 dados">
-          <p class="quantidade-chamados">2</p>
+          <p class="quantidade-chamados">{{vagasAndamento.length}}</p>
           <span class="title-index"> Vagas em Andamento </span>
         </div>
       </div>     
@@ -47,7 +47,7 @@
           </svg>
         </span>
         <div class="col-8 dados">
-          <p class="quantidade-chamados">2</p>
+          <p class="quantidade-chamados">{{vagasCanceladas.length}}</p>
           <span class="title-index"> Vagas Canceladas </span>
         </div>
       </div>
@@ -55,13 +55,14 @@
   </section>
 
   <section>
+        <!--
     <h2>Vagas Publicadas - Abertas</h2>
 
     <div *ngIf="!vagasAbertas">
       <span> No momento não existem vagas abertas cadastradas! </span>
     </div>
 
-    <section class="vagasAbertas" *ngIf="vagasAbertas">
+ <section class="vagasAbertas" *ngIf="vagasAbertas">
       <div class="content__card">
         <div class="card col-12" *ngFor="let vaga of vagasAbertas; let i = index">
 
@@ -99,7 +100,7 @@
           </section>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section>
       <h2>Vagas em Análise</h2>
@@ -148,6 +149,11 @@
       </section>
 
     </section>
-    <a class="maisvagas" routerLink="/Entidade/vagas">> Mais vagas</a>
+    <div class="row">
+      <ngb-pagination class="pagination pull-right" [rotate]="true"
+        [collectionSize]="tamanhoArray" [pageSize]="itemsPerPage" 
+        [(page)]="paginaAtual" (pageChange)="mudancaPagina()">
+      </ngb-pagination>
+    </div>
   </section>
 </section>
