@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { EntidadeService } from 'src/app/services/entidade.service';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-perfil',
@@ -183,8 +184,40 @@ export class PerfilComponent implements OnInit {
   }
 
 
-    desativarConta(){
-    
+  desativarConta(){
+
+    Swal.fire({
+      title: 'Deseja realmente desativar o seu Perfil?',
+      text: 'Ao confirmar, seu perfil será desativado.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Perfil desativado com Sucesso!',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(
+          () => {  
+            console.log(this.loginService.usuarioLogado._id);
+            this.loginService.desativar(this.loginService.usuarioLogado._id).subscribe({
+              next: (res:any) => {
+                this.toast.success(res.message);
+                this.router.navigate(['/']);
+                localStorage.clear();
+              },
+              error: (err:any) => {
+                this.toast.error(err.message);
+              }
+            });
+          }
+        )
+      }});
   }
 
   finalizarEdicao(){

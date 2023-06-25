@@ -13,8 +13,13 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./buscar-vagas.component.scss'],
 })
 export class BuscarVagasComponent implements OnInit {
-  usuarioLogado: Usuario;
-  vagasCadastradas: any = [];
+    //Variaveis para a paginação
+    paginaAtual = 1;
+    itemsPerPage = 5;
+    tamanhoArray;
+    idUsuario: string;
+    usuarioLogado: Usuario;
+    vagasCadastradas: any = [];
 
   constructor(
     public dialog: MatDialog,
@@ -28,10 +33,17 @@ export class BuscarVagasComponent implements OnInit {
     this.getVagas();
   }
 
+  filtrarVagas(lista: any){
+    lista.map( (a:any) => {
+      console.log(a);
+    });
+  }
+
   getVagas() {
-    this.estudanteService.listarVagas().subscribe({
-      next: (res: Vaga[]) => {
-        this.vagasCadastradas = res;
+    this.estudanteService.listarVagas(this.usuarioLogado._id,this.paginaAtual).subscribe({
+      next: (res: any) => {
+        this.vagasCadastradas = res.vagas;
+        this.tamanhoArray = res.tamanhoPagina;
       },
     });
   }
@@ -57,17 +69,9 @@ export class BuscarVagasComponent implements OnInit {
     this.router.navigate(['/Estudante/detalhe-vaga', { id: value._id }]);
   }
 
-  //Paginação
-  paginaAtual = 1;
-  tamanhoPagina: number = this.vagasCadastradas.length;
-  itemsPerPage = 6;
-  public vagas: any = this.vagasCadastradas.slice(0, 6);
 
-  public mudancaPagina(pageNum: number): void {
-    this.tamanhoPagina = this.itemsPerPage * (pageNum - 1);
-    this.vagas = this.vagasCadastradas.slice(
-      this.tamanhoPagina,
-      this.tamanhoPagina + 6
-    );
+  public mudancaPagina(): void {
+  this.getVagas(); 
   }
+
 }

@@ -24,15 +24,13 @@ export class LoginService extends HttpHeaderService {
   }
 
   public set usuarioLogado(usuario: Usuario){
-    // this.usuarioLogado.perfil = this.usuarioLogado.perfil[0].toUpperCase() + this.usuarioLogado.perfil.substring(1);
-    console.log(this.usuarioLogado)    
     localStorage[this.LS_CHAVE] = JSON.stringify(usuario);
   }
 
   public verificarLogin(loginUsuario: any): Observable<any> {
     return this.http.get(
       this.baseUrl + 'auth/verificarLogin',
-      this.httpOptions
+      this.httpOptions  
     );
   }
 
@@ -42,6 +40,10 @@ export class LoginService extends HttpHeaderService {
 
   public reativar(login: Login): Observable<any> {
     return this.http.patch(this.baseUrl + 'auth/reativar', login, this.httpOptions);
+  }
+
+  public desativar(idUsuario: string): Observable<any> {
+    return this.http.patch(this.baseUrl + `auth/${idUsuario}/desativar`, this.httpOptions);
   }
 
 }

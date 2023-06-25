@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { StatusPerfilEnum } from 'src/app/enums/status-perfil';
 import { LoginService } from 'src/app/services/login.service';
 import { StorageService } from 'src/app/services/storage.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private storageService: StorageService,
     private route: ActivatedRoute,
-    private toast: ToastrService
+    private toast: ToastrService,
   ) {
     if (this.loginService.usuarioLogado) {
       this.router.navigate(['/Home']);
@@ -38,9 +39,9 @@ export class LoginComponent implements OnInit {
   logar() {
     this.loading = true;
     if (this.formLogin.valid) {
+      console.log(this.formLogin.value.login);
       this.loginService.login(this.formLogin.value).subscribe({
-        next: (usuario) => {
-         
+        next: (usuario) => {         
           if (
             usuario.user?.statusPerfil != null &&
             usuario.user?.statusPerfil == this.state.APROVADO
@@ -62,10 +63,39 @@ export class LoginComponent implements OnInit {
           } else {
             this.loading = false;
             if (usuario.statusPerfil == this.state.PENDENTE) {
-              console.log('pendente');
               this.toast.warning(usuario.message);
-            } else {
-              console.log('reprovado');
+            } else if(usuario.statusPerfil == this.state.DESATIVADO){
+              Swal.fire({
+                title: 'Deseja realmente reativar o seu Perfil?',
+                text: 'Ao confirmar, seu perfil será reativado.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirmar',
+                cancelButtonText: 'Cancelar',
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire({
+                    title: 'Perfil reativado com Sucesso!',
+                    text: 'Faça o login novamente para entrar na sua conta!',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500,
+                  }).then(
+                    () => {
+                      this.loginService.reativar(this.formLogin.value).subscribe({
+                        next: (res:any) => {
+                          this.toast.success(res.message);
+                        },
+                        error: (err:any) => {
+                          this.toast.error(err.message);
+                        }
+                      });
+                    }
+                  )
+                }});
+            }else{
               this.toast.error(usuario.message);
             }
           }

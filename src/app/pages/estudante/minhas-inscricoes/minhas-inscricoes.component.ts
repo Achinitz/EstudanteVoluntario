@@ -111,6 +111,22 @@ export class MinhasInscricoesComponent implements OnInit {
       }
     });
   }
+
+  getStatusInscricao(status: string) {
+    if (status == 'ANDAMENTO') {
+      return 'bg-warning';
+    } else if (status == 'APROVADO') {
+      return 'bg-success text-white';
+    } else if (status == 'REPROVADO') {
+      return 'bg-danger text-white';
+    } else if (status == 'CANCELADO') {
+      return 'bg-danger text-white';
+    } else if (status == 'INSCRITO') {
+      return 'bg-info text-white';
+    } else {
+      return 'bg-secondary text-white';
+    }
+  }
   
   cancelarInscricao(inscricao: Inscricao) {
     Swal.fire({

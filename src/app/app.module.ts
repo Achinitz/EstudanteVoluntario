@@ -44,6 +44,7 @@ import { LoginService } from './services/login.service';
 import { CommonModule } from '@angular/common';
 import { TokenInterceptor } from './helpers/token.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { ValidarCertificadoComponent } from './pages/validar-certificado/validar-certificado.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { SharedModule } from './shared/shared.module';
     SobreNosComponent,
     Pagina404Component,
     EsqueciSenhaComponent,
+    ValidarCertificadoComponent,
        
 
   ],

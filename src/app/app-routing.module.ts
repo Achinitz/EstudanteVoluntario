@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.component';
 import { Pagina404Component } from './pages/pagina404/pagina404.component';
+import { ValidarCertificadoComponent } from './pages/validar-certificado/validar-certificado.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'esqueceu-senha',
     component: EsqueciSenhaComponent,
+  },
+  {
+    path: 'validar-certificado',
+    component: ValidarCertificadoComponent,
   },
   {
     path: 'Administrador',

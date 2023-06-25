@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario.model';
 import { EstudanteService } from 'src/app/services/estudante.service';
 import { LoginService } from 'src/app/services/login.service';
@@ -18,6 +18,7 @@ export class DetalheVagaComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private estudanteService: EstudanteService,
     private loginService: LoginService
   ) {}
@@ -59,7 +60,11 @@ export class DetalheVagaComponent implements OnInit {
               icon: 'success',
               showConfirmButton: false,
               timer: 1500,
-            });
+            }).then(
+              () => {
+                this.router.navigate(['/Estudante']);
+              }
+            );
           },
           error: (erro: any) => {
             Swal.fire({

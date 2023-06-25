@@ -1,0 +1,34 @@
+<main class="main-page">
+    <section class="content">
+        <h1>Validar Certificado</h1>
+        <P>
+            Informe o código de verificação prosseguir com a solicitação.
+        </P>
+        <form>
+            <div class="col-xl-12">
+                <label>
+                    Código de Verificação:<em class="text-danger">*</em>
+                </label>
+                <br>
+                <input class="form-control" id="código" type="text" placeholder="Digite os números">
+            </div>
+            <br>
+            <div class="content__botao" (click)="validarCertificado()">
+                <button class="col-12 btn btn-primary">
+                    Validar Certificado
+                </button>
+            </div>
+            <label class="mt-2 text-success text-result">
+                O certificado é válido!
+            </label>
+        </form>
+    </section>
+    <div>     
+        <h3>Dados Certificado</h3>   
+
+        <p>
+            Certificamos para os devidos fins, que <span class="content_resultado">(FULANO DE TAL)</span>, participou da atividade <span class="content_resultado">(NOME DA VAGA)</span>, como trabalho voluntário, na entidade <span>(NOME ENTIDADE) - (CNPJ: XXX.XXX.XXX.XX)</span>.
+            durante o período de <span class="content_resultado">(XX/XX/XXXX)</span> até <span class="content_resultado">(XX/XX/XXXX)</span>, totalizando <span class="content_resultado">(X) horas</span>.
+        </p>
+    </div>
+</main>

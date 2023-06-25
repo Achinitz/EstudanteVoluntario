@@ -69,7 +69,6 @@ export class FormEstudanteComponent implements OnInit {
     }),
     curso: new FormGroup({
       instituicao: new FormControl(null, Validators.required),
-      grau: new FormControl(null, Validators.required),
       campus: new FormControl(null, Validators.required),
       nomeCurso: new FormControl(null, Validators.required),
       anoInicio: new FormControl(null, Validators.required),
@@ -267,10 +266,21 @@ export class FormEstudanteComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  atualizaCurso(){
+    console.log(this.cursos);
+    console.log(this.formCadastro.get('curso')
+    )
+  }
+
   cadastrarEstudante() {
     // this.formCadastro.get('nome').setValue(
     //   this.formCadastro.get('nomeSocial')?.value != null || '' ? this.formCadastro.get('nomeSocial').value :this.formCadastro.get('nome').value
     //   );
+    console.log(this.formCadastro.value);
+    console.log('***********');
+    console.log(this.formCadastro);
+    console.log(this.formCadastro.get('curso').value);
+    console.log(this.formCadastro.get('curso.nomeCurso').value);
 
     this.submitted = true;
     if (this.formCadastro.valid) {

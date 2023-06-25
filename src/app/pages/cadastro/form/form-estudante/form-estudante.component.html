@@ -186,6 +186,7 @@
       </div>
 
     <div formGroupName="curso">
+
     <div class="form-group" *ngIf="instituicoes?.length > 0">
       <label for="ies">Instituição de Ensino <em>*</em> </label>
       <ng-select [items]="instituicoes" id="ngSelect" bindLabel="nome" bindValue="_id" placeholder="Selecione"
@@ -204,8 +205,8 @@
       <!-- <ng-select [items]="cursos" id="ngSelect" bindValue="id" placeholder="Selecione"
         formControlName="nomeCurso" (closeOnSelect)="(true)">
       </ng-select> -->
-      <ng-select formControlName="nomeCurso" placeholder="Selecione">
-        <ng-option *ngFor="let curso of cursos" [value]="curso.id">
+      <ng-select placeholder="Selecione" formControlName="nomeCurso" (ngModelChange)="atualizaCurso()">
+        <ng-option *ngFor="let curso of cursos" [value]="curso._id">
           {{curso.nomeCurso}} - {{curso.grau}}
         </ng-option>
       </ng-select>

@@ -1,5 +1,5 @@
 <section class="content">
-  <form class="col-6 busca">
+  <!-- <form class="col-6 busca">
     <div class="form-row">
       <div class="col">
         <label>
@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-  </form>
+  </form> -->
 
   <main>
     <ng-template #naoPossuiVagas>
@@ -85,10 +85,12 @@
         </div>
       </section>
       
-        <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
-        [collectionSize]="this.vagasCadastradas.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"
-        [(page)]="paginaAtual" (pageChange)="mudancaPagina(paginaAtual)" *ngIf="vagasCadastradas">
+      <div class="row">
+        <ngb-pagination class="pagination pull-right" [rotate]="true"
+          [collectionSize]="tamanhoArray" [pageSize]="itemsPerPage" 
+          [(page)]="paginaAtual" (pageChange)="mudancaPagina()">
         </ngb-pagination>
+      </div>
 
     </section>
   </main>

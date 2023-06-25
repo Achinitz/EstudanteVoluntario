@@ -7,6 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 import { EstudanteService } from 'src/app/services/estudante.service';
 import { LoginService } from 'src/app/services/login.service';
 import { CursoService } from 'src/app/services/curso.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -74,7 +76,7 @@ export class PerfilComponent implements OnInit {
       cidade: new FormControl(null, Validators.required),
     }),
     areasInteresse: new FormControl(null, Validators.required),
-    experiencias: new FormControl(null),
+    experiencias: new FormControl(null),    
     curso: new FormGroup({
       instituicao: new FormControl(null, Validators.required),
       grau: new FormControl(null, Validators.required),
@@ -97,13 +99,14 @@ export class PerfilComponent implements OnInit {
     private estudanteService: EstudanteService,
     private loginService: LoginService,
     private cursoService: CursoService,
+    private router: Router,
     private toast: ToastrService
   ) {
     
     this.estudanteService.getPerfilEstudante(this.loginService.usuarioLogado._id).subscribe({
       next: (res:any) => {
-        //console.log(res);
-        this.formCadastro.setValue(res.estudante);        
+        console.log(res);
+        this.formCadastro.patchValue(res.estudante);        
       }
     });
 
@@ -121,6 +124,7 @@ export class PerfilComponent implements OnInit {
   }
 
   onAddCurso() {
+    
     this.cursoService
       .listarCursos(this.formCadastro.get('curso.instituicao').value)
       .subscribe({
@@ -187,18 +191,10 @@ export class PerfilComponent implements OnInit {
 
   async inputFileImage(event){
 
-    let imagem = event.target.files[0];
-
-    console.log("BEGIN IMAGEM");
-    console.log(event.target.files[0]);
-    console.log("END IMAGEM");
-
+      let imagem = event.target.files[0];
       let file = event.target.files[0];       
       let byteArrray = await toByteArray(file);
       let base64 = await toBase64(file);
-      
-      console.log({ file: base64.toString().split(",")[1], fileName: file.name, contentType: file.type })
-
       this.formCadastro.get('imgPerfil').setValue({ file: base64.toString().split(",")[1], fileName: file.name, contentType: file.type });  
   }
 
@@ -229,7 +225,39 @@ export class PerfilComponent implements OnInit {
   }
 
   desativarConta(){
-    
+
+    Swal.fire({
+      title: 'Deseja realmente desativar o seu Perfil?',
+      text: 'Ao confirmar, seu perfil será desativado.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Perfil desativado com Sucesso!',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(
+          () => {  
+            console.log(this.loginService.usuarioLogado._id);
+            this.loginService.desativar(this.loginService.usuarioLogado._id).subscribe({
+              next: (res:any) => {
+                this.toast.success(res.message);
+                this.router.navigate(['/']);
+                localStorage.clear();
+              },
+              error: (err:any) => {
+                this.toast.error(err.message);
+              }
+            });
+          }
+        )
+      }});
   }
 
   ngOnInit(): void {}

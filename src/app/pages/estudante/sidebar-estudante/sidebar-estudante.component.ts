@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Notificacao } from 'src/app/models/notificacao';
+import { NotificacaoService } from 'src/app/services/notificacao.service';
 
 @Component({
   selector: 'app-sidebar-estudante',
@@ -8,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SidebarEstudanteComponent implements OnInit {
  
+  notificacoes: Notificacao[] = [];
 
   navbarData: any = [
     {
@@ -24,7 +27,15 @@ export class SidebarEstudanteComponent implements OnInit {
     },
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private notificacaoService: NotificacaoService) {}
+
+  getNotificacoes(idUsuario: string) {
+    this.notificacaoService.listarNotificacoes(idUsuario).subscribe({
+      next: (res: any) => {
+        this.notificacoes = res;
+      },
+    });
+  }
 
   ngOnInit(): void {
    

@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalDesbloqueioComponent } from './modals/modal-desbloqueio/modal-desbloqueio.component';
 
 
 
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CpfPipe,
     NomeUsuarioPipe,
     LocalHourPipe,
-    LocalDatePipe
+    LocalDatePipe,
+    ModalDesbloqueioComponent
   ],
   imports: [
     CommonModule,
