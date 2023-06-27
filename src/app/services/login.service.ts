@@ -46,4 +46,8 @@ export class LoginService extends HttpHeaderService {
     return this.http.patch(this.baseUrl + `auth/${idUsuario}/desativar`, this.httpOptions);
   }
 
+  public esqueciSenha(login: any): Observable<any> {
+    return this.http.post(this.baseUrl + 'auth/esqueciSenha', login, this.httpOptions);
+  }
+
 }

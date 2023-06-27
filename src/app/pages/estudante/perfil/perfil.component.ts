@@ -39,12 +39,7 @@ export class PerfilComponent implements OnInit {
     { id: 1, nome: 'UFPR - Universidade Federal do Paraná' },
     { id: 2, nome: 'UTFPR - Universidade Tecnológica Federal do Paraná' },
   ];
-  cursos: any = [
-    { id: 1, nome: 'ADMINISTRAÇÃO - CAMPUS JARDIM BOTÂNICO' },
-    { id: 2, nome: 'ADMINISTRAÇÃO PÚBLICA - campus centro - REITORIA' },
-    { id: 3, nome: 'AGROECOLOGIA - CAMPUS LITORAL' },
-    { id: 4, nome: 'AGRONOMIA - CAMPUS AGRÁRIAS' },
-  ];
+  cursos: any;
   estadoCivil: any = [
     { id: 1, nome: 'Casado (a)' },
     { id: 2, nome: 'Solteiro (a)' },

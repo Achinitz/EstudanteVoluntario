@@ -4,18 +4,18 @@
         <P>
             Informe seu CPF ou CNPJ abaixo para prosseguir com a solicitação.
         </P>
-        <form>
+        <form [formGroup]="form" #formDir="ngForm" (ngSubmit)="solicitarRecuperacaoSenha()">
             <div class="col-xl-12">
                 <label>
                     CPF/CNPJ:<em class="text-danger">*</em>
                 </label>
                 <br>
-                <input class="form-control" id="cpf" type="text" placeholder="Digite os números"
+                <input formControlName="login" class="form-control" id="cpf" type="text" placeholder="Informe o CPF ou CNPJ"
                     mask="000.000.000-00 || 00.000.000/0000-00">
             </div>
             <br>
-            <div class="content__botao" (click)="solicitarRecuperacaoSenha()">
-                <button class="col-12 btn btn-primary">
+            <div class="content__botao">
+                <button type="submit" class="col-12 btn btn-primary">
                     Solicitar
                 </button>
             </div>
