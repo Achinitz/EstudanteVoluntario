@@ -11,8 +11,16 @@ export class CertificadoService extends HttpHeaderService {
     super();
   }
 
-  public getCertificado(): Observable<any> {
-    return this.http.get(this.baseUrl + `certificado/gerarCertificado`, {responseType : 'blob'});
+  public getCertificado(id: string, idCertificado: string): Observable<any> {
+    return this.http.get(this.baseUrl + `certificado/${id}/${idCertificado}/gerarCertificado`, {responseType : 'blob'});
+  }
+
+  public listarCertificados(idUsuario: string): Observable<any> {
+    return this.http.get(this.baseUrl + `certificado/${idUsuario}/listarCertificado`, this.httpOptions);
+  }
+
+  public validarCertificado(codigo:string): Observable<any>{
+    return this.http.get(this.baseUrl + `certificado/${codigo}/validarCertificado`, this.httpOptions);
   }
 
 }

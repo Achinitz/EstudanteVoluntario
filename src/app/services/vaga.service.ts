@@ -30,8 +30,8 @@ export class VagaService extends HttpHeaderService{
     return this.http.post(this.baseUrl + `entidade/${idEntidade}/cadastrarvaga`, vaga, this.httpOptions);
   }
 
-  public rescindirTermo(idVaga:number){
-
+  public rescindirTermo(idEstudante:string, idVaga:number){
+    return this.http.post(this.baseUrl + `entidade/${idEstudante}/cadastrarvaga`, this.httpOptions);
   }
 
   public aprovarCandidato(idVaga: number, cpfCandidato: string){

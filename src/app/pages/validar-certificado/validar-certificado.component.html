@@ -4,17 +4,17 @@
         <P>
             Informe o código de verificação prosseguir com a solicitação.
         </P>
-        <form>
+        <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro" (ngSubmit)="validarCertificado()">
             <div class="col-xl-12">
                 <label>
                     Código de Verificação:<em class="text-danger">*</em>
                 </label>
                 <br>
-                <input class="form-control" id="código" type="text" placeholder="Digite os números">
+                <input formControlName="codigo" class="form-control" id="código" type="text" placeholder="Digite os números">
             </div>
             <br>
             <div class="content__botao" (click)="validarCertificado()">
-                <button class="col-12 btn btn-primary">
+                <button type="submit" class="col-12 btn btn-primary" [disabled]="formCadastro.invalid">
                     Validar Certificado
                 </button>
             </div>

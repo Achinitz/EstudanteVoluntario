@@ -8,15 +8,15 @@
   realizada na Universidade Federal de São João del-Rei, nos dias 28 de setembro a 02 de outubro de 2015, em São João del-Rei/MG.</span> -->
   <div class="row">
     <b>Nome da Entidade</b>
-    <p>{{ certificado.nomeEntidade }} </p>
+    <p>{{ certificado?.idEntidade?.razaoSocial }} </p>
   </div>
   <div class="row">
     <b>Nome da Vaga</b>
-    <p>{{ certificado.nomeVaga }} </p>
+    <p>{{ certificado?.idInscricao?.vagaId?.nomeVaga }} </p>
   </div>
   <div class="row">
     <b>Período de realização do trabalho</b>
-    <p>{{ certificado.dataInicio }} - {{ certificado.dataFim }}</p>
+    <p>{{ certificado.dataInicio | date : 'dd/MM/yyyy' }} - {{ certificado.dataFim | date : 'dd/MM/yyyy' }}</p>
   </div>
   <div class="row">
     <b>Carga Horária</b>
