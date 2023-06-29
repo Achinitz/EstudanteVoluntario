@@ -9,13 +9,13 @@ Este aplicativo foi realizado com o objetivo de conclusão do Curso de Análise 
 
 # Tecnologias Utilizadas
 ## Front end
-HTML / CSS / JS / TypeScript
-Angular 12.0.5
-Angular/Material 12.2.13
-Bootstrap 5.1.3
-Chart-JS 4.0.1
-ngx
-sweetalert2
+### HTML / CSS / JS / TypeScript
+### Angular 12.0.5
+### Angular/Material 12.2.13
+### Bootstrap 5.1.3
+### Chart-JS 4.0.1
+### ngx
+### sweetalert2
 
 # Como executar o projeto
 Pré-requisitos: npm, angular (versões mais atualizadas)
