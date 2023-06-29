@@ -1,27 +1,44 @@
-# TCCPROJETOFINAL
+# Estudante Voluntário
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
+## Sobre o Projeto
+Projeto feito para Entidades que desejam contratar voluntariados para ajudar nas suas tarefas e para estudantes que desejam adquirir Horas Formativas.
+Aplicação dividida em três perfil Estudante, Entidade e Administrador.
 
-## Development server
+## Introdução 
+Este aplicativo foi realizado com o objetivo de conclusão do Curso de Análise e Desenvolvimento de Sistemas da Universidade Federal do Paraná. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Tecnologias Utilizadas
 
-## Code scaffolding
+## Front end
+HTML / CSS / JS / TypeScript
+Angular 12.0.5
+Angular/Material 12.2.13
+Bootstrap 5.1.3
+Chart-JS 4.0.1
+ngx
+sweetalert2
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+# Como executar o projeto
+Pré-requisitos: npm, angular (versões mais atualizadas)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Instalar o Node
+npm i node
 
-## Running unit tests
+# Instalar o Angular
+npm i @angular/cli
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Clonar repositório
+git clone https://github.com/Achinitz/TCC.git
 
-## Running end-to-end tests
+# Entrar na pasta do projeto front end Web
+cd TCC
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# instalar dependências
+npm install
 
-## Further help
+# executar o projeto
+npm start
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Abrindo o Projeto
+O sistema está sendo executado em localhost:4200
