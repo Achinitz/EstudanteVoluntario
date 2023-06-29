@@ -8,7 +8,6 @@ Aplicação dividida em três perfil Estudante, Entidade e Administrador.
 Este aplicativo foi realizado com o objetivo de conclusão do Curso de Análise e Desenvolvimento de Sistemas da Universidade Federal do Paraná. 
 
 # Tecnologias Utilizadas
-
 ## Front end
 HTML / CSS / JS / TypeScript
 Angular 12.0.5
@@ -18,27 +17,26 @@ Chart-JS 4.0.1
 ngx
 sweetalert2
 
-
 # Como executar o projeto
 Pré-requisitos: npm, angular (versões mais atualizadas)
 
-# Instalar o Node
+## Instalar o Node
 npm i node
 
-# Instalar o Angular
+## Instalar o Angular
 npm i @angular/cli
 
-# Clonar repositório
+## Clonar repositório
 git clone https://github.com/Achinitz/TCC.git
 
-# Entrar na pasta do projeto front end Web
+## Entrar na pasta do projeto front end Web
 cd TCC
 
-# instalar dependências
+## instalar dependências
 npm install
 
-# executar o projeto
+## executar o projeto
 npm start
 
-# Abrindo o Projeto
+## Executando o Projeto
 O sistema está sendo executado em localhost:4200
