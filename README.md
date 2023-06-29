@@ -18,12 +18,13 @@ Este aplicativo foi realizado com o objetivo de conclusão do Curso de Análise 
 <p>sweetalert2</p>
 
 # Pré Requisitos
-<p>[git] 
-  <a href="https://www.hostinger.com.br/tutoriais/tutorial-do-git-basics-introducao#:~:text=Instalar%20o%20GIT%20no%20Windows%3A&text=Acesse%20o%20site%20oficial%20e,concluir%20com%20%C3%AAxito%20a%20instala%C3%A7%C3%A3o.">
+<p>
+  GitHub instalado e configurado 
+  <a href="https://www.hostinger.com.br/tutoriais/tutorial-do-git-basics-          introducao#:~:text=Instalar%20o%20GIT%20no%20Windows%3A&text=Acesse%20o%20site%20oficial%20e,concluir%20com%20%C3%AAxito%20a%20instala%C3%A7%C3%A3o.">
     Tutorial
   </a>
 </p>
-<p>[npm] (https://www.npmjs.com/package/node)</p>, 
+<p>[npm] (https://www.npmjs.com/package/node)</p>
 <p>[angular] (https://www.npmjs.com/package/@angular/cli)</p>
 
 ## Instalar o Node
