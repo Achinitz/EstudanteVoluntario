@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Notificacao } from 'src/app/models/notificacao';
+import { LoginService } from 'src/app/services/login.service';
 import { NotificacaoService } from 'src/app/services/notificacao.service';
 
 @Component({
@@ -9,7 +10,6 @@ import { NotificacaoService } from 'src/app/services/notificacao.service';
   styleUrls: ['./sidebar-estudante.component.scss'],
 })
 export class SidebarEstudanteComponent implements OnInit {
- 
   notificacoes: Notificacao[] = [];
 
   navbarData: any = [
@@ -27,7 +27,11 @@ export class SidebarEstudanteComponent implements OnInit {
     },
   ];
 
-  constructor(private router: Router,private notificacaoService: NotificacaoService) {}
+  constructor(
+    private router: Router,
+    private notificacaoService: NotificacaoService,
+    private loginService: LoginService
+  ) {}
 
   getNotificacoes(idUsuario: string) {
     this.notificacaoService.listarNotificacoes(idUsuario).subscribe({
@@ -37,11 +41,10 @@ export class SidebarEstudanteComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-   
-  }
+  ngOnInit(): void {}
 
-  public logout() {   
+  public logout() {
+    this.loginService.logout()
     localStorage.clear();
     this.router.navigate(['/']);
   }

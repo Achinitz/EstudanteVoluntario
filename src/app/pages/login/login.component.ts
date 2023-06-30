@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   logar() {
     this.loading = true;
     if (this.formLogin.valid) {
-      console.log(this.formLogin.value.login);
+      //console.log(this.formLogin.value.login);
       this.loginService.login(this.formLogin.value).subscribe({
         next: (usuario) => {         
           if (
