@@ -6,9 +6,6 @@ import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { CadastrarVagaComponent } from './cadastrar-vaga/cadastrar-vaga.component';
-import { AvaliarEstudanteComponent } from './avaliar-estudante/avaliar-estudante.component';
-import { ModalVisualizarComponent } from './avaliar-estudante/modal-visualizar/modal-visualizar.component';
-import { ModalAdicionarAvaliacaoComponent } from './avaliar-estudante/modal-adicionar-avaliacao/modal-adicionar-avaliacao.component';
 import { EntidadeComponent } from './entidade.component';
 import { VagasComponent } from './vagas/vagas.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -38,10 +35,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     HomeComponent,
     SidebarComponent,
     PerfilComponent,
-    CadastrarVagaComponent,
-    AvaliarEstudanteComponent,
-    ModalVisualizarComponent,
-    ModalAdicionarAvaliacaoComponent,
+    CadastrarVagaComponent, 
     EntidadeComponent,
     VagasComponent,
     DetalhesComponent,

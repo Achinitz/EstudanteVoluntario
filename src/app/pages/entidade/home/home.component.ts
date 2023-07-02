@@ -12,12 +12,11 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
-    //Variaveis para a paginação
-    paginaAtual = 1;
-    itemsPerPage = 5;
-    tamanhoArray;
-    idUsuario: string;
+  //Variaveis para a paginação
+  paginaAtual = 1;
+  itemsPerPage = 5;
+  tamanhoArray;
+  idUsuario: string;
 
   usuarioLogado: Usuario;
   vagasAbertas: any = [];
@@ -40,46 +39,43 @@ export class HomeComponent implements OnInit {
     this.buscarVagasCanceladas(this.usuarioLogado._id);
   }
 
-  buscarVagasAndamento(idUsuario: string){
+  buscarVagasAndamento(idUsuario: string) {
     this.entidadeService.listarVagasAndamento(idUsuario, 10000).subscribe({
-      next: (res:any) => {
+      next: (res: any) => {
         this.vagasAndamento = res.vagas;
       },
-      error: (err:any) => {
+      error: (err: any) => {
         this.toast.error(err?.message);
-      }
+      },
     });
   }
 
-  buscarVagasCanceladas(idUsuario: string){
+  buscarVagasCanceladas(idUsuario: string) {
     this.entidadeService.listarVagasCanceladas(idUsuario).subscribe({
-      next: (res:any) => {
-        this.vagasCanceladas = res.vagas;
+      next: (res: any) => {
+        this.vagasCanceladas = res.vagas;      
       },
-      error: (err:any) => {
+      error: (err: any) => {
         this.toast.error(err?.message);
-      }
+      },
     });
   }
 
   buscaVagasAbertas(idUsuario: string) {
-      this.entidadeService.listarVagasAbertas(idUsuario,10000).subscribe({
-        next: (res: any) => {
-          this.vagasAbertas = res.vagas;
-        },
-        error: (err: any) => {
-          this.toast.error(err?.message);
-        },
-      });
+    this.entidadeService.listarVagasAbertas(idUsuario, 10000).subscribe({
+      next: (res: any) => {
+        this.vagasAbertas = res.vagas;
+      },
+      error: (err: any) => {
+        this.toast.error(err?.message);
+      },
+    });
   }
 
-  mudancaPagina(){
-
-  }
+  mudancaPagina() {}
 
   buscaVagasAprovacao(idUsuario: string) {
-
-    let page = this.paginaAtual ;
+    let page = this.paginaAtual;
 
     this.entidadeService.listarVagasAprovacao(idUsuario, page).subscribe({
       next: (res: any) => {

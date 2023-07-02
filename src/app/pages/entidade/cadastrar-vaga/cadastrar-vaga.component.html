@@ -18,7 +18,8 @@
         <div class="form-group inputFile">
           <label for="imgPerfil">Imagem de Perfil </label>
           <br>
-          <input type="file" class="form-control-file" accept="image/png, image/jpeg" id="inputFile" (change)="inputFileChange($event)" />
+          <input type="file" class="form-control-file" accept="image/png, image/jpeg" id="inputFile"
+            (change)="inputFileChange($event)" />
         </div>
 
         <div class="form-group">
@@ -58,14 +59,6 @@
         <div *ngIf="possuiAuxilio" class="form-group">
           <textarea class="form-control" id="descricaoAuxilio" formControlName="descricaoAuxilio"
             placeholder="Descreva o auxílio"></textarea>
-          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
-            formCadastro.controls.descricaoAuxilio.touched &&
-            ( formCadastro.controls.descricaoAuxilio.value == '' 
-            || formCadastro.controls.descricaoAuxilio.value == null) && possuiAuxilio
-            
-                   " [@fadeInOut]>
-            O campo Descrição do auxilio é obrigatório!
-          </small>
         </div>
         <div class="row duplo">
           <div class="col">
@@ -75,7 +68,7 @@
             <!--Mínimo de 5 dias antes da data de hoje-->
             <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="dataInicioTrabalho"
               formControlName="dataInicioTrabalho" min="{{dataMin | date: 'yyyy-MM-dd'}}"
-              max="{{formCadastro.controls.dataTerminoTrabalho?.value | date: 'yyyy-MM-dd'}}"
+              max="{{formCadastro.controls.dataEncerramentoTrabalho?.value | date: 'yyyy-MM-dd'}}"
               (change)="fimInscricao()" />
             <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
                 formCadastro.controls.dataInicioTrabalho.touched &&
@@ -86,16 +79,16 @@
             </small>
           </div>
           <div class="col">
-            <label for="dataTerminoTrabalho">
+            <label for="dataEncerramentoTrabalho">
               Data de encerramento da Atividade <em>*</em>
             </label>
-            <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="dataTerminoTrabalho"
-              formControlName="dataTerminoTrabalho"
+            <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="dataEncerramentoTrabalho"
+              formControlName="dataEncerramentoTrabalho"
               min="{{formCadastro.controls.dataInicioTrabalho?.value | date: 'yyyy-MM-dd'}}" />
             <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
-                formCadastro.controls.dataTerminoTrabalho.touched &&
-                (formCadastro.controls.dataTerminoTrabalho.invalid ||
-                formCadastro.controls.dataTerminoTrabalho.errors)
+                formCadastro.controls.dataEncerramentoTrabalho.touched &&
+                (formCadastro.controls.dataEncerramentoTrabalho.invalid ||
+                formCadastro.controls.dataEncerramentoTrabalho.errors)
               " [@fadeInOut]>
               O campo Data de encerramento da Atividade é obrigatório!
             </small>
@@ -148,45 +141,44 @@
           <label for="numeroVagas">Dias de Trabalho <em>*</em> </label>
           <section>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Segunda" (change)="checkboxListChange('Segunda')" >
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Segunda"
+                (change)="checkboxListChange('Segunda')">
               <label class="form-check-label" for="inlineCheckbox1">Segunda</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Terça" (change)="checkboxListChange('Terça')">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Terça"
+                (change)="checkboxListChange('Terça')">
               <label class="form-check-label" for="inlineCheckbox2">Terça</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Quarta" (change)="checkboxListChange('Quarta')">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Quarta"
+                (change)="checkboxListChange('Quarta')">
               <label class="form-check-label" for="inlineCheckbox3">Quarta</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Quinta" (change)="checkboxListChange('Quinta')">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Quinta"
+                (change)="checkboxListChange('Quinta')">
               <label class="form-check-label" for="inlineCheckbox1">Quinta</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Sexta" (change)="checkboxListChange('Sexta')">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Sexta"
+                (change)="checkboxListChange('Sexta')">
               <label class="form-check-label" for="inlineCheckbox2">Sexta</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Sábado" (change)="checkboxListChange('Sábado')">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Sábado"
+                (change)="checkboxListChange('Sábado')">
               <label class="form-check-label" for="inlineCheckbox3">Sábado</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Domingo" (change)="checkboxListChange('Domingo')">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Domingo"
+                (change)="checkboxListChange('Domingo')">
               <label class="form-check-label" for="inlineCheckbox3">Domingo</label>
             </div>
           </section>
         </div>
-
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="utilizarEnderecoEntidade"
-            formControlName="utilizarEnderecoEntidade" (change)="setEndereco()" />
-          <label class="form-check-label" for="utilizarEnderecoEntidade">Desejo usar o endereço cadastrado da
-            Entidade</label>
-        </div>
-
-        <div formGroupName="endereco" *ngIf="!utilizarEnderecoEntidade" [@fadeInOut]>
-
+     
+        <div formGroupName="endereco">
           <div>
             <div class="form-group">
               <label for="cep">CEP <em>*</em> </label>

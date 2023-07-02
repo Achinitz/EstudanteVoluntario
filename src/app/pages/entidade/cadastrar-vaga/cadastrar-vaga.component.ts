@@ -22,7 +22,6 @@ export class CadastrarVagaComponent implements OnInit {
 
   usuario: any;
   submitted = false;
-  utilizarEnderecoEntidade: boolean = false;
   imagemDaVaga: any;
   possuiAuxilio: boolean = false;
   termosCondicao: boolean = false;
@@ -41,7 +40,7 @@ export class CadastrarVagaComponent implements OnInit {
   estados: any = [];
 
   public formCadastro = new FormGroup({
-    imgVaga:new FormGroup({
+    imgVaga: new FormGroup({
       file: new FormControl(null),
     }),
     nomeVaga: new FormControl(null, Validators.required),
@@ -54,10 +53,9 @@ export class CadastrarVagaComponent implements OnInit {
     dataAbertudaVaga: new FormControl(null),
     dataFinalizacaoVaga: new FormControl(null, Validators.required),
     dataInicioTrabalho: new FormControl(null, Validators.required),
-    dataTerminoTrabalho: new FormControl(null, Validators.required),
+    dataEncerramentoTrabalho: new FormControl(null, Validators.required),
     horarioInicioTrabalho: new FormControl('08:00', Validators.required),
     horarioEncerramentoTrabalho: new FormControl('17:00', Validators.required),
-    utilizarEnderecoEntidade: new FormControl(this.utilizarEnderecoEntidade),
     endereco: new FormGroup({
       cep: new FormControl(null),
       logradouro: new FormControl(null),
@@ -124,27 +122,22 @@ export class CadastrarVagaComponent implements OnInit {
     this.possuiAuxilio = this.possuiAuxilio ? false : true;
   }
 
-  setEndereco() {
-    this.utilizarEnderecoEntidade = this.utilizarEnderecoEntidade
-      ? false
-      : true;
-  }
-
   aceitarTermo() {
     this.termosCondicao = this.termosCondicao ? false : true;
   }
 
   async inputFileChange(event) {
-    if(event.target.files && event.target.files[0]){
-      let file = event.target.files[0];       
+    if (event.target.files && event.target.files[0]) {
+      let file = event.target.files[0];
 
       let base64 = await toBase64(file);
-       this.imagem = 'data:' + file.type + ';base64,' + base64.toString().split(",")[1];
-       this.imagem = this.imagem.toString();
+      this.imagem =
+        'data:' + file.type + ';base64,' + base64.toString().split(',')[1];
+      this.imagem = this.imagem.toString();
 
       const reader = new FileReader();
 
-      reader.addEventListener("load", () => {
+      reader.addEventListener('load', () => {
         reader.readAsDataURL(event.target.files[0]);
       });
 
@@ -182,8 +175,7 @@ export class CadastrarVagaComponent implements OnInit {
       });
   }
 
-  onAddBairro() {
-  }
+  onAddBairro() {}
 
   validaCep() {
     if (this.formCadastro.get('endereco.cep')?.value.length === 8) {

@@ -49,7 +49,7 @@ export class VagasComponent implements OnInit {
   ];
 
   constructor(
-    public dialog: MatDialog,   
+    public dialog: MatDialog,
     private entidadeService: EntidadeService,
     private loginService: LoginService,
     private toast: ToastrService,
@@ -78,17 +78,14 @@ export class VagasComponent implements OnInit {
     }
   }
 
-  filtrarDadosVaga(){
-    
-  }
+  filtrarDadosVaga() {}
 
   listarVagas(idUsuario: string) {
-    let page = this.paginaAtual ;
+    let page = this.paginaAtual;
     this.entidadeService.listarVagas(idUsuario, page).subscribe({
       next: (res: any) => {
         this.vagasDisponiveis = res.vagas;
         this.tamanhoArray = res.total;
-        console.log(res.total);
       },
       error: (err: any) => {
         this.toast.error(err?.message);

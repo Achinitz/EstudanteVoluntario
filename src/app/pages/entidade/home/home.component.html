@@ -54,60 +54,12 @@
     </div>
   </section>
 
-  <section>
-        <!--
-    <h2>Vagas Publicadas - Abertas</h2>
-
-    <div *ngIf="!vagasAbertas">
-      <span> No momento não existem vagas abertas cadastradas! </span>
-    </div>
-
- <section class="vagasAbertas" *ngIf="vagasAbertas">
-      <div class="content__card">
-        <div class="card col-12" *ngFor="let vaga of vagasAbertas; let i = index">
-
-          <div class="imgCard col-3">
-            <img [src]="vaga.imgVaga?.file" onError="this.src = 'assets/imagens/mulherGrandeCoracao.png'" class="card-img-top"
-              alt="..." />
-          </div>
-          <section class="card__content col-9">
-            <div class="card-body">
-              <div class="card-title d-flex">
-                <h1>{{ vaga.nomeVaga }}</h1>
-                <span [ngClass]="getStatus(vaga.statusVaga)" class="statusPosition">
-                  {{ vaga.statusVaga }}
-                </span>
-              </div>
-              <div class="card-content-description">
-                <p class="card-title">
-                  <b>Nome da vaga:</b>
-                  {{ vaga.nomeVaga }}
-                </p>
-                <p class="card-text"><b>Descrição:</b> {{ vaga.descricao }}</p>
-                <p class="card-text">
-                  <b>Requisitos:</b> {{ vaga.requisitos }}
-                </p>
-                <p class="card-text">
-                  <b>Número de Vagas:</b> {{ vaga.numeroVagas }}
-                </p>                
-              </div>
-            </div>
-            <div class="buttonsVagasCadastradas">
-              <button class="btn btn-primary" (click)="exibirDetalhes(vaga)">
-                Detalhes da Vaga
-              </button>
-            </div>
-          </section>
-        </div>
-      </div>
-    </section> -->
-
+  <section>      
     <section>
       <h2>Vagas em Análise</h2>
       <div *ngIf="vagasAprovacao == 0">
         <span> No momento não existem vagas em análise</span>
       </div>
-
       <section class="vagasAbertas" *ngIf="vagasAprovacao">
         <div class="content__card">
           <div class="card col-12" *ngFor="let vaga of vagasAprovacao; let i = index">
@@ -147,7 +99,6 @@
           </div>
         </div>
       </section>
-
     </section>
     <div class="row">
       <ngb-pagination class="pagination pull-right" [rotate]="true"

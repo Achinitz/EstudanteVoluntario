@@ -18,12 +18,16 @@ import Swal from 'sweetalert2';
 export class MeuPerfilAdministradorComponent implements OnInit {
   usuarioLogado: Usuario;
   administrador: Administrador;
+  usuario: Usuario;
   submitted = false;
   senhaValida = false;
+  imagem = '';
 
   formCadastro: FormGroup = new FormGroup({
     login: new FormControl({ value: null, disabled: true }),
-    imgPerfil: new FormControl(null),
+    imgPerfil: new FormGroup({
+      file: new FormControl(null),
+    }),
     nomeCompleto: new FormControl({ value: null, disabled: true }),
     nomeSocial: new FormControl(null),
     confirmaNomeSocial: new FormControl(false),
@@ -50,9 +54,9 @@ export class MeuPerfilAdministradorComponent implements OnInit {
 
   validarSenha() {
     if (
-      this.formCadastro.get('senha')?.value ==
+      this.formCadastro.get('novaSenha')?.value ==
         this.formCadastro.get('confirmarSenha')?.value &&
-      !this.formCadastro.get('senha')?.invalid &&
+      !this.formCadastro.get('novaSenha')?.invalid &&
       !this.formCadastro.get('confirmarSenha')?.invalid
     ) {
       this.senhaValida = true;
@@ -71,8 +75,10 @@ export class MeuPerfilAdministradorComponent implements OnInit {
     this.adminService.getPerfilAdmin(this.usuarioLogado._id).subscribe({
       next: (res: any) => {
         this.administrador = res.admin;
-        this.formCadastro.patchValue(this.usuarioLogado);
+        this.usuario = res.usuario;
+        this.formCadastro.patchValue(this.usuario);
         this.formCadastro.patchValue(this.administrador);
+        this.imagem = this.formCadastro.get('imgPerfil.file').value;
       },
       error: (err: any) => {
         this.toast.error(err.message);
@@ -97,6 +103,25 @@ export class MeuPerfilAdministradorComponent implements OnInit {
           this.toast.error(err.error.message);
         },
       });
+  }
+
+  async inputFileChange(event) {
+    if (event.target.files && event.target.files[0]) {
+      let file = event.target.files[0];
+
+      let base64 = await toBase64(file);
+      this.imagem =
+        'data:' + file.type + ';base64,' + base64.toString().split(',')[1];
+      this.imagem = this.imagem.toString();
+
+      const reader = new FileReader();
+
+      reader.addEventListener('load', () => {
+        reader.readAsDataURL(event.target.files[0]);
+      });
+
+      this.formCadastro.get('imgPerfil.file').setValue(this.imagem);
+    }
   }
 
   desativarConta() {
@@ -135,3 +160,11 @@ export class MeuPerfilAdministradorComponent implements OnInit {
     });
   }
 }
+
+const toBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+  });
