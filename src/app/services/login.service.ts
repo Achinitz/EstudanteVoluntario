@@ -11,11 +11,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginService extends HttpHeaderService {
   perfil: Perfil;
+  currentDate:any;
 
   LS_CHAVE: string = 'usuario';
 
   constructor(protected http: HttpClient) {
     super();
+    this.currentDate = new Date().getTime();
   }
 
   public get usuarioLogado(): Usuario {
@@ -24,7 +26,7 @@ export class LoginService extends HttpHeaderService {
   }
 
   public set usuarioLogado(usuario: Usuario){
-    localStorage[this.LS_CHAVE] = JSON.stringify(usuario);
+    localStorage[this.LS_CHAVE] = JSON.stringify(usuario);    
   }
 
   public verificarLogin(loginUsuario: any): Observable<any> {

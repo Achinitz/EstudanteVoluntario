@@ -44,7 +44,7 @@ export class CertificadoComponent implements OnInit {
         var blob = new Blob([res], { type: 'application/pdf' });
         var link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
-        link.download = 'MeuPDF.pdf';
+        link.download = 'Certificado.pdf';
         document.body.appendChild(link);
         link.click();
       },

@@ -21,7 +21,7 @@
        <tbody>
          <tr *ngFor="let notificacao of notificacoes; index as i">
            <td class="col-3">{{notificacao.titulo}}</td>
-           <td class="col-3 text-center">{{notificacao.data}}</td>
+           <td class="col-3 text-center">{{notificacao.data | localDate}}</td>
            <td class="col-3 text-center">{{notificacao.idRemetente.nome}}</td>
            <td class="col-3 text-center buttonsActions">
              <button class="button-table" title="Visualizar" (click)="visualizarNotificacao(notificacao)">
