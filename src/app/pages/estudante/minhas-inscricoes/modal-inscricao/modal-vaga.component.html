@@ -51,7 +51,7 @@
   </div>
   <div class="row col-12">
     <b class="">Horário</b>
-    <p class="">{{ vagaSelecionada.horarioInicioTrabalho | localHour}} - {{ vagaSelecionada.horarioEncerramentoTrabalho | localHour }}</p>
+    <p class="">{{ vagaSelecionada.horarioInicioTrabalho}} - {{ vagaSelecionada.horarioEncerramentoTrabalho  }}</p>
   </div>
   <div class="row col-12"  *ngIf="vagaSelecionada.statusVaga.toString() == 'ABERTA'">
     <b class="">Período de inscrição</b>

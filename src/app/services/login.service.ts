@@ -12,6 +12,8 @@ import { StorageService } from './storage.service';
 })
 export class LoginService extends HttpHeaderService {
   perfil: Perfil;
+  currentDate: any;
+
   LS_CHAVE: string = 'usuario';
 
   constructor(
@@ -19,6 +21,7 @@ export class LoginService extends HttpHeaderService {
     private storageService: StorageService,    
   ) {
     super();
+    this.currentDate = new Date().getTime();
   }
 
   public get usuarioLogado(): Usuario {
@@ -26,7 +29,7 @@ export class LoginService extends HttpHeaderService {
     return usuario ? JSON.parse(localStorage[this.LS_CHAVE]) : null;
   }
 
-  public set usuarioLogado(usuario: Usuario) {
+  public set usuarioLogado(usuario: Usuario){
     localStorage[this.LS_CHAVE] = JSON.stringify(usuario);
   }
 

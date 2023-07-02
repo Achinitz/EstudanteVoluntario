@@ -13,22 +13,25 @@
                 <input formControlName="codigo" class="form-control" id="código" type="text" placeholder="Digite os números">
             </div>
             <br>
-            <div class="content__botao" (click)="validarCertificado()">
-                <button type="submit" class="col-12 btn btn-primary" [disabled]="formCadastro.invalid">
+            <div class="content__botao">
+                <button type="submit" class="col-12 btn btn-primary">
                     Validar Certificado
                 </button>
             </div>
-            <label class="mt-2 text-success text-result">
-                O certificado é válido!
+            <label class="mt-2 text-success text-result" *ngIf="certificadoValido">
+                {{mensagem}}
+            </label>
+            <label class="mt-2 text-success text-danger" *ngIf="!certificadoValido">
+                {{mensagem}}
             </label>
         </form>
     </section>
-    <div>     
+     <div *ngIf="certificadoValido">     
         <h3>Dados Certificado</h3>   
 
         <p>
-            Certificamos para os devidos fins, que <span class="content_resultado">(FULANO DE TAL)</span>, participou da atividade <span class="content_resultado">(NOME DA VAGA)</span>, como trabalho voluntário, na entidade <span>(NOME ENTIDADE) - (CNPJ: XXX.XXX.XXX.XX)</span>.
-            durante o período de <span class="content_resultado">(XX/XX/XXXX)</span> até <span class="content_resultado">(XX/XX/XXXX)</span>, totalizando <span class="content_resultado">(X) horas</span>.
+            Certificamos para os devidos fins, que <span class="content_resultado">{{dataCertificado?.nomeEstudante}}</span>, participou da atividade <span class="content_resultado">{{dataCertificado?.idInscricao?.vagaId?.nomeVaga}}</span>, como trabalho voluntário, na entidade <span class="content_resultado">{{dataCertificado?.idEntidade?.razaoSocial}}</span> - CNPJ: <span class="content_resultado">{{dataCertificado?.idEntidade?.userid?.login}}</span>.
+            durante o período de <span class="content_resultado">{{dataCertificado?.dataInicio}}</span> até <span class="content_resultado">{{dataCertificado?.dataFim}}</span>, totalizando <span class="content_resultado">{{dataCertificado?.cargaHoraria}} horas</span>.
         </p>
     </div>
 </main>
