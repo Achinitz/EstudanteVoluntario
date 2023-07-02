@@ -15,6 +15,7 @@ export class AdicionarAdministradorComponent implements OnInit {
   usuarioLogado: Usuario;
   administrador: Administrador;
   submitted = false;
+  senhaValida = false;
 
   formCadastro: FormGroup = new FormGroup({
     login: new FormControl(null, Validators.required),
@@ -120,7 +121,7 @@ export class AdicionarAdministradorComponent implements OnInit {
       !this.formCadastro.get('senha')?.invalid &&
       !this.formCadastro.get('confirmarSenha')?.invalid
     ) {
-      console.log('senha igual');
+      this.senhaValida = true;
     } else {
       this.toast.error('As senhas não são iguais!');
     }

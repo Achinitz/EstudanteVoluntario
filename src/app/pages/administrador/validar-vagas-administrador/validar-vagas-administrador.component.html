@@ -18,10 +18,7 @@
         </ngb-alert>
         <div class="col-12 card-content-filtro">
           <div class="col-9 p-1">{{tamanhoPagina}} vaga(s) pendente(s) para validação</div>
-          <div class="col-3 p-1">
-            <ng-select [items]="listaOrdenacao" id="ngSelect" bindLabel="nome" bindValue="id" placeholder="Selecione"
-              (ngModelChange)="ordenarLista()" (closeOnSelect)="(true)" [(ngModel)]="tipoOrdenacao">
-            </ng-select>
+          <div class="col-3 p-1">           
           </div>
         </div>
 
@@ -48,12 +45,6 @@
           </div>
         </div>
       </div>
-    </section>
-    <!--  <div class="row">
-      <ngb-pagination class="pagination pull-right" [rotate]="true" [maxSize]="3" [directionLinks]="false"
-        [collectionSize]="this.vagasAprovacao.length" [pageSize]="itemsPerPage" [boundaryLinks]="true"
-        [(page)]="paginaAtual" (pageChange)="mudancaPagina(paginaAtual)">
-      </ngb-pagination>
-    </div> -->
+    </section>  
   </section>
 </section>

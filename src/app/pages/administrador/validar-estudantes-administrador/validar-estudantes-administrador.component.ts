@@ -14,13 +14,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class ValidarEstudantesAdministradorComponent implements OnInit {
   estudantesAprovacao: any = [];
   usuarioLogado: Usuario;
-  tipoOrdenacao: any;
   tamanhoPagina: number;
-
-  listaOrdenacao: any = [
-    { id: 1, nome: 'Mais antigos' },
-    { id: 2, nome: 'Mais recentes' },
-  ];
 
   constructor(
     public dialog: MatDialog,
@@ -44,25 +38,9 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
   }
 
   exibirDetalhes(value: Estudante): void {
-    this.router.navigate(['/Administrador/validar-estudante', { id: value._id }]);
+    this.router.navigate([
+      '/Administrador/validar-estudante',
+      { id: value._id },
+    ]);
   }
-
-  ordenarLista() {
-    console.log('Lista Ordenada');
-  }
-
-  /*  paginaAtual = 1;
-  tamanhoPagina: number = this.estudantesAprovacao.length;
-  itemsPerPage = 6;
-  tipoOrdenacao: any;
-  filter: any;
-  public filterEstudante: any = this.estudantesAprovacao.slice(0, 6);
-
-  public mudancaPagina(pageNum: number): void {
-    this.tamanhoPagina = this.itemsPerPage * (pageNum - 1);
-    this.filterEstudante = this.estudantesAprovacao.slice(
-      this.tamanhoPagina,
-      this.tamanhoPagina + 6
-    );
-  } */
 }

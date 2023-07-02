@@ -6,42 +6,34 @@ import { CpfPipe } from './pipe/cpf.pipe';
 import { NomeUsuarioPipe } from './pipe/nome-usuario.pipe';
 import { LocalHourPipe } from './pipe/local-hour.pipe';
 import { LocalDatePipe } from './pipe/local-date.pipe';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalDesbloqueioComponent } from './modals/modal-desbloqueio/modal-desbloqueio.component';
-
-
 
 @NgModule({
   declarations: [
-    CnpjPipe, 
-    PhonePipe, 
+    CnpjPipe,
+    PhonePipe,
     CpfPipe,
     NomeUsuarioPipe,
     LocalHourPipe,
     LocalDatePipe,
-    ModalDesbloqueioComponent
+    ModalDesbloqueioComponent,
   ],
-  imports: [
-    CommonModule,
-  ],
+  imports: [CommonModule],
   exports: [
-    CnpjPipe, 
-    PhonePipe, 
+    CnpjPipe,
+    PhonePipe,
     CpfPipe,
     NomeUsuarioPipe,
     LocalHourPipe,
-    LocalDatePipe
+    LocalDatePipe,
   ],
   providers: [
-    CnpjPipe, 
-    PhonePipe, 
+    CnpjPipe,
+    PhonePipe,
     CpfPipe,
     NomeUsuarioPipe,
     LocalHourPipe,
-    LocalDatePipe
+    LocalDatePipe,
   ],
 })
-export class SharedModule { }
+export class SharedModule {}

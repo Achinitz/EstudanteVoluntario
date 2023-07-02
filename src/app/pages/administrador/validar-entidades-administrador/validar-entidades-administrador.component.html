@@ -18,18 +18,7 @@
         </ngb-alert>
         <div class="col-12 card-content-filtro">
           <div class="col-9 p-1">{{tamanhoPagina}} entidade(s) pendente(s) para validação</div>
-          <div class="col-3 p-1">
-            <ng-select
-              [items]="listaOrdenacao"
-              id="ngSelect"
-              bindLabel="nome"
-              bindValue="id"
-              placeholder="Selecione"
-              (ngModelChange)="ordenarLista()"
-              (closeOnSelect)="(true)"
-              [(ngModel)]="tipoOrdenacao"
-            >
-            </ng-select>
+          <div class="col-3 p-1">          
           </div>
         </div>
 

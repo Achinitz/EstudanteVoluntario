@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   selector: 'app-adicionar-admin',
   templateUrl: './adicionar-admin.component.html',
   styleUrls: ['./adicionar-admin.component.scss'],
-  animations: genericAnimations,
+  animations: [genericAnimations],
 })
 export class AdicionarAdminComponent implements OnInit {
   administradores: any = [];
@@ -53,8 +53,7 @@ export class AdicionarAdminComponent implements OnInit {
       },
     });
     if (motivo.isConfirmed) {      
-      this.comentario = motivo.value;
-      console.log(this.comentario);
+      this.comentario = motivo.value;     
       this.administradorService
         .rebaixarAdministrador(idUsuarioAvaliado, this.comentario)
         .subscribe({

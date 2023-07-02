@@ -35,6 +35,7 @@ import { EditarInstituicaoComponent } from './cadastrar-instituicao/editar-insti
 import { AuthGuard } from 'src/app/guards/auth-guard';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -74,7 +75,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MatIconModule,
     MatDividerModule,
     MatListModule,
-    SharedModule
+    SharedModule,
+   CommonModule
   ],
   providers: [DataService, SharedModule],
 })

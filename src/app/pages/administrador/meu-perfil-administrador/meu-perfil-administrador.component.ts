@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { genericAnimations } from 'src/app/shared/animations/animations';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/services/login.service';
@@ -7,6 +7,7 @@ import { AdministradorService } from 'src/app/services/administrador.service';
 import { Usuario } from 'src/app/models/usuario.model';
 import { Administrador } from 'src/app/models/administrador';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-meu-perfil-administrador',
@@ -18,16 +19,17 @@ export class MeuPerfilAdministradorComponent implements OnInit {
   usuarioLogado: Usuario;
   administrador: Administrador;
   submitted = false;
+  senhaValida = false;
 
   formCadastro: FormGroup = new FormGroup({
     login: new FormControl({ value: null, disabled: true }),
     imgPerfil: new FormControl(null),
-    nomeCompleto: new FormControl(null),
+    nomeCompleto: new FormControl({ value: null, disabled: true }),
     nomeSocial: new FormControl(null),
     confirmaNomeSocial: new FormControl(false),
     identificacaoGenero: new FormControl(null),
-    dataNascimento: new FormControl(null),
-    email: new FormControl(null, Validators.email),
+    dataNascimento: new FormControl({ value: null, disabled: true }),
+    email: new FormControl(null),
     telefone: new FormControl(null),
     senha: new FormControl(null),
     novaSenha: new FormControl(null),
@@ -42,7 +44,7 @@ export class MeuPerfilAdministradorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.usuarioLogado = this.loginService.usuarioLogado;    
+    this.usuarioLogado = this.loginService.usuarioLogado;
     this.getPerfilAdmin();
   }
 
@@ -53,10 +55,16 @@ export class MeuPerfilAdministradorComponent implements OnInit {
       !this.formCadastro.get('senha')?.invalid &&
       !this.formCadastro.get('confirmarSenha')?.invalid
     ) {
-      console.log('senha igual');
+      this.senhaValida = true;
     } else {
       this.toast.error('As senhas não são iguais!');
     }
+  }
+
+  setSenha() {
+    this.formCadastro
+      .get('senha')
+      .setValue(this.formCadastro.get('novaSenha')?.value);
   }
 
   getPerfilAdmin() {
@@ -64,7 +72,7 @@ export class MeuPerfilAdministradorComponent implements OnInit {
       next: (res: any) => {
         this.administrador = res.admin;
         this.formCadastro.patchValue(this.usuarioLogado);
-        this.formCadastro.patchValue(this.administrador);      
+        this.formCadastro.patchValue(this.administrador);
       },
       error: (err: any) => {
         this.toast.error(err.message);
@@ -74,8 +82,13 @@ export class MeuPerfilAdministradorComponent implements OnInit {
 
   setPerfilAdmin() {
     this.submitted = true;
-    if (this.formCadastro.valid) {
-      this.adminService.setPerfilAdmin(this.usuarioLogado._id, this.formCadastro.value).subscribe({
+    this.setSenha();
+    if (this.formCadastro.get('senha').value === null) {
+      this.formCadastro.removeControl('senha');
+    }
+    this.adminService
+      .setPerfilAdmin(this.usuarioLogado._id, this.formCadastro.value)
+      .subscribe({
         next: (res: any) => {
           this.toast.success(res.message);
           this.router.navigate(['/Administrador']);
@@ -84,12 +97,41 @@ export class MeuPerfilAdministradorComponent implements OnInit {
           this.toast.error(err.error.message);
         },
       });
-    } else {
-      this.toast.error(
-        'Não foi possível prosseguir, verifique os campos do formulário!'
-      );
-    }
   }
 
-  desativarConta() {}
+  desativarConta() {
+    Swal.fire({
+      title: 'Deseja realmente desativar o seu Perfil?',
+      text: 'Ao confirmar, seu perfil será desativado.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Perfil desativado com Sucesso!',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          this.loginService
+            .desativar(this.loginService.usuarioLogado._id)
+            .subscribe({
+              next: (res: any) => {
+                this.toast.success(res.message);
+                this.loginService.logout();
+                localStorage.clear();
+                this.router.navigate(['/']);
+              },
+              error: (err: any) => {
+                this.toast.error(err.message);
+              },
+            });
+        });
+      }
+    });
+  }
 }

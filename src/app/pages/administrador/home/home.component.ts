@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { Usuario } from 'src/app/models/usuario.model';
+import { AdministradorService } from 'src/app/services/administrador.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -12,9 +13,14 @@ export class HomeComponent implements OnInit {
   @ViewChild('meuCanvas', { static: true }) elemento: ElementRef;
 
   usuarioLogado: Usuario;
-  vagasAprovacao: any = 10;
-  entidadesAprovacao: any = 3;
-  estudantesAprovacao: any = 2;
+  listaVagas: any;
+  listaEstudantes: any;
+  listaEntidades: any;
+
+  vagasAprovacao: number;
+  entidadesAprovacao: number;
+  estudantesAprovacao: number;
+
   chart1: any;
   chart2: any;
   chart3: any;
@@ -36,7 +42,10 @@ export class HomeComponent implements OnInit {
     { mes: 'Mai/23', count: 3 },
   ];
 
-  constructor(private loginService: LoginService) {}
+  constructor(
+    private loginService: LoginService,
+    private adminService: AdministradorService
+  ) {}
 
   ngOnInit() {
     this.usuarioLogado = this.loginService.usuarioLogado;
@@ -46,6 +55,30 @@ export class HomeComponent implements OnInit {
     Chart.register(...registerables);
     this.loadChart1();
     this.loadChart2();
+
+    this.adminService.listarVagas()   
+    .subscribe({
+      next: (res: any) => {      
+        this.listaVagas= res.vagas;
+        this.vagasAprovacao = this.listaVagas.length;
+      }
+    });
+
+    this.adminService.listarEntidades()  
+    .subscribe({
+      next: (res: any) => {   
+        this.listaEntidades = res.entidades;
+        this.entidadesAprovacao = this.listaEntidades.length;
+      }
+    });
+
+    this.adminService.listarEstudantes()  
+    .subscribe({
+      next: (res: any) => {
+        this.listaEstudantes= res.estudantes;
+        this.estudantesAprovacao = this.listaEstudantes.length;
+      }
+    });
   }
 
   loadChart1() {

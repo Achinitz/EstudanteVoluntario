@@ -14,13 +14,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class ValidarVagasAdministradorComponent implements OnInit {
   vagasAprovacao: any = [];
   usuarioLogado: Usuario;
-  tipoOrdenacao: any;
   tamanhoPagina: number;
-
-  listaOrdenacao: any = [
-    { id: 1, nome: 'Mais antigos' },
-    { id: 2, nome: 'Mais recentes' },
-  ];
 
   constructor(
     public dialog: MatDialog,
@@ -38,7 +32,7 @@ export class ValidarVagasAdministradorComponent implements OnInit {
     this.administradorService.listarVagas().subscribe({
       next: (res: any) => {
         this.vagasAprovacao = res.vagas;
-        this.tamanhoPagina = this.vagasAprovacao.length;      
+        this.tamanhoPagina = this.vagasAprovacao.length;
       },
     });
   }
@@ -46,22 +40,4 @@ export class ValidarVagasAdministradorComponent implements OnInit {
   exibirDetalhes(value: Vaga): void {
     this.router.navigate(['/Administrador/detalhe-vaga', { id: value._id }]);
   }
-
-  ordenarLista() {
-    console.log('Lista Ordenada');
-  }
-
-  /*  paginaAtual = 1;
-  tamanhoPagina: number = this.vagasAprovacao.length;
-  itemsPerPage = 6;
- 
-  public vagas: any = this.vagasAprovacao.slice(0, 6);
- */
-  /*  public mudancaPagina(pageNum: number): void {
-    this.tamanhoPagina = this.itemsPerPage * (pageNum - 1);
-    this.vagas = this.vagasAprovacao.slice(
-      this.tamanhoPagina,
-      this.tamanhoPagina + 6
-    );
-  } */
 }

@@ -34,11 +34,14 @@ export class HeaderComponent implements OnInit {
   }
 
   redirecionar() {
-    let urlPerfil = this.usuario.perfil[0].toUpperCase() + this.usuario.perfil.substring(1).toLowerCase();
+    let urlPerfil =
+      this.usuario.perfil[0].toUpperCase() +
+      this.usuario.perfil.substring(1).toLowerCase();
     this.router.navigate(['/' + urlPerfil]);
   }
 
   public logout() {
+    this.loginService.logout();
     localStorage.clear();
     this.router.navigate(['/']);
   }

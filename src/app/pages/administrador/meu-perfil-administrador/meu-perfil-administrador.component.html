@@ -52,20 +52,14 @@
       <div class="row duplo">
         <div class="col">
           <label for="identificacaoGenero">Identificação de Gênero </label>
-          <input type="text" class="form-control" id="identificacaoGenero" placeholder="Ex: Masculino" 
-          formControlName="identificacaoGenero" />
+          <input type="text" class="form-control" id="identificacaoGenero" placeholder="Ex: Masculino"
+            formControlName="identificacaoGenero" />
         </div>
         <div class="col">
-          <label for="dataNascimento">Data de Nascimento <em>*</em> </label>
-          <input class="form-control" placeholder="yyyy-mm-dd" type="date" id="dataNascimento"
-            formControlName="dataNascimento" />
-          <small id="emailHelp" class="form-text text-danger ng-star-inserted" *ngIf="
-            formCadastro.controls.dataNascimento.touched &&
-            formCadastro.controls.dataNascimento.invalid
-          " [@fadeInOut]>
-            O campo Data de Nascimento é obrigatório!
-          </small>
+          <label for="dataNascimento">Data de nascimento </label>
+          <input type="text" class="form-control" id="dataNascimento" [value]="formCadastro.get('dataNascimento').value | localDate" formControlName="dataNascimento" />
         </div>
+
       </div>
 
       <div class="form-group">
@@ -78,12 +72,6 @@
         </small>
       </div>
 
-
-      <div class="form-group">
-        <label for="inputPassword5">Senha atual </label>
-        <input type="password" id="senha" class="form-control" placeholder="Digite a sua senha atual"
-          formControlName="senha" />
-      </div>
       <div class="form-group">
         <label for="inputPassword5">Nova senha </label>
         <input type="password" id="novaSenha" class="form-control" placeholder="Digite a sua nova senha"

@@ -15,13 +15,7 @@ export class ValidarEntidadesAdministradorComponent implements OnInit {
   entidadesAprovacao: any = [];
   tamanhoPagina: number;
   usuarioLogado: Usuario;
-  tipoOrdenacao: any;
-
-  listaOrdenacao: any = [
-    { id: 1, nome: 'Mais antigos' },
-    { id: 2, nome: 'Mais recentes' },
-  ];
-
+ 
   constructor(
     public dialog: MatDialog,
     private router: Router,
@@ -38,7 +32,7 @@ export class ValidarEntidadesAdministradorComponent implements OnInit {
     this.administradorService.listarEntidades().subscribe({
       next: (res: any) => {
         this.entidadesAprovacao = res.entidades;
-        this.tamanhoPagina = this.entidadesAprovacao.length;
+        this.tamanhoPagina = this.entidadesAprovacao.length;       
       },
     });
   }
@@ -49,18 +43,4 @@ export class ValidarEntidadesAdministradorComponent implements OnInit {
       { id: value._id },
     ]);
   }
-
-  ordenarLista() {
-    console.log('Lista Ordenada');
-  }
-
-  /*  paginaAtual = 1;
-   itemsPerPage = 6;
-  tipoOrdenacao: any;
-  public vagas: any = this.entidadesAprovacao.slice(0, 6);
-
-  public mudancaPagina(pageNum: number): void {
-    this.tamanhoPagina = this.itemsPerPage*(pageNum - 1);
-    this.vagas = this.entidadesAprovacao.slice(this.tamanhoPagina, this.tamanhoPagina + 6)
-  } */
 }

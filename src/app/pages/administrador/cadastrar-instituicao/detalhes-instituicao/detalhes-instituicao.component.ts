@@ -33,8 +33,7 @@ export class DetalhesInstituicaoComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.instituicaoService.visualizarInstituicao(this.id).subscribe({
       next: (res: any) => {
-        this.instituicao = res.instituicao;
-        console.log(this.instituicao);
+        this.instituicao = res.instituicao;   
         this.cursoService.listarCursos(this.id).subscribe({
           next: (res: any) => {
             this.cursos = res;

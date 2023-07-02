@@ -40,8 +40,7 @@ export class DetalheEntidadeAdministradorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.usuarioLogado = this.loginService.usuarioLogado;
-    console.log(this.usuarioLogado._id);
+    this.usuarioLogado = this.loginService.usuarioLogado;  
     this.getDetalhesEntidade();
   }
 
