@@ -18,6 +18,7 @@ export class VagasComponent implements OnInit {
   itemsPerPage = 5;
   tamanhoArray;
   idUsuario: string;
+  
   public formData = new FormGroup({
     filtro: new FormControl(null, Validators.required),
     // estado: new FormControl(null, Validators.required),
@@ -99,6 +100,12 @@ export class VagasComponent implements OnInit {
 
   public mudancaPagina(): void {
     this.listarVagas(this.idUsuario);
-    console.log(this.paginaAtual);
+  }
+
+  possuiInscritos(vaga: Vaga) {   
+    if (vaga.inscricoes?.length > 0)
+    return true;
+    else return false
+   
   }
 }

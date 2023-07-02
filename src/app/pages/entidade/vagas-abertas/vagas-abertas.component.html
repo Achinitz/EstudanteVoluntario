@@ -2,10 +2,10 @@
   <div class="topo">
     <h1>Vagas Abertas</h1>
   </div>
-
-  <div *ngIf="vagasDisponiveis.length == 0">
-    <span> Não existem Vagas Abertas </span>
-  </div>
+ 
+  <ngb-alert #alert type="warning" *ngIf="vagasDisponiveis.length == 0">
+    <span> No momento não existem Vagas Abertas. </span>
+  </ngb-alert>
 
   <section class="m-1" *ngIf="vagasDisponiveis.length > 0">
     <!-- <div class="col-12 card-content-filtro">

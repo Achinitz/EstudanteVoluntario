@@ -1,7 +1,7 @@
 <section class="content" *ngIf="vaga">
 
   <div class="topo">
-    <h1>Detalhes  {{- vaga.nomeVaga}}</h1>
+    <h1>Detalhes - {{vaga.nomeVaga}}</h1>
   </div>
 
   <ngb-alert #alert type="warning">
@@ -51,12 +51,12 @@
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Horário início</span>
-        <p *ngIf="vaga.horarioInicioTrabalho">{{vaga.horarioInicioTrabalho | localHour}}</p>
+        <p *ngIf="vaga.horarioInicioTrabalho">{{vaga.horarioInicioTrabalho}}</p>
         <p class="" *ngIf="!vaga.horarioInicioTrabalho"> - </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Horário fim</span>
-        <p *ngIf="vaga.horarioEncerramentoTrabalho">{{vaga.horarioEncerramentoTrabalho | localHour}}</p>
+        <p *ngIf="vaga.horarioEncerramentoTrabalho">{{vaga.horarioEncerramentoTrabalho}}</p>
         <p class="" *ngIf="!vaga.horarioEncerramentoTrabalho"> - </p>
       </div>
     </div>

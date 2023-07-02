@@ -32,7 +32,7 @@ export class NotificacaoComponent implements OnInit {
   getNotificacoes(idUsuario: string) {
     this.notificacaoService.listarNotificacoes(idUsuario).subscribe({
       next: (res: any) => {
-        this.notificacoes = res;
+        this.notificacoes = res;        
       },
     });
   }

@@ -111,12 +111,7 @@ export class CadastrarVagaComponent implements OnInit {
       this.listaDiasTrabalho.push(value);
     }
     this.formCadastro.get('diasTrabalho').setValue(this.listaDiasTrabalho);
-  }
-
-  mostrarValores() {
-    console.log('Formulário enviado');
-    console.log(this.formCadastro.value);
-  }
+  } 
 
   setAuxilio() {
     this.possuiAuxilio = this.possuiAuxilio ? false : true;
@@ -185,8 +180,7 @@ export class CadastrarVagaComponent implements OnInit {
           if (data.erro === true) {
             this.toast.error('CEP Inválido!');
           }
-          this.resultadoCep = data;
-          console.log(data);
+          this.resultadoCep = data;       
           this.estados.forEach((element: any) => {
             if (element.sigla === data.uf) {
               this.formCadastro.get('endereco.estado')?.setValue(element.id);
@@ -207,10 +201,10 @@ export class CadastrarVagaComponent implements OnInit {
           }, 1500);
         },
         (error) => {
-          console.log('Ocorreu um erro');
+          console.log(error.message);
         }
       );
-      console.log('saiu na api');
+      
     }
   }
 

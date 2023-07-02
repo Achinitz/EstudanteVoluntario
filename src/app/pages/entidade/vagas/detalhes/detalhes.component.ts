@@ -7,7 +7,7 @@ import { Usuario } from 'src/app/models/usuario.model';
 import { EntidadeService } from 'src/app/services/entidade.service';
 import { LoginService } from 'src/app/services/login.service';
 import { StatusVaga } from 'src/app/enums/status-vaga';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detalhes',
@@ -22,19 +22,18 @@ export class DetalhesComponent implements OnInit {
   inscrito: any;
 
   constructor(
-    private route: ActivatedRoute,    
+    private route: ActivatedRoute,
     private modalService: NgbModal,
     private loginService: LoginService,
     private entidadeService: EntidadeService,
     private _location: Location
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.usuarioLogado = this.loginService.usuarioLogado;
     this.getDetalheVaga();
   }
-  
+
   backClicked() {
     this._location.back();
   }
@@ -46,7 +45,6 @@ export class DetalhesComponent implements OnInit {
       .subscribe({
         next: (res: any) => {
           this.vaga = res;
-          console.log(res);
         },
       });
   }
@@ -83,25 +81,27 @@ export class DetalhesComponent implements OnInit {
       confirmButtonText: 'Confirmar',
       cancelButtonText: 'Cancelar',
     }).then((result) => {
-      if (result.isConfirmed) {     
-        this.entidadeService.reprovarInscrito(this.usuarioLogado._id, inscritoId).subscribe({
-          next: (res: any) => {
-            Swal.fire({
-              title: res.message,
-              icon: 'success',
-              showConfirmButton: false,
-              timer: 1500,
-            }).finally(() => window.location.reload());
-          },
-          error: (erro: any) => {
-            Swal.fire({
-              title: erro.error.message,
-              icon: 'error',
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          },
-        });
+      if (result.isConfirmed) {
+        this.entidadeService
+          .reprovarInscrito(this.usuarioLogado._id, inscritoId)
+          .subscribe({
+            next: (res: any) => {
+              Swal.fire({
+                title: res.message,
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500,
+              }).finally(() => window.location.reload());
+            },
+            error: (erro: any) => {
+              Swal.fire({
+                title: erro.error.message,
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            },
+          });
       }
     });
   }
@@ -118,29 +118,30 @@ export class DetalhesComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        const userId = this.usuarioLogado._id;
-        this.entidadeService.finalizarInscricaoVaga(userId, this.vaga._id).subscribe({
-          next: (res: any) => {            
-            Swal.fire({
-              title: res.message,
-              icon: 'success',
-              showConfirmButton: false,
-              timer: 1500,
-            }).finally(() => window.location.reload());
-          },
-          error: (erro: any) => {
-            Swal.fire({
-              title: erro.error.message,
-              icon: 'error',
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          },
-        });
+        const userId = this.usuarioLogado._id;        
+        this.entidadeService
+          .finalizarInscricaoVaga(userId, this.vaga._id)
+          .subscribe({
+            next: (res: any) => {
+              Swal.fire({
+                title: res.message,
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500,
+              }).finally(() => window.location.reload());
+            },
+            error: (erro: any) => {
+              Swal.fire({
+                title: erro.error.message,
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            },
+          });
       }
     });
   }
-
 
   rescindirTermo() {
     Swal.fire({
@@ -175,13 +176,27 @@ export class DetalhesComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Cancelado!',
-          text: 'Processo seletivo Cancelado!!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        const userId = this.usuarioLogado._id;        
+        this.entidadeService
+          .cancelarVaga(userId, this.vaga._id)
+          .subscribe({
+            next: (res: any) => {
+              Swal.fire({
+                title: res.message,
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500,
+              }).finally(() => window.location.reload());
+            },
+            error: (erro: any) => {
+              Swal.fire({
+                title: erro.error.message,
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            },
+          });
       }
     });
   }
