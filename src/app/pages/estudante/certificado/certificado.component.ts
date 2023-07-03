@@ -49,11 +49,10 @@ export class CertificadoComponent implements OnInit {
         link.click();
       },
       error: (err:any) => {
-        console.log(err);
-        // this.toast.('DEU ERRO NO BAIXAR ARQUIVOS :( ' + err);
+        console.log(err);      
       }
     });
-      //fazer a função do certificado no back
+    
   }
 
   visualizarCertificado(certificado: any) {

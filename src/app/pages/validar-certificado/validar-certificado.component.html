@@ -2,7 +2,7 @@
     <section class="content">
         <h1>Validar Certificado</h1>
         <P>
-            Informe o código de verificação prosseguir com a solicitação.
+            Informe o código de verificação para prosseguir com a solicitação.
         </P>
         <form [formGroup]="formCadastro" #formDir="ngForm" class="formCadastro" (ngSubmit)="validarCertificado()">
             <div class="col-xl-12">
@@ -10,7 +10,8 @@
                     Código de Verificação:<em class="text-danger">*</em>
                 </label>
                 <br>
-                <input formControlName="codigo" class="form-control" id="código" type="text" placeholder="Digite os números">
+                <input formControlName="codigo" class="form-control" id="código" type="text"
+                    placeholder="Digite os números">
             </div>
             <br>
             <div class="content__botao">
@@ -26,12 +27,18 @@
             </label>
         </form>
     </section>
-     <div *ngIf="certificadoValido">     
-        <h3>Dados Certificado</h3>   
+    <div *ngIf="certificadoValido">
+        <h3>Dados Certificado</h3>
 
         <p>
-            Certificamos para os devidos fins, que <span class="content_resultado">{{dataCertificado?.nomeEstudante}}</span>, participou da atividade <span class="content_resultado">{{dataCertificado?.idInscricao?.vagaId?.nomeVaga}}</span>, como trabalho voluntário, na entidade <span class="content_resultado">{{dataCertificado?.idEntidade?.razaoSocial}}</span> - CNPJ: <span class="content_resultado">{{dataCertificado?.idEntidade?.userid?.login}}</span>.
-            durante o período de <span class="content_resultado">{{dataCertificado?.dataInicio}}</span> até <span class="content_resultado">{{dataCertificado?.dataFim}}</span>, totalizando <span class="content_resultado">{{dataCertificado?.cargaHoraria}} horas</span>.
+            Certificamos para os devidos fins, que <span
+                class="content_resultado">{{dataCertificado?.nomeEstudante}}</span>, participou da atividade <span
+                class="content_resultado">{{dataCertificado?.idInscricao?.vagaId?.nomeVaga}}</span>, na modalidade trabalho
+            voluntário, na entidade <span class="content_resultado">{{dataCertificado?.idEntidade?.razaoSocial}}</span>
+            - CNPJ <span class="content_resultado">{{dataCertificado?.idEntidade?.userid?.login | cnpj }}</span>
+            durante o período de <span class="content_resultado">{{dataCertificado?.dataInicio | localDate}}</span> até <span
+                class="content_resultado">{{dataCertificado?.dataFim | localDate}}</span>, totalizando <span
+                class="content_resultado">{{dataCertificado?.cargaHoraria}} horas</span>.
         </p>
     </div>
 </main>

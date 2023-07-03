@@ -56,12 +56,12 @@
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Horário início</span>
-        <p *ngIf="vaga.horarioInicioTrabalho">{{vaga.horarioInicioTrabalho | localHour}}</p>
+        <p *ngIf="vaga.horarioInicioTrabalho">{{vaga.horarioInicioTrabalho}}</p>
         <p class="" *ngIf="!vaga.horarioInicioTrabalho"> - </p>
       </div>
       <div class="col-lg-3 col-sm-12">
         <span class="title__data">Horário fim</span>
-        <p *ngIf="vaga.horarioEncerramentoTrabalho">{{vaga.horarioEncerramentoTrabalho | localHour}}</p>
+        <p *ngIf="vaga.horarioEncerramentoTrabalho">{{vaga.horarioEncerramentoTrabalho}}</p>
         <p class="" *ngIf="!vaga.horarioEncerramentoTrabalho"> - </p>
       </div>
     </div>
@@ -84,7 +84,7 @@
       <p *ngIf="vaga.requisitos">{{vaga.requisitos}}</p>
       <p class="" *ngIf="!vaga.requisitos">Não possui</p>
 
-    </section>   
+    </section>
 
     <div class="voltar">
       <button class="btn btn-primary" (click)="realizarInscricao()">Inscrição</button>

@@ -36,7 +36,7 @@ export class ValidarCertificadoComponent implements OnInit {
           this.toast.success(res.message);
         }else{
           this.certificadoValido = false;
-          this.mensagem = "Código de validação não encontrado não encontrado!";
+          this.mensagem = "Código de validação não encontrado!";
           this.toast.error(this.mensagem);
         }
        },
