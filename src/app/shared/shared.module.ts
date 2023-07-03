@@ -7,6 +7,7 @@ import { NomeUsuarioPipe } from './pipe/nome-usuario.pipe';
 import { LocalHourPipe } from './pipe/local-hour.pipe';
 import { LocalDatePipe } from './pipe/local-date.pipe';
 import { ModalDesbloqueioComponent } from './modals/modal-desbloqueio/modal-desbloqueio.component';
+import { LocalYearPipe } from './pipe/local-year.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ModalDesbloqueioComponent } from './modals/modal-desbloqueio/modal-desb
     LocalHourPipe,
     LocalDatePipe,
     ModalDesbloqueioComponent,
+    LocalYearPipe,
   ],
   imports: [CommonModule],
   exports: [
@@ -26,6 +28,7 @@ import { ModalDesbloqueioComponent } from './modals/modal-desbloqueio/modal-desb
     NomeUsuarioPipe,
     LocalHourPipe,
     LocalDatePipe,
+    LocalYearPipe,
   ],
   providers: [
     CnpjPipe,
@@ -34,6 +37,7 @@ import { ModalDesbloqueioComponent } from './modals/modal-desbloqueio/modal-desb
     NomeUsuarioPipe,
     LocalHourPipe,
     LocalDatePipe,
+    LocalYearPipe,
   ],
 })
 export class SharedModule {}

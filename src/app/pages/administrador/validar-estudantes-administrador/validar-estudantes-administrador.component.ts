@@ -31,7 +31,7 @@ export class ValidarEstudantesAdministradorComponent implements OnInit {
   getEstudantes() {
     this.administradorService.listarEstudantes().subscribe({
       next: (res: any) => {
-        this.estudantesAprovacao = res.estudantes;
+        this.estudantesAprovacao = res.estudantes;        
         this.tamanhoPagina = this.estudantesAprovacao.length;
       },
     });

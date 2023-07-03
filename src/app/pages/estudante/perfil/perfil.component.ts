@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { EnderecoService } from 'src/app/services/endereco.service';
-import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
 import { genericAnimations } from 'src/app/shared/animations/animations';
 import { ToastrService } from 'ngx-toastr';
 import { EstudanteService } from 'src/app/services/estudante.service';
 import { LoginService } from 'src/app/services/login.service';
-import { CursoService } from 'src/app/services/curso.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Estudante } from 'src/app/models/estudante';
+import { Usuario } from 'src/app/models/usuario.model';
 
 @Component({
   selector: 'app-perfil',
@@ -17,100 +16,74 @@ import { Router } from '@angular/router';
   animations: genericAnimations,
 })
 export class PerfilComponent implements OnInit {
-  fotoPerfil:any;
-  senha: any;
-  novaSenha: any;
+  usuarioLogado: Usuario;
+  estudante: Estudante;
+  usuario: Usuario;
   submitted = false;
   confirmaNomeSocial: boolean = false;
-  cpf = '00000000000'
-  estado: any;
-  cidade: any;
-  bairro: any;
-  resultadoCep: any;
-  cidades: any = [];
-  bairros: any = [];
-  estados: any = [];
-  graus: any = [
-    { id: 1, nome: 'Bacharelado' },
-    { id: 2, nome: 'Licenciatura' },
-    { id: 3, nome: 'Tecnologia' },
-  ];
-  instituicoes: any = [
-    { id: 1, nome: 'UFPR - Universidade Federal do Paraná' },
-    { id: 2, nome: 'UTFPR - Universidade Tecnológica Federal do Paraná' },
-  ];
+  senhaValida = false;
+  imagem = '';
   cursos: any;
-  estadoCivil: any = [
-    { id: 1, nome: 'Casado (a)' },
-    { id: 2, nome: 'Solteiro (a)' },
-    { id: 3, nome: 'Divorciado (a)' },
-    { id: 4, nome: 'Viúvo (a)' },
-  ];
 
   public formCadastro = new FormGroup({
-    nomeCompleto: new FormControl(null, Validators.required),       
-    // login: new FormControl(null),
-    senha: new FormControl(null),
-    // imgPerfil: new FormControl(null, Validators.required),
+    imgPerfil: new FormGroup({
+      file: new FormControl(null),
+    }),
+    login: new FormControl({ value: null, disabled: true }),
+    nomeCompleto: new FormControl({ value: null, disabled: true }),
     nomeSocial: new FormControl(null),
     confirmaNomeSocial: new FormControl(false),
-    identificacaoGenero: new FormControl(null, Validators.required),
-    estadoCivil: new FormControl(null, Validators.required),
-    dataNascimento: new FormControl(null, Validators.required),
-    rg: new FormControl(null, Validators.required),
-    rgEmissor: new FormControl(null, Validators.required),
-    email: new FormControl(null, [Validators.required, Validators.email]),
-    telefone: new FormControl(null, Validators.required),
+    identificacaoGenero: new FormControl(null),
+    estadoCivil: new FormControl(null),
+    dataNascimento: new FormControl({ value: null, disabled: true }),
+    rg: new FormControl({ value: null, disabled: true }),
+    rgEmissor: new FormControl({ value: null, disabled: true }),
+    email: new FormControl(null, Validators.email),
+    telefone: new FormControl(null),
     endereco: new FormGroup({
-      cep: new FormControl(null, Validators.required),
-      logradouro: new FormControl(null, Validators.required),
-      numero: new FormControl(null, Validators.required),
-      bairro: new FormControl(null, Validators.required),
-      complemento: new FormControl(null, Validators.required),
-      estado: new FormControl(null, Validators.required),
-      cidade: new FormControl(null, Validators.required),
+      cep: new FormControl(null),
+      logradouro: new FormControl(null),
+      numero: new FormControl(null),
+      bairro: new FormControl(null),
+      complemento: new FormControl(null),
+      estado: new FormControl(null),
+      cidade: new FormControl(null),
     }),
-    areasInteresse: new FormControl(null, Validators.required),
-    experiencias: new FormControl(null),    
+    areasInteresse: new FormControl(null),
+    experiencias: new FormControl(null),
     curso: new FormGroup({
-      instituicao: new FormControl(null, Validators.required),
-      grau: new FormControl(null, Validators.required),
-      campus: new FormControl(null, Validators.required),
-      nomeCurso: new FormControl(null, Validators.required),
-      anoInicio: new FormControl(null, Validators.required),
-      anoConclusao: new FormControl(null, Validators.required),
+      instituicao: new FormControl({ value: null, disabled: true }),
+      campus: new FormControl({ value: null, disabled: true }),
+      nomeCurso: new FormControl({ value: null, disabled: true }),
+      anoInicio: new FormControl({ value: null, disabled: true }),
+      anoConclusao: new FormControl({ value: null, disabled: true }),
     }),
-    comprovanteMatricula: new FormControl(null, Validators.required),
-    idAdmin: new FormControl(null),
+    senha: new FormControl(null),
+    novaSenha: new FormControl(null),
+    confirmarSenha: new FormControl(null),
   });
 
-  mostrarValores() {
-    console.log('Formulário enviado');
-  }
-
   constructor(
-    private consultaCepService: ConsultaCepService,
-    private enderecoService: EnderecoService,
     private estudanteService: EstudanteService,
     private loginService: LoginService,
-    private cursoService: CursoService,
     private router: Router,
     private toast: ToastrService
-  ) {
-    
-    this.estudanteService.getPerfilEstudante(this.loginService.usuarioLogado._id).subscribe({
-      next: (res:any) => {
-        console.log(res);
-        this.formCadastro.patchValue(res.estudante);        
-      }
-    });
+  ) {}
 
-    this.inicializaFormulario();
+  ngOnInit(): void {
+    this.usuarioLogado = this.loginService.usuarioLogado;
+    this.getPerfilEstudante();
   }
 
-  inicializaFormulario() {
-    this.enderecoService.getEstados().subscribe((data: any) => {
-      this.estados = data;
+  getPerfilEstudante() {
+    this.estudanteService.getPerfilEstudante(this.usuarioLogado._id).subscribe({
+      next: (res: any) => {
+        this.estudante = res.estudante;
+        this.usuario = res.usuario;
+        this.formCadastro.patchValue(this.usuario);
+        this.formCadastro.patchValue(this.estudante);
+        this.imagem = this.formCadastro.get('imgPerfil.file').value;
+      },
     });
   }
 
@@ -118,93 +91,42 @@ export class PerfilComponent implements OnInit {
     this.confirmaNomeSocial = this.confirmaNomeSocial ? false : true;
   }
 
-  onAddCurso() {
-    
-    this.cursoService
-      .listarCursos(this.formCadastro.get('curso.instituicao').value)
+  editarEstudante() {
+    this.submitted = true;
+    this.setSenha();
+    if (this.formCadastro.get('senha').value === null) {
+      this.formCadastro.removeControl('senha');
+    }
+    this.estudanteService
+      .setPerfilEstudante(this.usuarioLogado._id, this.formCadastro.value)
       .subscribe({
         next: (res: any) => {
-          this.cursos = res;
+          this.toast.success(res.message);
+          this.router.navigate(['/Estudante']);
         },
         error: (err: any) => {
           this.toast.error(err.message);
         },
       });
   }
-  
-  onAddCidade() {
-    this.enderecoService
-      .getCidades(this.formCadastro.get('estado')?.value)
-      .subscribe((data: any) => {
-        this.cidades = data;
+
+  async inputFileChange(event) {
+    if (event.target.files && event.target.files[0]) {
+      let file = event.target.files[0];
+
+      let base64 = await toBase64(file);
+      this.imagem =
+        'data:' + file.type + ';base64,' + base64.toString().split(',')[1];
+      this.imagem = this.imagem.toString();
+
+      const reader = new FileReader();
+
+      reader.addEventListener('load', () => {
+        reader.readAsDataURL(event.target.files[0]);
       });
-  }
 
-  onAddBairro() {
-    // console.log('Inicio cidade selecionado');
-    // console.log(this.formCadastro.get('cidade')?.value);
-    //console.log('Fim cidade selecionado');
-  }
-
-  validaCep() {
-    if (this.formCadastro.get('cep')?.value.length === 8) {
-      let cep = this.formCadastro.get('cep')?.value;
-      this.consultaCepService.getDataCep(cep.replace('-', '')).subscribe(
-        (data: any) => {
-          if (data.erro === true) {
-            this.toast.error('CEP Inválido!');
-          }
-          this.resultadoCep = data;
-          //  console.log(data);
-          this.estados.forEach((element: any) => {
-            if (element.sigla === data.uf) {
-              this.formCadastro.get('estado')?.setValue(element.id);
-            }
-          });
-
-          setTimeout(() => {
-            this.cidades.forEach((element: any) => {
-              if (element.nome === data.localidade) {
-                this.formCadastro.get('cidade')?.setValue(element.id);
-                this.formCadastro.get('logradouro')?.setValue(data.logradouro);
-                this.formCadastro.get('bairro')?.setValue(data.bairro);
-              }
-            });
-          }, 1500);
-        },
-        (error) => {
-          console.log('Ocorreu um erro');
-        }
-      );
-      console.log('CEP ok');
+      this.formCadastro.get('imgPerfil.file').setValue(this.imagem);
     }
-  }
-
-  perfilEstudante(){
-    console.log(this.formCadastro.value)
-  }
-
-  async inputFileImage(event){
-
-      let imagem = event.target.files[0];
-      let file = event.target.files[0];       
-      let byteArrray = await toByteArray(file);
-      let base64 = await toBase64(file);
-      this.formCadastro.get('imgPerfil').setValue({ file: base64.toString().split(",")[1], fileName: file.name, contentType: file.type });  
-  }
-
-  async inputFileChange(event){
-    if(event.target.files && event.target.files[0]){
-      let file = event.target.files[0];       
-      let byteArrray = await toByteArray(file);
-      let base64 = await toBase64(file);
-      
-      this.formCadastro.get('comprovanteMatricula').setValue({ file: base64.toString().split(",")[1], fileName: file.name, contentType: file.type });
-    }
-  }
-
-  removeFile(){       
-    this.formCadastro.get('comprovanteMatricula').setValue('');
   }
 
   validarSenha() {
@@ -214,13 +136,19 @@ export class PerfilComponent implements OnInit {
       !this.formCadastro.get('novaSenha')?.invalid &&
       !this.formCadastro.get('confirmarSenha')?.invalid
     ) {
+      this.senhaValida = true;
     } else {
       this.toast.error('As senhas não são iguais!');
     }
   }
 
-  desativarConta(){
+  setSenha() {
+    this.formCadastro
+      .get('senha')
+      .setValue(this.formCadastro.get('novaSenha')?.value);
+  }
 
+  desativarConta() {
     Swal.fire({
       title: 'Deseja realmente desativar o seu Perfil?',
       text: 'Ao confirmar, seu perfil será desativado.',
@@ -237,37 +165,39 @@ export class PerfilComponent implements OnInit {
           icon: 'success',
           showConfirmButton: false,
           timer: 1500,
-        }).then(
-          () => {  
-            console.log(this.loginService.usuarioLogado._id);
-            this.loginService.desativar(this.loginService.usuarioLogado._id).subscribe({
-              next: (res:any) => {
+        }).then(() => {
+          console.log(this.loginService.usuarioLogado._id);
+          this.loginService
+            .desativar(this.loginService.usuarioLogado._id)
+            .subscribe({
+              next: (res: any) => {
                 this.toast.success(res.message);
-                this.router.navigate(['/']);
+                this.loginService.logout();
                 localStorage.clear();
+                this.router.navigate(['/']);
               },
-              error: (err:any) => {
+              error: (err: any) => {
                 this.toast.error(err.message);
-              }
+              },
             });
-          }
-        )
-      }});
+        });
+      }
+    });
   }
-
-  ngOnInit(): void {}
 }
 
-const toBase64 = file => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = () => resolve(reader.result);
-  reader.onerror = error => reject(error);
-});
+const toBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+  });
 
-const toByteArray = file => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-  reader.readAsArrayBuffer(file);
-  reader.onload = () => resolve(new Uint8Array(reader.result as ArrayBuffer));
-  reader.onerror = error => reject(error);
-});
+const toByteArray = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsArrayBuffer(file);
+    reader.onload = () => resolve(new Uint8Array(reader.result as ArrayBuffer));
+    reader.onerror = (error) => reject(error);
+  });

@@ -59,35 +59,19 @@ export class FormEntidadeComponent implements OnInit {
     private enderecoService: EnderecoService,
     private toast: ToastrService,
     private entidadeService: EntidadeService,
-    private router: Router,
-    private loginService: LoginService
+    private router: Router,    
   ) {
     this.inicializaFormulario();
   }
 
   ngOnInit(): void {}
 
-  verificaCnpjExistente() {
+  verificaCnpj() {
     if (this.formCadastro.get('login')?.value.length === 14) {
       var cnpj = this.formCadastro.get('login').value;
-
       if (!this.validarCNPJ(cnpj)) {
         this.formCadastro.controls['login'].setErrors({ incorrect: true });
-      }
-
-      //não está passando o dado pro back
-      /*   
-      this.loginService
-        .verificarLogin(this.formCadastro.get('login').value)
-        .subscribe({
-          next: (res: any) => {
-            this.loginInvalido = res;
-            this.toast.warning('Cnpj já cadastrado!');
-          },
-          error: (err: any) => {
-            this.loginInvalido = err;
-          },
-        }); */
+      }   
     }
   }
 

@@ -138,8 +138,9 @@ export class PerfilComponent implements OnInit {
             .subscribe({
               next: (res: any) => {
                 this.toast.success(res.message);
-                this.router.navigate(['/']);
+                this.loginService.logout();
                 localStorage.clear();
+                this.router.navigate(['/']);
               },
               error: (err: any) => {
                 this.toast.error(err.message);
@@ -150,7 +151,7 @@ export class PerfilComponent implements OnInit {
     });
   }
 
-  finalizarEdicao() {
+  editarEntidade() {
     this.submitted = true;
     this.setSenha();
     if (this.formCadastro.get('senha').value === null) {

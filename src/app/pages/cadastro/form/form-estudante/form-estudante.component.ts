@@ -4,11 +4,11 @@ import { EnderecoService } from 'src/app/services/endereco.service';
 import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
 import { genericAnimations } from 'src/app/shared/animations/animations';
 import { ToastrService } from 'ngx-toastr';
-import { LoginService } from 'src/app/services/login.service';
 import { EstudanteService } from 'src/app/services/estudante.service';
 import { Router } from '@angular/router';
 import { InstituicaoService } from 'src/app/services/instituicao.service';
 import { CursoService } from 'src/app/services/curso.service';
+import { Instituicao } from 'src/app/models/instituicao';
 
 @Component({
   selector: 'app-form-estudante',
@@ -20,8 +20,11 @@ export class FormEstudanteComponent implements OnInit {
   submitted = false;
   loginInvalido: boolean = false;
   confirmaNomeSocial: boolean = false;
+  comprovante: boolean = false;
   estado: any;
+  estadoNome: any;
   cidade: any;
+  cidadeNome: any;
   bairro: any;
   resultadoCep: any;
   cidades: any = [];
@@ -33,6 +36,8 @@ export class FormEstudanteComponent implements OnInit {
     { id: 3, nome: 'Tecnologia' },
   ];
   instituicoes: any[] = [];
+  instituicao: Instituicao;
+  instituicaoNome: any;
   cursos: any[] = [];
   estadoCivil: any = [
     { id: 1, nome: 'Casado (a)' },
@@ -42,15 +47,17 @@ export class FormEstudanteComponent implements OnInit {
   ];
 
   public formCadastro = new FormGroup({
-    login: new FormControl(null, [
-      Validators.required,
-      Validators.pattern('[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}'),
-    ]),
+    login: new FormControl(null, Validators.required),
     nome: new FormControl(null, Validators.required),
     perfil: new FormControl('ESTUDANTE'),
     nomeSocial: new FormControl(null),
+    nomeCompleto: new FormControl(null),
     confirmaNomeSocial: new FormControl(false),
-    comprovanteMatricula: new FormControl(null, Validators.required),
+    comprovanteMatricula: new FormGroup({
+      file: new FormControl(null, Validators.required),
+      fileName: new FormControl(null, Validators.required),
+      contentType: new FormControl(null, Validators.required),
+    }),
     identificacaoGenero: new FormControl(null, Validators.required),
     dataNascimento: new FormControl(null, Validators.required),
     rg: new FormControl(null, Validators.required),
@@ -63,7 +70,7 @@ export class FormEstudanteComponent implements OnInit {
       logradouro: new FormControl(null, Validators.required),
       numero: new FormControl(null, Validators.required),
       bairro: new FormControl(null, Validators.required),
-      complemento: new FormControl(null, Validators.required),
+      complemento: new FormControl(null),
       estado: new FormControl(null, Validators.required),
       cidade: new FormControl(null, Validators.required),
     }),
@@ -79,45 +86,26 @@ export class FormEstudanteComponent implements OnInit {
     confirmarSenha: new FormControl(null, Validators.required),
   });
 
-  mostrarValores() {
-    console.log();
-  }
-
   constructor(
     private consultaCepService: ConsultaCepService,
     private enderecoService: EnderecoService,
     private toast: ToastrService,
-    private loginService: LoginService,
     private estudanteService: EstudanteService,
     private router: Router,
     private instituicaoService: InstituicaoService,
-    private cursoService: CursoService,
+    private cursoService: CursoService
   ) {
     this.inicializaFormulario();
   }
 
-  verificaCpfExistente() {
-    if (this.formCadastro.get('login')?.value.length === 11) {
-          
-      let cpf = JSON.stringify(this.formCadastro.get('login').value);
-      console.log(cpf);
-    
-      //verifica se o cpf tem dígitos válidos - OK
-   /*    if (!this.isValidCPF(cpf)) {
-        this.formCadastro.controls['login'].setErrors({ incorrect: true });
-      } else  */
+  ngOnInit(): void {}
 
-      //verifica se tem cadastro - ERRO: o back não está recebendo o cpf
-      this.loginService.verificarLogin(cpf).subscribe({
-        next: (res: any) => {
-          console.log(res);
-          this.loginInvalido = res.cadastro;
-         // this.toast.warning('CPF já cadastrado!');
-        },
-        error: (err: any) => {
-          this.loginInvalido = err;
-        },
-      });
+  verificaCpf() {
+    if (this.formCadastro.get('login')?.value.length === 11) {
+      let cpf = JSON.stringify(this.formCadastro.get('login').value);
+      if (!this.isValidCPF(cpf)) {
+        this.formCadastro.controls['login'].setErrors({ incorrect: true });
+      }
     }
   }
 
@@ -129,9 +117,6 @@ export class FormEstudanteComponent implements OnInit {
     });
     this.enderecoService.getEstados().subscribe((data: any) => {
       this.estados = data;
-      //  console.log('Inicio estados');
-      // console.log(data);
-      //  console.log('Fim estados');
     });
   }
 
@@ -140,20 +125,11 @@ export class FormEstudanteComponent implements OnInit {
   }
 
   onAddCidade() {
-    // if(this.formCadastro.get("estado")?.value === null && ){
-    //   this.formCadastro.get('cidade')?.setValue(null)
-    // }
     this.enderecoService
       .getCidades(this.formCadastro.get('endereco.estado')?.value)
       .subscribe((data: any) => {
         this.cidades = data;
       });
-  }
-
-  onAddBairro() {
-    //console.log('Inicio cidade selecionado');
-    //console.log(this.formCadastro.get('cidade')?.value);
-    //console.log('Fim cidade selecionado');
   }
 
   onAddCurso() {
@@ -173,16 +149,16 @@ export class FormEstudanteComponent implements OnInit {
     console.log(event.file[0]);
   }
 
-  onCheckMinDate(event: any) {
-    console.log(event.file[0]);
-  }
-
-  onCheckMaxDate(event: any) {
-    console.log(event.file[0]);
+  setNomeIes() {
+    let id = this.formCadastro.get('curso.instituicao').value;
+    this.instituicaoService.visualizarInstituicao(id).subscribe({
+      next: (res: any) => {
+        this.instituicaoNome = res.instituicao.nome;
+      },
+    });
   }
 
   validaCep() {
-    //console.log(this.formCadastro.get('cep')?.value.length);
     if (this.formCadastro.get('endereco.cep')?.value.length === 8) {
       let cep = this.formCadastro.get('endereco.cep')?.value;
       this.consultaCepService.getDataCep(cep.replace('-', '')).subscribe(
@@ -191,10 +167,10 @@ export class FormEstudanteComponent implements OnInit {
             this.toast.error('CEP Inválido!');
           }
           this.resultadoCep = data;
-          console.log(data);
           this.estados.forEach((element: any) => {
             if (element.sigla === data.uf) {
               this.formCadastro.get('endereco.estado')?.setValue(element.id);
+              this.estadoNome = element.nome;
             }
           });
 
@@ -206,15 +182,15 @@ export class FormEstudanteComponent implements OnInit {
                   .get('endereco.logradouro')
                   ?.setValue(data.logradouro);
                 this.formCadastro.get('endereco.bairro')?.setValue(data.bairro);
+                this.cidadeNome = element.nome;
               }
             });
           }, 1500);
         },
         (error) => {
-          console.log('Ocorreu um erro');
+          console.log(error);
         }
       );
-      console.log('CEP ok');
     }
   }
 
@@ -244,46 +220,44 @@ export class FormEstudanteComponent implements OnInit {
       !this.formCadastro.get('senha')?.invalid &&
       !this.formCadastro.get('confirmarSenha')?.invalid
     ) {
-      //console.log('senha igual');
     } else {
       this.toast.error('As senhas não são iguais!');
     }
   }
 
-  async inputFileChange(event){
-    if(event.target.files && event.target.files[0]){
-      let file = event.target.files[0];       
+  async inputFileChange(event) {
+    if (event.target.files && event.target.files[0]) {
+      let file = event.target.files[0];
       let byteArrray = await toByteArray(file);
       let base64 = await toBase64(file);
-      
-      this.formCadastro.get('comprovanteMatricula').setValue({ file: base64.toString().split(",")[1], fileName: file.name, contentType: file.type });
+
+      this.formCadastro.get('comprovanteMatricula').setValue({
+        file: base64.toString().split(',')[1],
+        fileName: file.name,
+        contentType: file.type,
+      });
+
+      this.comprovante = true;
     }
   }
 
-  removeFile(){       
-    this.formCadastro.get('comprovanteMatricula').setValue('');
-  }
-
-  ngOnInit(): void {}
-
-  atualizaCurso(){
-    console.log(this.cursos);
-    console.log(this.formCadastro.get('curso')
-    )
+  removeFile() {
+    this.formCadastro.get('comprovanteMatricula').reset('comprovanteMatricula');
+    this.comprovante = false;
   }
 
   cadastrarEstudante() {
-    // this.formCadastro.get('nome').setValue(
-    //   this.formCadastro.get('nomeSocial')?.value != null || '' ? this.formCadastro.get('nomeSocial').value :this.formCadastro.get('nome').value
-    //   );
-    console.log(this.formCadastro.value);
-    console.log('***********');
-    console.log(this.formCadastro);
-    console.log(this.formCadastro.get('curso').value);
-    console.log(this.formCadastro.get('curso.nomeCurso').value);
-
     this.submitted = true;
+    if (this.setNomeSocial)
+    this.formCadastro.get('nome').setValue(this.formCadastro.get('nomeSocial')?.value);
+    else this.formCadastro.get('nome').setValue(this.formCadastro.get('nomeCompleto')?.value); 
+    this.setNomeIes();
+
     if (this.formCadastro.valid) {
+      this.formCadastro.get('endereco.estado')?.setValue(this.estadoNome);
+      this.formCadastro.get('endereco.cidade')?.setValue(this.cidadeNome);
+      this.formCadastro.get('curso.instituicao')?.setValue(this.instituicaoNome);
+
       this.estudanteService
         .cadastrarEstudante(this.formCadastro.value)
         .subscribe({
@@ -291,8 +265,8 @@ export class FormEstudanteComponent implements OnInit {
             this.toast.success(res.message);
             this.router.navigate(['/login']);
           },
-          error: (erro: any) => {
-            this.toast.error(erro);
+          error: (error: any) => {
+            this.toast.error(error.message);
           },
         });
     } else {
@@ -303,16 +277,18 @@ export class FormEstudanteComponent implements OnInit {
   }
 }
 
-const toBase64 = file => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = () => resolve(reader.result);
-  reader.onerror = reject;
-});
+const toBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+  });
 
-const toByteArray = file => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-  reader.readAsArrayBuffer(file);
-  reader.onload = () => resolve(new Uint8Array(reader.result as ArrayBuffer));
-  reader.onerror = error => reject(error);
-});
+const toByteArray = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsArrayBuffer(file);
+    reader.onload = () => resolve(new Uint8Array(reader.result as ArrayBuffer));
+    reader.onerror = (error) => reject(error);
+  });

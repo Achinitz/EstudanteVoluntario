@@ -25,9 +25,13 @@ export class EstudanteService extends HttpHeaderService {
     );
   }
 
-  public setPerfilEstudante(usuario: Estudante): Observable<any> {
+  public setPerfilEstudante(
+    idUsuario: string,
+    estudante: any
+  ): Observable<any> {
     return this.http.patch(
-      this.baseUrl + `estudante?id:${usuario._id}`,
+      this.baseUrl + `estudante/${idUsuario}`,
+      estudante,
       this.httpOptions
     );
   }
@@ -40,8 +44,11 @@ export class EstudanteService extends HttpHeaderService {
     );
   }
 
-  public listarVagas(id:string, pagina:number): Observable<any> {
-    return this.http.get(this.baseUrl + `estudante/vagas/${pagina}/${id}`, this.httpOptions);
+  public listarVagas(id: string, pagina: number): Observable<any> {
+    return this.http.get(
+      this.baseUrl + `estudante/vagas/${pagina}/${id}`,
+      this.httpOptions
+    );
   }
 
   public getDetalheVaga(idVaga: string): Observable<Vaga> {
@@ -76,8 +83,6 @@ export class EstudanteService extends HttpHeaderService {
 public getDetalheInscricao(idUsuario: string, idInscricao: string): Observable<any>{
   return this.http.get(this.baseUrl + `estudante/${idUsuario}/${idInscricao}`, this.httpOptions);   
 } */
-
-
 } /*  ARRUMAR FUNCAO NO BACK
 public listarCertificados(idUsuario: string): Observable<any>{
   return this.http.get(this.baseUrl + `estudante/${idUsuario}/certificados`, this.httpOptions);   

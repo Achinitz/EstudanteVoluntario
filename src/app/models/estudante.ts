@@ -31,7 +31,11 @@ export class Estudante extends Usuario {
       anoInicio?: string;
       anoConclusao?: string;
     },
-    public comprovanteMatricula?: string,
+    public comprovanteMatricula?: {
+      file?: string,
+      fileName?: string,
+      contentType?: string
+    },
     public userid?: {
       _id?: string;
       login?: string;

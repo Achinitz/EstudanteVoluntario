@@ -49,11 +49,7 @@
         <div class="col-12">
             <label>Curso: </label>
             <span>{{ estudante.curso.nomeCurso}}</span>
-        </div>
-        <div class="col-12">
-            <label>Grau: </label>
-            <span>{{ estudante.curso.grau}}</span>
-        </div>
+        </div>       
         <div class="col-12">
             <label>Instituição: </label>
             <span>{{ estudante.curso.instituicao}}</span>
@@ -61,16 +57,16 @@
         <div class="row">
             <div class="col-lg-4 col-sm-12">
                 <label>Ano início: </label>
-                <span>{{ estudante.curso.anoInicio | localDate }}</span>
+                <span>{{ estudante.curso.anoInicio | localYear }}</span>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <label>Ano conclusão: </label>
-                <span>{{ estudante.curso.anoConclusao | localDate }}</span>
+                <span>{{ estudante.curso.anoConclusao | localYear }}</span>
             </div>
         </div>
         <div class="col-12">
             <label>Comprovante de Matrícula: </label>
-            <a href="{{estudante.comprovanteMatricula}}" target="_blank">{{estudante.comprovanteMatricula}}</a>
+            <a href="{{estudante.comprovanteMatricula.file}}" target="_blank">{{estudante.comprovanteMatricula.fileName}}</a>
         </div>
         <div class="col-12">
             <label>Data do cadastro: </label>
