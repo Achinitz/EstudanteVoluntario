@@ -13,7 +13,7 @@
     <h2>Últimas Inscrições</h2>
     
   <!--Mostrar apenas as vagas em que o estudante está inscrito -->
-    <ngb-alert type="primary" *ngIf="!inscricoes">
+    <ngb-alert type="primary" *ngIf="inscricoes?.length == 0">
       Você ainda não tem inscrições em vagas!
     </ngb-alert>
 

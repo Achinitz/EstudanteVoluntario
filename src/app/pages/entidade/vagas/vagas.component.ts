@@ -105,7 +105,6 @@ export class VagasComponent implements OnInit {
   possuiInscritos(vaga: Vaga) {   
     if (vaga.inscricoes?.length > 0)
     return true;
-    else return false
-   
+    else return false   
   }
 }

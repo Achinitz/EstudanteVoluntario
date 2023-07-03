@@ -81,4 +81,10 @@ export class VagasAbertasComponent implements OnInit {
     this.buscaVagasAbertas(this.idUsuario);
   }
 
+  possuiInscritos(vaga: Vaga) {   
+    if (vaga.inscricoes?.length > 0)
+    return true;
+    else return false   
+  }
+
 }

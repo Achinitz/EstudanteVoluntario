@@ -52,7 +52,7 @@ export class DetalheEstudanteComponent implements OnInit {
                 timer: 1500,
               });
               this.gerarTermo();
-              window.setTimeout(window.location.reload, 2000);
+              window.location.reload();
             },
             error: (erro: any) => {
               Swal.fire({
@@ -61,7 +61,7 @@ export class DetalheEstudanteComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 1500,
               });
-              window.setTimeout(window.location.reload, 2000);
+              window.location.reload();
             },
           });
       }
@@ -90,6 +90,7 @@ export class DetalheEstudanteComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 1500,
               });
+              window.location.reload();
             },
             error: (erro: any) => {
               Swal.fire({
@@ -98,6 +99,7 @@ export class DetalheEstudanteComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 1500,
               });
+              window.location.reload();
             },
           });
       }
