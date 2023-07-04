@@ -47,7 +47,7 @@ export class AdicionarAdministradorComponent implements OnInit {
       .setValue(
         this.formCadastro.get('nomeSocial')?.value != null || ''
           ? this.formCadastro.get('nomeSocial').value
-          : this.formCadastro.get('nome').value
+          : this.formCadastro.get('nomeCompleto').value
       );
     this.submitted = true;
     if (this.formCadastro.valid) {

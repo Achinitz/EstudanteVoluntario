@@ -51,7 +51,7 @@ export class FormEstudanteComponent implements OnInit {
     nome: new FormControl(null, Validators.required),
     perfil: new FormControl('ESTUDANTE'),
     nomeSocial: new FormControl(null),
-    nomeCompleto: new FormControl(null),
+    nomeCompleto: new FormControl(null, Validators.required),
     confirmaNomeSocial: new FormControl(false),
     comprovanteMatricula: new FormGroup({
       file: new FormControl(null, Validators.required),
@@ -246,17 +246,22 @@ export class FormEstudanteComponent implements OnInit {
     this.comprovante = false;
   }
 
-  cadastrarEstudante() {
+  cadastrarEstudante() {   
+    this.formCadastro
+      .get('nome')
+      .setValue(
+        this.formCadastro.get('nomeSocial')?.value != null || ''
+          ? this.formCadastro.get('nomeSocial').value
+          : this.formCadastro.get('nomeCompleto').value
+      );
     this.submitted = true;
-    if (this.setNomeSocial)
-    this.formCadastro.get('nome').setValue(this.formCadastro.get('nomeSocial')?.value);
-    else this.formCadastro.get('nome').setValue(this.formCadastro.get('nomeCompleto')?.value); 
-    this.setNomeIes();
-
+    this.setNomeIes();   
     if (this.formCadastro.valid) {
       this.formCadastro.get('endereco.estado')?.setValue(this.estadoNome);
       this.formCadastro.get('endereco.cidade')?.setValue(this.cidadeNome);
-      this.formCadastro.get('curso.instituicao')?.setValue(this.instituicaoNome);
+      this.formCadastro
+        .get('curso.instituicao')
+        ?.setValue(this.instituicaoNome);
 
       this.estudanteService
         .cadastrarEstudante(this.formCadastro.value)
