@@ -21,7 +21,7 @@
           <!-- Alterar as cores do botão dependendo do status -->
           <div class="imgCard col-3">
             <img src="{{ inscricao.vagaId.img }}" onError="this.src = 'assets/imagens/mulherGrandeCoracao.png'"
-            class="card-img-top" alt="..." />
+              class="card-img-top" alt="..." />
           </div>
           <section class="card__content col-9">
             <div class="card-body">
@@ -29,11 +29,11 @@
                 <h1>{{ inscricao.vagaId.entidadeId.nome }} </h1>
                 <span [ngClass]=" getStatusInscricao(inscricao.statusInscricao)" class="statusPosition">
                   {{inscricao.statusInscricao }}
-                </span>              
+                </span>
               </div>
               <div class="card-content-description">
                 <p class="card-title">
-                <b>Nome da vaga:</b> 
+                  <b>Nome da vaga:</b>
                   {{ inscricao.vagaId.nomeVaga }}
                 </p>
                 <p class="card-text">
@@ -43,13 +43,15 @@
                   <b>Requisitos:</b> {{ inscricao.vagaId.requisitos }}
                 </p>
                 <p class="card-text">
-                  <b>Número de Vagas:</b> {{ inscricao.vagaId.numeroVagas }} 
-                </p>  
-              </div>          
+                  <b>Número de Vagas:</b> {{ inscricao.vagaId.numeroVagas }}
+                </p>
+              </div>
             </div>
             <div class="buttonsVagasCadastradas">
-              <button class="btn btn-primary" (click)="visualizarInscricao(inscricao.vagaId, inscricao.statusInscricao)">Detalhes</button>
-              <button *ngIf="inscricao.statusInscricao == 'INSCRITO'" class="btn btn-danger" (click)="cancelarInscricao(inscricao)">
+              <button class="btn btn-primary"
+                (click)="visualizarInscricao(inscricao.vagaId, inscricao.statusInscricao)">Detalhes</button>
+              <button *ngIf="inscricao.statusInscricao == 'INSCRITO'" class="btn btn-danger"
+                (click)="cancelarInscricao(inscricao)">
                 Cancelar
               </button>
               <button *ngIf="inscricao.statusInscricao == 'APROVADO' && inscricao.termoAdesao == false"
@@ -62,34 +64,36 @@
                 <span>
                   Aceitar Termo
                 </span>
-            </button>
-            <button
-              *ngIf="inscricao.statusInscricao == 'APROVADO' && inscricao.termoAdesao || inscricao.statusInscricao == 'ENCERRADO'"
-              class="button-table bg-success" title="Visualizar Termo" (click)="visualizarTermo(inscricao.termoAdesaoId)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-file-earmark-check" viewBox="0 0 16 16">
-                <path
-                  d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
-                <path
-                  d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
-              </svg>
-              <span>
-                Visualizar Termo
-              </span>
-            </button>
-            <button *ngIf="inscricao.statusInscricao == 'APROVADO' && inscricao.termoAdesao"
-              class="button-table bg-danger" title="Rescindir Termo" (click)="rescindirTermo(inscricao.termoAdesaoId)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-file-earmark-excel" viewBox="0 0 16 16">
-                <path
-                  d="M5.884 6.68a.5.5 0 1 0-.768.64L7.349 10l-2.233 2.68a.5.5 0 0 0 .768.64L8 10.781l2.116 2.54a.5.5 0 0 0 .768-.641L8.651 10l2.233-2.68a.5.5 0 0 0-.768-.64L8 9.219l-2.116-2.54z" />
-                <path
-                  d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
-              </svg>
-              <span>
-                Reiscindir Termo
-              </span>
-            </button>
+              </button>
+              <button
+                *ngIf="inscricao.statusInscricao == 'APROVADO' && inscricao.termoAdesao || inscricao.statusInscricao == 'ENCERRADO'"
+                class="button-table bg-success" title="Visualizar Termo"
+                (click)="visualizarTermo(inscricao.termoAdesaoId)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-file-earmark-check" viewBox="0 0 16 16">
+                  <path
+                    d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                  <path
+                    d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
+                </svg>
+                <span>
+                  Visualizar Termo
+                </span>
+              </button>
+              <button *ngIf="inscricao.statusInscricao == 'APROVADO' && inscricao.termoAdesao"
+                class="button-table bg-danger" title="Rescindir Termo"
+                (click)="rescindirTermo(inscricao.termoAdesaoId)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-file-earmark-excel" viewBox="0 0 16 16">
+                  <path
+                    d="M5.884 6.68a.5.5 0 1 0-.768.64L7.349 10l-2.233 2.68a.5.5 0 0 0 .768.64L8 10.781l2.116 2.54a.5.5 0 0 0 .768-.641L8.651 10l2.233-2.68a.5.5 0 0 0-.768-.64L8 9.219l-2.116-2.54z" />
+                  <path
+                    d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
+                </svg>
+                <span>
+                  Rescindir Termo
+                </span>
+              </button>
             </div>
           </section>
         </div>
@@ -97,7 +101,7 @@
       </div>
     </section>
 
-  <!-- <table class="table table-striped">
+    <!-- <table class="table table-striped">
     <thead>
       <tr>
         <th class="col-3" scope="col">Vaga</th>
@@ -171,5 +175,5 @@
       </tr>
     </tbody>
   </table> -->
-</div>
+  </div>
 </div>
